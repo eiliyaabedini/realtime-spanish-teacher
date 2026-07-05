@@ -1,0 +1,291 @@
+Teacher: Es en noviembre.
+Student: Es en noviembre.
+Teacher: Es en marzo.
+Student: Es en marzo.
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: Es en junio.
+Student: Es en junio.
+Teacher: Es en junio.
+Student: Es en junio.
+Teacher: Great! Now, please repeat the months of the year after me. Pay close attention to the pronunciation. Enero.
+Student: Enero.
+Teacher: Febrero.
+Student: Febrero.
+Teacher: Marzo.
+Student: Marzo.
+Teacher: Abril.
+Student: Abril.
+Teacher: Mayo.
+Student: Mayo.
+Teacher: Junio.
+Student: Junio.
+Teacher: Julio.
+Student: Julio.
+Teacher: Agosto.
+Student: Agosto.
+Teacher: Septiembre.
+Student: Septiembre.
+Teacher: Octubre.
+Student: Octubre.
+Teacher: Noviembre.
+Student: Noviembre.
+Teacher: Diciembre.
+Student: Diciembre.
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: Es en julio.
+Student: Es en julio.
+Teacher: ¿Cuándo es la fiesta?
+Student: ¿Cuándo es la fiesta?
+Teacher: Es mañana.
+Student: Es mañana.
+Teacher: Es hoy.
+Student: Es hoy.
+Teacher: Es el viernes.
+Student: Es el viernes.
+Teacher: Es el lunes.
+Student: Es el lunes.
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: This means, "Who is he?"
+Student: ¿Quién es él?
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: Él es mi padre.
+Student: Él es mi padre.
+Teacher: That means "He is my father."
+Student: Él es mi padre.
+Teacher: He is my brother.
+Student: Él es mi hermano.
+Teacher: Él es mi hermano.
+Student: Él es mi hermano.
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: Ellos son mis hermanos.
+Student: Ellos son mis hermanos.
+Teacher: In Spanish, 'hermanos' can mean "brothers," or it can mean "brothers and sisters" together, which we call siblings.
+Student: Ellos son mis hermanos.
+Teacher: Ellos son mis hermanos.
+Student: Ellos son mis hermanos.
+Teacher: Ellos son mis estudiantes.
+Student: Ellos son mis estudiantes.
+Teacher: How would you ask, "Who are they?"
+Student: ¿Quiénes son ellos?
+Teacher: again.
+Student: ¿Quiénes son ellos?
+Teacher: They are my students.
+Student: Ellos son mis estudiantes.
+Teacher: Ellos son mis estudiantes.
+Student: Ellos son mis estudiantes.
+Teacher: Who is he?
+Student: ¿Quién es él?
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: Now I want to say, "He is my father-in-law." I would say, Él es mi suegro. The word for father-in-law in Spanish is 'suegro'. Él es mi suegro.
+Student: Él es mi suegro.
+Teacher: Él es mi suegro.
+Student: Él es mi suegro.
+Teacher: How would you ask, "Who is she?"
+Student: ¿Quién es ella?
+Teacher: She is my mother-in-law. You'd say: Ella es mi suegra.
+Student: Ella es mi suegra.
+Teacher: She is my mother-in-law.
+Student: Ella es mi suegra.
+Teacher: Who is he?
+Student: ¿Quién es él?
+Teacher: He is my brother-in-law. Él es mi cuñado.
+Student: Él es mi cuñado.
+Teacher: My sister's husband.
+Student: Él es mi cuñado.
+Teacher: My wife's brother.
+Student: Él es mi cuñado.
+Teacher: My husband's brother.
+Student: Él es mi cuñado.
+Teacher: The word 'cuñado' is very useful! It can mean your brother-in-law, your sister's husband, or your spouse's brother. It covers all these relationships. Él es mi cuñado.
+Student: Él es mi cuñado.
+Teacher: ¿Quién es ella?
+Student: ¿Quién es ella?
+Teacher: Ella es mi cuñada.
+Student: Ella es mi cuñada.
+Teacher: Ella es mi cuñada.
+Student: Ella es mi cuñada.
+Teacher: 'Cuñada' works the same way for your sister-in-law, your brother's wife, or your spouse's sister. Ella es mi cuñada.
+Student: Ella es mi cuñada.
+Teacher: Ella es mi prometida.
+Student: Ella es mi prometida.
+Teacher: That means, "She is my fiancee."
+Student: Ella es mi prometida.
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: Ellos son mis primos.
+Student: Ellos son mis primos.
+Teacher: 'Primos' is the word for cousins. Just like 'hermanos', it can mean a group of male cousins or a group of male and female cousins together. Ellos son mis primos.
+Student: Ellos son mis primos.
+Teacher: Ellos son mis primos.
+Student: Ellos son mis primos.
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: Ellos son mis amigos.
+Student: Ellos son mis amigos.
+Teacher: Ellos son mis vecinos.
+Student: Ellos son mis vecinos.
+Teacher: The word 'vecino' means neighbor. So 'vecinos' means neighbors. Ellos son mis vecinos.
+Student: Ellos son mis vecinos.
+Teacher: Ellos son mis vecinos.
+Student: Ellos son mis vecinos.
+Teacher: ¿Son ellos tus colegas?
+Student: ¿Son ellos tus colegas?
+Teacher: That means, "Are they your colleagues?"
+Student: ¿Son ellos tus colegas?
+Teacher: No, no lo son.
+Student: No, no lo son.
+Teacher: Ellos son mis amigos.
+Student: Ellos son mis amigos.
+Teacher: Ellos son mis amigos.
+Student: Ellos son mis amigos.
+Teacher: ¿Quién eres tú?
+Student: ¿Quién eres tú?
+Teacher: This means, "Who are you?"
+Student: ¿Quién eres tú?
+Teacher: Soy tu compañero de clase.
+Student: Soy tu compañero de clase.
+Teacher: I'm your classmate.
+Student: Soy tu compañero de clase.
+Teacher: Soy tu compañero de clase.
+Student: Soy tu compañero de clase.
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: ¿Es él tu socio?
+Student: ¿Es él tu socio?
+Teacher: Is he your partner?
+Student: ¿Es él tu socio?
+Teacher: No, no lo es.
+Student: No, no lo es.
+Teacher: Él es mi profesor.
+Student: Él es mi profesor.
+Teacher: ¿Quién soy yo?
+Student: ¿Quién soy yo?
+Teacher: Who am I?
+Student: ¿Quién soy yo?
+Teacher: ¿Quién soy yo?
+Student: ¿Quién soy yo?
+Teacher: ¿Quién eres tú?
+Student: ¿Quién eres tú?
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: Who are they?
+Student: ¿Quiénes son ellos?
+Teacher: Now for a fun, informal phrase. To say "What's it to you?" or "None of your business," you can say: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: What's it to you?
+Student: ¿Y a ti qué te importa?
+Teacher: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: By the way,
+Student: Por cierto.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: To ask someone's age, you say: ¿Cuántos años tienes? Literally, this means "How many years do you have?"
+Student: ¿Cuántos años tienes?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: Tengo 22 años.
+Student: Tengo 22 años.
+Teacher: Tengo 41 años.
+Student: Tengo 41 años.
+Teacher: Tengo 25 años.
+Student: Tengo 25 años.
+Teacher: ¿Cuántos años tiene tu esposo?
+Student: ¿Cuántos años tiene tu esposo?
+Teacher: How old is your husband?
+Student: ¿Cuántos años tiene tu esposo?
+Teacher: Él tiene 51 años.
+Student: Él tiene 51 años.
+Teacher: Él tiene 35 años.
+Student: Él tiene 35 años.
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: How old are you?
+Student: ¿Cuántos años tienes?
+Teacher: Sometimes we give our exact age, and sometimes we don't want to. To say you're "twenty-something," a common phrase is 'veintitantos'. So you can say: Tengo veintitantos años.
+Student: Tengo veintitantos años.
+Teacher: This means I'm in my twenties. Tengo veintitantos años.
+Student: Tengo veintitantos años.
+Teacher: Tengo treinta y tantos años.
+Student: Tengo treinta y tantos años.
+Teacher: I'm in my thirties.
+Student: Tengo treinta y tantos años.
+Teacher: Tengo cuarenta y tantos años.
+Student: Tengo cuarenta y tantos años.
+Teacher: I'm in my forties.
+Student: Tengo cuarenta y tantos años.
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: Tengo veintitantos años.
+Student: Tengo veintitantos años.
+Teacher: Tengo veintitantos años.
+Student: Tengo veintitantos años.
+Teacher: ¿Cuántos años tiene él?
+Student: ¿Cuántos años tiene él?
+Teacher: How old is he?
+Student: ¿Cuántos años tiene él?
+Teacher: ¿Cuántos años tiene él?
+Student: ¿Cuántos años tiene él?
+Teacher: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: What's it to you?
+Student: ¿Y a ti qué te importa?
+Teacher: ¿Y a ti qué te importa?
+Student: ¿Y a ti qué te importa?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: Tengo 18 años.
+Student: Tengo 18 años.
+Teacher: Tengo 14 años.
+Student: Tengo 14 años.
+Teacher: Pay attention to one important point. The pronunciation of numbers like 14 and 40 can be confused. Listen carefully: 'catorce' is 14, and 'cuarenta' is 40. The stress is different. The same goes for 'quince' (15) and 'cincuenta' (50). Be sure to pronounce them clearly. So, how old is he?
+Student: ¿Cuántos años tiene él?
+Teacher: Él tiene catorce años.
+Student: Él tiene catorce años.
+Teacher: He's 14.
+Student: Él tiene catorce años.
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: A teenager can say, "Soy un adolescente" for "I'm a teenager."
+Student: Soy un adolescente.
+Teacher: Soy un adolescente.
+Student: Soy un adolescente.
+Teacher: Soy un adolescente.
+Student: Soy un adolescente.
+Teacher: Okay, we've practiced questions with 'qué', 'dónde', 'cuándo', 'quién', and 'cuántos años'. Now let's learn one more. Imagine I found a cell phone and I want to ask whose it is. In Spanish, we say: ¿De quién es este celular? Notice we use 'De quién', which literally means "Of whom."
+Student: ¿De quién es este celular?
+Teacher: Whose cell phone is this?
+Student: ¿De quién es este celular?
+Teacher: Whose pen is this?
+Student: ¿De quién es esta pluma?
+Teacher: ¿De quién es esta pluma?
+Student: ¿De quién es esta pluma?
+Teacher: Whose wallet is this?
+Student: ¿De quién es esta cartera?
+Teacher: ¿De quién es esta cartera?
+Student: ¿De quién es esta cartera?
+Teacher: Es mi cartera.
+Student: Es mi cartera.
+Teacher: It's my wallet.
+Student: Es mi cartera.
+Teacher: Es tu cartera.
+Student: Es tu cartera.
+Teacher: It's your wallet.
+Student: Es tu cartera.
+Teacher: Now, let's say it's his wallet. Es su cartera.

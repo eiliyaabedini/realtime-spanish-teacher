@@ -1,0 +1,354 @@
+Teacher: Or we can say: Es Kevin. It's Kevin.
+Teacher: Es Kevin.
+Student: Es Kevin.
+Teacher: Es Kevin.
+Student: Es Kevin.
+Teacher: What is your first name?
+Student: What is your first name?
+Teacher: Es Jack.
+Student: Es Jack.
+Teacher: Es Jack.
+Student: Es Jack.
+Teacher: What is your last name?
+Student: What is your last name?
+Teacher: In Spanish, that's: ¿Cuál es tu apellido?
+Student: ¿Cuál es tu apellido?
+Teacher: It's Williams.
+Student: It's Williams.
+Teacher: It's Anderson.
+Student: It's Anderson.
+Teacher: We can also say: Mi apellido es Anderson.
+Student: Mi apellido es Anderson.
+Teacher: What is your first name?
+Student: What is your first name?
+Teacher: In Spanish, that's: ¿Cuál es tu nombre?
+Student: ¿Cuál es tu nombre?
+Teacher: ¿Cuál es tu apellido?
+Student: What is your last name?
+Teacher: What is your last name?
+Student: What is your last name?
+Teacher: What is your phone number?
+Student: What is your phone number?
+Teacher: In Spanish, that's: ¿Cuál es tu número de teléfono?
+Student: ¿Cuál es tu número de teléfono?
+Teacher: What is your phone number?
+Student: What is your phone number?
+Teacher: in Spanish, we usually say phone numbers digit by digit, for example, 'it's 0912' would be 'es cero nueve uno dos'.
+Student: es cero nueve uno dos.
+Teacher: uno cero cuatro.
+Student: uno cero cuatro.
+Teacher: uno cero cuatro.
+Student: uno cero cuatro.
+Teacher: tres cero.
+Student: tres cero.
+Teacher: tres cero.
+Student: tres cero.
+Teacher: cuatro siete.
+Student: cuatro siete.
+Teacher: cuatro siete.
+Student: cuatro siete.
+Teacher: What is your email address?
+Student: What is your email address?
+Teacher: In Spanish, that's: ¿Cuál es tu dirección de correo electrónico?
+Student: ¿Cuál es tu dirección de correo electrónico?
+Teacher: What is your email address?
+Student: What is your email address?
+Teacher: It's example
+Student: It's example
+Teacher: dot
+Student: dot (In Spanish: punto)
+Teacher: smith
+Student: smith
+Teacher: @gmail.com (In Spanish: arroba gmail punto com)
+Student: @gmail.com (arroba gmail punto com)
+Teacher: Hello sir. (In Spanish: Hola señor.)
+Student: Hola señor.
+Teacher: Hello ma'am. (In Spanish: Hola señora.)
+Student: Hola señora.
+Teacher: What's your name? (In Spanish: ¿Cómo te llamas?)
+Student: ¿Cómo te llamas?
+Teacher: What's your name?
+Student: What's your name?
+Teacher: What's your phone number? (In Spanish: ¿Cuál es tu número de teléfono?)
+Student: ¿Cuál es tu número de teléfono?
+Teacher: What's your email address? (In Spanish: ¿Cuál es tu correo electrónico?)
+Student: ¿Cuál es tu correo electrónico?
+Teacher: If we want to ask "Where are you from?" in Spanish, we say: ¿De dónde eres?
+Student: ¿De dónde eres?
+Teacher: ¿De dónde eres?
+Student: ¿De dónde eres?
+Teacher: Meaning, where are you from?
+Student: ¿De dónde eres?
+Teacher: I'm from Spain. (In Spanish: Soy de España.)
+Student: Soy de España.
+Teacher: Where is your boss from?
+Student: Where is your boss from?
+Teacher: In Spanish: ¿De dónde es tu jefe? (or jefa if female)
+Student: ¿De dónde es tu jefe?
+Teacher: He is from Mexico. (In Spanish: Es de México.)
+Student: Es de México.
+Teacher: Meaning, he is from Mexico.
+Student: Es de México.
+Teacher: He is from England. (In Spanish: Es de Inglaterra.)
+Student: Es de Inglaterra.
+Teacher: Meaning, he is from England.
+Student: Es de Inglaterra.
+Teacher: He is from France. (In Spanish: Es de Francia.)
+Student: Es de Francia.
+Teacher: Meaning, he is from France.
+Student: Es de Francia.
+Teacher: He is from Italy. (In Spanish: Es de Italia.)
+Student: Es de Italia.
+Teacher: Meaning, he is from Italy.
+Student: Es de Italia.
+Teacher: He is from Brazil. (In Spanish: Es de Brasil.)
+Student: Es de Brasil.
+Teacher: Meaning, he is from Brazil.
+Student: Es de Brasil.
+Teacher: He is from America. (In Spanish: Es de los Estados Unidos.)
+Student: Es de los Estados Unidos.
+Teacher: Meaning, he is from America.
+Student: Es de los Estados Unidos.
+Teacher: He is from Spain. (In Spanish: Es de España.)
+Student: Es de España.
+Teacher: Meaning, he is from Spain.
+Student: Es de España.
+Teacher: Where are you from? (¿De dónde eres?)
+Student: ¿De dónde eres?
+Teacher: I'm from Spain. (Soy de España.)
+Student: Soy de España.
+Teacher: We can also say: Soy español (if male) or Soy española (if female).
+Student: Soy español.
+Teacher: Meaning, I am Spanish.
+Student: Soy español.
+Teacher: I am from Mexico. (Soy de México.)
+Student: Soy de México.
+Teacher: Or we can say: Soy mexicano (or mexicana).
+Student: Soy mexicano.
+Teacher: Meaning, I am Mexican. Soy mexicano.
+Student: Soy mexicano.
+Teacher: Where is your partner from? (¿De dónde es tu pareja?)
+Student: ¿De dónde es tu pareja?
+Teacher: Meaning, where is your partner from?
+Student: ¿De dónde es tu pareja?
+Teacher: He is from Russia. (Es de Rusia.)
+Student: Es de Rusia.
+Teacher: Meaning, he is from Russia.
+Student: Es de Rusia.
+Teacher: Or we can say: Es ruso (or rusa).
+Student: Es ruso.
+Teacher: Es ruso.
+Student: Es ruso.
+Teacher: He is from Argentina. (Es de Argentina.)
+Student: Es de Argentina.
+Teacher: Meaning, he is from Argentina.
+Student: Es de Argentina.
+Teacher: He is Argentinian. (Es argentino.)
+Student: Es argentino.
+Teacher: Meaning, he is Argentinian.
+Student: Es argentino.
+Teacher: He is from Peru. (Es de Perú.)
+Student: Es de Perú.
+Teacher: He is Peruvian. (Es peruano.)
+Student: Es peruano.
+Teacher: He is from Japan. (Es de Japón.)
+Student: Es de Japón.
+Teacher: Meaning, he is from Japan.
+Student: Es de Japón.
+Teacher: He is Japanese. (Es japonés.)
+Student: Es japonés.
+Teacher: He is from China. (Es de China.)
+Student: Es de China.
+Teacher: Or we can say: Es chino.
+Student: Es chino.
+Teacher: He is from Germany. (Es de Alemania.)
+Student: Es de Alemania.
+Teacher: He is German. (Es alemán.)
+Student: Es alemán.
+Teacher: He is from Poland. (Es de Polonia.)
+Student: Es de Polonia.
+Teacher: Meaning, he is from Poland.
+Student: Es de Polonia.
+Teacher: Or we can say: Es polaco.
+Student: Es polaco.
+Teacher: Es polaco.
+Student: Es polaco.
+Teacher: He is from Greece. (Es de Grecia.)
+Student: Es de Grecia.
+Teacher: Grecia means Greece. He is from Greece.
+Student: Es de Grecia.
+Teacher: He is Greek. (Es griego.)
+Student: Es griego.
+Teacher: He is from Switzerland. (Es de Suiza.)
+Student: Es de Suiza.
+Teacher: Meaning, he is from Switzerland.
+Student: Es de Suiza.
+Teacher: The adjective is suizo. He is Swiss. (Es suizo.)
+Student: Es suizo.
+Teacher: Es suizo.
+Student: Es suizo.
+Teacher: Where are you from? (¿De dónde eres?)
+Student: ¿De dónde eres?
+Teacher: Meaning, where are you from?
+Student: ¿De dónde eres?
+Teacher: I am American. (Soy estadounidense.)
+Student: Soy estadounidense.
+Teacher: I am Canadian. (Soy canadiense.)
+Student: Soy canadiense.
+Teacher: Meaning, I am Canadian.
+Student: Soy canadiense.
+Teacher: I am Brazilian. (Soy brasileño.)
+Student: Soy brasileño.
+Teacher: I am Italian. (Soy italiano.)
+Student: Soy italiano.
+Teacher: I am French. (Soy francés.)
+Student: Soy francés.
+Teacher: I am English. (Soy inglés.)
+Student: Soy inglés.
+Teacher: Are you from Hungary? (¿Eres de Hungría?)
+Student: ¿Eres de Hungría?
+Teacher: Meaning, are you from Hungary?
+Student: ¿Eres de Hungría?
+Teacher: Yes, I am. (Sí, lo soy.)
+Student: Sí, lo soy.
+Teacher: I am Hungarian. (Soy húngaro.)
+Student: Soy húngaro.
+Teacher: Meaning, I am Hungarian. It's good to learn these country names and nationalities. Hungary is Hungría, and the adjective is húngaro. Soy húngaro.
+Student: Soy húngaro.
+Teacher: Soy húngaro.
+Student: Soy húngaro.
+Teacher: Is he Mexican? (¿Es mexicano?)
+Student: ¿Es mexicano?
+Teacher: Meaning, is he Mexican?
+Student: ¿Es mexicano?
+Teacher: No, he isn't. (No, no lo es.)
+Student: No, no lo es.
+Teacher: He is Indian. (Es indio.)
+Student: Es indio.
+Teacher: Meaning, he is Indian (from India).
+Student: Es indio.
+Teacher: He is from India. (Es de la India.)
+Student: Es de la India.
+Teacher: To ask "Where are you originally from?" we say: ¿De dónde eres originariamente?
+Student: ¿De dónde eres originariamente?
+Teacher: ¿De dónde eres originariamente?
+Student: ¿De dónde eres originariamente?
+Teacher: ¿De dónde eres originariamente?
+Student: ¿De dónde eres originariamente?
+Teacher: 'originariamente' means originally. ¿De dónde eres originariamente?
+Student: ¿De dónde eres originariamente?
+Teacher: I am originally from Madrid. (Soy originariamente de Madrid.)
+Student: Soy originariamente de Madrid.
+Teacher: Meaning, I am originally from Madrid.
+Student: Soy originariamente de Madrid.
+Teacher: Where is your father originally from? (¿De dónde es originariamente tu padre?)
+Student: ¿De dónde es originariamente tu padre?
+Teacher: Meaning, where is your father originally from?
+Student: ¿De dónde es originariamente tu padre?
+Teacher: He is originally from Seville. (Es originariamente de Sevilla.)
+Student: Es originariamente de Sevilla.
+Teacher: By the way. (Por cierto.)
+Student: Por cierto.
+Teacher: By the way. (Por cierto.)
+Student: Por cierto.
+Teacher: Are you married? (¿Estás casado? or ¿Estás casada?)
+Student: ¿Estás casado?
+Teacher: Meaning, are you married?
+Student: ¿Estás casado?
+Teacher: Are you married?
+Student: Are you married?
+Teacher: Yes, I am. (Sí, lo estoy.)
+Student: Sí, lo estoy.
+Teacher: No, I'm not. (No, no lo estoy.)
+Student: No, no lo estoy.
+Teacher: I am single. (Estoy soltero or Estoy soltera.)
+Student: Estoy soltero.
+Teacher: 'soltero' or 'soltera' means single. Estoy soltero.
+Student: Estoy soltero.
+Teacher: Estoy soltero.
+Student: Estoy soltero.
+Teacher: I am engaged is: Estoy comprometido (or comprometida).
+Student: Estoy comprometido.
+Teacher: Estoy comprometido.
+Student: Estoy comprometido.
+Teacher: Estoy comprometido.
+Student: Estoy comprometido.
+Teacher: I am married. (Estoy casado.)
+Student: Estoy casado.
+Teacher: I am married. (Estoy casado.)
+Student: Estoy casado.
+Teacher: I am divorced is: Estoy divorciado (or divorciada).
+Student: Estoy divorciado.
+Teacher: Estoy divorciado.
+Student: Estoy divorciado.
+Teacher: Estoy divorciado.
+Student: Estoy divorciado.
+Teacher: My spouse has passed away, meaning I am widowed. For men, it's 'viudo', for women, 'viuda'. We say: Soy viudo (or Soy viuda).
+Student: Soy viudo.
+Teacher: Soy viudo.
+Student: Soy viudo.
+Teacher: Soy viudo.
+Student: Soy viudo.
+Teacher: Soy viudo.
+Student: Soy viudo.
+Teacher: Is Nicole married? (¿Está Nicole casada?)
+Student: ¿Está Nicole casada?
+Teacher: Meaning, is Nicole married?
+Student: ¿Está Nicole casada?
+Teacher: No, she isn't. (No, no lo está.)
+Student: No, no lo está.
+Teacher: She is widowed. (Es viuda.)
+Student: Es viuda.
+Teacher: She is widowed. (Es viuda.)
+Student: Es viuda.
+Teacher: Are you single? (¿Estás soltero?)
+Student: ¿Estás soltero?
+Teacher: Are you single? (¿Estás soltero?)
+Student: ¿Estás soltero?
+Teacher: No, I'm not. (No, no lo estoy.)
+Student: No, no lo estoy.
+Teacher: I am engaged. (Estoy comprometido.)
+Student: Estoy comprometido.
+Teacher: Meaning, I am engaged.
+Student: Estoy comprometido.
+Teacher: Hello sir. (Hola señor.)
+Student: Hola señor.
+Teacher: Hello ma'am. (Hola señora.)
+Student: Hola señora.
+Teacher: What is your first name? (¿Cuál es tu nombre?)
+Student: ¿Cuál es tu nombre?
+Teacher: My first name is Bob. (Mi nombre es Bob.)
+Student: Mi nombre es Bob.
+Teacher: What is your last name? (¿Cuál es tu apellido?)
+Student: ¿Cuál es tu apellido?
+Teacher: It's Wilson. (Es Wilson.)
+Student: Es Wilson.
+Teacher: What is your phone number? (¿Cuál es tu número de teléfono?)
+Student: ¿Cuál es tu número de teléfono?
+Teacher: Meaning, what is your phone number?
+Student: ¿Cuál es tu número de teléfono?
+Teacher: What is your email address? (¿Cuál es tu correo electrónico?)
+Student: ¿Cuál es tu correo electrónico?
+Teacher: Meaning, what is your email address?
+Student: ¿Cuál es tu correo electrónico?
+Teacher: Where are you originally from? (¿De dónde eres originariamente?)
+Student: ¿De dónde eres originariamente?
+Teacher: I am originally from England. (Soy originariamente de Inglaterra.)
+Student: Soy originariamente de Inglaterra.
+Teacher: I am originally from England. (Soy originariamente de Inglaterra.)
+Student: Soy originariamente de Inglaterra.
+Teacher: At the end, we want to say "Nice to meet you." We say: Mucho gusto.
+Student: Mucho gusto.
+Teacher: Mucho gusto.
+Student: Mucho gusto.
+Teacher: Nice to meet you too. (Igualmente.)
+Student: Igualmente.
+Teacher: Meaning, I'm pleased to meet you too.
+Student: Igualmente.
+Teacher: Well, in this session, we learned some basic greetings and introductions. At the end of each session, we'll also share a proverb. This session's proverb is "No pain, no gain."
+Student: No pain, no gain.
+Teacher: 'pain' means 'dolor' or 'esfuerzo' (effort), and 'gain' means 'ganancia' or 'recompensa' (reward). A Spanish equivalent is "El que algo quiere, algo le cuesta." (He who wants something, it costs him something.)
+Student: El que algo quiere, algo le cuesta.
+Teacher: No pain, no gain.
+Student: No pain, no gain.
+Teacher: Thank you very much. (Muchas gracias.)

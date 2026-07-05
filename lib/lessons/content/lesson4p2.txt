@@ -1,0 +1,295 @@
+Teacher: ¿Hay jugo de mango en el refrigerador?
+Student: ¿Hay jugo de mango en el refrigerador?
+Teacher: That means, "Is there any mango juice in the fridge?" Now let's try asking, "Is there any cherry juice in the fridge?" The word for cherry is 'cereza'. So you would say, ¿Hay jugo de cereza en el refrigerador?
+Student: ¿Hay jugo de cereza en el refrigerador?
+Teacher: ¿Hay jugo de cereza en el refrigerador?
+Student: ¿Hay jugo de cereza en el refrigerador?
+Teacher: Now, to say "There is some," you would say, "Sí, hay un poco."
+Student: Sí, hay un poco.
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: That means, "No, there is none."
+Student: No, no hay.
+Teacher: So, the question is ¿Hay?
+Student: ¿Hay?
+Teacher: ¿Hay?
+Student: ¿Hay?
+Teacher: And the answer is "Sí, hay un poco."
+Student: Sí, hay un poco.
+Teacher: Or "No, no hay."
+Student: No, no hay.
+Teacher: It's a bit simpler than in English because 'Hay' works for both "is there" and "are there". By the way...
+Student: Por cierto.
+Teacher: By the way...
+Student: Por cierto.
+Teacher: Is there any tea in the teapot? The word for teapot is 'tetera'. How would you ask that?
+Student: ¿Hay té en la tetera?
+Teacher: ¿Hay té en la tetera?
+Student: ¿Hay té en la tetera?
+Teacher: There is some.
+Student: Sí, hay un poco.
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Is there any water in the kettle? The word for kettle is 'hervidor'. ¿Hay agua en el hervidor?
+Student: ¿Hay agua en el hervidor?
+Teacher: ¿Hay agua en el hervidor?
+Student: ¿Hay agua en el hervidor?
+Teacher: Say it again.
+Student: ¿Hay agua en el hervidor?
+Teacher: ¿Hay agua en el vaso?
+Student: ¿Hay agua en el vaso?
+Teacher: That means, "Is there any water in the glass?"
+Student: ¿Hay agua en el vaso?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: There is some.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: ¿Hay café en la mesa?
+Student: ¿Hay café en la mesa?
+Teacher: Please try to say these sentences as if you're in a real situation. Imagine you are at a hotel for breakfast. You want to ask the waiter, "Is there coffee on the table?" Excuse me.
+Student: Disculpe.
+Teacher: ¿Hay café en la mesa?
+Student: ¿Hay café en la mesa?
+Teacher: ¿Hay café en la mesa?
+Student: ¿Hay café en la mesa?
+Teacher: Now, how would you ask, "Is there any sugar on the table?"
+Student: ¿Hay azúcar en la mesa?
+Teacher: ¿Hay azúcar en la mesa?
+Student: ¿Hay azúcar en la mesa?
+Teacher: ¿Hay azúcar en la mesa?
+Student: ¿Hay azúcar en la mesa?
+Teacher: Is there any jam on the table? ¿Hay mermelada en la mesa?
+Student: ¿Hay mermelada en la mesa?
+Teacher: ¿Hay mermelada en la mesa?
+Student: ¿Hay mermelada en la mesa?
+Teacher: There is some.
+Student: Sí, hay un poco.
+Teacher: There is none.
+Student: No, no hay.
+Teacher: I'm sorry.
+Student: Lo siento.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: I'm sorry.
+Student: Lo siento.
+Teacher: I'm sorry.
+Student: Lo siento.
+Teacher: No hay mermelada en la mesa.
+Student: No hay mermelada en la mesa.
+Teacher: There isn't any jam on the table.
+Student: No hay mermelada en la mesa.
+Teacher: ¿Hay queso en la mesa?
+Student: ¿Hay queso en la mesa?
+Teacher: Is there any cheese on the table?
+Student: ¿Hay queso en la mesa?
+Teacher: ¿Hay pan en la mesa?
+Student: ¿Hay pan en la mesa?
+Teacher: Is there any bread on the table?
+Student: ¿Hay pan en la mesa?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Is there any honey on the table? The word for honey is 'miel'. ¿Hay miel en la mesa?
+Student: ¿Hay miel en la mesa?
+Teacher: ¿Hay miel en la mesa?
+Student: ¿Hay miel en la mesa?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: The waiter brings you coffee. You say, "Excuse me."
+Student: Disculpe.
+Teacher: ¿Hay azúcar en mi café?
+Student: ¿Hay azúcar en mi café?
+Teacher: That means, "Is there any sugar in my coffee?"
+Student: ¿Hay azúcar en mi café?
+Teacher: There's some.
+Student: Sí, hay un poco.
+Teacher: There isn't any.
+Student: No, no hay.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: Is there any meat in the freezer? You would say, ¿Hay carne en el congelador?
+Student: ¿Hay carne en el congelador?
+Teacher: ¿Hay carne en el congelador?
+Student: ¿Hay carne en el congelador?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Is money countable? No, the concept of money itself is not. You count the units, like dollars or euros. So we use 'hay' to ask about it. For example, I'm hungry.
+Student: Tengo hambre.
+Teacher: Do you have any money with you? In Spanish, we can say, ¿Hay dinero contigo?
+Student: ¿Hay dinero contigo?
+Teacher: This is a common way to ask if someone has something with them, in this case, money. ¿Hay dinero contigo?
+Student: ¿Hay dinero contigo?
+Teacher: ¿Hay dinero contigo?
+Student: ¿Hay dinero contigo?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: Hay un poco de dinero conmigo.
+Student: Hay un poco de dinero conmigo.
+Teacher: I have some money with me.
+Student: Hay un poco de dinero conmigo.
+Teacher: Hay un poco de dinero en mi bolsillo.
+Student: Hay un poco de dinero en mi bolsillo.
+Teacher: There is some money in my pocket.
+Student: Hay un poco de dinero en mi bolsillo.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: To ask, "Is there any money in your account?" you say, ¿Hay dinero en su cuenta?
+Student: ¿Hay dinero en su cuenta?
+Teacher: Or more specifically, ¿Hay dinero en su cuenta bancaria?
+Student: ¿Hay dinero en su cuenta bancaria?
+Teacher: ¿Hay dinero en su cuenta bancaria?
+Student: ¿Hay dinero en su cuenta bancaria?
+Teacher: There is some.
+Student: Sí, hay un poco.
+Teacher: There is some.
+Student: Sí, hay un poco.
+Teacher: There isn't any.
+Student: No, no hay.
+Teacher: There is none at all.
+Student: No, no hay.
+Teacher: To ask about a checking account, you would say ¿Hay dinero en su cuenta corriente? A 'cuenta corriente' is a checking account.
+Student: ¿Hay dinero en su cuenta corriente?
+Teacher: ¿Hay dinero en su cuenta corriente?
+Student: ¿Hay dinero en su cuenta corriente?
+Teacher: ¿Hay dinero en su cuenta corriente?
+Student: ¿Hay dinero en su cuenta corriente?
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: But.
+Student: Pero.
+Teacher: To say, "There is some money in my savings account," you would say... a savings account is a 'cuenta de ahorros'. Hay un poco de dinero...
+Student: Hay un poco de dinero...
+Teacher: Hay un poco de dinero en mi cuenta de ahorros.
+Student: Hay un poco de dinero en mi cuenta de ahorros.
+Teacher: Let's try it again. Hay un poco de dinero en mi cuenta de ahorros.
+Student: Hay un poco de dinero en mi cuenta de ahorros.
+Teacher: What about a deposit account? A deposit account is a 'cuenta de depósito'. 'Depósito' means to deposit money. Let's ask, ¿Hay dinero en su cuenta de depósito?
+Student: ¿Hay dinero en su cuenta de depósito?
+Teacher: ¿Hay dinero en su cuenta de depósito?
+Student: ¿Hay dinero en su cuenta de depósito?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: Hay un poco de dinero en mi cuenta corriente.
+Student: Hay un poco de dinero en mi cuenta corriente.
+Teacher: Hay un poco de dinero en mi cuenta de ahorros.
+Student: Hay un poco de dinero en mi cuenta de ahorros.
+Teacher: Hay un poco de dinero en mi cuenta de depósito.
+Student: Hay un poco de dinero en mi cuenta de depósito.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: ¿Hay dinero contigo?
+Student: ¿Hay dinero contigo?
+Teacher: I am hungry.
+Student: Tengo hambre.
+Teacher: ¿Hay dinero con su esposo?
+Student: ¿Hay dinero con su esposo?
+Teacher: Does your husband have any money with him?
+Student: ¿Hay dinero con su esposo?
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Are there any eggs in the fridge? In Spanish, it's still with 'hay'. ¿Hay huevos en el refrigerador?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: ¿Hay huevos en el refrigerador?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: Now, what about milk in the fridge?
+Student: ¿Hay leche en el refrigerador?
+Teacher: ¿Hay leche en el refrigerador?
+Student: ¿Hay leche en el refrigerador?
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: I am on a diet. In Spanish, you say 'Estoy a dieta'.
+Student: Estoy a dieta.
+Teacher: Estoy a dieta.
+Student: Estoy a dieta.
+Teacher: Are you on a diet?
+Student: ¿Estás a dieta?
+Teacher: Are you on a diet?
+Student: ¿Estás a dieta?
+Teacher: Is your mother on a diet?
+Student: ¿Está tu madre a dieta?
+Teacher: Is your father on a diet?
+Student: ¿Está tu padre a dieta?
+Teacher: Yes, he is.
+Student: Sí, lo está.
+Teacher: No, he isn't.
+Student: No, no lo está.
+Teacher: My husband is on a diet.
+Student: Mi esposo está a dieta.
+Teacher: My husband is on a diet.
+Student: Mi esposo está a dieta.
+Teacher: Do you have any money with you?
+Student: ¿Hay dinero contigo?
+Teacher: ¿Hay dinero contigo?
+Student: ¿Hay dinero contigo?
+Teacher: Is there any tea in the teapot?
+Student: ¿Hay té en la tetera?
+Teacher: ¿Hay té en la tetera?
+Student: ¿Hay té en la tetera?
+Teacher: Is there any water in the kettle?
+Student: ¿Hay agua en el hervidor?
+Teacher: ¿Hay agua en el hervidor?
+Student: ¿Hay agua en el hervidor?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: ¿Hay miel en la mesa?
+Student: ¿Hay miel en la mesa?
+Teacher: Is there any honey on the table?
+Student: ¿Hay miel en la mesa?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: ¿Hay?
+Student: ¿Hay?
+Teacher: Sí, hay un poco.
+Student: Sí, hay un poco.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: Okay, great work. If you've noticed, our sentences have focused on 'hay'. Now we're going to move on to the simplest type of sentence: commands, or imperatives. In Spanish, these sentences start with a verb. For example, a verb like 'Ve' for 'Go', or 'Ven' for 'Come', or 'Habla' for 'Talk'. Each one is a complete sentence. Let's make them a little longer. Please repeat after me. To say "Go out," you say "Sal".
+Student: Sal.
+Teacher: Go out.
+Student: Sal.
+Teacher: Sal.
+Student: Sal.
+Teacher: Ve al patio.
+Student: Ve al patio.
+Teacher: Go to the yard.
+Student: Ve al patio.
+Teacher: Ve al patio.
+Student: Ve al patio.
+Teacher: Go to the cinema.
+Student: Ve al cine.
+Teacher: Ve al cine.
+Student: Ve al cine.
+Teacher: Ve al cine.
+Student: Ve al cine.
+Teacher: Ve al parque.
+Student: Ve al parque.
+Teacher: Go to the park.

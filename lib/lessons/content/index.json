@@ -1,0 +1,84 @@
+{
+  "lessons": [
+    {
+      "id": "lesson1p1",
+      "title": "Introductions",
+      "description": "Greetings and simple personal details"
+    },
+    {
+      "id": "lesson1p2",
+      "title": "Status Updates",
+      "description": "Check in on colleagues and share news"
+    },
+    {
+      "id": "lesson1p3",
+      "title": "Personal Info",
+      "description": "Exchange phone numbers, emails, and origins"
+    },
+    {
+      "id": "lesson2p1",
+      "title": "Objects & Location",
+      "description": "Identify everyday objects and ask where things are"
+    },
+    {
+      "id": "lesson2p2",
+      "title": "Places & Time",
+      "description": "Prepositions of place, polite expressions, and days of the week"
+    },
+    {
+      "id": "lesson2p3",
+      "title": "Months & Birthdays",
+      "description": "Learn months of the year and ask about birthdays"
+    },
+    {
+      "id": "lesson2p4",
+      "title": "Possession",
+      "description": "Ask whose things are and use possessive pronouns"
+    },
+    {
+      "id": "lesson3p1",
+      "title": "Casual Check-ins",
+      "description": "Casual greetings and asking about news"
+    },
+    {
+      "id": "lesson3p2",
+      "title": "There Is/Are",
+      "description": "Use 'hay' to ask about existence of things"
+    },
+    {
+      "id": "lesson3p3",
+      "title": "Counting Things",
+      "description": "Ask how many and describe quantities in rooms"
+    },
+    {
+      "id": "lesson3p4",
+      "title": "Household Items",
+      "description": "Ask about appliances and items in specific rooms"
+    },
+    {
+      "id": "lesson4p1",
+      "title": "Family & Well-being",
+      "description": "Ask how family members are doing"
+    },
+    {
+      "id": "lesson4p2",
+      "title": "Food & Drinks",
+      "description": "Ask about beverages and food availability"
+    },
+    {
+      "id": "lesson4p3",
+      "title": "Giving Directions",
+      "description": "Tell someone to go to places and locations"
+    },
+    {
+      "id": "lesson4p4",
+      "title": "Commands & Actions",
+      "description": "Give commands like look, call, and watch"
+    },
+    {
+      "id": "lesson4p5",
+      "title": "Negative Commands",
+      "description": "Tell someone not to do something"
+    }
+  ]
+}

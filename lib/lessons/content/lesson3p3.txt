@@ -1,0 +1,239 @@
+Teacher: How many people
+Student: ¿Cuántas personas hay en el patio?
+Teacher: How many people are there in the yard? Let's say it in Spanish. ¿Cuántas personas hay en el patio?
+Student: ¿Cuántas personas hay en el patio?
+Teacher: Great! Now, let's answer. There are ten people in the yard. Hay diez personas en el patio.
+Student: Hay diez personas en el patio.
+Teacher: Hay diez personas en el patio.
+Student: Hay diez personas en el patio.
+Teacher: Who are they?
+Student: ¿Quiénes son?
+Teacher: Who are they? ¿Quiénes son?
+Student: ¿Quiénes son?
+Teacher: They are my classmates. Son mis compañeros de clase.
+Student: Son mis compañeros de clase.
+Teacher: Son mis compañeros de clase.
+Student: Son mis compañeros de clase.
+Teacher: Are they your classmates?
+Student: ¿Son tus compañeros de clase?
+Teacher: Let's ask the question now. ¿Son tus compañeros de clase?
+Student: ¿Son tus compañeros de clase?
+Teacher: ¿Son tus compañeros de clase?
+Student: ¿Son tus compañeros de clase?
+Teacher: Yes, they are.
+Student: Sí, son.
+Teacher: No, they aren't.
+Student: No, no son.
+Teacher: Are there any apples in the fridge?
+Student: ¿Hay manzanas en el refrigerador?
+Teacher: To ask if something exists, we use "Hay". ¿Hay manzanas en el refrigerador?
+Student: ¿Hay manzanas en el refrigerador?
+Teacher: There are some. Hay algunas.
+Student: Hay algunas.
+Teacher: There are five apples in the fridge. Hay cinco manzanas en el refrigerador.
+Student: Hay cinco manzanas en el refrigerador.
+Teacher: Hay cinco manzanas en el refrigerador.
+Student: Hay cinco manzanas en el refrigerador.
+Teacher: Okay, let's imagine you're visiting a friend's new rental house. You want to ask some questions about what's inside. You can ask it like this: Are there any bedrooms in the house?
+Student: ¿Hay dormitorios en la casa?
+Teacher: ¿Hay dormitorios en la casa?
+Student: ¿Hay dormitorios en la casa?
+Teacher: In response, your friend says: There are two bedrooms in the house. Hay dos dormitorios en la casa.
+Student: Hay dos dormitorios en la casa.
+Teacher: Hay dos dormitorios en la casa.
+Student: Hay dos dormitorios en la casa.
+Teacher: Let's see... are there any beds in the bedroom?
+Student: ¿Hay camas en el dormitorio?
+Teacher: ¿Hay camas en el dormitorio?
+Student: ¿Hay camas en el dormitorio?
+Teacher: There are some. Hay algunas.
+Student: Hay algunas.
+Teacher: Hay algunas.
+Student: Hay algunas.
+Teacher: There aren't any.
+Student: No hay.
+Teacher: There are none. No hay.
+Student: No hay.
+Teacher: Let's see, are there any pillows in the bedroom? The word for pillow is almohada, a-l-m-o-h-a-d-a.
+Student: ¿Hay almohadas en el dormitorio?
+Teacher: ¿Hay almohadas en el dormitorio?
+Student: ¿Hay almohadas en el dormitorio?
+Teacher: There are some. Hay algunas.
+Student: Hay algunas.
+Teacher: Hay algunas.
+Student: Hay algunas.
+Teacher: How many pillows are there in the bedroom?
+Student: ¿Cuántas almohadas hay en el dormitorio?
+Teacher: ¿Cuántas almohadas hay en el dormitorio?
+Student: ¿Cuántas almohadas hay en el dormitorio?
+Teacher: There are eight pillows in the bedroom. Hay ocho almohadas en el dormitorio.
+Student: Hay ocho almohadas en el dormitorio.
+Teacher: Hay ocho almohadas en el dormitorio.
+Student: Hay ocho almohadas en el dormitorio.
+Teacher: Okay, how about blankets? Are there any blankets in the bedroom?
+Student: ¿Hay mantas en el dormitorio?
+Teacher: The word for blanket is 'manta'. ¿Hay mantas en el dormitorio?
+Student: ¿Hay mantas en el dormitorio?
+Teacher: There are some. Hay algunas.
+Student: Hay algunas.
+Teacher: Hay algunas.
+Student: Hay algunas.
+Teacher: There aren't any.
+Student: No hay.
+Teacher: Now, let's ask about the living room. Are there any armchairs in the living room?
+Student: ¿Hay sillones en la sala?
+Teacher: 'Armchair' is 'sillón', and 'living room' is 'sala'. ¿Hay sillones en la sala?
+Student: ¿Hay sillones en la sala?
+Teacher: There are some. Hay algunos.
+Student: Hay algunos.
+Teacher: Hay algunos.
+Student: Hay algunos.
+Teacher: And are there any loveseats? A two-person sofa is often called 'un sofá de dos plazas'. Are there any loveseats in the living room?
+Student: ¿Hay sofás de dos plazas en la sala?
+Teacher: ¿Hay sofás de dos plazas en la sala?
+Student: ¿Hay sofás de dos plazas en la sala?
+Teacher: There are some. Hay algunos.
+Student: Hay algunos.
+Teacher: Hay algunos.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay.
+Teacher: No hay.
+Student: No hay.
+Teacher: Let's see, are there any closets in the bedrooms? The word for closet is 'armario'.
+Student: ¿Hay armarios en los dormitorios?
+Teacher: ¿Hay armarios en los dormitorios?
+Student: ¿Hay armarios en los dormitorios?
+Teacher: ¿Hay armarios en los dormitorios?
+Student: ¿Hay armarios en los dormitorios?
+Teacher: There are some. Hay algunos.
+Student: Hay algunos.
+Teacher: Hay algunos.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay.
+Teacher: No hay.
+Student: No hay.
+Teacher: Are there any pictures on the walls?
+Student: ¿Hay cuadros en las paredes?
+Teacher: ¿Hay cuadros en las paredes?
+Student: ¿Hay cuadros en las paredes?
+Teacher: ¿Hay cuadros en las paredes?
+Student: ¿Hay cuadros en las paredes?
+Teacher: There are some. Hay algunos.
+Student: Hay algunos.
+Teacher: Hay algunos.
+Student: Hay algunos.
+Teacher: No, there aren't any. No hay.
+Student: No hay.
+Teacher: No hay.
+Student: No hay.
+Teacher: Are there any trees in the yard?
+Student: ¿Hay árboles en el patio?
+Teacher: ¿Hay árboles en el patio?
+Student: ¿Hay árboles en el patio?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay.
+Teacher: No hay.
+Student: No hay.
+Teacher: How about cherries in the fridge? Are there any cherries in the fridge?
+Student: ¿Hay cerezas en el refrigerador?
+Teacher: You already know 'cereza' means 'cherry'. If you wanted to say 'sour cherry', you could say 'cereza ácida', since 'ácida' means sour. Let's ask again:
+Student: ¿Hay cerezas en el refrigerador?
+Teacher: There are some. Hay algunas.
+Student: Hay algunas.
+Teacher: There are none. No hay.
+Student: No hay.
+Teacher: Now, imagine you want to enter a classroom. You could politely ask the teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: Are there any seats in the classroom?
+Student: ¿Hay asientos en el aula?
+Teacher: Are there seats in the classroom? 'Aula' is classroom. ¿Hay asientos en el aula?
+Student: ¿Hay asientos en el aula?
+Teacher: There are some seats. Hay algunos.
+Student: Hay algunos.
+Teacher: Now, when you want to enter a room with someone, it's polite to let the other person go first. To say "After you," in Spanish you can say:
+Student: Pase usted.
+Teacher: Please, go ahead. Pase usted.
+Student: Pase usted.
+Teacher: You go first. Pase usted.
+Student: Pase usted.
+Teacher: A very common and chivalrous phrase is "Ladies first."
+Student: Las damas primero.
+Teacher: Las damas primero.
+Student: Las damas primero.
+Teacher: Las damas primero.
+Student: Las damas primero.
+Teacher: So let's review. First, you can say:
+Student: Pase usted.
+Teacher: Or if you are with a lady:
+Student: Las damas primero.
+Teacher: There is also a funny phrase, just like in English, "age before beauty." It's mostly used as a joke between friends.
+Student: La edad antes que la belleza.
+Teacher: It means, "Age comes before beauty." La edad antes que la belleza.
+Student: La edad antes que la belleza.
+Teacher: So, from the top: After you.
+Student: Pase usted.
+Teacher: Ladies first.
+Student: Las damas primero.
+Teacher: And the joke: Age before beauty.
+Student: La edad antes que la belleza.
+Teacher: La edad antes que la belleza.
+Student: La edad antes que la belleza.
+Teacher: Excellent! Now let's go back to countable nouns. Some things are countable, but you usually only find one of them in a room. For instance, a kitchen usually has only one fridge. So, instead of asking `¿Hay refrigeradores?` (plural), it's more common to ask if there is *a* fridge.
+Student: Is there a fridge in the kitchen?
+Teacher: Exactly! In Spanish, you say: ¿Hay un refrigerador en la cocina?
+Student: ¿Hay un refrigerador en la cocina?
+Teacher: Is there a TV in the kitchen?
+Student: ¿Hay un televisor en la cocina?
+Teacher: ¿Hay un televisor en la cocina?
+Student: ¿Hay un televisor en la cocina?
+Teacher: Is there a TV in the kitchen?
+Student: ¿Hay un televisor en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: Sí, hay.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: You see, at the beginning, we asked `¿Hay sillas en la cocina?` (Are there any chairs?), because a kitchen often has multiple chairs. But it usually has only one table. So we ask:
+Student: ¿Hay una mesa en la cocina?
+Teacher: Notice we used 'una' because 'mesa' (table) is a feminine word. ¿Hay una mesa en la cocina?
+Student: ¿Hay una mesa en la cocina?
+Teacher: ¿Hay una mesa en la cocina?
+Student: ¿Hay una mesa en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Let's see, is there a washing machine in the kitchen? Washing machine is 'lavadora'.
+Student: ¿Hay una lavadora en la cocina?
+Teacher: One more time.
+Student: ¿Hay una lavadora en la cocina?
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Is there a dishwasher in the kitchen? Again, you usually only find one. 'Dishwasher' is 'lavaplatos'.
+Student: ¿Hay un lavaplatos en la cocina?
+Teacher: ¿Hay un lavaplatos en la cocina?
+Student: ¿Hay un lavaplatos en la cocina?
+Teacher: One more time, please.
+Student: ¿Hay un lavaplatos en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Is there a stove in the kitchen? Stove is 'estufa'.
+Student: ¿Hay una estufa en la cocina?
+Teacher: ¿Hay una estufa en la cocina?
+Student: ¿Hay una estufa en la cocina?
+Teacher: Let's check for a microwave oven. Is there a microwave oven in the kitchen?
+Student: ¿Hay un microondas en la cocina?
+Teacher: ¿Hay un microondas en la cocina?
+Student: ¿Hay un microondas en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Let's try one more. Is there a telephone in your bedroom? Remember, you usually only have one phone in a room.

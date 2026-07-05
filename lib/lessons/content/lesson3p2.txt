@@ -1,0 +1,115 @@
+Teacher: Hello and welcome to your Spanish lesson! Today, we're going to learn an incredibly useful word in Spanish: hay (pronounced "eye"). Hay is great because it means both "there is" and "there are." We use it to talk about the existence of things. We'll learn how to ask if something is there, and how to answer yes or no. Let's imagine you're at home, you're about to make breakfast, and you want to ask someone if there are any eggs in the fridge. In Spanish, you would ask it like this. Please listen carefully and repeat after me. I'll say: ¿Hay huevos en la nevera?
+Student: ¿Hay huevos en la nevera?
+Teacher: That's great! Let's try to make it sound a little more like a question. Remember, in Spanish, the intonation rises at the end of a question. Let's try again: ¿Hay huevos en la nevera?
+Student: ¿Hay huevos en la nevera?
+Teacher: Perfect! Now let's try with different things you might find in a fridge. How would you ask if there are any apples in the fridge? The word for apples is manzanas. ¿Hay manzanas en la nevera?
+Student: ¿Hay manzanas en la nevera?
+Teacher: Excellent. Again, with that questioning tone. ¿Hay manzanas en la nevera?
+Student: ¿Hay manzanas en la nevera?
+Teacher: Let's see if there are tomatoes in the fridge. The word for tomatoes is tomates. ¿Hay tomates en la nevera?
+Student: ¿Hay tomates en la nevera?
+Teacher: One more time: ¿Hay tomates en la nevera?
+Student: ¿Hay tomates en la nevera?
+Teacher: Are there any cucumbers in the fridge? For cucumbers, we say pepinos. ¿Hay pepinos en la nevera?
+Student: ¿Hay pepinos en la nevera?
+Teacher: ¿Hay pepinos en la nevera?
+Student: ¿Hay pepinos en la nevera?
+Teacher: How about bananas? The word is plátanos. ¿Hay plátanos en la nevera?
+Student: ¿Hay plátanos en la nevera?
+Teacher: ¿Hay plátanos en la nevera?
+Student: ¿Hay plátanos en la nevera?
+Teacher: Let's check for oranges. The word for oranges is naranjas. Pay attention to the pronunciation, it's na-ran-has. ¿Hay naranjas en la nevera?
+Student: ¿Hay naranjas en la nevera?
+Teacher: As you may have noticed, we are using the plural form for all these nouns: huevos, manzanas, naranjas. This is because we're asking if there are any of them, not just one. Let's practice that last one again. ¿Hay naranjas en la nevera?
+Student: ¿Hay naranjas en la nevera?
+Teacher: Let's see if there are any strawberries. The word is fresas. ¿Hay fresas en la nevera?
+Student: ¿Hay fresas en la nevera?
+Teacher: Good, let's repeat that. ¿Hay fresas en la nevera?
+Student: ¿Hay fresas en la nevera?
+Teacher: Are there cherries in the fridge? For cherries, we say cerezas. ¿Hay cerezas en la nevera?
+Student: ¿Hay cerezas en la nevera?
+Teacher: ¿Hay cerezas en la nevera?
+Student: ¿Hay cerezas en la nevera?
+Teacher: Great job! Now, let's learn how to answer. If you want to say "Yes, there are some," you can simply say: Sí, hay algunos (if the noun is masculine, like huevos) or Sí, hay algunas (if the noun is feminine, like manzanas). For now, let's just practice a simpler version: Sí, hay.
+Student: Sí, hay.
+Teacher: This means "Yes, there are." Let's try the full sentence for "There are some eggs in the fridge." Hay algunos huevos en la nevera.
+Student: Hay algunos huevos en la nevera.
+Teacher: Now for apples, which are feminine: "There are some apples in the fridge." Hay algunas manzanas en la nevera.
+Student: Hay algunas manzanas en la nevera.
+Teacher: Fantastic. Now let's do a quick drill. I'll ask the question, and you answer "Yes, there are some." ¿Hay manzanas en la nevera?
+Student: Sí, hay algunas.
+Teacher: Perfect! Now, let's move to a different location, the kitchen. How would you ask, "Are there any chairs in the kitchen?" Chair is silla and kitchen is cocina. So you'd say: ¿Hay sillas en la cocina?
+Student: ¿Hay sillas en la cocina?
+Teacher: ¿Hay sillas en la cocina?
+Student: ¿Hay sillas en la cocina?
+Teacher: And to say "Yes, there are some," you would say...
+Student: Sí, hay algunas.
+Teacher: Excellent! Now, what if you want to say "No, there aren't any"? It's very simple. You say: No, no hay.
+Student: No, no hay.
+Teacher: Let's practice. I'll ask, and you answer that there are none. Are there any cupboards in the kitchen? The word for cupboard is armario. ¿Hay armarios en la cocina?
+Student: No, no hay.
+Teacher: Perfect. Now, let's practice both answers. ¿Hay armarios en la cocina? First, say yes, there are some. (armario is masculine)
+Student: Sí, hay algunos.
+Teacher: Now, say no, there aren't any.
+Student: No, no hay.
+Teacher: Let's move to the dining table. Are there any plates on the table? Plate is plato and table is mesa. ¿Hay platos en la mesa?
+Student: ¿Hay platos en la mesa?
+Teacher: ¿Hay platos en la mesa?
+Student: ¿Hay platos en la mesa?
+Teacher: How would you say, "Yes, there are some"? (plato is masculine)
+Student: Sí, hay algunos.
+Teacher: And "No, there aren't any"?
+Student: No, no hay.
+Teacher: Are there any spoons on the table? Spoon is cuchara. ¿Hay cucharas en la mesa?
+Student: ¿Hay cucharas en la mesa?
+Teacher: ¿Hay cucharas en la mesa?
+Student: ¿Hay cucharas en la mesa?
+Teacher: Yes, there are some. (cuchara is feminine)
+Student: Sí, hay algunas.
+Teacher: No, there aren't any.
+Student: No, no hay.
+Teacher: You can also make that a full sentence: "There aren't any spoons on the table." No hay cucharas en la mesa.
+Student: No hay cucharas en la mesa.
+Teacher: Are there any forks on the table? Fork is tenedor. ¿Hay tenedores en la mesa?
+Student: ¿Hay tenedores en la mesa?
+Teacher: ¿Hay tenedores en la mesa?
+Student: ¿Hay tenedores en la mesa?
+Teacher: Answer: "No, there aren't any."
+Student: No, no hay.
+Teacher: Now, let's say they are not on the table. Maybe they are in the cupboard. "There are some in the cupboard." Hay algunos en el armario.
+Student: Hay algunos en el armario.
+Teacher: Fantastic. Let's try another one. "There are some chairs in the kitchen."
+Student: Hay algunas sillas en la cocina.
+Teacher: Hay algunas sillas en la cocina.
+Student: Hay algunas sillas en la cocina.
+Teacher: Now, let's imagine you arrived late to class. You want to ask your teacher, "Excuse me, sir, are there any seats in the classroom?" A seat is asiento and classroom is aula. You would say: Disculpe, señor. ¿Hay asientos en el aula?
+Student: Disculpe, señor. ¿Hay asientos en el aula?
+Teacher: Now, imagine the teacher has bad news. He might say, "I'm sorry." Lo siento.
+Student: Lo siento.
+Teacher: And then, "There aren't any."
+Student: No, no hay.
+Teacher: Or the full sentence: "There aren't any seats in the classroom." No hay asientos en el aula.
+Student: No hay asientos en el aula.
+Teacher: You're doing a wonderful job. Just a few more. Let's talk about the street (la calle). Are there any cars in the street? Car is coche. ¿Hay coches en la calle?
+Student: ¿Hay coches en la calle?
+Teacher: Yes, there are some.
+Student: Sí, hay algunos.
+Teacher: No, there aren't any.
+Student: No, no hay.
+Teacher: Excellent. Now, what if you want to know how many there are? Instead of just if they exist, you want a number. For this, we use ¿Cuántos...? for masculine nouns and ¿Cuántas...? for feminine nouns. Let's go back to the eggs. To ask "How many eggs are there in the fridge?" you would say: ¿Cuántos huevos hay en la nevera?
+Student: ¿Cuántos huevos hay en la nevera?
+Teacher: ¿Cuántos huevos hay en la nevera?
+Student: ¿Cuántos huevos hay en la nevera?
+Teacher: To answer, you just use Hay followed by the number. For example: "There are four eggs in the fridge." Hay cuatro huevos en la nevera.
+Student: Hay cuatro huevos en la nevera.
+Teacher: Let's try with a feminine noun. Are there any girls in your class? Girl is chica. ¿Hay chicas en tu clase?
+Student: ¿Hay chicas en tu clase?
+Teacher: Yes, there are some.
+Student: Sí, hay algunas.
+Teacher: Now ask how many. "How many girls are there in your class?"
+Student: ¿Cuántas chicas hay en tu clase?
+Teacher: Perfect! ¿Cuántas chicas hay en tu clase?
+Student: ¿Cuántas chicas hay en tu clase?
+Teacher: And to answer: "There are five girls in my class." Hay cinco chicas en mi clase.
+Student: Hay cinco chicas en mi clase.
+Teacher: Wonderful work today! You've learned how to ask if things exist with ¿Hay...?, how to give positive and negative answers, and how to ask for a specific number with ¿Cuántos? and ¿Cuántas?. This is a very important foundation. Keep practicing

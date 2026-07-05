@@ -1,0 +1,597 @@
+import { z } from "zod";
+import {
+  applyAttempt,
+  currentPair,
+  type MachineState,
+  type Outcome,
+} from "@/lib/lesson-machine/machine";
+import {
+  advanceInstructions,
+  completeInstructions,
+  deliverInstructions,
+  gradeInstructions,
+  retryInstructions,
+  teachThenAdvanceInstructions,
+  timeCapInstructions,
+} from "@/lib/lesson-machine/prompts";
+import {
+  functionCallOutput,
+  isFunctionCall,
+  itemDelete,
+  outputTranscriptDone,
+  responseCreate,
+  textUserMessage,
+  type ResponseKind,
+  type ServerEvent,
+} from "./events";
+import { addUsage, driftScore, emptyStats, type SessionStats } from "./harness";
+
+export type SessionPhase =
+  | "connecting"
+  | "teacher_speaking"
+  | "listening"
+  | "grading"
+  | "complete"
+  | "error";
+
+export type Snapshot = {
+  phase: SessionPhase;
+  machine: MachineState;
+  micActive: boolean;
+  stats: SessionStats;
+  error: string | null;
+  warning: string | null;
+};
+
+export type OrchestratorHooks = {
+  postProgress: (attempt: {
+    lessonId: string;
+    lineIndex: number;
+    userResponse: string;
+    isCorrect: boolean;
+  }) => Promise<void>;
+  postMemory: (entry: { category: string; observation: string }) => Promise<void>;
+  onComplete: () => void;
+};
+
+const ReportAttemptArgs = z.object({
+  transcript: z.string(),
+  accepted: z.boolean(),
+  feedback: z.string().default(""),
+});
+
+const UpdateMemoryArgs = z.object({
+  category: z.string(),
+  observation: z.string().min(3).max(300),
+});
+
+const SESSION_CAP_MS = 20 * 60_000;
+const IDLE_CAP_MS = 3 * 60_000;
+const KEEP_ITEMS = 8;
+
+export class LessonOrchestrator {
+  private machine: MachineState;
+  private phase: SessionPhase = "connecting";
+  private micActive = false;
+  private stats = emptyStats();
+  private error: string | null = null;
+  private warning: string | null = null;
+
+  private send: (event: object) => void;
+  private hooks: OrchestratorHooks;
+  private greeting: "first" | "returning" | "none";
+
+  private started = false;
+  private gradingInFlight = false;
+  private gradeRetried = false;
+  private itemIds: string[] = [];
+  private lastStudentTranscript = "";
+  private speechStoppedAt: number | null = null;
+
+  /** the audio response currently playing (our design keeps them serial) */
+  private inFlightAudio: {
+    kind: ResponseKind;
+    verbatimLine: string | null;
+    transcript: string;
+    sawFirstAudio: boolean;
+  } | null = null;
+
+  // per-session teaching stats for the completion message
+  private firstTryCorrect = 0;
+  private failsByLine = new Map<number, number>();
+  private linesAnsweredThisSession = 0;
+
+  private capTimer: ReturnType<typeof setTimeout> | null = null;
+  private idleTimer: ReturnType<typeof setTimeout> | null = null;
+  private capReached = false;
+
+  private listeners = new Set<() => void>();
+  private snapshotCache: Snapshot | null = null;
+
+  constructor(opts: {
+    machine: MachineState;
+    send: (event: object) => void;
+    hooks: OrchestratorHooks;
+    greeting: "first" | "returning" | "none";
+  }) {
+    this.machine = opts.machine;
+    this.send = opts.send;
+    this.hooks = opts.hooks;
+    this.greeting = opts.greeting;
+  }
+
+  // ---------- public API ----------
+
+  subscribe = (cb: () => void): (() => void) => {
+    this.listeners.add(cb);
+    return () => this.listeners.delete(cb);
+  };
+
+  getSnapshot = (): Snapshot => {
+    if (!this.snapshotCache) {
+      this.snapshotCache = {
+        phase: this.phase,
+        machine: this.machine,
+        micActive: this.micActive,
+        stats: this.stats,
+        error: this.error,
+        warning: this.warning,
+      };
+    }
+    return this.snapshotCache;
+  };
+
+  /** Deliver the current line. Called once the data channel is open. */
+  start(): void {
+    if (this.started) return;
+    this.started = true;
+
+    this.capTimer = setTimeout(() => this.reachCap(), SESSION_CAP_MS);
+    this.armIdleTimer();
+
+    if (this.machine.isComplete) {
+      this.phase = "complete";
+      this.emit();
+      return;
+    }
+
+    const pair = currentPair(this.machine);
+    if (!pair) return;
+    this.sendAudioResponse(
+      "deliver",
+      deliverInstructions(pair.teacher, { greeting: this.greeting }),
+      pair.teacher,
+    );
+  }
+
+  /** Text-input fallback when the mic is unavailable. */
+  submitText(text: string): void {
+    const trimmed = text.trim();
+    if (!trimmed || this.gradingInFlight || this.machine.isComplete) return;
+    if (!this.machine.expectingStudent) return;
+    this.lastStudentTranscript = trimmed;
+    this.send(textUserMessage(trimmed));
+    this.beginGrading();
+  }
+
+  stop(): void {
+    if (this.capTimer) clearTimeout(this.capTimer);
+    if (this.idleTimer) clearTimeout(this.idleTimer);
+    this.listeners.clear();
+  }
+
+  // ---------- event handling ----------
+
+  handleServerEvent(ev: ServerEvent): void {
+    this.armIdleTimer();
+
+    switch (ev.type) {
+      case "session.created":
+        this.start();
+        return;
+
+      case "input_audio_buffer.speech_started":
+        this.micActive = true;
+        // barge-in: the server cancels any in-flight audio response itself
+        if (this.phase === "teacher_speaking") this.phase = "listening";
+        this.emit();
+        return;
+
+      case "input_audio_buffer.speech_stopped":
+        this.micActive = false;
+        this.speechStoppedAt = Date.now();
+        this.emit();
+        return;
+
+      case "input_audio_buffer.committed":
+        if (this.machine.expectingStudent && !this.gradingInFlight && !this.machine.isComplete) {
+          this.beginGrading();
+        }
+        return;
+
+      case "conversation.item.created": {
+        const id = ev.item?.id;
+        if (typeof id === "string" && !this.itemIds.includes(id)) this.itemIds.push(id);
+        return;
+      }
+
+      case "response.created":
+        return;
+
+      case "response.done":
+        this.handleResponseDone(ev);
+        return;
+
+      case "error": {
+        const message: string = ev.error?.message ?? "Realtime session error";
+        // non-fatal errors (e.g. deleting an already-gone item) → warning only
+        if (ev.error?.type === "invalid_request_error" && this.phase !== "connecting") {
+          this.warning = message;
+        } else {
+          this.error = message;
+          this.phase = "error";
+        }
+        this.emit();
+        return;
+      }
+    }
+
+    const inputTranscript =
+      ev.type === "conversation.item.input_audio_transcription.completed"
+        ? String(ev.transcript ?? "")
+        : null;
+    if (inputTranscript) {
+      this.lastStudentTranscript = inputTranscript;
+      return;
+    }
+
+    const outDone = outputTranscriptDone(ev);
+    if (outDone && this.inFlightAudio) {
+      this.inFlightAudio.transcript += outDone.transcript;
+      return;
+    }
+
+    if (
+      (ev.type === "response.output_audio.delta" || ev.type === "response.audio.delta") &&
+      this.inFlightAudio &&
+      !this.inFlightAudio.sawFirstAudio
+    ) {
+      this.inFlightAudio.sawFirstAudio = true;
+      this.phase = this.phase === "grading" || this.phase === "listening" ? "teacher_speaking" : this.phase;
+      if (this.speechStoppedAt !== null) {
+        this.stats.turnLatenciesMs.push(Date.now() - this.speechStoppedAt);
+        this.speechStoppedAt = null;
+      }
+      this.emit();
+    }
+  }
+
+  private handleResponseDone(ev: ServerEvent): void {
+    addUsage(this.stats, ev.response?.usage);
+    const kind: ResponseKind | undefined = ev.response?.metadata?.kind;
+    const output: unknown[] = Array.isArray(ev.response?.output) ? ev.response.output : [];
+
+    // tool calls can appear in any response
+    let sawReport = false;
+    for (const item of output) {
+      if (!isFunctionCall(item)) continue;
+      if (item.name === "report_attempt") {
+        sawReport = true;
+        this.handleReportAttempt(item.call_id, item.arguments);
+      } else if (item.name === "update_learner_memory") {
+        this.handleUpdateMemory(item.call_id, item.arguments);
+      }
+    }
+
+    if (kind === "grade" && !sawReport) {
+      this.recoverMissingGrade();
+      return;
+    }
+
+    if (kind === "deliver" || kind === "outcome") {
+      this.finishAudioResponse();
+      if (this.machine.isComplete) {
+        this.speakCompletion();
+      } else if (this.machine.expectingStudent && this.phase !== "error") {
+        this.phase = "listening";
+        this.emit();
+      }
+      return;
+    }
+
+    if (kind === "complete" || kind === "cap") {
+      this.finishAudioResponse();
+      this.phase = "complete";
+      this.emit();
+      this.hooks.onComplete();
+      return;
+    }
+  }
+
+  // ---------- grading ----------
+
+  private beginGrading(): void {
+    const pair = currentPair(this.machine);
+    if (!pair) return;
+    this.gradingInFlight = true;
+    this.gradeRetried = false;
+    this.phase = "grading";
+    this.emit();
+    this.send(
+      responseCreate({
+        kind: "grade",
+        textOnly: true,
+        forceTool: "report_attempt",
+        instructions: gradeInstructions({
+          teacherLine: pair.teacher,
+          expected: pair.student,
+          attemptNumber: this.machine.attempts + 1,
+        }),
+      }),
+    );
+  }
+
+  private handleReportAttempt(callId: string, rawArgs: string): void {
+    let args: z.infer<typeof ReportAttemptArgs>;
+    try {
+      args = ReportAttemptArgs.parse(JSON.parse(rawArgs));
+    } catch {
+      this.send(
+        functionCallOutput(callId, {
+          error: "invalid arguments — call report_attempt again with transcript, accepted, feedback",
+        }),
+      );
+      if (!this.gradeRetried) {
+        this.gradeRetried = true;
+        const pair = currentPair(this.machine);
+        if (pair) {
+          this.send(
+            responseCreate({
+              kind: "grade",
+              textOnly: true,
+              forceTool: "report_attempt",
+              instructions: gradeInstructions({
+                teacherLine: pair.teacher,
+                expected: pair.student,
+                attemptNumber: this.machine.attempts + 1,
+              }),
+            }),
+          );
+        }
+      }
+      return;
+    }
+
+    this.gradingInFlight = false;
+    const transcript = args.transcript.trim() || this.lastStudentTranscript || "(unclear)";
+    const lineIndex = this.machine.currentIndex;
+
+    // session teaching stats
+    if (args.accepted && this.machine.attempts === 0) this.firstTryCorrect++;
+    if (!args.accepted) {
+      this.failsByLine.set(lineIndex, (this.failsByLine.get(lineIndex) ?? 0) + 1);
+    }
+    if (args.accepted || this.machine.attempts + 1 >= 3) this.linesAnsweredThisSession++;
+
+    void this.hooks
+      .postProgress({
+        lessonId: this.machine.lessonId,
+        lineIndex,
+        userResponse: transcript,
+        isCorrect: args.accepted,
+      })
+      .catch(() => {
+        this.warning = "Progress could not be saved — check your connection.";
+        this.emit();
+      });
+
+    const { state, outcome } = applyAttempt(this.machine, {
+      transcript,
+      accepted: args.accepted,
+      feedback: args.feedback,
+    });
+    this.machine = state;
+    this.send(functionCallOutput(callId, this.decisionPayload(outcome)));
+    this.respondToOutcome(outcome);
+    this.emit();
+  }
+
+  /** The model ignored the forced tool — fall back to exact match so the lesson never stalls. */
+  private recoverMissingGrade(): void {
+    if (!this.gradingInFlight) return;
+    const pair = currentPair(this.machine);
+    if (!pair) return;
+
+    if (!this.gradeRetried) {
+      this.gradeRetried = true;
+      this.send(
+        responseCreate({
+          kind: "grade",
+          textOnly: true,
+          forceTool: "report_attempt",
+          instructions:
+            `You must call the report_attempt tool now — do not reply with text. ` +
+            gradeInstructions({
+              teacherLine: pair.teacher,
+              expected: pair.student,
+              attemptNumber: this.machine.attempts + 1,
+            }),
+        }),
+      );
+      return;
+    }
+
+    // Android CheckAnswerExactUseCase parity as the last resort
+    this.gradingInFlight = false;
+    const transcript = this.lastStudentTranscript || "";
+    const accepted = normalizeAnswer(transcript) === normalizeAnswer(pair.student);
+    const lineIndex = this.machine.currentIndex;
+    const { state, outcome } = applyAttempt(this.machine, {
+      transcript: transcript || "(unclear)",
+      accepted,
+      feedback: accepted ? "" : "Not quite — try again.",
+    });
+    this.machine = state;
+    void this.hooks
+      .postProgress({
+        lessonId: state.lessonId,
+        lineIndex,
+        userResponse: transcript || "(unclear)",
+        isCorrect: accepted,
+      })
+      .catch(() => {});
+    this.respondToOutcome(outcome);
+    this.emit();
+  }
+
+  private decisionPayload(outcome: Outcome): object {
+    switch (outcome.kind) {
+      case "advance":
+        return { decision: "advance", next_line: outcome.next.teacher };
+      case "retry":
+        return {
+          decision: "retry",
+          attempts_used: outcome.attemptsUsed,
+          attempts_left: 3 - outcome.attemptsUsed,
+          expected_answer: outcome.expected,
+        };
+      case "teachThenAdvance":
+        return {
+          decision: "teach_then_advance",
+          correct_answer: outcome.correctAnswer,
+          next_line: outcome.next?.teacher ?? null,
+          lesson_complete: outcome.next === null,
+        };
+      case "complete":
+        return { decision: "lesson_complete" };
+    }
+  }
+
+  private respondToOutcome(outcome: Outcome): void {
+    switch (outcome.kind) {
+      case "advance":
+        this.pruneItems();
+        this.sendAudioResponse("outcome", advanceInstructions(outcome.next.teacher), outcome.next.teacher);
+        return;
+      case "retry":
+        this.sendAudioResponse(
+          "outcome",
+          retryInstructions({
+            expected: outcome.expected,
+            attemptsUsed: outcome.attemptsUsed,
+            attemptsLeft: 3 - outcome.attemptsUsed,
+          }),
+          null,
+        );
+        return;
+      case "teachThenAdvance":
+        this.pruneItems();
+        this.sendAudioResponse(
+          "outcome",
+          teachThenAdvanceInstructions({
+            correctAnswer: outcome.correctAnswer,
+            nextLine: outcome.next?.teacher ?? null,
+          }),
+          outcome.next?.teacher ?? null,
+        );
+        return;
+      case "complete":
+        this.speakCompletion();
+        return;
+    }
+  }
+
+  private speakCompletion(): void {
+    if (this.phase === "complete") return;
+    const hardestEntry = [...this.failsByLine.entries()].sort((a, b) => b[1] - a[1])[0];
+    const hardestLine =
+      hardestEntry && hardestEntry[1] >= 2
+        ? (this.machine.pairs[hardestEntry[0]]?.student ?? null)
+        : null;
+    this.sendAudioResponse(
+      "complete",
+      completeInstructions({
+        totalLines: Math.max(this.linesAnsweredThisSession, 1),
+        correctFirstTry: this.firstTryCorrect,
+        hardestLine,
+      }),
+      null,
+    );
+  }
+
+  private reachCap(): void {
+    if (this.capReached || this.phase === "complete" || this.phase === "error") return;
+    this.capReached = true;
+    this.sendAudioResponse("cap", timeCapInstructions(), null);
+  }
+
+  // ---------- helpers ----------
+
+  private handleUpdateMemory(callId: string, rawArgs: string): void {
+    try {
+      const args = UpdateMemoryArgs.parse(JSON.parse(rawArgs));
+      void this.hooks.postMemory(args).catch(() => {});
+      this.send(functionCallOutput(callId, { ok: true }));
+    } catch {
+      this.send(functionCallOutput(callId, { ok: false, error: "invalid arguments" }));
+    }
+    // never create a response for memory calls — audio flow continues on its own
+  }
+
+  private sendAudioResponse(
+    kind: ResponseKind,
+    instructions: string,
+    verbatimLine: string | null,
+  ): void {
+    this.inFlightAudio = { kind, verbatimLine, transcript: "", sawFirstAudio: false };
+    this.phase = kind === "grade" ? "grading" : this.phase;
+    this.send(responseCreate({ kind, instructions }));
+    this.emit();
+  }
+
+  private finishAudioResponse(): void {
+    const audio = this.inFlightAudio;
+    this.inFlightAudio = null;
+    if (!audio || !audio.verbatimLine || !audio.transcript) return;
+    // the spoken transcript may include an ack/greeting before the line — score
+    // against the tail window where the script line should live
+    const score = driftScore(audio.verbatimLine, tailWindow(audio.transcript, audio.verbatimLine));
+    this.stats.driftScores.push({
+      line: audio.verbatimLine,
+      spoken: audio.transcript,
+      score,
+    });
+    if (process.env.NODE_ENV !== "production") {
+      console.debug(`[harness] drift=${score.toFixed(3)} line="${audio.verbatimLine}"`);
+    }
+  }
+
+  private pruneItems(): void {
+    if (this.itemIds.length <= KEEP_ITEMS) return;
+    const toDelete = this.itemIds.slice(0, this.itemIds.length - KEEP_ITEMS);
+    this.itemIds = this.itemIds.slice(this.itemIds.length - KEEP_ITEMS);
+    for (const id of toDelete) this.send(itemDelete(id));
+  }
+
+  private armIdleTimer(): void {
+    if (this.idleTimer) clearTimeout(this.idleTimer);
+    if (this.phase === "complete" || this.phase === "error") return;
+    this.idleTimer = setTimeout(() => this.reachCap(), IDLE_CAP_MS);
+  }
+
+  private emit(): void {
+    this.snapshotCache = null;
+    for (const cb of this.listeners) cb();
+  }
+}
+
+/** Android CheckAnswerExactUseCase parity: trim + case-insensitive compare. */
+function normalizeAnswer(s: string): string {
+  return s.trim().toLowerCase();
+}
+
+/** Last portion of the spoken transcript sized to the script line (for drift). */
+function tailWindow(spoken: string, line: string): string {
+  const extra = Math.ceil(line.length * 1.25);
+  return spoken.length <= extra ? spoken : spoken.slice(spoken.length - extra);
+}

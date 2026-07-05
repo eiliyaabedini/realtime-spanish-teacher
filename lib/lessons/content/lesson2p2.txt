@@ -1,0 +1,368 @@
+Teacher: Está en la silla.
+Student: Está en la silla.
+Teacher: Está en la silla.
+Student: Está en la silla.
+Teacher: Está en el escritorio.
+Student: Está en el escritorio.
+Teacher: That means "It's on the desk." Let's say it again. Está en el escritorio.
+Student: Está en el escritorio.
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: This means "Where is my wallet?" ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: To say it's under the chair, we say: Está debajo de la silla.
+Student: Está debajo de la silla.
+Teacher: Está debajo de la silla.
+Student: Está debajo de la silla.
+Teacher: You're doing great! Let's try another one. Está debajo de la silla.
+Student: Está debajo de la silla.
+Teacher: Está debajo del escritorio.
+Student: Está debajo del escritorio.
+Teacher: That means "It's under the desk." Está debajo del escritorio.
+Student: Está debajo del escritorio.
+Teacher: Now, what if you want to ask about your shoes? Since "shoes" is plural, the phrase changes slightly. We say: ¿Dónde están mis zapatos?
+Student: ¿Dónde están mis zapatos?
+Teacher: ¿Dónde están mis zapatos?
+Student: ¿Dónde están mis zapatos?
+Teacher: How would you ask, "Where are my shoes?"
+Student: ¿Dónde están mis zapatos?
+Teacher: Excellent! How about, "Where are my socks?"
+Student: ¿Dónde están mis calcetines?
+Teacher: Perfect! Now, "Where are my glasses?"
+Student: ¿Dónde están mis gafas?
+Teacher: ¿Dónde están mis gafas?
+Student: ¿Dónde están mis gafas?
+Teacher: Let's practice that one more time. ¿Dónde están mis gafas?
+Student: ¿Dónde están mis gafas?
+Teacher: Están en la televisión.
+Student: Están en la televisión.
+Teacher: That means "They are on the TV."
+Student: Están en la televisión.
+Teacher: Están en la televisión.
+Student: Están en la televisión.
+Teacher: ¿Dónde está mi bolso?
+Student: ¿Dónde está mi bolso?
+Teacher: That means "Where is my bag?" Let's say it again. ¿Dónde está mi bolso?
+Student: ¿Dónde está mi bolso?
+Teacher: Now, let's say it's in the bedroom. We say: Está en el dormitorio.
+Student: Está en el dormitorio.
+Teacher: Está en el dormitorio.
+Student: Está en el dormitorio.
+Teacher: It's in the kitchen. Está en la cocina.
+Student: Está en la cocina.
+Teacher: Está en la cocina.
+Student: Está en la cocina.
+Teacher: Let's practice a similar word. How would a woman ask, "Where is my purse?" She would say: ¿Dónde está mi bolso?
+Student: ¿Dónde está mi bolso?
+Teacher: That's right, 'bolso' can mean both bag and purse. ¿Dónde está mi bolso?
+Student: ¿Dónde está mi bolso?
+Teacher: ¿Dónde está mi bolso?
+Student: ¿Dónde está mi bolso?
+Teacher: Está en la silla.
+Student: Está en la silla.
+Teacher: Está en la cocina.
+Student: Está en la cocina.
+Teacher: It's in the kitchen.
+Student: Está en la cocina.
+Teacher: How do you ask, "Where is my key?"
+Student: ¿Dónde está mi llave?
+Teacher: ¿Dónde está mi llave?
+Student: ¿Dónde está mi llave?
+Teacher: Now, let's say it's next to the chair. You would say: Está al lado de la silla.
+Student: Está al lado de la silla.
+Teacher: Está al lado de la silla.
+Student: Está al lado de la silla.
+Teacher: Está al lado de mi bolso.
+Student: Está al lado de mi bolso.
+Teacher: That means "It's next to my bag."
+Student: Está al lado de mi bolso.
+Teacher: Está al lado de mi bolso.
+Student: Está al lado de mi bolso.
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: ¿Dónde está mi celular?
+Student: ¿Dónde está mi celular?
+Teacher: Which means "Where is my cellphone?" Let's say it again. ¿Dónde está mi celular?
+Student: ¿Dónde está mi celular?
+Teacher: To say it's behind the chair, we say: Está detrás de la silla.
+Student: Está detrás de la silla.
+Teacher: Está detrás de la silla.
+Student: Está detrás de la silla.
+Teacher: And if it's in front of the chair, you say: Está delante de la silla.
+Student: Está delante de la silla.
+Teacher: Está delante de la silla.
+Student: Está delante de la silla.
+Teacher: ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: "Where are my pants?"
+Student: ¿Dónde están mis pantalones?
+Teacher: ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: Están en la cama.
+Student: Están en la cama.
+Teacher: That means "They are on the bed." Están en la cama.
+Student: Están en la cama.
+Teacher: Están en el dormitorio.
+Student: Están en el dormitorio.
+Teacher: They are in the bedroom.
+Student: Están en el dormitorio.
+Teacher: You're doing great! Let's take a moment to review. We're learning prepositions of place. Things like 'en' which can mean 'on' or 'in', 'al lado de' for 'next to', 'debajo de' for 'under', 'detrás de' for 'behind', and 'delante de' for 'in front of'. Also, notice how we use 'el' or 'la' in phrases like 'está en la silla'. This is like using 'the' in English. It means we're talking about a specific chair that we both know. Okay, let's practice again. Please repeat after me: ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: Están en el dormitorio.
+Student: Están en el dormitorio.
+Teacher: Están en el dormitorio.
+Student: Están en el dormitorio.
+Teacher: Now, let's learn how to get someone's attention politely. To say "Excuse me, ma'am," you would say: Disculpe, señora.
+Student: Disculpe, señora.
+Teacher: Disculpe, señora.
+Student: Disculpe, señora.
+Teacher: And for a man, "Excuse me, sir."
+Student: Disculpe, señor.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: ¿Dónde está mi clase?
+Student: ¿Dónde está mi clase?
+Teacher: "Where is my class?"
+Student: ¿Dónde está mi clase?
+Teacher: ¿Dónde está mi clase?
+Student: ¿Dónde está mi clase?
+Teacher: In response, someone might say this very useful phrase: "Que yo sepa..."
+Student: Que yo sepa...
+Teacher: It means "As far as I know." Let's break it down. 'Que' means 'that', 'yo' is 'I', and 'sepa' is a form of the verb 'to know'. So, "As far as I know." Let's say it again.
+Student: Que yo sepa.
+Teacher: Que yo sepa.
+Student: Que yo sepa.
+Teacher: Está arriba.
+Student: Está arriba.
+Teacher: 'Arriba' means upstairs. Está arriba.
+Student: Está arriba.
+Teacher: Está arriba.
+Student: Está arriba.
+Teacher: And downstairs is 'abajo'. Está abajo.
+Student: Está abajo.
+Teacher: Que yo sepa...
+Student: Que yo sepa...
+Teacher: Que yo sepa...
+Student: Que yo sepa...
+Teacher: As far as I know...
+Student: Que yo sepa...
+Teacher: Está abajo.
+Student: Está abajo.
+Teacher: It's downstairs.
+Student: Está abajo.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: ¿Dónde está mi profesor?
+Student: ¿Dónde está mi profesor?
+Teacher: "Where is my teacher?"
+Student: ¿Dónde está mi profesor?
+Teacher: Let's use our new phrase. As far as I know... Que yo sepa...
+Student: Que yo sepa...
+Teacher: Que yo sepa...
+Student: Que yo sepa...
+Teacher: Él está en el patio.
+Student: Él está en el patio.
+Teacher: 'Patio' means yard. He is in the yard.
+Student: Él está en el patio.
+Teacher: Él está en el patio.
+Student: Él está en el patio.
+Teacher: To say he is in the basement, we'd say: Él está en el sótano.
+Student: Él está en el sótano.
+Teacher: Él está en el sótano.
+Student: Él está en el sótano.
+Teacher: Él está en el sótano.
+Student: Él está en el sótano.
+Teacher: ¿Está en el sótano?
+Student: ¿Está en el sótano?
+Teacher: Is he in the basement?
+Student: ¿Está en el sótano?
+Teacher: Sí, él está.
+Student: Sí, él está.
+Teacher: No, él no está.
+Student: No, él no está.
+Teacher: Él está arriba.
+Student: Él está arriba.
+Teacher: Él está abajo.
+Student: Él está abajo.
+Teacher: ¿Dónde está tu prometido?
+Student: ¿Dónde está tu prometido?
+Teacher: "Where is your fiancé?" In Spanish, you'd say 'prometido' for a man and 'prometida' for a woman. Let's practice for a man. ¿Dónde está tu prometido?
+Student: ¿Dónde está tu prometido?
+Teacher: Que yo sepa,
+Student: Que yo sepa,
+Teacher: Él está en el norte.
+Student: Él está en el norte.
+Teacher: He is in the north.
+Student: Él está en el norte.
+Teacher: And for a woman: Ella está en el norte.
+Student: Ella está en el norte.
+Teacher: Great! Remember, 'prometido' for a male fiancé and 'prometida' for a female fiancé. Now, let's say "He is in the north."
+Student: Él está en el norte.
+Teacher: ¿Dónde está mi conductor?
+Student: ¿Dónde está mi conductor?
+Teacher: "Where is my driver?"
+Student: ¿Dónde está mi conductor?
+Teacher: Él está en la calle.
+Student: Él está en la calle.
+Teacher: He is in the street.
+Student: Él está en la calle.
+Teacher: Él está en la calle.
+Student: Él está en la calle.
+Teacher: Por cierto,
+Student: Por cierto,
+Teacher: ¿Dónde está tu secretaria?
+Student: ¿Dónde está tu secretaria?
+Teacher: "Where is your secretary?"
+Student: ¿Dónde está tu secretaria?
+Teacher: Now let's say she is on leave. We say: Ella está de permiso.
+Student: Ella está de permiso.
+Teacher: 'Permiso' means permission or leave. Ella está de permiso.
+Student: Ella está de permiso.
+Teacher: Ella está de permiso.
+Student: Ella está de permiso.
+Teacher: And to say she is on a mission, you say: Ella está en una misión.
+Student: Ella está en una misión.
+Teacher: Ella está en una misión.
+Student: Ella está en una misión.
+Teacher: Ella está en una misión.
+Student: Ella está en una misión.
+Teacher: ¿Ella está en una misión?
+Student: ¿Ella está en una misión?
+Teacher: Is she on a mission?
+Student: ¿Ella está en una misión?
+Teacher: ¿Tu esposo está en una misión?
+Student: ¿Tu esposo está en una misión?
+Teacher: "Is your husband on a mission?"
+Student: ¿Tu esposo está en una misión?
+Teacher: Sí, él está.
+Student: Sí, él está.
+Teacher: No, él no está.
+Student: No, él no está.
+Teacher: Él está de permiso.
+Student: Él está de permiso.
+Teacher: He is on leave.
+Student: Él está de permiso.
+Teacher: Él está de permiso.
+Student: Él está de permiso.
+Teacher: Excuse me. Disculpe.
+Student: Disculpe.
+Teacher: Disculpe.
+Student: Disculpe.
+Teacher: ¿Dónde está el baño?
+Student: ¿Dónde está el baño?
+Teacher: ¿Dónde está el baño?
+Student: ¿Dónde está el baño?
+Teacher: "Where is the toilet?" or "Where is the bathroom?"
+Student: ¿Dónde está el baño?
+Teacher: Que yo sepa,
+Student: Que yo sepa,
+Teacher: Está arriba.
+Student: Está arriba.
+Teacher: It's upstairs.
+Student: Está arriba.
+Teacher: Está abajo.
+Student: Está abajo.
+Teacher: Que yo sepa,
+Student: Que yo sepa,
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: It's in the yard.
+Student: Está en el patio.
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: You've been doing a fantastic job learning to ask "where" questions with 'dónde'. Now let's learn a new question word: 'cuándo', which means 'when'. For example, to ask "When is the meeting?", you say: ¿Cuándo es la reunión?
+Student: ¿Cuándo es la reunión?
+Teacher: ¿Cuándo es la reunión?
+Student: ¿Cuándo es la reunión?
+Teacher: When is the meeting?
+Student: ¿Cuándo es la reunión?
+Teacher: ¿Cuándo es la reunión?
+Student: ¿Cuándo es la reunión?
+Teacher: ¿Cuándo es el examen?
+Student: ¿Cuándo es el examen?
+Teacher: ¿Cuándo es el examen?
+Student: ¿Cuándo es el examen?
+Teacher: When is the exam?
+Student: ¿Cuándo es el examen?
+Teacher: As far as I know... Que yo sepa...
+Student: Que yo sepa...
+Teacher: again, again
+Student: Que yo sepa...
+Teacher: Es mañana.
+Student: Es mañana.
+Teacher: It's tomorrow.
+Student: Es mañana.
+Teacher: It's today.
+Student: Es hoy.
+Teacher: Es hoy.
+Student: Es hoy.
+Teacher: It's tonight. Es esta noche.
+Student: Es esta noche.
+Teacher: Es esta noche.
+Student: Es esta noche.
+Teacher: ¿Cuándo es la fiesta?
+Student: ¿Cuándo es la fiesta?
+Teacher: When is the party?
+Student: ¿Cuándo es la fiesta?
+Teacher: ¿Cuándo es la fiesta?
+Student: ¿Cuándo es la fiesta?
+Teacher: ¿Cuándo es la fiesta?
+Student: ¿Cuándo es la fiesta?
+Teacher: Es mañana.
+Student: Es mañana.
+Teacher: It's on Monday. Es el lunes.
+Student: Es el lunes.
+Teacher: Es el lunes.
+Student: Es el lunes.
+Teacher: Es el sábado.
+Student: Es el sábado.
+Teacher: It's on Saturday.
+Student: Es el sábado.
+Teacher: It's on Sunday.
+Student: Es el domingo.
+Teacher: Es el domingo.
+Student: Es el domingo.
+Teacher: Wonderful. Let me quickly teach you the days of the week. Please listen carefully to the pronunciation and repeat after me. Sábado.
+Student: Sábado.
+Teacher: Domingo.
+Student: Domingo.
+Teacher: Lunes.
+Student: Lunes.
+Teacher: Martes.
+Student: Martes.
+Teacher: Miércoles.
+Student: Miércoles.
+Teacher: Jueves.
+Student: Jueves.
+Teacher: Viernes.
+Student: Viernes.
+Teacher: ¿Qué día es hoy?
+Student: ¿Qué día es hoy?
+Teacher: What day is today?
+Student: ¿Qué día es hoy?
+Teacher: ¿Qué día es hoy?
+Student: ¿Qué día es hoy?
+Teacher: Es lunes.
+Student: Es lunes.
+Teacher: It's Friday.
+Student: Es viernes.
+Teacher: It's Tuesday.
+Student: Es martes.
+Teacher: Es martes.
+Student: Es martes.
+Teacher: By the way, Por cierto, ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: When is your birthday?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: Es en julio.
+Student: Es en julio.
+Teacher: Es en octubre.
+Student: Es en octubre.

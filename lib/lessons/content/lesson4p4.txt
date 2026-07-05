@@ -1,0 +1,395 @@
+Teacher: Mira el techo.
+Student: Mira el techo.
+Teacher: Mira el techo.
+Student: Mira el techo.
+Teacher: Look at the ceiling.
+Student: Mira el techo.
+Teacher: Mira la pared.
+Student: Mira la pared.
+Teacher: Look at the wall.
+Student: Mira la pared.
+Teacher: Mira el mapa.
+Student: Mira el mapa.
+Teacher: Look at the map.
+Student: Mira el mapa.
+Teacher: Mira tu reloj.
+Student: Mira tu reloj.
+Teacher: Look at your watch.
+Student: Mira tu reloj.
+Teacher: Mira tu reloj.
+Student: Mira tu reloj.
+Teacher: Tengo hambre.
+Student: Tengo hambre.
+Teacher: Mira tu reloj.
+Student: Mira tu reloj.
+Teacher: Take a look at your watch.
+Student: Mira tu reloj.
+Teacher: Mira tu reloj.
+Student: Mira tu reloj.
+Teacher: Call me. Llámame.
+Student: Llámame.
+Teacher: Call me.
+Student: Llámame.
+Teacher: Call me.
+Student: Llámame.
+Teacher: Llámame más tarde.
+Student: Llámame más tarde.
+Teacher: Call me later.
+Student: Llámame más tarde.
+Teacher: Call me tonight.
+Student: Llámame esta noche.
+Teacher: Call me tonight.
+Student: Llámame esta noche.
+Teacher: Llámame esta noche.
+Student: Llámame esta noche.
+Teacher: Call me tomorrow.
+Student: Llámame mañana.
+Teacher: Llámame mañana.
+Student: Llámame mañana.
+Teacher: By the way, call your mother. Por cierto, llama a tu madre.
+Student: Llama a tu madre.
+Teacher: Call your mother.
+Student: Llama a tu madre.
+Teacher: Call your boss.
+Student: Llama a tu jefe.
+Teacher: Call your secretary.
+Student: Llama a tu secretaria.
+Teacher: Llama a tu secretaria.
+Student: Llama a tu secretaria.
+Teacher: Call your friend.
+Student: Llama a tu amigo.
+Teacher: Call your driver.
+Student: Llama a tu conductor.
+Teacher: Llama a tu conductor.
+Student: Llama a tu conductor.
+Teacher: Call your colleague.
+Student: Llama a tu colega.
+Teacher: Llama a tu colega.
+Student: Llama a tu colega.
+Teacher: Call your fiancée.
+Student: Llama a tu prometida.
+Teacher: Llama a tu prometida.
+Student: Llama a tu prometida.
+Teacher: Call your fiancée.
+Student: Llama a tu prometida.
+Teacher: Now, to say call your suitor, the word for suitor is 'pretendiente'. Pretendiente. Llama a tu pretendiente.
+Student: Llama a tu pretendiente.
+Teacher: Llama a tu pretendiente.
+Student: Llama a tu pretendiente.
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: Who is he?
+Student: ¿Quién es él?
+Teacher: Él es mi pretendiente.
+Student: Él es mi pretendiente.
+Teacher: He is my suitor.
+Student: Él es mi pretendiente.
+Teacher: Él es mi pretendiente.
+Student: Él es mi pretendiente.
+Teacher: Put it over there. Ponlo allí.
+Student: Ponlo allí.
+Teacher: Ponlo allí.
+Student: Ponlo allí.
+Teacher: Ponlo allí.
+Student: Ponlo allí.
+Teacher: Ponlo en mi escritorio.
+Student: Ponlo en mi escritorio.
+Teacher: Put it on my desk.
+Student: Ponlo en mi escritorio.
+Teacher: Please try to use these sentences in real situations. For example, you have your phone in your hand, and you want to give it to someone and say, 'Put this on my desk'. Ponlo en mi escritorio.
+Student: Ponlo en mi escritorio.
+Teacher: Ponlo en la silla.
+Student: Ponlo en la silla.
+Teacher: Put it on the chair.
+Student: Ponlo en la silla.
+Teacher: Ponlo en la silla.
+Student: Ponlo en la silla.
+Teacher: Put this in the fridge. Ponlo en el refrigerador.
+Student: Ponlo en el refrigerador.
+Teacher: Ponlo en el refrigerador.
+Student: Ponlo en el refrigerador.
+Teacher: Ponlo en el congelador.
+Student: Ponlo en el congelador.
+Teacher: Put this in the freezer.
+Student: Ponlo en el congelador.
+Teacher: Ponlo en el congelador.
+Student: Ponlo en el congelador.
+Teacher: Put this on the balcony. Ponlo en el balcón.
+Student: Ponlo en el balcón.
+Teacher: Ponlo en el balcón.
+Student: Ponlo en el balcón.
+Teacher: Ponlo en mi coche.
+Student: Ponlo en mi coche.
+Teacher: Put it in my car.
+Student: Ponlo en mi coche.
+Teacher: Put this somewhere else. Ponlo en otro lugar.
+Student: Ponlo en otro lugar.
+Teacher: Ponlo en otro lugar.
+Student: Ponlo en otro lugar.
+Teacher: Ponlo en otro lugar.
+Student: Ponlo en otro lugar.
+Teacher: Come in.
+Student: Pasa.
+Teacher: Pasa.
+Student: Pasa.
+Teacher: Turn on the lights.
+Student: Enciende las luces.
+Teacher: Enciende las luces.
+Student: Enciende las luces.
+Teacher: Lava los platos.
+Student: Lava los platos.
+Teacher: Wash the dishes.
+Student: Lava los platos.
+Teacher: Lávate las manos.
+Student: Lávate las manos.
+Teacher: Wash your hands.
+Student: Lávate las manos.
+Teacher: Wash your face.
+Student: Lávate la cara.
+Teacher: Wash your face.
+Student: Lávate la cara.
+Teacher: Lava tus calcetines.
+Student: Lava tus calcetines.
+Teacher: Wash your socks.
+Student: Lava tus calcetines.
+Teacher: Lava tus calcetines.
+Student: Lava tus calcetines.
+Teacher: Polish my shoes. We say 'lustra mis zapatos'.
+Student: Lustra mis zapatos.
+Teacher: Lustra mis zapatos.
+Student: Lustra mis zapatos.
+Teacher: Lustra tus zapatos.
+Student: Lustra tus zapatos.
+Teacher: Polish your shoes.
+Student: Lustra tus zapatos.
+Teacher: Okay, to say 'iron the clothes', the verb for 'to iron' is 'planchar'. Notice the pronunciation, plan-char. Plancha la ropa.
+Student: Plancha la ropa.
+Teacher: Plancha la ropa.
+Student: Plancha la ropa.
+Teacher: Plancha mi camisa.
+Student: Plancha mi camisa.
+Teacher: Iron my shirt.
+Student: Plancha mi camisa.
+Teacher: Plancha mi camisa.
+Student: Plancha mi camisa.
+Teacher: Wash the dishes.
+Student: Lava los platos.
+Teacher: Again.
+Student: Lava los platos.
+Teacher: Polish your shoes.
+Student: Lustra tus zapatos.
+Teacher: Again.
+Student: Lustra tus zapatos.
+Teacher: Iron my clothes.
+Student: Plancha mi ropa.
+Teacher: Plancha mi ropa.
+Student: Plancha mi ropa.
+Teacher: Llámame más tarde.
+Student: Llámame más tarde.
+Teacher: Call me later.
+Student: Llámame más tarde.
+Teacher: Llámame más tarde.
+Student: Llámame más tarde.
+Teacher: Do you have any money with you?
+Student: ¿Tienes dinero?
+Teacher: Again.
+Student: ¿Tienes dinero?
+Teacher: There is some.
+Student: Sí, tengo un poco.
+Teacher: Sí, tengo un poco.
+Student: Sí, tengo un poco.
+Teacher: There isn't any.
+Student: No, no tengo nada.
+Teacher: Stop it. When we want to tell someone to stop doing something, we say ¡Basta ya! or ¡Para ya! Let's say ¡Para ya!
+Student: ¡Para ya!
+Teacher: ¡Para ya!
+Student: ¡Para ya!
+Teacher: ¡Para ya!
+Student: ¡Para ya!
+Teacher: Stop it.
+Student: ¡Para ya!
+Teacher: ¡Para ya!
+Student: ¡Para ya!
+Teacher: Now I want to say stop laughing. I say 'deja de reír'. Laughing is 'reír'. Deja de reír.
+Student: Deja de reír.
+Teacher: Deja de reír.
+Student: Deja de reír.
+Teacher: Deja de reír.
+Student: Deja de reír.
+Teacher: I want to say, stop crying now. Whatever you're doing, that's enough. Deja de llorar.
+Student: Deja de llorar.
+Teacher: Deja de llorar.
+Student: Deja de llorar.
+Teacher: Deja de llorar.
+Student: Deja de llorar.
+Teacher: Stop nagging. The word 'nag' is like 'quejarse'. So I say, stop complaining. Deja de quejarte.
+Student: Deja de quejarte.
+Teacher: Deja de quejarte.
+Student: Deja de quejarte.
+Teacher: Escúchame.
+Student: Escúchame.
+Teacher: Listen to me.
+Student: Escúchame.
+Teacher: Close the door.
+Student: Cierra la puerta.
+Teacher: Close the door.
+Student: Cierra la puerta.
+Teacher: Lock the door.
+Student: Cierra la puerta con llave.
+Teacher: Cierra la puerta con llave.
+Student: Cierra la puerta con llave.
+Teacher: Come here.
+Student: Ven aquí.
+Teacher: Ven aquí.
+Student: Ven aquí.
+Teacher: Siéntate en el suelo.
+Student: Siéntate en el suelo.
+Teacher: Háblame.
+Student: Háblame.
+Teacher: Talk to me.
+Student: Háblame.
+Teacher: Háblame.
+Student: Háblame.
+Teacher: Introduce yourself.
+Student: Preséntate.
+Teacher: Again.
+Student: Preséntate.
+Teacher: Preséntate.
+Student: Preséntate.
+Teacher: Call me later.
+Student: Llámame más tarde.
+Teacher: Llámame más tarde.
+Student: Llámame más tarde.
+Teacher: As you've noticed, these command sentences all start with a verb. Now, what if you want to make them negative? Instead of saying 'go out', we want to say 'don't go out'. Instead of 'sit here', we want to say 'don't sit here'. It's very simple, you add 'No' at the beginning and change the verb ending slightly. Say it with me please. No salgas.
+Student: No salgas.
+Teacher: Don't go out.
+Student: No salgas.
+Teacher: Don't sit here.
+Student: No te sientes aquí.
+Teacher: No te sientes aquí.
+Student: No te sientes aquí.
+Teacher: No te sientes aquí.
+Student: No te sientes aquí.
+Teacher: No me hables.
+Student: No me hables.
+Teacher: Don't talk to me.
+Student: No me hables.
+Teacher: No me hables.
+Student: No me hables.
+Teacher: No me llames.
+Student: No me llames.
+Teacher: Don't call me.
+Student: No me llames.
+Teacher: No me llames más.
+Student: No me llames más.
+Teacher: That means, don't call me anymore.
+Student: No me llames más.
+Teacher: No me llames más.
+Student: No me llames más.
+Teacher: Perdón.
+Student: Perdón.
+Teacher: No fumes aquí.
+Student: No fumes aquí.
+Teacher: Don't smoke here.
+Student: No fumes aquí.
+Teacher: No fumes en mi oficina.
+Student: No fumes en mi oficina.
+Teacher: Don't smoke in my office.
+Student: No fumes en mi oficina.
+Teacher: No fumes en mi oficina.
+Student: No fumes en mi oficina.
+Teacher: Don't disturb me. We say 'No me molestes'.
+Student: No me molestes.
+Teacher: No me molestes.
+Student: No me molestes.
+Teacher: Don't disturb me.
+Student: No me molestes.
+Teacher: No me molestes.
+Student: No me molestes.
+Teacher: Estoy comprometido.
+Student: Estoy comprometido.
+Teacher: I am engaged.
+Student: Estoy comprometido.
+Teacher: No me molestes, estoy comprometido.
+Student: No me molestes, estoy comprometido.
+Teacher: Again.
+Student: No me molestes, estoy comprometido.
+Teacher: Don't touch my camera. No toques mi cámara.
+Student: No toques mi cámara.
+Teacher: No toques mi cámara.
+Student: No toques mi cámara.
+Teacher: No toques mi celular.
+Student: No toques mi celular.
+Teacher: Don't touch my cell phone.
+Student: No toques mi celular.
+Teacher: No toques mi celular.
+Student: No toques mi celular.
+Teacher: Don't touch my belly. We say 'no toques mi barriga'. 'Barriga' means belly. No toques mi barriga.
+Student: No toques mi barriga.
+Teacher: No toques mi barriga.
+Student: No toques mi barriga.
+Teacher: Don't disturb me.
+Student: No me molestes.
+Teacher: Don't disturb me.
+Student: No me molestes.
+Teacher: No molestes a mi hermana.
+Student: No molestes a mi hermana.
+Teacher: Don't disturb my sister.
+Student: No molestes a mi hermana.
+Teacher: No molestes a mi secretaria.
+Student: No molestes a mi secretaria.
+Teacher: No toques mi celular.
+Student: No toques mi celular.
+Teacher: Don't touch my laptop.
+Student: No toques mi laptop.
+Teacher: No toques mi laptop.
+Student: No toques mi laptop.
+Teacher: No fumes aquí.
+Student: No fumes aquí.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: No estacione aquí.
+Student: No estacione aquí.
+Teacher: Don't park here.
+Student: No estacione aquí.
+Teacher: No estacione su coche aquí.
+Student: No estacione su coche aquí.
+Teacher: Don't park your car here.
+Student: No estacione su coche aquí.
+Teacher: Estacione su coche en el patio.
+Student: Estacione su coche en el patio.
+Teacher: Park your car in the yard.
+Student: Estacione su coche en el patio.
+Teacher: Estacione su coche en el patio.
+Student: Estacione su coche en el patio.
+Teacher: No te pases conmigo.
+Student: No te pases conmigo.
+Teacher: This means, don't get fresh with me, or don't cross the line with me. No te pases conmigo.
+Student: No te pases conmigo.
+Teacher: No te pases conmigo.
+Student: No te pases conmigo.
+Teacher: Don't be disrespectful.
+Student: No te pases conmigo.
+Teacher: No te rías de mí.
+Student: No te rías de mí.
+Teacher: Don't laugh at me.
+Student: No te rías de mí.
+Teacher: No te rías de él.
+Student: No te rías de él.
+Teacher: Don't laugh at him.
+Student: No te rías de él.
+Teacher: No te rías de ella.
+Student: No te rías de ella.
+Teacher: Don't laugh at her.
+Student: No te rías de ella.
+Teacher: Okay, now let's say don't laugh at us. No te rías de nosotros.
+Student: No te rías de nosotros.
+Teacher: No te rías de nosotros.
+Student: No te rías de nosotros.
+Teacher: Don't make fun of me. We say 'no te burles de mí'.
+Student: No te burles de mí.
+Teacher: No te burles de mí.
+Student: No te burles de mí.
+Teacher: No te burles de mí.

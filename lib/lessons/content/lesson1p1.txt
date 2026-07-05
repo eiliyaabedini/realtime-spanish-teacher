@@ -1,0 +1,268 @@
+Teacher: Hello welcome to Session 1 Please repeat after me with energy. Hola a todos.
+Student: Hola a todos.
+Teacher: Hola a todos.
+Student: Hola a todos.
+Teacher: Hello to everyone. Hola a todos.
+Student: Hola a todos.
+Teacher: Okay, now for a more informal group. Instead of 'Hola a todos', we can say 'Hola chicos'. 'Chicos' literally means 'boys', but it's very commonly used informally to mean 'guys' or 'kids' for a mixed group or even just girls among friends. Hola chicos.
+Student: Hola chicos.
+Teacher: Hola chicos.
+Student: Hola chicos.
+Teacher: Hey guys.
+Student: Hola chicos.
+Teacher: Hola chicos.
+Student: Hola chicos.
+Teacher: Hola Jennifer.
+Student: Hola Jennifer.
+Teacher: Hola David.
+Student: Hola David.
+Teacher: Hola Daniel.
+Student: Hola Daniel.
+Teacher: How's it going? What's up? We say ¿Qué tal? This is very common and informal. ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: What's up? ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: How's it going? What's up? ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: In response, we often say 'Everything's fine' or 'All good'. In Spanish, we say Todo bien. Meaning everything is good. Todo bien.
+Student: Todo bien.
+Teacher: All good.
+Student: Todo bien.
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: Hola a todos.
+Student: Hola a todos.
+Teacher: Hola chicos.
+Student: Hola chicos.
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: How are you? To ask one person informally, we say ¿Cómo estás? Notice the verb 'estar' which we use for conditions and feelings. ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: How are you? ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: How are you?
+Student: ¿Cómo estás?
+Teacher: I'm fine. Estoy bien. Again, using 'estar'. Estoy bien.
+Student: Estoy bien.
+Teacher: I'm good.
+Student: Estoy bien.
+Teacher: I'm fine, thank you. Estoy bien, gracias.
+Student: Estoy bien, gracias.
+Teacher: I'm fine, thanks. Estoy bien, gracias.
+Student: Estoy bien, gracias.
+Teacher: How's your father? We say ¿Cómo está tu padre? 'Padre' is father. 'Tu' means 'your' (informal). We use 'está', the 'he/she/it/formal you' form of 'estar'. ¿Cómo está tu padre?
+Student: ¿Cómo está tu padre?
+Teacher: How's your father? ¿Cómo está tu padre?
+Student: ¿Cómo está tu padre?
+Teacher: How's your mother? ¿Cómo está tu madre? 'Madre' is mother (feminine). ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: How's your mom? ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: How's your father?
+Student: ¿Cómo está tu padre?
+Teacher: How's your mother?
+Student: ¿Cómo está tu madre?
+Teacher: How are your parents? We say ¿Cómo están tus padres? 'padre' is father, 'madre' is mother. The plural 'padres' means parents. Since 'parents' is plural, we use 'tus' (your, plural) and 'están', the 'they' form of 'estar'. ¿Cómo están tus padres?
+Student: ¿Cómo están tus padres?
+Teacher: How are your parents? ¿Cómo están tus padres?
+Student: ¿Cómo están tus padres?
+Teacher: How's your father?
+Student: ¿Cómo está tu padre?
+Teacher: How's your mother?
+Student: ¿Cómo está tu madre?
+Teacher: How are your parents?
+Student: ¿Cómo están tus padres?
+Teacher: They are fine, thank you. Están bien, gracias.
+Student: Están bien, gracias.
+Teacher: They're fine, thanks. Están bien, gracias.
+Student: Están bien, gracias.
+Teacher: How's your brother? ¿Cómo está tu hermano? 'Hermano' is brother.
+Student: ¿Cómo está tu hermano?
+Teacher: How's your brother? ¿Cómo está tu hermano?
+Student: ¿Cómo está tu hermano?
+Teacher: How's your sister? ¿Cómo está tu hermana? 'Hermana' is sister.
+Student: ¿Cómo está tu hermana?
+Teacher: How's your sister? ¿Cómo está tu hermana?
+Student: ¿Cómo está tu hermana?
+Teacher: How's your brother?
+Student: ¿Cómo está tu hermano?
+Teacher: How's your sister?
+Student: ¿Cómo está tu hermana?
+Teacher: How are your siblings? We say ¿Cómo están tus hermanos? 'hermano' means brother, 'hermana' means sister. The plural 'hermanos' can mean 'brothers', OR it can mean 'brothers and sisters' – siblings in general. We use the masculine plural form for a mixed group. ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: How are your siblings? ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: They are fine, thank you. Están bien, gracias.
+Student: Están bien, gracias.
+Teacher: How's your husband? ¿Cómo está tu esposo? 'Esposo' is husband. (You might also hear 'marido').
+Student: ¿Cómo está tu esposo?
+Teacher: How's your husband? ¿Cómo está tu esposo?
+Student: ¿Cómo está tu esposo?
+Teacher: How's your wife? ¿Cómo está tu esposa? 'Esposa' is wife.
+Student: ¿Cómo está tu esposa?
+Teacher: How's your wife? ¿Cómo está tu esposa?
+Student: ¿Cómo está tu esposa?
+Teacher: How's your fiancé? Now, Spanish has gendered words for this: ¿Cómo está tu prometido? (for a male fiancé) or ¿Cómo está tu prometida? (for a female fiancé). Let's practice the male version: ¿Cómo está tu prometido?
+Student: ¿Cómo está tu prometido?
+Teacher: And the female version: ¿Cómo está tu prometida?
+Student: ¿Cómo está tu prometida?
+Teacher: How's your husband?
+Student: ¿Cómo está tu esposo?
+Teacher: How's your wife?
+Student: ¿Cómo está tu esposa?
+Teacher: How's your fiancé (male)?
+Student: ¿Cómo está tu prometido?
+Teacher: How's your fiancé (female)?
+Student: ¿Cómo está tu prometida?
+Teacher: How is your son? ¿Cómo está tu hijo? 'Hijo' is son.
+Student: ¿Cómo está tu hijo?
+Teacher: How's your son? ¿Cómo está tu hijo?
+Student: ¿Cómo está tu hijo?
+Teacher: How's your daughter? ¿Cómo está tu hija? 'Hija' is daughter.
+Student: ¿Cómo está tu hija?
+Teacher: How's your daughter? ¿Cómo está tu hija?
+Student: ¿Cómo está tu hija?
+Teacher: How's your son?
+Student: ¿Cómo está tu hijo?
+Teacher: How are your children? ¿Cómo están tus hijos? Similar to 'hermanos', 'hijos' means 'sons' or 'children' (sons and daughters). We use the masculine plural for the mixed group. ¿Cómo están tus hijos?
+Student: ¿Cómo están tus hijos?
+Teacher: Hola chicos.
+Student: Hola chicos.
+Teacher: Hola John.
+Student: Hola John.
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: What's up? ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: All good.
+Student: Todo bien.
+Teacher: ¿Cómo está tu padre?
+Student: ¿Cómo está tu padre?
+Teacher: How's your father?
+Student: ¿Cómo está tu padre?
+Teacher: How's your mother?
+Student: ¿Cómo está tu madre?
+Teacher: ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: ¿Cómo está tu hermano?
+Student: ¿Cómo está tu hermano?
+Teacher: How's your brother?
+Student: ¿Cómo está tu hermano?
+Teacher: How's your sister?
+Student: ¿Cómo está tu hermana?
+Teacher: ¿Cómo está tu hermana?
+Student: ¿Cómo está tu hermana?
+Teacher: ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: How are your siblings?
+Student: ¿Cómo están tus hermanos?
+Teacher: Están bien, gracias.
+Student: Están bien, gracias.
+Teacher: They're fine, thanks.
+Student: Están bien, gracias.
+Teacher: How is your grandfather? ¿Cómo está tu abuelo? 'Abuelo' means grandfather.
+Student: ¿Cómo está tu abuelo?
+Teacher: How's your grandfather? ¿Cómo está tu abuelo?
+Student: ¿Cómo está tu abuelo?
+Teacher: How is your grandmother? ¿Cómo está tu abuela? 'Abuela' means grandmother.
+Student: ¿Cómo está tu abuela?
+Teacher: How's your grandmother? ¿Cómo está tu abuela?
+Student: ¿Cómo está tu abuela?
+Teacher: How are your grandparents? ¿Cómo están tus abuelos? 'abuelo', 'abuela', and the plural 'abuelos' means grandparents (grandfather and grandmother, or just grandfathers). Again, masculine plural for the mixed group. ¿Cómo están tus abuelos?
+Student: ¿Cómo están tus abuelos?
+Teacher: How are you? ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: I'm fine, thank you. Estoy bien, gracias.
+Student: Estoy bien, gracias.
+Teacher: Now, what if you want to say you're not feeling well? You could simply say No estoy bien (I'm not fine), or a very common way is Me siento mal (I feel bad). Let's practice the simple one first: No estoy bien.
+Student: No estoy bien.
+Teacher: Or: Me siento mal.
+Student: Me siento mal.
+Teacher: I'm not feeling well. No estoy bien.
+Student: No estoy bien.
+Teacher: I feel bad. Me siento mal.
+Student: Me siento mal.
+Teacher: How is your mother? ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: She's not feeling well. No está bien. Or, Ella se siente mal.
+Student: No está bien. / Ella se siente mal.
+Teacher: How's your brother? ¿Cómo está tu hermano?
+Student: ¿Cómo está tu hermano?
+Teacher: He's not feeling well. No está bien. Or, Él se siente mal.
+Student: No está bien. / Él se siente mal.
+Teacher: He's not well. No está bien.
+Student: No está bien.
+Teacher: He feels bad. Él se siente mal.
+Student: Él se siente mal.
+Teacher: Hola Sarah.
+Student: Hola Sarah.
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: How are you? ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: Fine, thanks. Bien, gracias.
+Student: Bien, gracias.
+Teacher: Fine, thanks. And you? Bien, gracias. ¿Y tú? '¿Y tú?' means 'And you?' (informal).
+Student: Bien, gracias. ¿Y tú?
+Teacher: Good, thanks. And you? Bien, gracias. ¿Y tú?
+Student: Bien, gracias. ¿Y tú?
+Teacher: I am fine, thank you. Estoy bien, gracias.
+Student: Estoy bien, gracias.
+Teacher: How is your fiancé (male)? ¿Cómo está tu prometido?
+Student: ¿Cómo está tu prometido?
+Teacher: He is fine, thank you. Está bien, gracias.
+Student: Está bien, gracias.
+Teacher: By the way... In English, we sometimes change the subject suddenly by saying 'By the way'. In Spanish, we say Por cierto. Por cierto.
+Student: Por cierto.
+Teacher: By the way. Por cierto.
+Student: Por cierto.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Now, how do we ask "Any news from...?" For example, "Any news from your father?". We can say ¿Alguna noticia de tu padre? 'Noticias' means news (usually plural in Spanish), 'alguna' means 'any' (feminine here because 'noticia' is feminine, even though we often use the plural 'noticias'). ¿Alguna noticia de tu padre?
+Student: ¿Alguna noticia de tu padre?
+Teacher: Any news from your father? ¿Alguna noticia de tu padre?
+Student: ¿Alguna noticia de tu padre?
+Teacher: Any news from your brother?
+Student: ¿Alguna noticia de tu hermano?
+Teacher: Any news from your sister?
+Student: ¿Alguna noticia de tu hermana?
+Teacher: Any news from your grandfather?
+Student: ¿Alguna noticia de tu abuelo?
+Teacher: Any news from your grandmother?
+Student: ¿Alguna noticia de tu abuela?
+Teacher: No news. We can say Sin noticias (Without news) or Ninguna noticia (No news). Let's use Sin noticias.
+Student: Sin noticias.
+Teacher: No news. Sin noticias.
+Student: Sin noticias.
+Teacher: Any news from your father? ¿Alguna noticia de tu padre?
+Student: ¿Alguna noticia de tu padre?
+Teacher: No news. Sin noticias.
+Student: Sin noticias.
+Teacher: Any news from your boss? 'Boss' in Spanish is 'jefe' (male) or 'jefa' (female). ¿Alguna noticia de tu jefe? (male boss)
+Student: ¿Alguna noticia de tu jefe?
+Teacher: Or ¿Alguna noticia de tu jefa? (female boss)
+Student: ¿Alguna noticia de tu jefa?
+Teacher: No news. Sin noticias.
+Student: Sin noticias.
+Teacher: By the way!
+Student: ¡Por cierto!
+Teacher: Any news from your secretary? 'Secretary' is 'secretario' (male) or 'secretaria' (female). ¿Alguna noticia de tu secretario? (male)
+Student: ¿Alguna noticia de tu secretario?
+Teacher: Or ¿Alguna noticia de tu secretaria? (female)
+Student: ¿Alguna noticia de tu secretaria?
+Teacher: 'secretario/secretaria' means secretary. Any news from your secretary (female)? ¿Alguna noticia de tu secretaria?
+Student: ¿Alguna noticia de tu secretaria?

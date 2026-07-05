@@ -1,0 +1,297 @@
+Teacher: Es su cartera.
+Student: Es su cartera.
+Teacher: Es su cartera.
+Student: Es su cartera.
+Teacher: ¿De quién es este coche?
+Student: ¿De quién es este coche?
+Teacher: That means, "Whose car is this?"
+Student: ¿De quién es este coche?
+Teacher: Es mi coche.
+Student: Es mi coche.
+Teacher: Es tu coche.
+Student: Es tu coche.
+Teacher: Es su coche.
+Student: Es su coche.
+Teacher: To say "It's her car," it's also: Es su coche.
+Student: Es su coche.
+Teacher: You'll notice 'his car' and 'her car' are the same in Spanish. Context will help you know who we're talking about!
+Student: Es su coche.
+Teacher: Es su móvil.
+Student: Es su móvil.
+Teacher: That's "It's her cell phone." Let's say it again. Es su móvil.
+Student: Es su móvil.
+Teacher: Now, here's a little tip that will really help you learn. Try to imagine you're in a real situation when you repeat these phrases. Picture yourself on a street, seeing a car, and you genuinely want to know who the owner is. Then ask the question. Let's try it together with that feeling. Please repeat after me. ¿De quién es este coche?
+Student: ¿De quién es este coche?
+Teacher: Es mi coche.
+Student: Es mi coche.
+Teacher: Es mi coche.
+Student: Es mi coche.
+Teacher: ¿De quién es este móvil?
+Student: ¿De quién es este móvil?
+Teacher: Again, "Whose cell phone is this?"
+Student: ¿De quién es este móvil?
+Teacher: Es mi móvil.
+Student: Es mi móvil.
+Teacher: Es tu móvil.
+Student: Es tu móvil.
+Teacher: Es su móvil.
+Student: Es su móvil.
+Teacher: Es su móvil.
+Student: Es su móvil.
+Teacher: Now, what if the phone belonged to an animal, like my dog? In English, you'd say "It's its cell phone." In Spanish, it's simple. You just use 'su' again. Es su móvil.
+Student: Es su móvil.
+Teacher: It's very versatile! Let's say it one more time. Es su móvil.
+Student: Es su móvil.
+Teacher: These words we're using – mi, tu, su – are called possessive adjectives. They describe who owns something. Let's try a few more.
+Student: Es su móvil.
+Teacher: ¿De quién es este coche?
+Student: ¿De quién es este coche?
+Teacher: Es nuestro coche.
+Student: Es nuestro coche.
+Teacher: That means, "It's our car."
+Student: Es nuestro coche.
+Teacher: It's your car (speaking to a group).
+Student: Es vuestro coche.
+Teacher: Es vuestro coche.
+Student: Es vuestro coche.
+Teacher: Es su coche.
+Student: Es su coche.
+Teacher: And that means, "It's their car." Notice 'su' can mean his, her, its, and their! Don't worry, it becomes clear with practice.
+Student: Es su coche.
+Teacher: Now, in English you use an apostrophe 's' to show possession, like "Maria's car." In Spanish, we don't do that. We say "the car of Maria." Listen: Es el coche de Maria.
+Student: Es el coche de Maria.
+Teacher: Es el coche de Juan.
+Student: Es el coche de Juan.
+Teacher: This is David's car. Es el coche de David.
+Student: Es el coche de David.
+Teacher: Es el coche de mi madre.
+Student: Es el coche de mi madre.
+Teacher: ¿De quién son estos zapatos?
+Student: ¿De quién son estos zapatos?
+Teacher: Notice because 'shoes' (zapatos) is plural, we changed 'es' to 'son' and 'este' to 'estos'. It means "Whose shoes are these?" Let's practice.
+Student: ¿De quién son estos zapatos?
+Teacher: ¿De quién son estos zapatos?
+Student: ¿De quién son estos zapatos?
+Teacher: ¿De quién son estos zapatos?
+Student: ¿De quién son estos zapatos?
+Teacher: Son mis zapatos.
+Student: Son mis zapatos.
+Teacher: That's "They are my shoes."
+Student: Son mis zapatos.
+Teacher: Son mis zapatos.
+Student: Son mis zapatos.
+Teacher: ¿De quién es esta cartera?
+Student: ¿De quién es esta cartera?
+Teacher: ¿De quién es esta llave?
+Student: ¿De quién es esta llave?
+Teacher: That means, "Whose key is this?"
+Student: ¿De quién es esta llave?
+Teacher: Now, you can say "Es mi llave" (It's my key), or you can simply say "It's mine." In Spanish, that would be: Es mía.
+Student: Es mía.
+Teacher: It's mine.
+Student: Es mía.
+Teacher: Es mía.
+Student: Es mía.
+Teacher: Es tuya.
+Student: Es tuya.
+Teacher: It's yours.
+Student: Es tuya.
+Teacher: Es tuya.
+Student: Es tuya.
+Teacher: It's his.
+Student: Es suyo.
+Teacher: Es suyo.
+Student: Es suyo.
+Teacher: It's hers.
+Student: Es suya.
+Teacher: Es suya.
+Student: Es suya.
+Teacher: It's its.
+Student: Es suyo.
+Teacher: It's its.
+Student: Es suyo.
+Teacher: It's ours. Es nuestro.
+Student: Es nuestro.
+Teacher: Es nuestro.
+Student: Es nuestro.
+Teacher: It's yours (plural).
+Student: Es vuestro.
+Teacher: It's theirs.
+Student: Es suyo.
+Teacher: Es suyo.
+Student: Es suyo.
+Teacher: These words, like mío, tuyo, and suyo, are called possessive pronouns. They replace the noun. Now, what if you want to say the car you're talking about is Maria's? You'd say: Es de Maria.
+Student: Es de Maria.
+Teacher: Es de Maria.
+Student: Es de Maria.
+Teacher: Es de Janet.
+Student: Es de Janet.
+Teacher: It's Janet's.
+Student: Es de Janet.
+Teacher: Es de Janet.
+Student: Es de Janet.
+Teacher: Es de mi padre.
+Student: Es de mi padre.
+Teacher: Remember, we just use 'de' plus the person's name. It means "of my father." Es de mi padre.
+Student: Es de mi padre.
+Teacher: Es de mi hermano.
+Student: Es de mi hermano.
+Teacher: Es de mi hermano.
+Student: Es de mi hermano.
+Teacher: ¿De quién es este bolso?
+Student: ¿De quién es este bolso?
+Teacher: That means, "Whose purse is this?"
+Student: ¿De quién es este bolso?
+Teacher: Es de mi hermana.
+Student: Es de mi hermana.
+Teacher: It's my sister's.
+Student: Es de mi hermana.
+Teacher: Es de mi hermana.
+Student: Es de mi hermana.
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: What is that?
+Student: ¿Qué es eso?
+Teacher: It's a chair.
+Student: Es una silla.
+Teacher: It's a camera.
+Student: Es una cámara.
+Teacher: It's a watch.
+Student: Es un reloj.
+Teacher: It's a clock.
+Student: Es un reloj de pared.
+Teacher: It's a chair.
+Student: Es una silla.
+Teacher: It's a camcorder.
+Student: Es una videocámara.
+Teacher: What are these?
+Student: ¿Qué son estos?
+Teacher: What are those?
+Student: ¿Qué son esos?
+Teacher: Where is my wallet?
+Student: ¿Dónde está mi cartera?
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: What are these?
+Student: ¿Qué son estos?
+Teacher: They are earrings. Son pendientes.
+Student: Son pendientes.
+Teacher: Son pendientes.
+Student: Son pendientes.
+Teacher: Since 'earrings' are a pair, we use the plural form 'son'. Son pendientes.
+Student: Son pendientes.
+Teacher: Son pantalones.
+Student: Son pantalones.
+Teacher: Where is my passport?
+Student: ¿Dónde está mi pasaporte?
+Teacher: Where is my ticket?
+Student: ¿Dónde está mi billete?
+Teacher: ¿Dónde está mi billete?
+Student: ¿Dónde está mi billete?
+Teacher: It's on the chair.
+Student: Está en la silla.
+Teacher: It's under the chair.
+Student: Está debajo de la silla.
+Teacher: It's behind the chair.
+Student: Está detrás de la silla.
+Teacher: It's next to the chair.
+Student: Está al lado de la silla.
+Teacher: It's in front of the chair.
+Student: Está delante de la silla.
+Teacher: Excuse me, sir.
+Student: Disculpe, señor.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: Where is the toilet?
+Student: ¿Dónde está el baño?
+Teacher: That's "Where is the toilet?" or "Where is the bathroom?"
+Student: ¿Dónde está el baño?
+Teacher: As far as I know...
+Student: Que yo sepa...
+Teacher: It's upstairs.
+Student: Está arriba.
+Teacher: It's downstairs.
+Student: Está abajo.
+Teacher: Está abajo.
+Student: Está abajo.
+Teacher: Where is your secretary?
+Student: ¿Dónde está tu secretaria?
+Teacher: ¿Dónde está tu secretaria?
+Student: ¿Dónde está tu secretaria?
+Teacher: Actually, as far as I know...
+Student: La verdad, que yo sepa...
+Teacher: She is on leave.
+Student: Está de permiso.
+Teacher: She is on a mission / on business.
+Student: Está en un viaje de trabajo.
+Teacher: Está en un viaje de trabajo.
+Student: Está en un viaje de trabajo.
+Teacher: When is your birthday?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: It's in January.
+Student: Es en enero.
+Teacher: Es en enero.
+Student: Es en enero.
+Teacher: Es en julio.
+Student: Es en julio.
+Teacher: What day is today?
+Student: ¿Qué día es hoy?
+Teacher: That asks, "What day is today?"
+Student: ¿Qué día es hoy?
+Teacher: It's Monday.
+Student: Es lunes.
+Teacher: It's Friday.
+Student: Es viernes.
+Teacher: It's Sunday.
+Student: Es domingo.
+Teacher: Es domingo.
+Student: Es domingo.
+Teacher: Who is he?
+Student: ¿Quién es él?
+Teacher: He is my father-in-law.
+Student: Es mi suegro.
+Teacher: He is my brother-in-law.
+Student: Es mi cuñado.
+Teacher: Who is she?
+Student: ¿Quién es ella?
+Teacher: She is my mother-in-law.
+Student: Es mi suegra.
+Teacher: She is my sister-in-law.
+Student: Es mi cuñada.
+Teacher: How old are you?
+Student: ¿Cuántos años tienes?
+Teacher: I am in my early twenties.
+Student: Tengo veintipocos años.
+Teacher: Tengo veintipocos años.
+Student: Tengo veintipocos años.
+Teacher: I am in my mid-twenties.
+Student: Tengo veinticinco años, más o menos.
+Teacher: I am in my late twenties.
+Student: Tengo casi treinta años.
+Teacher: Whose wallet is this?
+Student: ¿De quién es esta cartera?
+Teacher: It's mine.
+Student: Es mía.
+Teacher: It's yours.
+Student: Es tuya.
+Teacher: It's his.
+Student: Es suya.
+Teacher: It's hers.
+Student: Es suya.
+Teacher: It's its.
+Student: Es suya.
+Teacher: It's ours.
+Student: Es nuestra.
+Teacher: It's yours (plural).
+Student: Es vuestra.
+Teacher: It's theirs.
+Student: Es suya.
+Teacher: Well, thank you so much. That was excellent work! To finish, let's learn a common Spanish proverb. In English, you might say "easy come, easy go." In Spanish, we say: Lo que fácil viene, fácil se va.
+Student: Lo que fácil viene, fácil se va.
+Teacher: Lo que fácil viene, fácil se va.
+Student: Lo que fácil viene, fácil se va.
+Teacher: Thank you very much. ¡Muchas gracias

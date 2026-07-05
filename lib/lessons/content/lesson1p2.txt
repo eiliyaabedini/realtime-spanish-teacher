@@ -1,0 +1,371 @@
+Teacher: ¿Alguna novedad de tu secretaria? Any news from your secretary?
+Student: ¿Alguna novedad de tu secretaria?
+Teacher: ¿Alguna novedad de tu secretaria? Any news from your secretary?
+Student: ¿Alguna novedad de tu secretaria?
+Teacher: What about your boss? ¿Alguna novedad de tu jefe?
+Student: ¿Alguna novedad de tu jefe?
+Teacher: ¿Alguna novedad de tu jefe?
+Student: ¿Alguna novedad de tu jefe?
+Teacher: No news? Ninguna novedad. Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: Ninguna novedad. Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: I want to ask, what about your colleagues? We say 'colega' for colleague. Co-le-ga. ¿Alguna novedad de tus colegas?
+Student: ¿Alguna novedad de tus colegas?
+Teacher: What about your colleagues? ¿Alguna novedad de tus colegas? ¿Alguna novedad de tus colegas?
+Student: ¿Alguna novedad de tus colegas?
+Teacher: ¿Alguna novedad de tus colegas? ¿Alguna novedad de tus colegas?
+Student: ¿Alguna novedad de tus colegas?
+Teacher: No news? Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: ¿Alguna novedad de tus amigos? Any news from your friends?
+Student: ¿Alguna novedad de tus amigos?
+Teacher: What about your friends? ¿Alguna novedad de tus amigos?
+Student: ¿Alguna novedad de tus amigos?
+Teacher: No news? Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: What about your driver? We say: ¿Alguna novedad de tu conductor?
+Student: ¿Alguna novedad de tu conductor?
+Teacher: ¿Alguna novedad de tu conductor?
+Student: ¿Alguna novedad de tu conductor?
+Teacher: Ninguna novedad. No news.
+Student: Ninguna novedad.
+Teacher: Hola Mike. Hi Mike.
+Student: Hola Mike.
+Teacher: ¿Cómo estás? How are you?
+Student: ¿Cómo estás?
+Teacher: How are you? ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: Estoy bien, gracias. I am fine, thank you.
+Student: Estoy bien, gracias.
+Teacher: Estoy bien, gracias. I am fine, thank you.
+Student: Estoy bien, gracias.
+Teacher: ¿Cómo está tu esposa? How is your wife?
+Student: ¿Cómo está tu esposa?
+Teacher: How's your wife? ¿Cómo está tu esposa?
+Student: ¿Cómo está tu esposa?
+Teacher: How's your son? ¿Cómo está tu hijo?
+Student: ¿Cómo está tu hijo?
+Teacher: How's your daughter? ¿Cómo está tu hija?
+Student: ¿Cómo está tu hija?
+Teacher: How are your children? ¿Cómo están tus hijos? ¿Cómo están tus hijos?
+Student: ¿Cómo están tus hijos?
+Teacher: ¿Cómo está tu hermano? How is your brother?
+Student: ¿Cómo está tu hermano?
+Teacher: ¿Cómo está tu hermana? How is your sister?
+Student: ¿Cómo está tu hermana?
+Teacher: ¿Cómo están tus hermanos? How are your siblings?
+Student: ¿Cómo están tus hermanos?
+Teacher: Por cierto. By the way.
+Student: Por cierto.
+Teacher: ¿Alguna novedad de tu socio? What about your partner?
+Student: ¿Alguna novedad de tu socio?
+Teacher: ¿Alguna novedad de tu socio?
+Student: ¿Alguna novedad de tu socio?
+Teacher: En realidad. Actually.
+Student: En realidad.
+Teacher: En realidad. Actually.
+Student: En realidad.
+Teacher: En realidad. Actually.
+Student: En realidad.
+Teacher: Él está en casa. He is at home.
+Student: Él está en casa.
+Teacher: He's at home. Él está en casa.
+Student: Él está en casa.
+Teacher: En realidad, él está en casa. Actually, he is at home.
+Student: En realidad, él está en casa.
+Teacher: Actually, he's at home. En realidad, él está en casa.
+Student: En realidad, él está en casa.
+Teacher: En realidad, él está en el trabajo. Actually, he is at work.
+Student: En realidad, él está en el trabajo.
+Teacher: Actually, he's at work. En realidad, él está en el trabajo.
+Student: En realidad, él está en el trabajo.
+Teacher: Él está en el trabajo. He is at work.
+Student: Él está en el trabajo.
+Teacher: Él está en casa. He is at home.
+Student: Él está en casa.
+Teacher: He's at home. Él está en casa.
+Student: Él está en casa.
+Teacher: He's at work. Él está en el trabajo.
+Student: Él está en el trabajo.
+Teacher: I want to say he's in the hospital. We say: Él está en el hospital.
+Student: Él está en el hospital.
+Teacher: Él está en el hospital.
+Student: Él está en el hospital.
+Teacher: Él está en Sevilla. He is in Seville.
+Student: Él está en Sevilla.
+Teacher: He's in Seville. Él está en Sevilla.
+Student: Él está en Sevilla.
+Teacher: Él está en Madrid. He is in Madrid.
+Student: Él está en Madrid.
+Teacher: He's in Madrid. Él está en Madrid.
+Student: Él está en Madrid.
+Teacher: Él está en Londres. He is in London.
+Student: Él está en Londres.
+Teacher: Él está en París. He is in Paris.
+Student: Él está en París.
+Teacher: Él está en el norte. He is in the north.
+Student: Él está en el norte.
+Teacher: He's in the north. Él está en el norte.
+Student: Él está en el norte.
+Teacher: Él está en el norte. He is in the north.
+Student: Él está en el norte.
+Teacher: names of cities and most countries don't use 'el' or 'la'. For example, we don't say 'el Madrid' or 'la España'. But when we want to say 'the north', we say 'el norte'. This is because 'the north' isn't a specific city but generally refers to the northern region. We also have this for some countries. For example, the United States is 'Los Estados Unidos' in Spanish, because it refers to a collection of states. This also happens with a few other countries like 'El Reino Unido' for the United Kingdom, or 'Los Países Bajos' for the Netherlands. Okay, repeat after me, please. ¿Alguna novedad de María?
+Student: ¿Alguna novedad de María?
+Teacher: Any news from Mary? ¿Alguna novedad de María?
+Student: ¿Alguna novedad de María?
+Teacher: En realidad, ella está en Londres. Actually, she is in London.
+Student: En realidad, ella está en Londres.
+Teacher: Actually, she's in London. En realidad, ella está en Londres.
+Student: En realidad, ella está en Londres.
+Teacher: En realidad, ella está en Londres. Actually, she is in London.
+Student: En realidad, ella está en Londres.
+Teacher: By the way. Por cierto.
+Student: Por cierto.
+Teacher: Por cierto. By the way.
+Student: Por cierto.
+Teacher: What about your uncle? We say: ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: 'Tío' means uncle. ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: What about your maternal uncle? ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: What about your aunt's husband? ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: the word 'tío' in Spanish covers your father's brother (paternal uncle), mother's brother (maternal uncle), and also your aunt's husband. ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: What about your aunt? We say: ¿Alguna novedad de tu tía?
+Student: ¿Alguna novedad de tu tía?
+Teacher: ¿Alguna novedad de tu tía?
+Student: ¿Alguna novedad de tu tía?
+Teacher: What about your maternal aunt? ¿Alguna novedad de tu tía?
+Student: ¿Alguna novedad de tu tía?
+Teacher: What about your uncle's wife? ¿Alguna novedad de tu tía?
+Student: ¿Alguna novedad de tu tía?
+Teacher: 'Tía' means aunt, and it covers your father's sister, mother's sister, and also your uncle's wife. ¿Alguna novedad de tu tía?
+Student: ¿Alguna novedad de tu tía?
+Teacher: Ninguna novedad. No news.
+Student: Ninguna novedad.
+Teacher: No news. Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: ¿Cómo estás? How are you?
+Student: ¿Cómo estás?
+Teacher: How are you? ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: How is your uncle? ¿Cómo está tu tío?
+Student: ¿Cómo está tu tío?
+Teacher: How is your uncle? ¿Cómo está tu tío?
+Student: ¿Cómo está tu tío?
+Teacher: ¿Cómo está tu tío?
+Student: ¿Cómo está tu tío?
+Teacher: How is your aunt (your uncle's wife)? ¿Cómo está tu tía?
+Student: ¿Cómo está tu tía?
+Teacher: ¿Cómo está tu tía?
+Student: ¿Cómo está tu tía?
+Teacher: How is your aunt (maternal)? ¿Cómo está tu tía?
+Student: ¿Cómo está tu tía?
+Teacher: How is Jennifer? ¿Cómo está Jennifer?
+Student: ¿Cómo está Jennifer?
+Teacher: ¿Cómo está Jennifer?
+Student: ¿Cómo está Jennifer?
+Teacher: How are your siblings? ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: Any news from your secretary? ¿Alguna novedad de tu secretaria?
+Student: ¿Alguna novedad de tu secretaria?
+Teacher: ¿Alguna novedad de tu secretaria?
+Student: ¿Alguna novedad de tu secretaria?
+Teacher: Any news from your partner? ¿Alguna novedad de tu socio?
+Student: ¿Alguna novedad de tu socio?
+Teacher: No news. Ninguna novedad.
+Student: Ninguna novedad.
+Teacher: By the way. Por cierto.
+Student: Por cierto.
+Teacher: Any news from your uncle (aunt's husband)? ¿Alguna novedad de tu tío?
+Student: ¿Alguna novedad de tu tío?
+Teacher: Actually. En realidad.
+Student: En realidad.
+Teacher: En realidad. Actually.
+Student: En realidad.
+Teacher: He is in the north. Él está en el norte.
+Student: Él está en el norte.
+Teacher: Él está en el norte. He is in the north.
+Student: Él está en el norte.
+Teacher: He is at home. Él está en casa.
+Student: Él está en casa.
+Teacher: He is at work. Él está en el trabajo.
+Student: Él está en el trabajo.
+Teacher: How is your uncle (maternal)? ¿Cómo está tu tío?
+Student: ¿Cómo está tu tío?
+Teacher: ¿Cómo está tu tío?
+Student: ¿Cómo está tu tío?
+Teacher: Actually. En realidad.
+Student: En realidad.
+Teacher: He's not feeling well. No se siente bien. (Or, idiomatically: Está un poco pachucho. / Está regular.)
+Student: No se siente bien.
+Teacher: (Let's use a common idiom similar to "under the weather" for feeling slightly unwell: Está regular.)
+Teacher: Está regular. He is under the weather.
+Student: Está regular.
+Teacher: He is in the hospital. Él está en el hospital.
+Student: Él está en el hospital.
+Teacher: Él está en el hospital.
+Student: Él está en el hospital.
+Teacher: Él está en el hospital.
+Student: Él está en el hospital.
+Teacher: Is your father in the north? ¿Está tu padre en el norte?
+Student: ¿Está tu padre en el norte?
+Teacher: ¿Está tu padre en el norte?
+Student: ¿Está tu padre en el norte?
+Teacher: Are you at home? ¿Estás en casa?
+Student: ¿Estás en casa?
+Teacher: ¿Estás en casa?
+Student: ¿Estás en casa?
+Teacher: Say it again. ¿Estás en casa?
+Student: ¿Estás en casa?
+Teacher: Again, again. ¿Estás en casa?
+Student: ¿Estás en casa?
+Teacher: No, no lo estoy. No, I'm not.
+Student: No, no lo estoy.
+Teacher: No, no lo estoy. No, I'm not.
+Student: No, no lo estoy.
+Teacher: Estoy en el trabajo. I am at work.
+Student: Estoy en el trabajo.
+Teacher: Estoy en el trabajo. I am at work.
+Student: Estoy en el trabajo.
+Teacher: Is your mother at work? ¿Está tu madre en el trabajo?
+Student: ¿Está tu madre en el trabajo?
+Teacher: Is your mother at work? ¿Está tu madre en el trabajo?
+Student: ¿Está tu madre en el trabajo?
+Teacher: No, no lo está. No, she isn't.
+Student: No, no lo está.
+Teacher: No, no lo está. No, she isn't.
+Student: No, no lo está.
+Teacher: Okay so far in our discussion we've said: Hola a todos (Hello everybody), Hola chicos (Hi guys), ¿Qué tal? (How's it going?), Todo bien (Everything is fine), ¿Cómo estás? (How are you?), Estoy bien (I'm fine), Estoy regular (I'm under the weather), ¿Cómo está tu padre? (How is your father?), ¿Cómo está tu madre? (How is your mother?), ¿Cómo está tu hermano? (How is your brother?), ¿Cómo está tu hermana? (How is your sister?), ¿Cómo está tu esposo? (How is your husband?), ¿Cómo está tu esposa? (How is your wife?), ¿Cómo está tu prometido/prometida? (How is your fiancé/fiancée?), ¿Cómo están tus padres? (How are your parents?), ¿Cómo están tus abuelos? (How are your grandparents?), ¿Cómo están tus hermanos? (How are your siblings?), ¿Cómo están tus hijos? (How are your children?), Están bien (They are fine) and so on. Then we said ¿Alguna novedad de tu tío? (Any news from your uncle?), ¿Alguna novedad de tu tía? (Any news from your aunt?), ¿Alguna novedad de tu jefe? (Any news from your boss?), ¿Alguna novedad de tu socio? (Any news from your partner?), ¿Alguna novedad de tu secretaria? (Any news from your secretary?), ¿Alguna novedad de tu colega? (Any news from your colleague?), Ninguna novedad (No news), En realidad él está en el norte (Actually he is in the north), Él está en casa (He is at home), Ella está en el hospital (She is in the hospital) and so on. And now we want to part ways. We say 'dale saludos', meaning say hello for me. Dale saludos.
+Student: Dale saludos.
+Teacher: Say hello for me. Dale saludos.
+Student: Dale saludos.
+Teacher: Dale saludos.
+Student: Dale saludos.
+Teacher: Dale saludos.
+Student: Dale saludos.
+Teacher: Dale saludos a tu padre. Say hello to your father.
+Student: Dale saludos a tu padre.
+Teacher: Say hello to your father for me. Dale saludos a tu padre.
+Student: Dale saludos a tu padre.
+Teacher: Say hello to your mother for me. Dale saludos a tu madre.
+Student: Dale saludos a tu madre.
+Teacher: Say hello to your uncle for me. Dale saludos a tu tío.
+Student: Dale saludos a tu tío.
+Teacher: Dale saludos a tu tío.
+Student: Dale saludos a tu tío.
+Teacher: Dale saludos a tus compañeros de clase. Say hello to your classmates.
+Student: Dale saludos a tus compañeros de clase.
+Teacher: 'compañeros de clase' means classmates. Dale saludos a tus compañeros de clase.
+Student: Dale saludos a tus compañeros de clase.
+Teacher: Say hello to your classmates for me. Dale saludos a tus compañeros de clase.
+Student: Dale saludos a tus compañeros de clase.
+Teacher: Say hello to your fiancé/fiancée. Dale saludos a tu prometido/prometida.
+Student: Dale saludos a tu prometido.
+Teacher: Dale saludos a tu prometido/prometida.
+Student: Dale saludos a tu prometido.
+Teacher: Say hello to your siblings. Dale saludos a tus hermanos.
+Student: Dale saludos a tus hermanos.
+Teacher: Dale saludos a tus hermanos.
+Student: Dale saludos a tus hermanos.
+Teacher: let me tell you in this very first session what the master key to language learning is. Dear ones, the only master key to language learning is that when we learn a sentence, we get the feeling of that sentence, put ourselves in the situation of that sentence, and repeat it many times. If the sentence is a question, we adopt a questioning tone. If it's a statement, a declarative tone, and so on for all sentences. Okay, repeat after me, please. Dale saludos a tus padres.
+Student: Dale saludos a tus padres.
+Teacher: Say hello to your parents for me. Dale saludos a tus padres.
+Student: Dale saludos a tus padres.
+Teacher: Dale saludos a todos. Say hello to everybody.
+Student: Dale saludos a todos.
+Teacher: Say hello to everybody for me. Dale saludos a todos.
+Student: Dale saludos a todos.
+Teacher: At the beginning of the discussion we said 'Hola a todos' (Hello everybody), now we say 'Dale saludos a todos', meaning say hello to everybody for me. Dale saludos a todos.
+Student: Dale saludos a todos.
+Teacher: Vale. Okay.
+Student: Vale.
+Teacher: Alright. Vale.
+Student: Vale.
+Teacher: We want to say, okay, I will. We say: Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: this 'haré' is the future tense of 'hacer' (to do/make). H-A-R-É. Here it means, okay, I will do that. Okay, I will. Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Dale saludos a todos. Say hello to everybody.
+Student: Dale saludos a todos.
+Teacher: Okay, I will. Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Now we want to say goodbye. We say: Cuídate.
+Student: Cuídate.
+Teacher: Take care of yourself. Cuídate.
+Student: Cuídate.
+Teacher: Cuídate.
+Student: Cuídate.
+Teacher: Cuídate.
+Student: Cuídate.
+Teacher: Adiós. Bye.
+Student: Adiós.
+Teacher: Adiós. Goodbye.
+Student: Adiós.
+Teacher: Goodbye. Adiós.
+Student: Adiós.
+Teacher: Nos vemos. See you.
+Student: Nos vemos.
+Teacher: See you. Nos vemos.
+Student: Nos vemos.
+Teacher: Hasta luego. See you later.
+Student: Hasta luego.
+Teacher: See you later. Hasta luego.
+Student: Hasta luego.
+Teacher: Hasta luego.
+Student: Hasta luego.
+Teacher: Hasta luego.
+Student: Hasta luego.
+Teacher: And let's learn a very nice expression for saying goodbye. Usually, this expression is used when the reunion is expected to take some time. For example, if we've gone to the airport to see someone off, and we're not going to see them for a few months or years. We say: Hasta la vista. Has-ta la vis-ta.
+Student: Hasta la vista.
+Teacher: Hasta la vista.
+Student: Hasta la vista.
+Teacher: Hasta la vista.
+Student: Hasta la vista.
+Teacher: Hasta la vista.
+Student: Hasta la vista.
+Teacher: Okay dear ones, we've worked on informal greetings. Now we want to practice some more formal greetings. Repeat after me, please. Hola, señor.
+Student: Hola, señor.
+Teacher: Hello sir. Hola, señor.
+Student: Hola, señor.
+Teacher: Hola, señor.
+Student: Hola, señor.
+Teacher: Hola, señora.
+Student: Hola, señora.
+Teacher: Hola, señora.
+Student: Hola, señora.
+Teacher: 'señora' is used for 'madam' or a married/older woman. Hello ma'am/madam. Hola, señora.
+Student: Hola, señora.
+Teacher: Hola, señora.
+Student: Hola, señora.
+Teacher: Hello sir. Hola, señor.
+Student: Hola, señor.
+Teacher: Hello ma'am. Hola, señora.
+Student: Hola, señora.
+Teacher: Hola, señora.
+Student: Hola, señora.
+Teacher: ¿Cuál es su primer nombre? What is your first name? (Formal 'your')
+Student: ¿Cuál es su primer nombre?
+Teacher: What is your first name? ¿Cuál es su primer nombre?
+Student: ¿Cuál es su primer nombre?
+Teacher: ¿Cuál es su primer nombre?
+Student: ¿Cuál es su primer nombre?
+Teacher: Mi primer nombre es Joe. My first name is Joe.
+Student: Mi primer nombre es Joe.
+Teacher: My first name is Joe. Mi primer nombre es Joe.
+Student: Mi primer nombre es Joe.
+Teacher: Mi primer nombre es Kevin. My first name is Kevin.
+Student: Mi primer nombre es Kevin.

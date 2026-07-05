@@ -1,0 +1,370 @@
+Teacher: Welcome to our second session. Let's start with a quick review of our last session. Ready? Repeat after me. Hola.
+Student: Hola.
+Teacher: That's the most common way to say "hello." You can also say: ¡Buenas!
+Student: ¡Buenas!
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: This is a friendly way to ask "How's it going?" or "What's up?"
+Student: ¿Qué tal?
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: You can answer with: Todo bien.
+Student: Todo bien.
+Teacher: Meaning "Everything is fine."
+Student: Todo bien.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: How are you?
+Student: ¿Cómo estás?
+Teacher: How are you doing?
+Student: ¿Cómo estás?
+Teacher: ¿Cómo estás?
+Student: ¿Cómo estás? I'm fine, thank you.
+Teacher: Estoy bien, gracias.
+Student: Estoy bien, gracias.
+Teacher: Sometimes you might not feel well. You can say: No me siento bien.
+Student: No me siento bien.
+Teacher: I'm not feeling well.
+Student: No me siento bien.
+Teacher: No me siento bien.
+Student: No me siento bien.
+Teacher: ¿Cómo está tu padre?
+Student: ¿Cómo está tu padre?
+Teacher: How is your father?
+Student: ¿Cómo está tu padre?
+Teacher: ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: ¿Cómo están tus padres?
+Student: ¿Cómo están tus padres?
+Teacher: How are your parents?
+Student: ¿Cómo están tus padres?
+Teacher: They are fine, thank you.
+Student: Están bien, gracias.
+Student: Están bien, gracias.
+Teacher: They're well, thanks.
+Student: Están bien, gracias.
+Teacher: ¿Cómo está tu madre?
+Student: ¿Cómo está tu madre?
+Teacher: She is fine, thank you.
+Student: Ella está bien, gracias.
+Teacher: By the way.
+Student: Por cierto.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Any news from your uncle?
+Student: ¿Alguna noticia de tu tío?
+Teacher: Is there any news from your uncle?
+Student: ¿Alguna noticia de tu tío?
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: Any news from your aunt?
+Student: ¿Alguna noticia de tu tía?
+Teacher: ¿Alguna noticia de tu tía?
+Student: ¿Alguna noticia de tu tía?
+Teacher: Any news from your fiancé?
+Student: ¿Alguna noticia de tu prometido?
+Teacher: ¿Alguna noticia de tu prometido?
+Student: ¿Alguna noticia de tu prometido?
+Teacher: Actually.
+Student: En realidad.
+Teacher: In reality, or actually.
+Student: En realidad.
+Teacher: En realidad.
+Student: En realidad.
+Teacher: She is at home.
+Student: Ella está en casa.
+Teacher: She is at work.
+Student: Ella está en el trabajo.
+Teacher: She is in the north.
+Student: Ella está en el norte.
+Teacher: By the way.
+Student: Por cierto.
+Teacher: Any news from your boss?
+Student: ¿Alguna noticia de tu jefe?
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: Say hello to everybody.
+Student: Saludos a todos.
+Teacher: Saludos a todos.
+Student: Saludos a todos.
+Teacher: Say hello to your colleague.
+Student: Saluda a tu colega.
+Teacher: Give my greetings to your colleague.
+Student: Saluda a tu colega.
+Teacher: Saluda a tu colega.
+Student: Saluda a tu colega.
+Teacher: Say hello to your teacher.
+Student: Saluda a tu profesor.
+Teacher: Say hello to your secretary.
+Student: Saluda a tu secretaria.
+Teacher: Saluda a tu secretaria.
+Student: Saluda a tu secretaria.
+Teacher: Okay, I will.
+Student: Claro, lo haré.
+Teacher: Claro, lo haré.
+Student: Claro, lo haré.
+Teacher: Take care.
+Student: Cuídate.
+Teacher: Take care of yourself.
+Student: Cuídate.
+Teacher: See you.
+Student: Nos vemos.
+Teacher: See you later.
+Student: Hasta luego.
+Teacher: Hasta luego.
+Student: Hasta luego.
+Teacher: Goodbye.
+Student: Adiós.
+Teacher: Adiós.
+Student: Adiós.
+Teacher: So long.
+Student: Hasta pronto.
+Teacher: Hasta pronto.
+Student: Hasta pronto.
+Teacher: Hello sir.
+Student: Hola, señor.
+Teacher: Hola, señor.
+Student: Hola, señor.
+Teacher: Hello ma'am.
+Student: Hola, señora.
+Teacher: Hola, señora.
+Student: Hola, señora.
+Teacher: What is your first name?
+Student: ¿Cuál es tu nombre?
+Teacher: ¿Cuál es tu nombre?
+Student: ¿Cuál es tu nombre?
+Teacher: What is your last name?
+Student: ¿Cuál es tu apellido?
+Teacher: What is your phone number?
+Student: ¿Cuál es tu número de teléfono?
+Teacher: ¿Cuál es tu número de teléfono?
+Student: ¿Cuál es tu número de teléfono?
+Teacher: What is your email address?
+Student: ¿Cuál es tu correo electrónico?
+Teacher: ¿Cuál es tu correo electrónico?
+Student: ¿Cuál es tu correo electrónico?
+Teacher: Where are you from?
+Student: ¿De dónde eres?
+Teacher: Where are you from?
+Student: ¿De dónde eres?
+Teacher: Where are you originally from?
+Student: ¿De dónde eres originario?
+Teacher: ¿De dónde eres originario?
+Student: ¿De dónde eres originario?
+Teacher: Where are you originally from?
+Student: ¿De dónde eres originario?
+Teacher: I am originally from the United States.
+Student: Soy originario de los Estados Unidos.
+Teacher: I am originally from Canada.
+Student: Soy originario de Canadá.
+Teacher: Where is he from?
+Student: ¿De dónde es él?
+Teacher: ¿De dónde es él?
+Student: ¿De dónde es él?
+Teacher: He is from Mexico.
+Student: Él es de México.
+Teacher: He is from Germany.
+Student: Él es de Alemania.
+Teacher: He is from Spain.
+Student: Él es de España.
+Teacher: He is Spanish.
+Student: Él es español.
+Teacher: He is German.
+Student: Él es alemán.
+Teacher: He is English.
+Student: Él es inglés.
+Teacher: He is from England.
+Student: Él es de Inglaterra.
+Teacher: Are you married?
+Student: ¿Estás casado?
+Teacher: No, I'm not.
+Student: No, no lo estoy.
+Teacher: I am single.
+Student: Estoy soltero.
+Teacher: I am engaged.
+Student: Estoy comprometido.
+Teacher: I am married.
+Student: Estoy casado.
+Teacher: I am divorced.
+Student: Estoy divorciado.
+Teacher: I am widowed.
+Student: Soy viudo.
+Teacher: Nice to meet you.
+Student: Mucho gusto.
+Teacher: Mucho gusto.
+Student: Mucho gusto.
+Teacher: Nice to meet you too.
+Student: Igualmente.
+
+Teacher: Excellent, that was a great review! Now, let's move on to the new material for this session. In Spanish, if you want to ask "What is this?" you say: ¿Qué es esto?
+Student: ¿Qué es esto?
+Teacher: ¿Qué es esto?
+Student: ¿Qué es esto?
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: And to ask "What is that?", for something further away, you say:
+Student: ¿Qué es eso?
+Teacher: ¿Qué es eso?
+Student: ¿Qué es eso?
+Teacher: So, for something close:
+Student: ¿Qué es esto?
+Teacher: And for something far:
+Student: ¿Qué es eso?
+Teacher: Great! Now for the answers. If I ask "¿Qué es esto?" and point to a cellphone, you would say "Es un celular." Notice we use "un" which means "a". Please repeat: Es un celular.
+Student: Es un celular.
+Teacher: Es un celular.
+Student: Es un celular.
+Teacher: It's a laptop.
+Student: Es una laptop.
+Teacher: Es una laptop.
+Student: Es una laptop.
+Teacher: It's a key.
+Student: Es una llave.
+Teacher: Es una llave.
+Student: Es una llave.
+Teacher: Did you notice something there? We said "un celular" but "una laptop" and "una llave". In Spanish, all nouns have a gender, masculine or feminine. We use **un** for masculine nouns and **una** for feminine ones. It's something you'll learn with each new word. Let's practice more.
+Teacher: It's a desk.
+Student: Es un escritorio.
+Teacher: Es un escritorio.
+Student: Es un escritorio.
+Teacher: It's a bag.
+Student: Es una bolsa.
+Teacher: It's a bag.
+Student: Es una bolsa.
+Teacher: It's a map.
+Student: Es un mapa.
+Teacher: It's a map.
+Student: Es un mapa.
+Teacher: ¿Qué es esto?
+Student: ¿Qué es esto?
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: It's a ticket.
+Student: Es un boleto.
+Teacher: Es un boleto.
+Student: Es un boleto.
+Teacher: It's a book.
+Student: Es un libro.
+Teacher: It's a notebook.
+Student: Es un cuaderno.
+Teacher: It's a pen.
+Student: Es un bolígrafo.
+Teacher: It's a pencil.
+Student: Es un lápiz.
+Teacher: Es un lápiz.
+Student: Es un lápiz.
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: What is that?
+Student: ¿Qué es eso?
+Teacher: It's a chair. Pay close attention to the pronunciation: "si-lla". Es una silla.
+Student: Es una silla.
+Teacher: It's a chair.
+Student: Es una silla.
+Teacher: Es una silla.
+Student: Es una silla.
+Teacher: It's a wall clock. The word is "reloj". Es un reloj.
+Student: Es un reloj.
+Teacher: Es un reloj.
+Student: Es un reloj.
+Teacher: Now, to ask a question like "Is it a clock?" you say: ¿Es un reloj?
+Student: ¿Es un reloj?
+Teacher: ¿Es un reloj?
+Student: ¿Es un reloj?
+Teacher: Yes, it is.
+Student: Sí, lo es.
+Teacher: Sí, lo es.
+Student: Sí, lo es.
+Teacher: Now, a wristwatch is also a "reloj", but you can specify: Es un reloj de pulsera.
+Student: Es un reloj de pulsera.
+Teacher: Es un reloj de pulsera.
+Student: Es un reloj de pulsera.
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: It's a camera. Es una cámara.
+Student: Es una cámara.
+Teacher: Es una cámara.
+Student: Es una cámara.
+Teacher: What is that?
+Student: ¿Qué es eso?
+Teacher: It's a chair.
+Student: Es una silla.
+Teacher: It's a camcorder. Es una videocámara.
+Student: Es una videocámara.
+Teacher: Es una videocámara.
+Student: Es una videocámara.
+Teacher: So, for photos:
+Student: Es una cámara.
+Teacher: And for video:
+Student: Es una videocámara.
+
+Teacher: Great job! Now let's talk about plurals. To ask "What are these?" for multiple items close by, you say: ¿Qué son estos?
+Student: ¿Qué son estos?
+Teacher: What are these?
+Student: ¿Qué son estos?
+Teacher: And for items far away, "What are those?":
+Student: ¿Qué son esos?
+Teacher: ¿Qué son esos?
+Student: ¿Qué son esos?
+Teacher: The answer starts with "Son," which means "They are." For example: Son sillas.
+Student: Son sillas.
+Teacher: They are chairs.
+Student: Son sillas.
+Teacher: They are shoes.
+Student: Son zapatos.
+Teacher: Notice that since you have two shoes, we use the plural form, just like in English. Son zapatos.
+Student: Son zapatos.
+Teacher: It's the same for socks. Son calcetines. Let's say it together. Son calcetines.
+Student: Son calcetines.
+Teacher: Son calcetines.
+Student: Son calcetines.
+Teacher: What are these?
+Student: ¿Qué son estos?
+Teacher: They are socks.
+Student: Son calcetines.
+Teacher: They are shoes.
+Student: Son zapatos.
+Teacher: They are glasses. Interestingly, just like in English, "glasses" is plural in Spanish because of the two lenses. We say: Son gafas.
+Student: Son gafas.
+Teacher: They are glasses.
+Student: Son gafas.
+Teacher: Son gafas.
+Student: Son gafas.
+Teacher: Pants are also plural. Son pantalones.
+Student: Son pantalones.
+Teacher: Son pantalones.
+Student: Son pantalones.
+Teacher: What are these?
+Student: ¿Qué son estos?
+Teacher: What are those?
+Student: ¿Qué son esos?
+Teacher: They are chairs.
+Student: Son sillas.
+Teacher: They are books.
+Student: Son libros.
+Teacher: Son libros.
+Student: Son libros.
+Teacher: Now for our last phrase today. To ask where something is, you say "¿Dónde está...?" which means "Where is...?" For example: Where is my wallet?
+Student: ¿Dónde está mi cartera?
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: Where is my passport?
+Student: ¿Dónde está mi pasaporte?
+Teacher: ¿Dónde está mi pasaporte?
+Student: ¿Dónde está mi pasaporte?
+Teacher: Where is my ticket?
+Student: ¿Dónde está mi boleto?
+Teacher: ¿Dónde está mi boleto?
+Student: ¿Dónde está mi boleto?
+Teacher: Where is my camera?
+Student: ¿Dónde está mi cámara?
+Teacher: ¿Dónde está mi cámara?
+Student: ¿Dónde está mi cámara?
+Teacher: To answer, you could say "It's on the chair."
+Student: Está en la silla.
+Teacher: Está en la silla.
+Student: Está en la silla.

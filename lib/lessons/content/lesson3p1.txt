@@ -1,0 +1,479 @@
+Teacher: Welcome to our third lesson! Let's get started. Hello.
+Student: Hello.
+Teacher: Hola.
+Student: Hola.
+Teacher: How are you?
+Student: How are you?
+Teacher: ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: How's it going?
+Student: How's it going?
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Everything is fine.
+Student: Everything is fine.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: By the way.
+Student: By the way.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Any news from your fiancé?
+Student: Any news from your fiancé?
+Teacher: ¿Alguna noticia de tu prometido?
+Student: ¿Alguna noticia de tu prometido?
+Teacher: No news.
+Student: No news.
+Teacher: Ninguna noticia.
+Student: Ninguna noticia.
+Teacher: How are you?
+Student: How are you?
+Teacher: ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: I'm not feeling well.
+Student: I'm not feeling well.
+Teacher: No me siento bien.
+Student: No me siento bien.
+Teacher: By the way.
+Student: By the way.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Are you married?
+Student: Are you married?
+Teacher: ¿Estás casado?
+Student: ¿Estás casado?
+Teacher: No, I'm not.
+Student: No, I'm not.
+Teacher: No, no lo estoy.
+Student: No, no lo estoy.
+Teacher: Is your brother single?
+Student: Is your brother single?
+Teacher: ¿Tu hermano es soltero?
+Student: ¿Tu hermano es soltero?
+Teacher: No, he isn't.
+Student: No, he isn't.
+Teacher: No, no lo es.
+Student: No, no lo es.
+Teacher: He's engaged.
+Student: He's engaged.
+Teacher: Está comprometido.
+Student: Está comprometido.
+Teacher: Where is your daughter?
+Student: Where is your daughter?
+Teacher: ¿Dónde está tu hija?
+Student: ¿Dónde está tu hija?
+Teacher: Actually.
+Student: Actually.
+Teacher: En realidad.
+Student: En realidad.
+Teacher: She is at home.
+Student: She is at home.
+Teacher: Ella está en casa.
+Student: Ella está en casa.
+Teacher: Where is your secretary?
+Student: Where is your secretary?
+Teacher: ¿Dónde está tu secretaria?
+Student: ¿Dónde está tu secretaria?
+Teacher: Actually.
+Student: Actually.
+Teacher: En realidad.
+Student: En realidad.
+Teacher: She's on leave.
+Student: She's on leave.
+Teacher: Está de permiso.
+Student: Está de permiso.
+Teacher: She's on a business trip.
+Student: She's on a business trip.
+Teacher: Está en un viaje de negocios.
+Student: Está en un viaje de negocios.
+Teacher: Is she on a business trip?
+Student: Is she on a business trip?
+Teacher: ¿Está en un viaje de negocios?
+Student: ¿Está en un viaje de negocios?
+Teacher: Yes, she is.
+Student: Yes, she is.
+Teacher: Sí, lo está.
+Student: Sí, lo está.
+Teacher: No, she isn't.
+Student: No, she isn't.
+Teacher: No, no lo está.
+Student: No, no lo está.
+Teacher: Where are your parents?
+Student: Where are your parents?
+Teacher: ¿Dónde están tus padres?
+Student: ¿Dónde están tus padres?
+Teacher: They are on vacation.
+Student: They are on vacation.
+Teacher: Están de vacaciones.
+Student: Están de vacaciones.
+Teacher: By the way.
+Student: By the way.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Any news from your partner?
+Student: Any news from your partner?
+Teacher: ¿Alguna noticia de tu socio?
+Student: ¿Alguna noticia de tu socio?
+Teacher: No news.
+Student: No news.
+Teacher: Ninguna noticia.
+Student: Ninguna noticia.
+Teacher: Say hello to your mother.
+Student: Say hello to your mother.
+Teacher: Saluda a tu madre.
+Student: Saluda a tu madre.
+Teacher: Okay, I will.
+Student: Okay, I will.
+Teacher: Vale, lo haré.
+Student: Vale, lo haré.
+Teacher: Where are you from?
+Student: Where are you from?
+Teacher: ¿De dónde eres?
+Student: ¿De dónde eres?
+Teacher: Are you from France?
+Student: Are you from France?
+Teacher: ¿Eres de Francia?
+Student: ¿Eres de Francia?
+Teacher: No, I'm not.
+Student: No, I'm not.
+Teacher: No, no lo soy.
+Student: No, no lo soy.
+Teacher: I'm from Spain.
+Student: I'm from Spain.
+Teacher: Soy de España.
+Student: Soy de España.
+Teacher: I am Spanish.
+Student: I am Spanish.
+Teacher: Soy español.
+Student: Soy español.
+Teacher: Where is your grandfather from?
+Student: Where is your grandfather from?
+Teacher: ¿De dónde es tu abuelo?
+Student: ¿De dónde es tu abuelo?
+Teacher: He is from Madrid.
+Student: He is from Madrid.
+Teacher: Es de Madrid.
+Student: Es de Madrid.
+Teacher: Where is your husband?
+Student: Where is your husband?
+Teacher: ¿Dónde está tu esposo?
+Student: ¿Dónde está tu esposo?
+Teacher: He's at home.
+Student: He's at home.
+Teacher: Está en casa.
+Student: Está en casa.
+Teacher: Is he at home?
+Student: Is he at home?
+Teacher: ¿Está en casa?
+Student: ¿Está en casa?
+Teacher: Is he at work?
+Student: Is he at work?
+Teacher: ¿Está en el trabajo?
+Student: ¿Está en el trabajo?
+Teacher: Is he here?
+Student: Is he here?
+Teacher: ¿Está aquí?
+Student: ¿Está aquí?
+Teacher: No, he isn't.
+Student: No, he isn't.
+Teacher: No, no está.
+Student: No, no está.
+Teacher: By the way.
+Student: By the way.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Where is your secretary?
+Student: Where is your secretary?
+Teacher: ¿Dónde está tu secretaria?
+Student: ¿Dónde está tu secretaria?
+Teacher: Actually, as far as I know.
+Student: Actually, as far as I know.
+Teacher: En realidad, que yo sepa.
+Student: En realidad, que yo sepa.
+Teacher: She is on a business trip.
+Student: She is on a business trip.
+Teacher: Ella está en un viaje de negocios.
+Student: Ella está en un viaje de negocios.
+Teacher: She's at work.
+Student: She's at work.
+Teacher: Está en el trabajo.
+Student: Está en el trabajo.
+Teacher: Where are your colleagues?
+Student: Where are your colleagues?
+Teacher: ¿Dónde están tus colegas?
+Student: ¿Dónde están tus colegas?
+Teacher: Hi Jennifer.
+Student: Hi Jennifer.
+Teacher: Hola Jennifer.
+Student: Hola Jennifer.
+Teacher: How's it going?
+Student: How's it going?
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: Everything is fine.
+Student: Everything is fine.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: When is your birthday?
+Student: When is your birthday?
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: It's in March.
+Student: It's in March.
+Teacher: Es en marzo.
+Student: Es en marzo.
+Teacher: It's in July.
+Student: It's in July.
+Teacher: Es en julio.
+Student: Es en julio.
+Teacher: It's in October.
+Student: It's in October.
+Teacher: Es en octubre.
+Student: Es en octubre.
+Teacher: When is the meeting?
+Student: When is the meeting?
+Teacher: ¿Cuándo es la reunión?
+Student: ¿Cuándo es la reunión?
+Teacher: Actually, as far as I know, it's tomorrow.
+Student: Actually, as far as I know, it's tomorrow.
+Teacher: En realidad, que yo sepa, es mañana.
+Student: En realidad, que yo sepa, es mañana.
+Teacher: What is this?
+Student: What is this?
+Teacher: ¿Qué es esto?
+Student: ¿Qué es esto?
+Teacher: What is that?
+Student: What is that?
+Teacher: ¿Qué es eso?
+Student: ¿Qué es eso?
+Teacher: What are these?
+Student: What are these?
+Teacher: ¿Qué son estos?
+Student: ¿Qué son estos?
+Teacher: What are those?
+Student: What are those?
+Teacher: ¿Qué son esos?
+Student: ¿Qué son esos?
+Teacher: They are chairs.
+Student: They are chairs.
+Teacher: Son sillas.
+Student: Son sillas.
+Teacher: What is this?
+Student: What is this?
+Teacher: ¿Qué es esto?
+Student: ¿Qué es esto?
+Teacher: It's a camera.
+Student: It's a camera.
+Teacher: Es una cámara.
+Student: Es una cámara.
+Teacher: It's a map.
+Student: It's a map.
+Teacher: Es un mapa.
+Student: Es un mapa.
+Teacher: It's a watch.
+Student: It's a watch.
+Teacher: Es un reloj.
+Student: Es un reloj.
+Teacher: It's a clock.
+Student: It's a clock.
+Teacher: Es un reloj de pared.
+Student: Es un reloj de pared.
+Teacher: Where is my wallet?
+Student: Where is my wallet?
+Teacher: ¿Dónde está mi cartera?
+Student: ¿Dónde está mi cartera?
+Teacher: Where is my passport?
+Student: Where is my passport?
+Teacher: ¿Dónde está mi pasaporte?
+Student: ¿Dónde está mi pasaporte?
+Teacher: Where are my pants?
+Student: Where are my pants?
+Teacher: ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: Great! Remember, "pantalones" is plural in Spanish, so we use "están" instead of "está". One more time. ¿Dónde están mis pantalones?
+Student: ¿Dónde están mis pantalones?
+Teacher: They are on the chair.
+Student: They are on the chair.
+Teacher: Están en la silla.
+Student: Están en la silla.
+Teacher: Where are my glasses?
+Student: Where are my glasses?
+Teacher: ¿Dónde están mis gafas?
+Student: ¿Dónde están mis gafas?
+Teacher: They are under the chair.
+Student: They are under the chair.
+Teacher: Están debajo de la silla.
+Student: Están debajo de la silla.
+Teacher: They are next to the chair.
+Student: They are next to the chair.
+Teacher: Están al lado de la silla.
+Student: Están al lado de la silla.
+Teacher: Excuse me, sir.
+Student: Excuse me, sir.
+Teacher: Disculpe, señor.
+Student: Disculpe, señor.
+Teacher: Excuse me, ma'am.
+Student: Excuse me, ma'am.
+Teacher: Disculpe, señora.
+Student: Disculpe, señora.
+Teacher: Where is my class?
+Student: Where is my class?
+Teacher: ¿Dónde está mi clase?
+Student: ¿Dónde está mi clase?
+Teacher: Actually, as far as I know, it's upstairs.
+Student: Actually, as far as I know, it's upstairs.
+Teacher: En realidad, que yo sepa, está arriba.
+Student: En realidad, que yo sepa, está arriba.
+Teacher: It is downstairs.
+Student: It is downstairs.
+Teacher: Está abajo.
+Student: Está abajo.
+Teacher: It is in the yard.
+Student: It is in the yard.
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: It's in the basement.
+Student: It's in the basement.
+Teacher: Está en el sótano.
+Student: Está en el sótano.
+Teacher: Who is he?
+Student: Who is he?
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: Who is she?
+Student: Who is she?
+Teacher: ¿Quién es ella?
+Student: ¿Quién es ella?
+Teacher: She is my mother-in-law.
+Student: She is my mother-in-law.
+Teacher: Ella es mi suegra.
+Student: Ella es mi suegra.
+Teacher: By the way.
+Student: By the way.
+Teacher: Por cierto.
+Student: Por cierto.
+Teacher: Any news from your sister-in-law?
+Student: Any news from your sister-in-law?
+Teacher: ¿Alguna noticia de tu cuñada?
+Student: ¿Alguna noticia de tu cuñada?
+Teacher: No news.
+Student: No news.
+Teacher: Ninguna noticia.
+Student: Ninguna noticia.
+Teacher: Who are they?
+Student: Who are they?
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: They are my cousins.
+Student: They are my cousins.
+Teacher: Son mis primos.
+Student: Son mis primos.
+Teacher: How old are you?
+Student: How old are you?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: None of your business.
+Student: None of your business.
+Teacher: No es asunto tuyo.
+Student: No es asunto tuyo.
+Teacher: How old is your husband?
+Student: How old is your husband?
+Teacher: ¿Cuántos años tiene tu esposo?
+Student: ¿Cuántos años tiene tu esposo?
+Teacher: He is in his 20s.
+Student: He is in his 20s.
+Teacher: Tiene veintitantos años.
+Student: Tiene veintitantos años.
+Teacher: How old am I?
+Student: How old am I?
+Teacher: ¿Cuántos años tengo?
+Student: ¿Cuántos años tengo?
+Teacher: Who am I?
+Student: Who am I?
+Teacher: ¿Quién soy?
+Student: ¿Quién soy?
+Teacher: Who is he?
+Student: Who is he?
+Teacher: ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: Who are they?
+Student: Who are they?
+Teacher: ¿Quiénes son ellos?
+Student: ¿Quiénes son ellos?
+Teacher: They are my neighbors.
+Student: They are my neighbors.
+Teacher: Son mis vecinos.
+Student: Son mis vecinos.
+Teacher: Whose car is this?
+Student: Whose car is this?
+Teacher: ¿De quién es este coche?
+Student: ¿De quién es este coche?
+Teacher: It's mine.
+Student: It's mine.
+Teacher: Es mío.
+Student: Es mío.
+Teacher: It's yours.
+Student: It's yours.
+Teacher: Es tuyo.
+Student: Es tuyo.
+Teacher: Is it yours?
+Student: Is it yours?
+Teacher: ¿Es tuyo?
+Student: ¿Es tuyo?
+Teacher: Is it his?
+Student: Is it his?
+Teacher: ¿Es suyo?
+Student: ¿Es suyo?
+Teacher: No, it isn't.
+Student: No, it isn't.
+Teacher: No, no lo es.
+Student: No, no lo es.
+Teacher: It is hers.
+Student: It is hers.
+Teacher: Es de ella.
+Student: Es de ella.
+Teacher: Are these shoes yours?
+Student: Are these shoes yours?
+Teacher: ¿Son tuyos estos zapatos?
+Student: ¿Son tuyos estos zapatos?
+Teacher: No, they aren't.
+Student: No, they aren't.
+Teacher: No, no lo son.
+Student: No, no lo son.
+Teacher: They are my father's.
+Student: They are my father's.
+Teacher: Son de mi padre.
+Student: Son de mi padre.
+Teacher: How old are you?
+Student: How old are you?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: I am in my early 20s.
+Student: I am in my early 20s.
+Teacher: Tengo veinte y pocos años.
+Student: Tengo veinte y pocos años.
+Teacher: I am in my mid 20s.
+Student: I am in my mid 20s.
+Teacher: Tengo unos veinticinco años.
+Student: Tengo unos veinticinco años.
+Teacher: I am in my late 20s.
+Student: I am in my late 20s.
+Teacher: Tengo casi treinta años.
+Student: Tengo casi treinta años.
+Teacher: Say hello to everybody.
+Student: Say hello to everybody.
+Teacher: Saluda a todos.
+Student: Saluda a todos.
+Teacher: Okay, I will.
+Student: Okay, I will.
+Teacher: Vale.
+Student: Vale.
+Teacher: Nice to meet you.
+Student: Nice to meet you.
+Teacher: Mucho gusto.
+Student: Mucho gusto.
+Teacher: Nice to meet you too.
+Student: Nice to meet you too.
+Teacher: Igualmente.
+Student: Igualmente.
+Teacher: Excellent work today! You did a fantastic job. See you in the next lesson

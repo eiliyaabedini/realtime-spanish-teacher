@@ -1,0 +1,311 @@
+Teacher: Let's start with a simple question. Repeat after me: ¿Hay un teléfono en tu dormitorio?
+Student: ¿Hay un teléfono en tu dormitorio?
+Teacher: That means, "Is there a telephone in your bedroom?". Let's practice that one more time. ¿Hay un teléfono en tu dormitorio?
+Student: ¿Hay un teléfono en tu dormitorio?
+Teacher: Great! Now for the answer. If the answer is yes, you say: Sí, hay.
+Student: Sí, hay.
+Teacher: And if the answer is no: No, no hay.
+Student: No, no hay.
+Teacher: Let's practice the negative again. No, no hay.
+Student: No, no hay.
+Teacher: Now, how would you ask if there is a stove in the kitchen?
+Student: ¿Hay una estufa en la cocina?
+Teacher: What about a washing machine in the kitchen?
+Student: ¿Hay una lavadora en la cocina?
+Teacher: And a dishwasher in the kitchen?
+Student: ¿Hay un lavaplatos en la cocina?
+Teacher: Excellent. Let's repeat that one. ¿Hay un lavaplatos en la cocina?
+Student: ¿Hay un lavaplatos en la cocina?
+Teacher: Now, how would you ask if there's a fridge in the kitchen?
+Student: ¿Hay un refrigerador en la cocina?
+Teacher: Let's say that again.
+Student: ¿Hay un refrigerador en la cocina?
+Teacher: By the way.
+Student: By the way.
+Teacher: In Spanish, you can say "Por cierto". Now, let's ask this: Is there a computer in your classroom? ¿Hay una computadora en tu clase?
+Student: ¿Hay una computadora en tu clase?
+Teacher: One more time. ¿Hay una computadora en tu clase?
+Student: ¿Hay una computadora en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Now for a trash can. In a classroom or office, a common word for this is 'papelera'. Let's ask the question: ¿Hay una papelera en tu clase?
+Student: ¿Hay una papelera en tu clase?
+Teacher: Again, please. ¿Hay una papelera en tu clase?
+Student: ¿Hay una papelera en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: How would you ask if there is a board in your classroom? The word for board is 'pizarra'. ¿Hay una pizarra en tu clase?
+Student: ¿Hay una pizarra en tu clase?
+Teacher: A blackboard is a 'pizarra negra' and a whiteboard is a 'pizarra blanca'. Let's ask again: ¿Hay una pizarra en tu clase?
+Student: ¿Hay una pizarra en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: What about a notice board? In Spanish, that's a 'tablón de anuncios'. Let's try it: ¿Hay un tablón de anuncios en tu clase?
+Student: ¿Hay un tablón de anuncios en tu clase?
+Teacher: Again, please. ¿Hay un tablón de anuncios en tu clase?
+Student: ¿Hay un tablón de anuncios en tu clase?
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Is there a CD player in your classroom?
+Student: ¿Hay un reproductor de CD en tu clase?
+Teacher: One more time. ¿Hay un reproductor de CD en tu clase?
+Student: ¿Hay un reproductor de CD en tu clase?
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Okay, so far we've asked about single items. What if we want to ask about plural items, like "Are there any armchairs?" or "Are there any pictures?" In Spanish, it's easy! The question starts the same way with "Hay". Let's try asking if there is a sofa in the living room. Sofa is 'sofá'. ¿Hay un sofá en la sala?
+Student: ¿Hay un sofá en la sala?
+Teacher: Again, please. ¿Hay un sofá en la sala?
+Student: ¿Hay un sofá en la sala?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Now, remember I mentioned asking about plural things, like "Are there any plates on the table?" or "Are there any spoons?". Let's try asking about a vase. A vase is 'florero'. Since there's usually just one, we ask: ¿Hay un florero en la mesa?
+Student: ¿Hay un florero en la mesa?
+Teacher: Is there a vase on the dining table?
+Student: ¿Hay un florero en la mesa?
+Teacher: Let's repeat that one more time.
+Student: ¿Hay un florero en la mesa?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Let's practice that again. No, there isn't.
+Student: No, no hay.
+Teacher: One last time. No, there isn't.
+Student: No, no hay.
+Teacher: Is there a sofa in the living room?
+Student: ¿Hay un sofá en la sala?
+Teacher: Let's repeat that. ¿Hay un sofá en la sala?
+Student: ¿Hay un sofá en la sala?
+Teacher: Let's see... Is there a balcony in this house? ¿Hay un balcón en la casa?
+Student: ¿Hay un balcón en la casa?
+Teacher: Again, please. ¿Hay un balcón en la casa?
+Student: ¿Hay un balcón en la casa?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Excuse me.
+Student: Disculpe.
+Teacher: Let's ask someone if they have a lighter. The word for lighter is 'encendedor'. You can ask: ¿Tienes un encendedor?
+Student: ¿Tienes un encendedor?
+Teacher: 'Tienes' means 'you have'. Let's practice. ¿Tienes un encendedor?
+Student: ¿Tienes un encendedor?
+Teacher: Again. ¿Tienes un encendedor?
+Student: ¿Tienes un encendedor?
+Teacher: I'm sorry.
+Student: Lo siento.
+Teacher: One more time. I'm sorry.
+Student: Lo siento.
+Teacher: There isn't.
+Student: No, no hay.
+Teacher: I don't have a lighter with me.
+Student: No tengo un encendedor.
+Teacher: Let's practice that sentence. No tengo un encendedor.
+Student: No tengo un encendedor.
+Teacher: I don't have a lighter with me.
+Student: No tengo un encendedor.
+Teacher: One last time.
+Student: No tengo un encendedor.
+Teacher: Now, let's see. Are there any chairs in your classroom? Remember, we still use 'Hay' for plurals. ¿Hay sillas en tu clase?
+Student: ¿Hay sillas en tu clase?
+Teacher: But when I ask about a desk, which is usually singular, I go back to 'un'. The word for desk is 'escritorio'. ¿Hay un escritorio en tu clase?
+Student: ¿Hay un escritorio en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Is there a washing machine in the kitchen?
+Student: ¿Hay una lavadora en la cocina?
+Teacher: Again, please. ¿Hay una lavadora en la cocina?
+Student: ¿Hay una lavadora en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: By the way.
+Student: Por cierto.
+Teacher: Again.
+Student: Por cierto.
+Teacher: How many chairs are there in the kitchen? ¿Cuántas sillas hay en la cocina?
+Student: ¿Cuántas sillas hay en la cocina?
+Teacher: One more time. ¿Cuántas sillas hay en la cocina?
+Student: ¿Cuántas sillas hay en la cocina?
+Teacher: There are four chairs in the kitchen. Hay cuatro sillas en la cocina.
+Student: Hay cuatro sillas en la cocina.
+Teacher: Let's repeat that. Hay cuatro sillas en la cocina.
+Student: Hay cuatro sillas en la cocina.
+Teacher: How many boys are there in your class? ¿Cuántos chicos hay en tu clase?
+Student: ¿Cuántos chicos hay en tu clase?
+Teacher: Let's try again. ¿Cuántos chicos hay en tu clase?
+Student: ¿Cuántos chicos hay en tu clase?
+Teacher: There are 11 boys in our class. Hay once chicos en nuestra clase.
+Student: Hay once chicos en nuestra clase.
+Teacher: 'en nuestra clase' means 'in our class'. Let's repeat the full sentence. Hay once chicos en nuestra clase.
+Student: Hay once chicos en nuestra clase.
+Teacher: One more time for practice.
+Student: Hay once chicos en nuestra clase.
+Teacher: Let's see... Are there any parking spaces on this street? ¿Hay lugares para estacionar en esta calle?
+Student: ¿Hay lugares para estacionar en esta calle?
+Teacher: One more time. ¿Hay lugares para estacionar en esta calle?
+Student: ¿Hay lugares para estacionar en esta calle?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: Again.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay ninguno.
+Teacher: Are there any?
+Student: ¿Hay algunos?
+Teacher: Again.
+Student: ¿Hay algunos?
+Teacher: And again.
+Student: ¿Hay algunos?
+Teacher: (Answer) There are some.
+Student: Hay algunos.
+Teacher: Let's practice again. There are some.
+Student: Hay algunos.
+Teacher: (Answer) There aren't any.
+Student: No hay ninguno.
+Teacher: (Question) Are there any?
+Student: ¿Hay algunos?
+Teacher: Are there any eggs in the fridge?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: One more time. ¿Hay huevos en el refrigerador?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: How many eggs are there in the fridge? ¿Cuántos huevos hay en el refrigerador?
+Student: ¿Cuántos huevos hay en el refrigerador?
+Teacher: Let's repeat that. ¿Cuántos huevos hay en el refrigerador?
+Student: ¿Cuántos huevos hay en el refrigerador?
+Teacher: There are five eggs in the fridge.
+Student: Hay cinco huevos en el refrigerador.
+Teacher: Again, please. Hay cinco huevos en el refrigerador.
+Student: Hay cinco huevos en el refrigerador.
+Teacher: One last time, nice and clear.
+Student: Hay cinco huevos en el refrigerador.
+Teacher: Do you have a lighter with you?
+Student: ¿Tienes un encendedor?
+Teacher: Let's repeat that question.
+Student: ¿Tienes un encendedor?
+Teacher: No, there isn't. (Or: I don't have one).
+Student: No, no tengo.
+Teacher: Is there a table in the kitchen?
+Student: ¿Hay una mesa en la cocina?
+Teacher: Again. ¿Hay una mesa en la cocina?
+Student: ¿Hay una mesa en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Let's check: is there a stove in the kitchen?
+Student: ¿Hay una estufa en la cocina?
+Teacher: One more time. ¿Hay una estufa en la cocina?
+Student: ¿Hay una estufa en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: Where is the stove?
+Student: ¿Dónde está la estufa?
+Teacher: Again. ¿Dónde está la estufa?
+Student: ¿Dónde está la estufa?
+Teacher: It is next to the fridge. Está al lado del refrigerador.
+Student: Está al lado del refrigerador.
+Teacher: Let's repeat. Está al lado del refrigerador.
+Student: Está al lado del refrigerador.
+Teacher: It is next to the washing machine.
+Student: Está al lado de la lavadora.
+Teacher: Again. Está al lado de la lavadora.
+Student: Está al lado de la lavadora.
+Teacher: One last time.
+Student: Está al lado de la lavadora.
+Teacher: Let's see... Is there a vase in the kitchen?
+Student: ¿Hay un florero en la cocina?
+Teacher: Again. ¿Hay un florero en la cocina?
+Student: ¿Hay un florero en la cocina?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: Where is it?
+Student: ¿Dónde está?
+Teacher: Again.
+Student: ¿Dónde está?
+Teacher: It is on the fridge. Está sobre el refrigerador.
+Student: Está sobre el refrigerador.
+Teacher: One more time. Está sobre el refrigerador.
+Student: Está sobre el refrigerador.
+Teacher: It is on the table.
+Student: Está en la mesa.
+Teacher: Let's repeat. Está en la mesa.
+Student: Está en la mesa.
+Teacher: It is in the cupboard.
+Student: Está en el gabinete.
+Teacher: Again. Está en el gabinete.
+Student: Está en el gabinete.
+Teacher: One more time.
+Student: Está en el gabinete.
+Teacher: Are there any salt shakers in the cupboard? Salt is 'sal', and a salt shaker is a 'salero'. ¿Hay saleros en el gabinete?
+Student: ¿Hay saleros en el gabinete?
+Teacher: Again. ¿Hay saleros en el gabinete?
+Student: ¿Hay saleros en el gabinete?
+Teacher: Let's repeat that one more time.
+Student: ¿Hay saleros en el gabinete?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: There are some on the table.
+Student: Hay algunos en la mesa.
+Teacher: Again. Hay algunos en la mesa.
+Student: Hay algunos en la mesa.
+Teacher: There are some next to the dishwasher.
+Student: Hay algunos al lado del lavaplatos.
+Teacher: Let's repeat that. Hay algunos al lado del lavaplatos.
+Student: Hay algunos al lado del lavaplatos.
+Teacher: One more time.
+Student: Hay algunos al lado del lavaplatos.
+Teacher: Are there any knives in the cupboard? The word for knife is 'cuchillo', and the plural is 'cuchillos'. So the question is: ¿Hay cuchillos en el gabinete?
+Student: ¿Hay cuchillos en el gabinete?
+Teacher: Again. ¿Hay cuchillos en el gabinete?
+Student: ¿Hay cuchillos en el gabinete?
+Teacher: One more time for practice.
+Student: ¿Hay cuchillos en el gabinete?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: Let's repeat that.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay ningunos.
+Teacher: Again.
+Student: No hay ningunos.
+Teacher: Let's ask: Are there any closets in the bedrooms? The word for closet is 'armario'. ¿Hay armarios en los dormitorios?
+Student: ¿Hay armarios en los dormitorios?
+Teacher: Again, please. ¿Hay armarios en los dormitorios?
+Student: ¿Hay armarios en los dormitorios?
+Teacher: There are some.
+Student: Hay algunos.
+Teacher: Repeat.
+Student: Hay algunos.
+Teacher: There aren't any.
+Student: No hay ningunos.
+Teacher: Again.
+Student: No hay ningunos.
+Teacher: Well done! Thank you so much. Let me just summarize what we learned today. We focused on asking what is in a place using the word 'Hay'. We learned that '¿Hay un...?' or '¿Hay una...?' is used for singular items, like "Is there a computer?". We also learned that you can use the exact same word, 'Hay', for plurals, like in "¿Hay sillas?" for "Are there any chairs?". For answers, we practiced "Sí, hay" for yes, and "No, no hay" for no, as well as "Hay algunos" for "There are some" and "No hay ningunos" for "There aren't any". You did a fantastic job today. Alright, let's start with the proverb from our last session. Do you remember it?
+Student: Más vale tarde que nunca.
+Teacher: Exactly! Más vale tarde que nunca. Which means "Better late than never." Great job! For today's lesson, we'll learn a very motivational proverb. In English, we say, "Where there's a will, there's a way." In Spanish, the equivalent is very short and powerful. It says Querer es poder.
+Student: Querer es poder.
+Teacher: Let's break it down. The first word is Querer.
+Student: Querer.
+Teacher: Querer is the verb "to want." In this proverb, it represents the idea of will or desire. So, where you have the will... Querer.
+Student: Querer.
+Teacher: ...es poder.
+Student: es poder.
+Teacher: es means "is," and poder means "to be able to," or "can." So it's like saying "is power" or "is to be able." So, putting it all together: Querer es poder.
+Student: Querer es poder.
+Teacher: Fantastic! That's a great one to remember. Well done.

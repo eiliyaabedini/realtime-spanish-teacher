@@ -1,0 +1,416 @@
+Teacher: Ve al parque.
+Student: Ve al parque.
+Teacher: Ve al parque. Ve a la calle.
+Student: Ve a la calle.
+Teacher: That means "Go to the street."
+Student: Ve a la calle.
+Teacher: Ve a la calle.
+Student: Ve a la calle.
+Teacher: Ve al norte.
+Student: Ve al norte.
+Teacher: That means "Go to the north."
+Student: Ve al norte.
+Teacher: Ve al norte.
+Student: Ve al norte.
+Teacher: Ve al norte.
+Student: Ve al norte.
+Teacher: Ve al hospital.
+Student: Ve al hospital.
+Teacher: That means "Go to the hospital."
+Student: Ve al hospital.
+Teacher: Ve al hospital.
+Student: Ve al hospital.
+Teacher: Ve al doctor.
+Student: Ve al doctor.
+Teacher: That means "Go to the doctor."
+Student: Ve al doctor.
+Teacher: Now say, "Go to the dentist."
+Student: Ve al dentista.
+Teacher: Ve al dentista.
+Student: Ve al dentista.
+Teacher: Now for inside the house. "Go to the kitchen."
+Student: Ve a la cocina.
+Teacher: Ve a la cocina.
+Student: Ve a la cocina.
+Teacher: Ve al dormitorio.
+Student: Ve al dormitorio.
+Teacher: That means "Go to the bedroom."
+Student: Ve al dormitorio.
+Teacher: Ve a la sala.
+Student: Ve a la sala.
+Teacher: That means "Go to the living room."
+Student: Ve a la sala.
+Teacher: Ve al balcón.
+Student: Ve al balcón.
+Teacher: That means "Go to the balcony."
+Student: Ve al balcón.
+Teacher: Ve al balcón.
+Student: Ve al balcón.
+Teacher: Ve al trabajo.
+Student: Ve al trabajo.
+Teacher: That means "Go to work."
+Student: Ve al trabajo.
+Teacher: Ve al trabajo.
+Student: Ve al trabajo.
+Teacher: Now, if you want to say "Go home," you say, "Ve a casa."
+Student: Ve a casa.
+Teacher: Ve a casa.
+Student: Ve a casa.
+Teacher: Notice that we don't use an article like "the" here. In Spanish, "la casa" means "the house," the physical building. But "casa" by itself can mean "home," that personal space where you live. That's why we say "Ve a casa." Please repeat after me. Ve a casa.
+Student: Ve a casa.
+Teacher: That's how you say, "Go home."
+Student: Ve a casa.
+Teacher: Now, "Go out."
+Student: Sal.
+Teacher: Sal.
+Student: Sal.
+Teacher: Entra.
+Student: Entra.
+Teacher: That means "Come in."
+Student: Entra.
+Teacher: Entra.
+Student: Entra.
+Teacher: "Come here."
+Student: Ven aquí.
+Teacher: "Come here."
+Student: Ven aquí.
+Teacher: Ven aquí.
+Student: Ven aquí.
+Teacher: Now let's say "Come closer." We say "Acércate."
+Student: Acércate.
+Teacher: The word for "near" or "close" is "cerca." The command "Acércate" comes from that word and means "bring yourself closer." So, "Come closer." Acércate.
+Student: Acércate.
+Teacher: Acércate.
+Student: Acércate.
+Teacher: "Come closer."
+Student: Acércate.
+Teacher: Acércate.
+Student: Acércate.
+Teacher: "Close the door."
+Student: Cierra la puerta.
+Teacher: "Close the door."
+Student: Cierra la puerta.
+Teacher: "Close the window."
+Student: Cierra la ventana.
+Teacher: Cierra la ventana.
+Student: Cierra la ventana.
+Teacher: Cierra tu libro.
+Student: Cierra tu libro.
+Teacher: That means "Close your book."
+Student: Cierra tu libro.
+Teacher: "Close your eyes."
+Student: Cierra los ojos.
+Teacher: Cierra los ojos.
+Student: Cierra los ojos.
+Teacher: Cierra los ojos.
+Student: Cierra los ojos.
+Teacher: "Close the door."
+Student: Cierra la puerta.
+Teacher: Now, to "Lock the door," we say "Cierra la puerta con llave."
+Student: Cierra la puerta con llave.
+Teacher: Cierra la puerta con llave.
+Student: Cierra la puerta con llave.
+Teacher: That means "Lock the door."
+Student: Cierra la puerta con llave.
+Teacher: Cierra la puerta con llave.
+Student: Cierra la puerta con llave.
+Teacher: Now I want to say "Unlock the door." We say "Desbloquea la puerta."
+Student: Desbloquea la puerta.
+Teacher: Desbloquea la puerta.
+Student: Desbloquea la puerta.
+Teacher: "Open the door."
+Student: Abre la puerta.
+Teacher: "Open the window."
+Student: Abre la ventana.
+Teacher: Abre la ventana.
+Student: Abre la ventana.
+Teacher: "Open the door."
+Student: Abre la puerta.
+Teacher: "Open your book."
+Student: Abre tu libro.
+Teacher: "Open your eyes."
+Student: Abre los ojos.
+Teacher: Abre los ojos.
+Student: Abre los ojos.
+Teacher: Abre los ojos. Abre la puerta.
+Student: Abre la puerta.
+Teacher: Entra.
+Student: Entra.
+Teacher: Ven aquí.
+Student: Ven aquí.
+Teacher: Now I want to say "Sit here." I say "Siéntate aquí."
+Student: Siéntate aquí.
+Teacher: Siéntate aquí.
+Student: Siéntate aquí.
+Teacher: Siéntate allí.
+Student: Siéntate allí.
+Teacher: That means "Sit over there."
+Student: Siéntate allí.
+Teacher: Siéntate allí.
+Student: Siéntate allí.
+Teacher: Siéntate a mi lado.
+Student: Siéntate a mi lado.
+Teacher: That means "Sit next to me."
+Student: Siéntate a mi lado.
+Teacher: Siéntate a mi lado.
+Student: Siéntate a mi lado.
+Teacher: Siéntate en la silla.
+Student: Siéntate en la silla.
+Teacher: That means "on the chair."
+Student: Siéntate en la silla.
+Teacher: Siéntate en el sofá.
+Student: Siéntate en el sofá.
+Teacher: That means "Sit on the sofa."
+Student: Siéntate en el sofá.
+Teacher: Siéntate en el sofá.
+Student: Siéntate en el sofá.
+Teacher: I want to say, "Come in."
+Student: Entra.
+Teacher: "Close the door."
+Student: Cierra la puerta.
+Teacher: Cierra la puerta.
+Student: Cierra la puerta.
+Teacher: Someone might say, "No hay asientos aquí."
+Student: No hay asientos aquí.
+Teacher: That means "There aren't any seats here."
+Student: No hay asientos aquí.
+Teacher: I'll say "Sit on the floor." I say, "Siéntate en el suelo."
+Student: Siéntate en el suelo.
+Teacher: "Sit on the floor." Siéntate en el suelo.
+Student: Siéntate en el suelo.
+Teacher: Siéntate en el suelo.
+Student: Siéntate en el suelo.
+Teacher: I want to say "Please, have a seat." I say "Toma asiento."
+Student: Toma asiento.
+Teacher: "Asiento" is the word for a seat. Toma asiento, por favor.
+Student: Toma asiento, por favor.
+Teacher: "Please, have a seat."
+Student: Toma asiento, por favor.
+Teacher: Toma asiento, por favor.
+Student: Toma asiento, por favor.
+Teacher: Levántate.
+Student: Levántate.
+Teacher: "Stand up."
+Student: Levántate.
+Teacher: Levántate.
+Student: Levántate.
+Teacher: Cierra la ventana.
+Student: Cierra la ventana.
+Teacher: Ven aquí.
+Student: Ven aquí.
+Teacher: Abre la puerta.
+Student: Abre la puerta.
+Teacher: Sal.
+Student: Sal.
+Teacher: That means "Go out."
+Student: Sal.
+Teacher: "Come in."
+Student: Entra.
+Teacher: Entra.
+Student: Entra.
+Teacher: Toma asiento.
+Student: Toma asiento.
+Teacher: I want to say "Introduce yourself." We say "Preséntate." The verb "presentar" means to introduce. Preséntate.
+Student: Preséntate.
+Teacher: Preséntate.
+Student: Preséntate.
+Teacher: "Introduce your partner." Presenta a tu compañero.
+Student: Presenta a tu compañero.
+Teacher: Presenta a tu compañero.
+Student: Presenta a tu compañero.
+Teacher: You are somewhere with a friend and want to tell them, "Introduce me." You say, "Preséntame."
+Student: Preséntame.
+Teacher: Preséntame.
+Student: Preséntame.
+Teacher: Preséntame.
+Student: Preséntame.
+Teacher: Preséntame. Abre la puerta.
+Student: Abre la puerta.
+Teacher: Enciende las luces.
+Student: Enciende las luces.
+Teacher: "Turn on the lights."
+Student: Enciende las luces.
+Teacher: Enciende las luces.
+Student: Enciende las luces.
+Teacher: Enciende la tele.
+Student: Enciende la tele.
+Teacher: "Turn on the TV."
+Student: Enciende la tele.
+Teacher: Enciende la tele.
+Student: Enciende la tele.
+Teacher: Enciende tu móvil.
+Student: Enciende tu móvil.
+Teacher: "Turn on your cellphone."
+Student: Enciende tu móvil.
+Teacher: Enciende tu móvil.
+Student: Enciende tu móvil.
+Teacher: Enciende la radio.
+Student: Enciende la radio.
+Teacher: "Turn on the radio."
+Student: Enciende la radio.
+Teacher: Enciende el ventilador.
+Student: Enciende el ventilador.
+Teacher: "Turn on the fan."
+Student: Enciende el ventilador.
+Teacher: I want to say "Turn off the fan." Apaga el ventilador.
+Student: Apaga el ventilador.
+Teacher: Apaga la tele.
+Student: Apaga la tele.
+Teacher: Apaga la radio.
+Student: Apaga la radio.
+Teacher: Apaga las luces.
+Student: Apaga las luces.
+Teacher: "Turn off the lights."
+Student: Apaga las luces.
+Teacher: Apaga las luces.
+Student: Apaga las luces.
+Teacher: Apaga las luces.
+Student: Apaga las luces.
+Teacher: I want to say "Turn down the radio." We say "Baja la radio."
+Student: Baja la radio.
+Teacher: Baja la radio.
+Student: Baja la radio.
+Teacher: Baja la tele.
+Student: Baja la tele.
+Teacher: "Turn down the TV."
+Student: Baja la tele.
+Teacher: I want to say "Turn up the TV." Sube la tele.
+Student: Sube la tele.
+Teacher: Sube la radio.
+Student: Sube la radio.
+Teacher: "Turn up the radio."
+Student: Sube la radio.
+Teacher: "Turn down the radio."
+Student: Baja la radio.
+Teacher: I'm not deaf. No estoy sordo.
+Student: No estoy sordo.
+Teacher: No estoy sordo.
+Student: No estoy sordo.
+Teacher: Baja la radio. No estoy sordo.
+Student: Baja la radio. No estoy sordo.
+Teacher: Again, again.
+Student: Baja la radio. No estoy sordo.
+Teacher: Baja la radio. No estoy sordo.
+Student: Baja la radio. No estoy sordo.
+Teacher: "Put on your shoes." Ponte los zapatos.
+Student: Ponte los zapatos.
+Teacher: "Put on your shoes."
+Student: Ponte los zapatos.
+Teacher: "Put on your scarf." Ponte la bufanda.
+Student: Ponte la bufanda.
+Teacher: "Bufanda" is the word for scarf. Ponte la bufanda.
+Student: Ponte la bufanda.
+Teacher: Ponte la bufanda.
+Student: Ponte la bufanda.
+Teacher: Ponte los zapatos.
+Student: Ponte los zapatos.
+Teacher: Ponte los zapatos.
+Student: Ponte los zapatos.
+Teacher: Ponte la ropa.
+Student: Ponte la ropa.
+Teacher: That means "Put on your clothes."
+Student: Ponte la ropa.
+Teacher: Ponte la ropa.
+Student: Ponte la ropa.
+Teacher: I want to say "Put on your watch." Ponte el reloj.
+Student: Ponte el reloj.
+Teacher: Ponte el reloj.
+Student: Ponte el reloj.
+Teacher: Ponte los pantalones.
+Student: Ponte los pantalones.
+Teacher: That means "Put on your pants."
+Student: Ponte los pantalones.
+Teacher: "Put on your hat." Ponte el sombrero.
+Student: Ponte el sombrero.
+Teacher: Ponte el sombrero.
+Student: Ponte el sombrero.
+Teacher: "Sombrero" means hat in general. For a baseball cap, we say "gorra." Ponte la gorra.
+Student: Ponte la gorra.
+Teacher: Ponte la gorra.
+Student: Ponte la gorra.
+Teacher: Ponte los calcetines.
+Student: Ponte los calcetines.
+Teacher: That means "Put on your socks."
+Student: Ponte los calcetines.
+Teacher: I want to say "Take off your socks." I say "Quítate los calcetines."
+Student: Quítate los calcetines.
+Teacher: Quítate los calcetines.
+Student: Quítate los calcetines.
+Teacher: Quítate las gafas.
+Student: Quítate las gafas.
+Teacher: That means "Take off your glasses."
+Student: Quítate las gafas.
+Teacher: Quítate la gorra.
+Student: Quítate la gorra.
+Teacher: Quítate el sombrero.
+Student: Quítate el sombrero.
+Teacher: "Take off your hat."
+Student: Quítate el sombrero.
+Teacher: "Take off your shoes."
+Student: Quítate los zapatos.
+Teacher: Quítate los zapatos.
+Student: Quítate los zapatos.
+Teacher: "Go out."
+Student: Sal.
+Teacher: Get lost! I want to say "Get lost!" I say "¡Piérdete!"
+Student: ¡Piérdete!
+Teacher: ¡Piérdete!
+Student: ¡Piérdete!
+Teacher: "Get lost!"
+Student: ¡Piérdete!
+Teacher: "Get lost!"
+Student: ¡Piérdete!
+Teacher: "Come in."
+Student: Entra.
+Teacher: "Come here."
+Student: Ven aquí.
+Teacher: "Come here."
+Student: Ven aquí.
+Teacher: "Close the door."
+Student: Cierra la puerta.
+Teacher: "Lock the door."
+Student: Cierra la puerta con llave.
+Teacher: Cierra la puerta con llave.
+Student: Cierra la puerta con llave.
+Teacher: Siéntate aquí.
+Student: Siéntate aquí.
+Teacher: Siéntate aquí.
+Student: Siéntate aquí.
+Teacher: "Listen to me." Escúchame.
+Student: Escúchame.
+Teacher: Escúchame.
+Student: Escúchame.
+Teacher: "Listen to me."
+Student: Escúchame.
+Teacher: Escucha la radio.
+Student: Escucha la radio.
+Teacher: Escucha música.
+Student: Escucha música.
+Teacher: "Listen to music."
+Student: Escucha música.
+Teacher: Escucha el CD.
+Student: Escucha el CD.
+Teacher: Escucha el CD.
+Student: Escucha el CD.
+Teacher: Now I want to say "Look at me." I say "Mírame."
+Student: Mírame.
+Teacher: "Look at me."
+Student: Mírame.
+Teacher: "Look at me."
+Student: Mírame.
+Teacher: Mira la pizarra.
+Student: Mira la pizarra.
+Teacher: "Look at the board."
+Student: Mira la pizarra.
+Teacher: Mira la pizarra.
+Student: Mira la pizarra.
+Teacher: Mira la foto.
+Student: Mira la foto.
+Teacher: "Look at the picture."
+Student: Mira la foto.
+Teacher: Mira la foto.
+Student: Mira la foto.
+Teacher: Mira el techo.
+Student: Mira el techo.
+Teacher: "Techo" means ceiling. The outside part of the house, the roof, is called "tejado." The inside part you see from a room is "techo." Mira el techo.
+Student: Mira el techo.

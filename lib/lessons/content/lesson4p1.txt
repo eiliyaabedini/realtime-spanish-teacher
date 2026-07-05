@@ -1,0 +1,418 @@
+Teacher: Hello, welcome to your lesson.
+Student: Hello.
+Teacher: Hi there.
+Student: Hi.
+Teacher: How are you? In Spanish, we say ¿Cómo estás?
+Student: ¿Cómo estás?
+Teacher: A more casual way is ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: This means "How's it going?" or "What's up?". Let's try again. ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: ¿Qué tal?
+Student: ¿Qué tal?
+Teacher: You can answer "Everything is fine." In Spanish, that's "Todo bien."
+Student: Todo bien.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: How is your father? is ¿Cómo está tu padre?
+Student: ¿Cómo está tu padre?
+Teacher: How is your mother?
+Student: ¿Cómo está tu madre?
+Teacher: How is your brother?
+Student: ¿Cómo está tu hermano?
+Teacher: How is your sister?
+Student: ¿Cómo está tu hermana?
+Teacher: How are your siblings? is ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: ¿Cómo están tus hermanos?
+Student: ¿Cómo están tus hermanos?
+Teacher: You can answer, "They are fine." which is "Están bien."
+Student: Están bien.
+Teacher: So, how are you?
+Student: ¿Cómo estás?
+Teacher: If you're not feeling well, you can say "No estoy bien."
+Student: No estoy bien.
+Teacher: No estoy bien.
+Student: No estoy bien.
+Teacher: No estoy bien.
+Student: No estoy bien.
+Teacher: By the way is "Por cierto."
+Student: Por cierto.
+Teacher: Any news from your uncle? is ¿Alguna noticia de tu tío?
+Student: ¿Alguna noticia de tu tío?
+Teacher: ¿Alguna noticia de tu tío?
+Student: ¿Alguna noticia de tu tío?
+Teacher: And for your aunt?
+Student: ¿Alguna noticia de tu tía?
+Teacher: ¿Alguna noticia de tu tía?
+Student: ¿Alguna noticia de tu tía?
+Teacher: Where is your mother-in-law? is ¿Dónde está tu suegra?
+Student: ¿Dónde está tu suegra?
+Teacher: Where is your father-in-law?
+Student: ¿Dónde está tu suegro?
+Teacher: Where is your sister-in-law?
+Student: ¿Dónde está tu cuñada?
+Teacher: ¿Dónde está tu cuñada?
+Student: ¿Dónde está tu cuñada?
+Teacher: You can answer, "She is at home." That's "Está en casa."
+Student: Está en casa.
+Teacher: Está en casa.
+Student: Está en casa.
+Teacher: To ask it as a question, "Is she at home?", you just change your tone: ¿Está en casa?
+Student: ¿Está en casa?
+Teacher: ¿Está en casa?
+Student: ¿Está en casa?
+Teacher: Is this cell phone yours? is ¿Este celular es tuyo?
+Student: ¿Este celular es tuyo?
+Teacher: ¿Este celular es tuyo?
+Student: ¿Este celular es tuyo?
+Teacher: Where is my wallet?
+Student: ¿Dónde está mi cartera?
+Teacher: Where is my wallet?
+Student: ¿Dónde está mi cartera?
+Teacher: Now, a useful phrase: "As far as I know..." is "Que yo sepa..."
+Student: Que yo sepa...
+Teacher: "...it's on the fridge." is "...está sobre el refrigerador."
+Student: Está sobre el refrigerador.
+Teacher: Está sobre el refrigerador.
+Student: Está sobre el refrigerador.
+Teacher: Está sobre el refrigerador.
+Student: Está sobre el refrigerador.
+Teacher: Who is he? is ¿Quién es él?
+Student: ¿Quién es él?
+Teacher: He is my neighbor.
+Student: Es mi vecino.
+Teacher: Es mi vecino.
+Student: Es mi vecino.
+Teacher: Es mi vecino.
+Student: Es mi vecino.
+Teacher: Is he your boss?
+Student: ¿Es él tu jefe?
+Teacher: ¿Es él tu jefe?
+Student: ¿Es él tu jefe?
+Teacher: ¿Es él tu jefe?
+Student: ¿Es él tu jefe?
+Teacher: No, he isn't. is No, no lo es.
+Student: No, no lo es.
+Teacher: He is my driver.
+Student: Es mi conductor.
+Teacher: Es mi conductor.
+Student: Es mi conductor.
+Teacher: Es mi conductor.
+Student: Es mi conductor.
+Teacher: Where is your daughter?
+Student: ¿Dónde está tu hija?
+Teacher: ¿Dónde está tu hija?
+Student: ¿Dónde está tu hija?
+Teacher: She is in the yard.
+Student: Está en el patio.
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: Are your parents in the north? is ¿Están tus padres en el norte?
+Student: ¿Están tus padres en el norte?
+Teacher: ¿Están tus padres en el norte?
+Student: ¿Están tus padres en el norte?
+Teacher: Yes, they are. is Sí, lo están.
+Student: Sí, lo están.
+Teacher: When is your birthday?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: ¿Cuándo es tu cumpleaños?
+Student: ¿Cuándo es tu cumpleaños?
+Teacher: When is your son's birthday? is ¿Cuándo es el cumpleaños de tu hijo?
+Student: ¿Cuándo es el cumpleaños de tu hijo?
+Teacher: When is Janet's birthday? is ¿Cuándo es el cumpleaños de Janet?
+Student: ¿Cuándo es el cumpleaños de Janet?
+Teacher: ¿Cuándo es el cumpleaños de Janet?
+Student: ¿Cuándo es el cumpleaños de Janet?
+Teacher: Let's try to answer. As far as I know, it's in January.
+Student: Que yo sepa, es en enero.
+Teacher: Que yo sepa, es en enero.
+Student: Que yo sepa, es en enero.
+Teacher: Whose car is this?
+Student: ¿De quién es este coche?
+Teacher: ¿De quién es este coche?
+Student: ¿De quién es este coche?
+Teacher: Whose glasses are these?
+Student: ¿De quién son estas gafas?
+Teacher: ¿De quién son estas gafas?
+Student: ¿De quién son estas gafas?
+Teacher: ¿De quién son estas gafas?
+Student: ¿De quién son estas gafas?
+Teacher: They are mine.
+Student: Son mías.
+Teacher: They are mine.
+Student: Son mías.
+Teacher: Are these glasses yours?
+Student: ¿Son estas gafas tuyas?
+Teacher: Are these glasses yours?
+Student: ¿Son estas gafas tuyas?
+Teacher: ¿Son estas gafas tuyas?
+Student: ¿Son estas gafas tuyas?
+Teacher: No, they are my brother's. is No, son de mi hermano.
+Student: No, son de mi hermano.
+Teacher: No, son de mi hermano.
+Student: No, son de mi hermano.
+Teacher: What is this?
+Student: ¿Qué es esto?
+Teacher: What is that?
+Student: ¿Qué es eso?
+Teacher: It's a camera. is Es una cámara.
+Student: Es una cámara.
+Teacher: It's a camcorder.
+Student: Es una videocámara.
+Teacher: Es una videocámara.
+Student: Es una videocámara.
+Teacher: It's an envelope.
+Student: Es un sobre.
+Teacher: Es un sobre.
+Student: Es un sobre.
+Teacher: Es un sobre.
+Student: Es un sobre.
+Teacher: Where are my socks?
+Student: ¿Dónde están mis calcetines?
+Teacher: ¿Dónde están mis calcetines?
+Student: ¿Dónde están mis calcetines?
+Teacher: They are on the chair.
+Student: Están sobre la silla.
+Teacher: Hola.
+Student: Hola.
+Teacher: Hola.
+Student: Hola.
+Teacher: ¿Qué tal?
+Student: Todo bien.
+Teacher: ¿Qué tal?
+Student: Todo bien.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: Todo bien.
+Student: Todo bien.
+Teacher: Where is my wallet?
+Student: ¿Dónde está mi cartera?
+Teacher: It's under the chair.
+Student: Está debajo de la silla.
+Teacher: It's on the chair.
+Student: Está sobre la silla.
+Teacher: It's next to the chair.
+Student: Está al lado de la silla.
+Teacher: It's behind the chair.
+Student: Está detrás de la silla.
+Teacher: It's in front of the chair.
+Student: Está delante de la silla.
+Teacher: Está delante de la silla.
+Student: Está delante de la silla.
+Teacher: Where are my keys?
+Student: ¿Dónde están mis llaves?
+Teacher: ¿Dónde están mis llaves?
+Student: ¿Dónde están mis llaves?
+Teacher: They are on the desk. is Están sobre el escritorio.
+Student: Están sobre el escritorio.
+Teacher: Están sobre el escritorio.
+Student: Están sobre el escritorio.
+Teacher: Excuse me, ma'am.
+Student: Disculpe, señora.
+Teacher: Disculpe, señora.
+Student: Disculpe, señora.
+Teacher: Where is my class?
+Student: ¿Dónde está mi clase?
+Teacher: Let's use our phrase. As far as I know...
+Student: Que yo sepa...
+Teacher: again again.
+Student: Que yo sepa...
+Teacher: It is upstairs.
+Student: Está arriba.
+Teacher: It is upstairs.
+Student: Está arriba.
+Teacher: It is downstairs.
+Student: Está abajo.
+Teacher: Está abajo.
+Student: Está abajo.
+Teacher: Where is my husband?
+Student: ¿Dónde está mi esposo?
+Teacher: He is in the yard.
+Student: Está en el patio.
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: Está en el patio.
+Student: Está en el patio.
+Teacher: Now let's learn "there is" or "there are". In Spanish, we just use "hay". For example, "Are there any eggs in the fridge?" is ¿Hay huevos en el refrigerador?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: ¿Hay huevos en el refrigerador?
+Student: ¿Hay huevos en el refrigerador?
+Teacher: You can answer, "There are some."
+Student: Sí, hay algunos.
+Teacher: Or, "There aren't any."
+Student: No, no hay.
+Teacher: Are there any apples in the fridge?
+Student: ¿Hay manzanas en el refrigerador?
+Teacher: ¿Hay manzanas en el refrigerador?
+Student: ¿Hay manzanas en el refrigerador?
+Teacher: There are some.
+Student: Sí, hay algunas.
+Teacher: How many apples are there in the fridge?
+Student: ¿Cuántas manzanas hay en el refrigerador?
+Teacher: ¿Cuántas manzanas hay en el refrigerador?
+Student: ¿Cuántas manzanas hay en el refrigerador?
+Teacher: How many apples are there in the fridge?
+Student: Hay cinco manzanas en el refrigerador.
+Teacher: There are five apples in the fridge.
+Student: Hay cinco manzanas en el refrigerador.
+Teacher: There are five apples in the fridge.
+Student: Hay cinco manzanas en el refrigerador.
+Teacher: Are there any boys in your class?
+Student: ¿Hay chicos en tu clase?
+Teacher: There are some.
+Student: Sí, hay algunos.
+Teacher: Sí, hay algunos.
+Student: Sí, hay algunos.
+Teacher: Are there any pillows in the bedrooms?
+Student: ¿Hay almohadas en los dormitorios?
+Teacher: ¿Hay almohadas en los dormitorios?
+Student: ¿Hay almohadas en los dormitorios?
+Teacher: ¿Hay almohadas en los dormitorios?
+Student: ¿Hay almohadas en los dormitorios?
+Teacher: Are there any blankets in the bedrooms?
+Student: ¿Hay mantas en los dormitorios?
+Teacher: ¿Hay mantas en los dormitorios?
+Student: ¿Hay mantas en los dormitorios?
+Teacher: There are some.
+Student: Sí, hay algunas.
+Teacher: Sí, hay algunas.
+Student: Sí, hay algunas.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: By the way, when is the meeting?
+Student: Por cierto, ¿cuándo es la reunión?
+Teacher: Por cierto, ¿cuándo es la reunión?
+Student: Por cierto, ¿cuándo es la reunión?
+Teacher: Actually, it's tomorrow.
+Student: En realidad, es mañana.
+Teacher: Actually, it's tomorrow.
+Student: En realidad, es mañana.
+Teacher: Actually, as far as I know,
+Student: En realidad, que yo sepa,
+Teacher: It's on Monday.
+Student: es el lunes.
+Teacher: It's on Monday.
+Student: Es el lunes.
+Teacher: It's on Wednesday.
+Student: Es el miércoles.
+Teacher: Es el miércoles.
+Student: Es el miércoles.
+Teacher: How old are you?
+Student: ¿Cuántos años tienes?
+Teacher: ¿Cuántos años tienes?
+Student: ¿Cuántos años tienes?
+Teacher: You answer "I am..." For example, "I am thirty-eight." is "Tengo treinta y ocho años."
+Student: Tengo treinta y ocho años.
+Teacher: Tengo treinta y ocho años.
+Student: Tengo treinta y ocho años.
+Teacher: How old is your mother?
+Student: ¿Cuántos años tiene tu madre?
+Teacher: ¿Cuántos años tiene tu madre?
+Student: ¿Cuántos años tiene tu madre?
+Teacher: She is forty-eight years old.
+Student: Tiene cuarenta y ocho años.
+Teacher: She is forty-eight years old.
+Student: Tiene cuarenta y ocho años.
+Teacher: Do you have a lighter?
+Student: ¿Tienes un encendedor?
+Teacher: ¿Tienes un encendedor?
+Student: ¿Tienes un encendedor?
+Teacher: Yes, I do.
+Student: Sí, tengo.
+Teacher: No, I don't.
+Student: No, no tengo.
+Teacher: Is there a noticeboard in your classroom?
+Student: ¿Hay un tablón de anuncios en tu clase?
+Teacher: ¿Hay un tablón de anuncios en tu clase?
+Student: ¿Hay un tablón de anuncios en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Is there a trash can in your classroom?
+Student: ¿Hay una papelera en tu clase?
+Teacher: ¿Hay una papelera en tu clase?
+Student: ¿Hay una papelera en tu clase?
+Teacher: Yes, there is.
+Student: Sí, hay.
+Teacher: No, there isn't.
+Student: No, no hay.
+Teacher: Let's see... is there a vase in your classroom?
+Student: ¿Hay un florero en tu clase?
+Teacher: ¿Hay un florero en tu clase?
+Student: ¿Hay un florero en tu clase?
+Teacher: Is there a table in the kitchen?
+Student: ¿Hay una mesa en la cocina?
+Teacher: ¿Hay una mesa en la cocina?
+Student: ¿Hay una mesa en la cocina?
+Teacher: Let's see... are there any cupboards in the kitchen?
+Student: ¿Hay armarios en la cocina?
+Teacher: ¿Hay armarios en la cocina?
+Student: ¿Hay armarios en la cocina?
+Teacher: There are some.
+Student: Sí, hay algunos.
+Teacher: Sí, hay algunos.
+Student: Sí, hay algunos.
+Teacher: No, no hay.
+Student: No, no hay.
+Teacher: After you.
+Student: Pase usted.
+Teacher: Pase usted.
+Student: Pase usted.
+Teacher: Ladies first.
+Student: Las damas primero.
+Teacher: Las damas primero.
+Student: Las damas primero.
+Teacher: A common phrase is "La experiencia es un grado."
+Student: La experiencia es un grado.
+Teacher: La experiencia es un grado.
+Student: La experiencia es un grado.
+Teacher: Say hello to everyone.
+Student: Saluda a todos.
+Teacher: Saluda a todos.
+Student: Saluda a todos.
+Teacher: By the way, any news from your boss?
+Student: Por cierto, ¿alguna noticia de tu jefe?
+Teacher: Por cierto, ¿alguna noticia de tu jefe?
+Student: Por cierto, ¿alguna noticia de tu jefe?
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: No news.
+Student: Ninguna noticia.
+Teacher: Say hello to your father.
+Student: Saluda a tu padre.
+Teacher: Saluda a tu padre.
+Student: Saluda a tu padre.
+Teacher: Very good. Now, let's talk about uncountable things. First, to say "I am thirsty," you say "Tengo sed."
+Student: Tengo sed.
+Teacher: Tengo sed.
+Student: Tengo sed.
+Teacher: Tengo sed.
+Student: Tengo sed.
+Teacher: So, to ask "Is there any water in the fridge?", you say ¿Hay agua en el refrigerador?
+Student: ¿Hay agua en el refrigerador?
+Teacher: ¿Hay agua en el refrigerador?
+Student: ¿Hay agua en el refrigerador?
+Teacher: Is there any milk in the fridge?
+Student: ¿Hay leche en el refrigerador?
+Teacher: ¿Hay leche en el refrigerador?
+Student: ¿Hay leche en el refrigerador?
+Teacher: ¿Hay leche en el refrigerador?
+Student: ¿Hay leche en el refrigerador?
+Teacher: Is there any fruit juice in the fridge?
+Student: ¿Hay jugo de fruta en el refrigerador?
+Teacher: Yes, "jugo de fruta" means fruit juice. Let's say it again. ¿Hay jugo de fruta en el refrigerador?
+Student: ¿Hay jugo de fruta en el refrigerador?
+Teacher: Is there any apple juice in the fridge?
+Student: ¿Hay jugo de manzana en el refrigerador?
+Teacher: Is there apple juice in the fridge?
+Student: ¿Hay jugo de manzana en el refrigerador?
+Teacher: Is there any orange juice in the fridge?
+Student: ¿Hay jugo de naranja en el refrigerador?
+Teacher: Is there orange juice in the fridge?
+Student: ¿Hay jugo de naranja en el refrigerador?
+Teacher: Is there any mango juice in the fridge?
+Student: ¿Hay jugo de mango en el refrigerador?
