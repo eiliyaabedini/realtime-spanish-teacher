@@ -37,9 +37,13 @@ const ev = {
     transcript: t,
   }),
   itemCreated: (id: string): ServerEvent => ({ type: "conversation.item.created", item: { id } }),
-  responseDone: (kind: string, output: unknown[] = []): ServerEvent => ({
+  responseDone: (kind: string, output: unknown[] = [], status = "completed"): ServerEvent => ({
     type: "response.done",
-    response: { metadata: { kind }, output, usage: {} },
+    response: { metadata: { kind }, output, usage: {}, status },
+  }),
+  error: (type = "invalid_request_error", message = "boom"): ServerEvent => ({
+    type: "error",
+    error: { type, message },
   }),
   reportCall: (args: object, callId = "call_1") => ({
     type: "function_call",
@@ -230,6 +234,107 @@ describe("LessonOrchestrator turn loop", () => {
     const newSends = sent.slice(before);
     expect(newSends.filter((s) => s.type === "response.create")).toHaveLength(0);
     expect(newSends.filter((s) => s.type === "conversation.item.create")).toHaveLength(1);
+  });
+
+  it("refuses a spontaneous report_attempt outside a grade turn", () => {
+    const { orch, sent, hooks } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(
+      ev.responseDone("deliver", [
+        ev.reportCall({ transcript: "Hola.", accepted: true, feedback: "" }, "rogue"),
+      ]),
+    );
+
+    expect(hooks.postProgress).not.toHaveBeenCalled();
+    expect(orch.getSnapshot().machine.currentIndex).toBe(0);
+    const reply = sent.find(
+      (s) => s.type === "conversation.item.create" && s.item.call_id === "rogue",
+    );
+    expect(JSON.parse(reply.item.output).error).toContain("not grading");
+    // no extra response.create beyond the initial deliver
+    expect(sent.filter((s) => s.type === "response.create")).toHaveLength(1);
+  });
+
+  it("a cancelled grade (barge-in) resets grading so the next commit re-grades", () => {
+    const { orch, sent, hooks } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.responseDone("deliver"));
+    studentTurn(orch);
+    orch.handleServerEvent(ev.responseDone("grade", [], "cancelled"));
+
+    expect(hooks.postProgress).not.toHaveBeenCalled(); // not treated as a failed attempt
+    studentTurn(orch);
+    const grades = sent.filter(
+      (s) => s.type === "response.create" && s.response.metadata.kind === "grade",
+    );
+    expect(grades).toHaveLength(2);
+    expect(orch.getSnapshot().machine.currentIndex).toBe(0);
+  });
+
+  it("an error event during grading unlocks the lesson for the next attempt", () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.responseDone("deliver"));
+    studentTurn(orch);
+    orch.handleServerEvent(ev.error());
+
+    expect(orch.getSnapshot().phase).not.toBe("error"); // invalid_request → warning only
+    studentTurn(orch);
+    const grades = sent.filter(
+      (s) => s.type === "response.create" && s.response.metadata.kind === "grade",
+    );
+    expect(grades).toHaveLength(2);
+  });
+
+  it("a second malformed report_attempt falls back to exact-match grading", () => {
+    const { orch, hooks } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.responseDone("deliver"));
+    orch.handleServerEvent(ev.inputTranscript("Hola."));
+    studentTurn(orch);
+
+    orch.handleServerEvent(
+      ev.responseDone("grade", [ev.reportCall({ nonsense: true }, "bad1")]),
+    );
+    orch.handleServerEvent(
+      ev.responseDone("grade", [ev.reportCall({ nonsense: true }, "bad2")]),
+    );
+
+    expect(hooks.postProgress).toHaveBeenCalledWith(
+      expect.objectContaining({ isCorrect: true, userResponse: "Hola." }),
+    );
+    expect(orch.getSnapshot().machine.currentIndex).toBe(1);
+  });
+
+  it("defers the session cap while audio is in flight and fires it after", () => {
+    vi.useFakeTimers();
+    try {
+      const { orch, sent, hooks } = setup();
+      active = orch;
+      orch.handleServerEvent(ev.sessionCreated()); // deliver in flight
+      vi.advanceTimersByTime(21 * 60_000); // cap fires mid-deliver → deferred
+
+      let caps = sent.filter(
+        (s) => s.type === "response.create" && s.response.metadata.kind === "cap",
+      );
+      expect(caps).toHaveLength(0);
+
+      orch.handleServerEvent(ev.responseDone("deliver"));
+      caps = sent.filter(
+        (s) => s.type === "response.create" && s.response.metadata.kind === "cap",
+      );
+      expect(caps).toHaveLength(1);
+
+      orch.handleServerEvent(ev.responseDone("cap"));
+      expect(orch.getSnapshot().phase).toBe("complete");
+      expect(hooks.onComplete).toHaveBeenCalledOnce();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("prunes old conversation items after advancing", () => {

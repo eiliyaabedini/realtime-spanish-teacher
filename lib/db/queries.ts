@@ -17,14 +17,18 @@ export async function recordAttempt(
 
 /**
  * Android-parity resume rule (UserProgressDao.getResumeIndex):
- * look at the highest answered lineIndex — if any attempt on it was correct,
- * resume at lineIndex + 1, otherwise resume at that lineIndex. 0 when no rows.
+ * look at the highest answered lineIndex — if any attempt ON THAT LINE was
+ * correct, resume at lineIndex + 1, otherwise resume at that lineIndex
+ * (re-ask it). 0 when no rows.
  */
 export async function getResumeIndex(userId: string, lessonId: string): Promise<number> {
   const rows = await db()
     .select({
       maxLine: sql<number>`max(${userProgress.lineIndex})`,
-      anyCorrect: sql<boolean>`bool_or(${userProgress.isCorrect})`,
+      lastLineCorrect: sql<boolean>`bool_or(${userProgress.isCorrect}) filter (where ${userProgress.lineIndex} = (
+        select max(p2.line_index) from user_progress p2
+        where p2.user_id = ${userProgress.userId} and p2.lesson_id = ${userProgress.lessonId}
+      ))`,
     })
     .from(userProgress)
     .where(and(eq(userProgress.userId, userId), eq(userProgress.lessonId, lessonId)))
@@ -32,7 +36,7 @@ export async function getResumeIndex(userId: string, lessonId: string): Promise<
 
   const row = rows[0];
   if (!row || row.maxLine === null) return 0;
-  return row.anyCorrect ? row.maxLine + 1 : row.maxLine;
+  return row.lastLineCorrect ? Number(row.maxLine) + 1 : Number(row.maxLine);
 }
 
 export type HistoryRow = { lineIndex: number; userResponse: string; isCorrect: boolean };

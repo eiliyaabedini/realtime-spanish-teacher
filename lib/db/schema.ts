@@ -34,8 +34,9 @@ export const userSettings = pgTable("user_settings", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
-export const MEMORY_CATEGORIES = ["grammar", "vocab", "pronunciation", "pace", "style"] as const;
-export type MemoryCategory = (typeof MEMORY_CATEGORIES)[number];
+// relative import — drizzle-kit loads this file outside Next's alias resolution
+import type { MemoryCategory } from "../memory/categories";
+export { MEMORY_CATEGORIES, type MemoryCategory } from "../memory/categories";
 
 export const learnerMemory = pgTable(
   "learner_memory",

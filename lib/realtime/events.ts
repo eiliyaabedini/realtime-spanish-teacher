@@ -2,7 +2,7 @@
 // this is the single place to fix. Verified against the GA WebRTC docs
 // (client_secrets + /v1/realtime/calls + "oai-events" data channel).
 
-import { MEMORY_CATEGORIES } from "@/lib/db/schema";
+import { MEMORY_CATEGORIES } from "@/lib/memory/categories";
 
 // ---------- tools ----------
 
@@ -173,10 +173,3 @@ export function outputTranscriptDone(ev: ServerEvent): { transcript: string } | 
   return null;
 }
 
-/** Student's input audio transcription (async, arrives after commit). */
-export function inputTranscriptCompleted(ev: ServerEvent): { transcript: string } | null {
-  if (ev.type === "conversation.item.input_audio_transcription.completed") {
-    return { transcript: String(ev.transcript ?? "") };
-  }
-  return null;
-}

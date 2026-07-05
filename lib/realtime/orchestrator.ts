@@ -24,6 +24,7 @@ import {
   type ResponseKind,
   type ServerEvent,
 } from "./events";
+import { MEMORY_CATEGORIES } from "@/lib/memory/categories";
 import { addUsage, driftScore, emptyStats, type SessionStats } from "./harness";
 
 export type SessionPhase =
@@ -61,7 +62,7 @@ const ReportAttemptArgs = z.object({
 });
 
 const UpdateMemoryArgs = z.object({
-  category: z.string(),
+  category: z.enum(MEMORY_CATEGORIES),
   observation: z.string().min(3).max(300),
 });
 
@@ -104,6 +105,7 @@ export class LessonOrchestrator {
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
+  private capPending = false;
 
   private listeners = new Set<() => void>();
   private snapshotCache: Snapshot | null = null;
@@ -224,6 +226,13 @@ export class LessonOrchestrator {
 
       case "error": {
         const message: string = ev.error?.message ?? "Realtime session error";
+        // a rejected grade response would otherwise soft-lock the lesson —
+        // reset so the student's next utterance grades again
+        if (this.gradingInFlight) {
+          this.gradingInFlight = false;
+          this.gradeRetried = false;
+          this.phase = this.machine.expectingStudent ? "listening" : this.phase;
+        }
         // non-fatal errors (e.g. deleting an already-gone item) → warning only
         if (ev.error?.type === "invalid_request_error" && this.phase !== "connecting") {
           this.warning = message;
@@ -269,29 +278,49 @@ export class LessonOrchestrator {
   private handleResponseDone(ev: ServerEvent): void {
     addUsage(this.stats, ev.response?.usage);
     const kind: ResponseKind | undefined = ev.response?.metadata?.kind;
+    const cancelled = ev.response?.status === "cancelled";
     const output: unknown[] = Array.isArray(ev.response?.output) ? ev.response.output : [];
 
-    // tool calls can appear in any response
     let sawReport = false;
     for (const item of output) {
       if (!isFunctionCall(item)) continue;
       if (item.name === "report_attempt") {
-        sawReport = true;
-        this.handleReportAttempt(item.call_id, item.arguments);
+        // only honor the tool inside a grade turn we asked for — the model may
+        // call it spontaneously elsewhere, which must never move the lesson
+        if (kind === "grade" && this.gradingInFlight) {
+          sawReport = true;
+          this.handleReportAttempt(item.call_id, item.arguments);
+        } else {
+          sawReport = kind === "grade";
+          this.send(
+            functionCallOutput(item.call_id, {
+              error: "not grading right now — wait for the app's next instruction",
+            }),
+          );
+        }
       } else if (item.name === "update_learner_memory") {
         this.handleUpdateMemory(item.call_id, item.arguments);
       }
     }
 
-    if (kind === "grade" && !sawReport) {
-      this.recoverMissingGrade();
+    if (kind === "grade") {
+      if (cancelled) {
+        // student barged in while grading — the fresh commit will re-grade
+        this.gradingInFlight = false;
+        this.gradeRetried = false;
+        this.maybeFireCap();
+        return;
+      }
+      if (!sawReport) this.recoverMissingGrade();
       return;
     }
 
     if (kind === "deliver" || kind === "outcome") {
-      this.finishAudioResponse();
+      this.finishAudioResponse(cancelled);
       if (this.machine.isComplete) {
         this.speakCompletion();
+      } else if (this.maybeFireCap()) {
+        return;
       } else if (this.machine.expectingStudent && this.phase !== "error") {
         this.phase = "listening";
         this.emit();
@@ -358,6 +387,9 @@ export class LessonOrchestrator {
             }),
           );
         }
+      } else {
+        // malformed twice — use the exact-match fallback instead of stalling
+        this.recoverMissingGrade();
       }
       return;
     }
@@ -522,7 +554,21 @@ export class LessonOrchestrator {
   private reachCap(): void {
     if (this.capReached || this.phase === "complete" || this.phase === "error") return;
     this.capReached = true;
+    // a second active response would be rejected — defer to the next response.done
+    if (this.inFlightAudio || this.gradingInFlight) {
+      this.capPending = true;
+      return;
+    }
     this.sendAudioResponse("cap", timeCapInstructions(), null);
+  }
+
+  /** Fire a deferred session cap once nothing is in flight. Returns true if fired. */
+  private maybeFireCap(): boolean {
+    if (!this.capPending || this.phase === "complete" || this.phase === "error") return false;
+    if (this.inFlightAudio || this.gradingInFlight) return false;
+    this.capPending = false;
+    this.sendAudioResponse("cap", timeCapInstructions(), null);
+    return true;
   }
 
   // ---------- helpers ----------
@@ -549,10 +595,11 @@ export class LessonOrchestrator {
     this.emit();
   }
 
-  private finishAudioResponse(): void {
+  private finishAudioResponse(cancelled = false): void {
     const audio = this.inFlightAudio;
     this.inFlightAudio = null;
-    if (!audio || !audio.verbatimLine || !audio.transcript) return;
+    // barge-in cancels mid-line — a drift score on partial audio would be noise
+    if (cancelled || !audio || !audio.verbatimLine || !audio.transcript) return;
     // the spoken transcript may include an ack/greeting before the line — score
     // against the tail window where the script line should live
     const score = driftScore(audio.verbatimLine, tailWindow(audio.transcript, audio.verbatimLine));
