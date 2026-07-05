@@ -65,7 +65,11 @@ export function buildSessionConfig(opts: {
     instructions: opts.instructions,
     audio: {
       input: {
-        transcription: { language: "es" },
+        // the API requires an explicit transcription model (verified live 2026-07)
+        transcription: {
+          model: process.env.REALTIME_TRANSCRIBE_MODEL ?? "gpt-realtime-whisper",
+          language: "es",
+        },
         turn_detection: {
           type: "semantic_vad",
           create_response: false, // the app scripts every model response
