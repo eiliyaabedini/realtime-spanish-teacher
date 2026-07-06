@@ -3,12 +3,10 @@ import type { Message } from "@/lib/lesson-machine/machine";
 export function ChatBubble({ message }: { message: Message }) {
   if (message.role === "system") {
     return (
-      <div className="my-1 text-center">
+      <div className="bubble-in my-1 text-center">
         <span
-          className={`inline-block rounded-full px-3 py-1 text-xs ${
-            message.isError
-              ? "bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300"
-              : "bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
+          className={`inline-block rounded-full px-3.5 py-1 text-xs ${
+            message.isError ? "bg-error-soft text-error" : "bg-surface-2 text-muted"
           }`}
         >
           {message.text}
@@ -19,14 +17,22 @@ export function ChatBubble({ message }: { message: Message }) {
 
   const isTeacher = message.role === "teacher";
   return (
-    <div className={`flex ${isTeacher ? "justify-start" : "justify-end"}`}>
+    <div className={`bubble-in flex ${isTeacher ? "justify-start" : "justify-end"}`}>
+      {isTeacher && (
+        <span
+          aria-hidden
+          className="mr-2 mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-soft text-sm"
+        >
+          ☀️
+        </span>
+      )}
       <div
-        className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+        className={`max-w-[78%] whitespace-pre-wrap rounded-3xl px-4 py-2.5 text-[15px] leading-relaxed shadow-warm ${
           isTeacher
-            ? "rounded-bl-sm bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+            ? "rounded-tl-md border border-line bg-surface"
             : message.isError
-              ? "rounded-br-sm bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-200"
-              : "rounded-br-sm bg-indigo-600 text-white"
+              ? "rounded-br-md bg-error-soft text-error"
+              : "rounded-br-md bg-primary text-white"
         }`}
       >
         {message.text}

@@ -44,34 +44,45 @@ function LoginForm() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-sm rounded-2xl border border-black/10 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-zinc-900">
-        <h1 className="text-2xl font-semibold">Realtime Spanish Teacher</h1>
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-          Sign in to start your lesson. Your teacher remembers your progress and how you learn.
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden p-6">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[-320px] h-[560px] w-[560px] -translate-x-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--gold) 70%, transparent) 0%, transparent 65%)",
+        }}
+      />
+      <div className="relative w-full max-w-sm rounded-3xl border border-line bg-surface p-8 shadow-warm">
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-gold" />
+        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight">
+          Hola, I&apos;m <span className="italic text-primary">Sofía</span>
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
+          Sign in to start your lesson. I remember your progress and how you learn best.
         </p>
 
         {(authError || errorMsg) && (
-          <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
+          <p className="mt-4 rounded-xl bg-error-soft p-3 text-sm text-error">
             {errorMsg ?? "Sign-in failed. Please try again."}
           </p>
         )}
 
         <button
           onClick={signInWithGoogle}
-          className="mt-6 w-full rounded-lg border border-black/10 bg-white px-4 py-2.5 text-sm font-medium hover:bg-zinc-50 dark:border-white/15 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+          className="mt-6 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm font-medium transition hover:bg-surface-2"
         >
           Continue with Google
         </button>
 
-        <div className="my-5 flex items-center gap-3 text-xs text-zinc-400">
-          <div className="h-px flex-1 bg-black/10 dark:bg-white/10" />
+        <div className="my-5 flex items-center gap-3 text-xs text-muted">
+          <div className="h-px flex-1 bg-line" />
           or
-          <div className="h-px flex-1 bg-black/10 dark:bg-white/10" />
+          <div className="h-px flex-1 bg-line" />
         </div>
 
         {status === "sent" ? (
-          <p className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300">
+          <p className="rounded-xl bg-accent-soft p-3 text-sm text-accent">
             Check your email — we sent you a sign-in link.
           </p>
         ) : (
@@ -82,12 +93,12 @@ function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm outline-none focus:border-indigo-400 dark:border-white/15 dark:bg-zinc-800"
+              className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm outline-none transition focus:border-primary"
             />
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-50"
+              className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-strong disabled:opacity-50"
             >
               {status === "sending" ? "Sending…" : "Send magic link"}
             </button>

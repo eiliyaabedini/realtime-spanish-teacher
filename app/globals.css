@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Café Español theme ─────────────────────────────────────────────
+   Warm cream & terracotta by day, deep espresso by night.
+   Semantic tokens only — components use bg-surface, text-ink, etc. */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #faf5ee;
+  --surface: #fffdf9;
+  --surface-2: #f3ebdf;
+  --ink: #2c211b;
+  --muted: #8a7767;
+  --border: #e8dccb;
+  --primary: #c2542d;
+  --primary-strong: #a84523;
+  --primary-soft: #f7e3d7;
+  --accent: #5f7a3d;
+  --accent-soft: #e9eeda;
+  --gold: #d9970f;
+  --gold-soft: #f7ecd2;
+  --error: #b3372c;
+  --error-soft: #f9e3df;
+  --orb-a: #e2725b;
+  --orb-b: #d9970f;
+  --shadow-warm: 0 4px 24px -8px rgb(90 60 30 / 0.18);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #171210;
+    --surface: #211a16;
+    --surface-2: #2b221c;
+    --ink: #f3e9dd;
+    --muted: #a5907e;
+    --border: #3a2e26;
+    --primary: #e8795a;
+    --primary-strong: #f08c6e;
+    --primary-soft: #3d2117;
+    --accent: #9db56f;
+    --accent-soft: #28301b;
+    --gold: #e8b23e;
+    --gold-soft: #38290d;
+    --error: #e57368;
+    --error-soft: #3d1d18;
+    --orb-a: #e8795a;
+    --orb-b: #e8b23e;
+    --shadow-warm: 0 4px 24px -8px rgb(0 0 0 / 0.5);
   }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
+  --shadow-warm: var(--shadow-warm);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--primary-soft);
+}
+
+/* ── Voice orb ────────────────────────────────────────────────────── */
+
+.orb {
+  position: relative;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 32% 30%, var(--orb-b), var(--orb-a) 62%, color-mix(in srgb, var(--orb-a) 70%, black) 100%);
+  box-shadow:
+    0 10px 40px -8px color-mix(in srgb, var(--orb-a) 55%, transparent),
+    inset 0 -8px 22px rgb(0 0 0 / 0.18),
+    inset 0 6px 18px rgb(255 255 255 / 0.28);
+  transition: transform 400ms ease;
+}
+
+.orb-idle {
+  animation: orb-breathe 4.5s ease-in-out infinite;
+}
+
+.orb-speaking {
+  animation: orb-speak 1.15s ease-in-out infinite;
+}
+
+.orb-grading {
+  animation: orb-breathe 1.4s ease-in-out infinite;
+  filter: saturate(0.55) brightness(0.92);
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+@keyframes orb-speak {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.09); }
+  60% { transform: scale(1.02); }
+  80% { transform: scale(1.07); }
+}
+
+/* sonar rings while listening */
+.orb-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid var(--orb-a);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.orb-listening .orb-ring { animation: orb-sonar 2.2s ease-out infinite; }
+.orb-listening .orb-ring:nth-child(2) { animation-delay: 0.7s; }
+.orb-listening .orb-ring:nth-child(3) { animation-delay: 1.4s; }
+
+@keyframes orb-sonar {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* equalizer bars inside the orb while speaking */
+.orb-bars {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.orb-bars span {
+  width: 4px;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 0.9);
+  height: 30%;
+}
+
+.orb-speaking .orb-bars span { animation: eq 0.9s ease-in-out infinite; }
+.orb-speaking .orb-bars span:nth-child(1) { animation-delay: 0s; }
+.orb-speaking .orb-bars span:nth-child(2) { animation-delay: 0.15s; }
+.orb-speaking .orb-bars span:nth-child(3) { animation-delay: 0.3s; }
+.orb-speaking .orb-bars span:nth-child(4) { animation-delay: 0.45s; }
+.orb-speaking .orb-bars span:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes eq {
+  0%, 100% { height: 26%; }
+  50% { height: 62%; }
+}
+
+/* mic-live dot while the student is talking */
+@keyframes mic-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.mic-live { animation: mic-blink 1s ease-in-out infinite; }
+
+/* chat entrance */
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.bubble-in { animation: bubble-in 260ms ease-out both; }
+
+/* typing dots */
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.typing-dot { animation: typing 1.2s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* landing hero sun */
+@keyframes sun-drift {
+  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-50%, -12px) scale(1.04); opacity: 1; }
+}
+.hero-sun { animation: sun-drift 9s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orb, .orb-ring, .orb-bars span, .bubble-in, .typing-dot, .hero-sun, .mic-live {
+    animation: none !important;
+  }
 }

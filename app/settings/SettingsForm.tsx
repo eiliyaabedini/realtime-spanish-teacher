@@ -50,24 +50,22 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
       : "No API key configured — lessons can't start yet";
 
   return (
-    <form onSubmit={save} className="mt-6 space-y-8">
+    <form onSubmit={save} className="mt-8 space-y-6">
       {settings.dbError && (
-        <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800 dark:bg-amber-950/50 dark:text-amber-200">
+        <p className="rounded-2xl bg-gold-soft p-4 text-sm text-gold">
           Database unreachable — settings can&apos;t be loaded or saved right now.
         </p>
       )}
 
-      <section className="rounded-2xl border border-black/10 p-5 dark:border-white/10">
-        <h2 className="font-medium">OpenAI API key</h2>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+      <section className="rounded-3xl border border-line bg-surface p-6 shadow-warm">
+        <h2 className="font-display text-lg font-semibold">OpenAI API key</h2>
+        <p className="mt-1 text-sm leading-relaxed text-muted">
           Voice lessons run on OpenAI&apos;s Realtime API. Your key is stored encrypted and only
           used server-side to start your sessions.
         </p>
         <p
           className={`mt-3 text-sm font-medium ${
-            !settings.hasOwnKey && !settings.serverHasKey
-              ? "text-red-600 dark:text-red-400"
-              : "text-emerald-700 dark:text-emerald-400"
+            !settings.hasOwnKey && !settings.serverHasKey ? "text-error" : "text-accent"
           }`}
         >
           {keyStatus}
@@ -78,28 +76,26 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
           onChange={(e) => setApiKey(e.target.value)}
           placeholder="sk-…"
           autoComplete="off"
-          className="mt-3 w-full rounded-lg border border-black/10 bg-white px-3 py-2.5 font-mono text-sm outline-none focus:border-indigo-400 dark:border-white/15 dark:bg-zinc-800"
+          className="mt-3 w-full rounded-xl border border-line bg-background px-4 py-3 font-mono text-sm outline-none transition focus:border-primary"
         />
         {settings.hasOwnKey && (
           <button
             type="button"
             onClick={removeKey}
-            className="mt-2 text-sm text-red-600 hover:underline dark:text-red-400"
+            className="mt-2 text-sm text-error hover:underline"
           >
             Remove my key
           </button>
         )}
       </section>
 
-      <section className="rounded-2xl border border-black/10 p-5 dark:border-white/10">
-        <h2 className="font-medium">Teacher voice</h2>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-          Takes effect the next time you start a lesson.
-        </p>
+      <section className="rounded-3xl border border-line bg-surface p-6 shadow-warm">
+        <h2 className="font-display text-lg font-semibold">Sofía&apos;s voice</h2>
+        <p className="mt-1 text-sm text-muted">Takes effect the next time you start a lesson.</p>
         <select
           value={voice}
           onChange={(e) => setVoice(e.target.value)}
-          className="mt-3 w-full rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm dark:border-white/15 dark:bg-zinc-800"
+          className="mt-3 w-full rounded-xl border border-line bg-background px-4 py-3 text-sm outline-none transition focus:border-primary"
         >
           {REALTIME_VOICES.map((v) => (
             <option key={v} value={v}>
@@ -110,13 +106,7 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
       </section>
 
       {message && (
-        <p
-          className={`text-sm ${
-            message.kind === "ok"
-              ? "text-emerald-700 dark:text-emerald-400"
-              : "text-red-600 dark:text-red-400"
-          }`}
-        >
+        <p className={`text-sm ${message.kind === "ok" ? "text-accent" : "text-error"}`}>
           {message.text}
         </p>
       )}
@@ -124,7 +114,7 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
       <button
         type="submit"
         disabled={saving}
-        className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-50"
+        className="rounded-full bg-primary px-8 py-3 text-sm font-medium text-white shadow-warm transition hover:bg-primary-strong disabled:opacity-50"
       >
         {saving ? "Saving…" : "Save settings"}
       </button>

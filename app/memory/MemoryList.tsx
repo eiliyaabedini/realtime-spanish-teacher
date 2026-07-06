@@ -10,6 +10,14 @@ export type MemoryItem = {
   createdAt: string;
 };
 
+const CATEGORY_ICONS: Record<string, string> = {
+  grammar: "🧩",
+  vocab: "📚",
+  pronunciation: "🗣️",
+  pace: "⏱️",
+  style: "🎨",
+};
+
 export function MemoryList({ items }: { items: MemoryItem[] }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -24,9 +32,9 @@ export function MemoryList({ items }: { items: MemoryItem[] }) {
 
   if (items.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-black/15 p-6 text-center text-sm text-zinc-500 dark:border-white/15">
-        Nothing yet. As you take lessons, your teacher saves observations about how you learn —
-        they&apos;ll appear here, and you can delete any of them.
+      <p className="rounded-3xl border border-dashed border-line bg-surface p-8 text-center text-sm leading-relaxed text-muted">
+        Nothing yet. As you take lessons, Sofía saves observations about how you learn — they&apos;ll
+        appear here, and you can delete any of them.
       </p>
     );
   }
@@ -39,28 +47,31 @@ export function MemoryList({ items }: { items: MemoryItem[] }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {[...byCategory.entries()].map(([category, list]) => (
         <section key={category}>
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-zinc-400">
-            {category}
-          </h2>
+          <div className="mb-3 flex items-center gap-3">
+            <h2 className="font-display shrink-0 text-base italic text-muted">
+              {CATEGORY_ICONS[category] ?? "•"} {category}
+            </h2>
+            <div className="h-px flex-1 bg-line" />
+          </div>
           <ul className="space-y-2">
             {list.map((item) => (
               <li
                 key={item.id}
-                className="flex items-start justify-between gap-3 rounded-xl border border-black/10 bg-white p-3 text-sm dark:border-white/10 dark:bg-zinc-900"
+                className="flex items-start justify-between gap-4 rounded-2xl border border-line bg-surface p-4 text-sm shadow-warm"
               >
                 <div>
-                  <p>{item.observation}</p>
-                  <p className="mt-1 text-xs text-zinc-400">
+                  <p className="leading-relaxed">{item.observation}</p>
+                  <p className="mt-1 text-xs text-muted">
                     {new Date(item.createdAt).toLocaleDateString()}
                   </p>
                 </div>
                 <button
                   onClick={() => remove(item.id)}
                   disabled={busy}
-                  className="text-xs text-red-600 hover:underline disabled:opacity-50 dark:text-red-400"
+                  className="shrink-0 text-xs text-error hover:underline disabled:opacity-50"
                 >
                   Delete
                 </button>
@@ -72,7 +83,7 @@ export function MemoryList({ items }: { items: MemoryItem[] }) {
       <button
         onClick={() => remove()}
         disabled={busy}
-        className="text-sm text-red-600 hover:underline disabled:opacity-50 dark:text-red-400"
+        className="text-sm text-error hover:underline disabled:opacity-50"
       >
         Forget everything
       </button>

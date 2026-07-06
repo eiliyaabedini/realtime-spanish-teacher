@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { TranscriptView } from "@/components/TranscriptView";
+import { VoiceOrb, phaseToOrb } from "@/components/VoiceOrb";
 import type { HistoryEntry } from "@/lib/lesson-machine/machine";
 import { initMachine } from "@/lib/lesson-machine/machine";
 import type { LessonPair } from "@/lib/lessons/parse";
@@ -27,9 +28,9 @@ const emptySubscribe = () => () => {};
 
 const PHASE_LABEL: Record<Snapshot["phase"], string> = {
   connecting: "Connecting…",
-  teacher_speaking: "Profesora Sofía is speaking",
-  listening: "Your turn — speak!",
-  grading: "Listening… one moment",
+  teacher_speaking: "Sofía is speaking…",
+  listening: "Your turn — ¡habla!",
+  grading: "Listening closely…",
   complete: "Lesson complete",
   error: "Connection problem",
 };
@@ -168,67 +169,73 @@ export function LessonSession(props: Props) {
 
   const machine = snap.machine;
   const complete = snap.phase === "complete" || (status === "idle" && machine.isComplete);
+  const progressPct = machine.pairs.length
+    ? Math.round((machine.currentIndex / machine.pairs.length) * 100)
+    : 0;
 
   return (
-    <div className="flex h-[calc(100vh-0px)] flex-col">
+    <div className="flex h-screen flex-col">
       <audio ref={audioRef} hidden />
 
       {/* top bar */}
-      <div className="flex items-center justify-between border-b border-black/10 px-4 py-3 dark:border-white/10">
-        <div>
-          <Link href="/lessons" className="text-xs text-zinc-400 hover:underline">
-            ← All lessons
-          </Link>
-          <h1 className="font-semibold">{props.title}</h1>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-zinc-500">
-            Line {Math.min(machine.currentIndex + 1, machine.pairs.length)}/{machine.pairs.length}
-          </span>
-          {status === "active" && (
-            <>
-              {!textMode && (
+      <div className="border-b border-line bg-surface/80 px-5 py-3 backdrop-blur">
+        <div className="mx-auto flex max-w-2xl items-center justify-between">
+          <div className="min-w-0">
+            <Link href="/lessons" className="text-xs text-muted transition hover:text-primary">
+              ← All lessons
+            </Link>
+            <h1 className="font-display truncate text-lg font-semibold tracking-tight">
+              {props.title}
+            </h1>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <span className="rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-muted">
+              {Math.min(machine.currentIndex + 1, machine.pairs.length)} / {machine.pairs.length}
+            </span>
+            {status === "active" && (
+              <>
+                {!textMode && (
+                  <button
+                    onClick={toggleMute}
+                    className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                      micMuted
+                        ? "border-error/40 bg-error-soft text-error"
+                        : "border-line hover:bg-surface-2"
+                    }`}
+                  >
+                    {micMuted ? "🔇 Muted" : "Mute"}
+                  </button>
+                )}
                 <button
-                  onClick={toggleMute}
-                  className={`rounded-full border px-3 py-1 text-xs ${
-                    micMuted
-                      ? "border-red-300 text-red-600 dark:border-red-700 dark:text-red-400"
-                      : "border-black/10 dark:border-white/15"
-                  }`}
+                  onClick={endSession}
+                  className="rounded-full border border-line px-3 py-1 text-xs font-medium transition hover:bg-surface-2"
                 >
-                  {micMuted ? "Unmute" : "Mute"}
+                  End
                 </button>
-              )}
-              <button
-                onClick={endSession}
-                className="rounded-full border border-black/10 px-3 py-1 text-xs hover:bg-zinc-50 dark:border-white/15 dark:hover:bg-zinc-800"
-              >
-                End session
-              </button>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* progress bar */}
-      <div className="h-1 w-full bg-zinc-100 dark:bg-zinc-800">
+      {/* progress */}
+      <div className="h-1 w-full bg-surface-2">
         <div
-          className="h-full bg-indigo-500 transition-all"
+          className="h-full rounded-r-full transition-all duration-700"
           style={{
-            width: `${machine.pairs.length ? Math.round((machine.currentIndex / machine.pairs.length) * 100) : 0}%`,
+            width: `${progressPct}%`,
+            background: "linear-gradient(90deg, var(--gold), var(--primary))",
           }}
         />
       </div>
 
       {props.dbWarning && (
-        <p className="bg-amber-50 px-4 py-2 text-xs text-amber-800 dark:bg-amber-950/50 dark:text-amber-200">
+        <p className="bg-gold-soft px-4 py-2 text-center text-xs text-gold">
           Database unreachable — this session won&apos;t save progress.
         </p>
       )}
       {snap.warning && (
-        <p className="bg-amber-50 px-4 py-2 text-xs text-amber-800 dark:bg-amber-950/50 dark:text-amber-200">
-          {snap.warning}
-        </p>
+        <p className="bg-gold-soft px-4 py-2 text-center text-xs text-gold">{snap.warning}</p>
       )}
 
       {/* transcript */}
@@ -239,71 +246,83 @@ export function LessonSession(props: Props) {
         />
       </div>
 
-      {/* bottom panel */}
-      <div className="border-t border-black/10 p-4 dark:border-white/10">
-        {complete ? (
-          <CompletionPanel {...props} firstTrySummary={snap} />
-        ) : status === "idle" || status === "starting" ? (
-          <div className="flex flex-col items-center gap-2">
-            <button
-              onClick={start}
-              disabled={status === "starting"}
-              className="rounded-full bg-indigo-600 px-10 py-3.5 text-lg font-medium text-white hover:bg-indigo-500 disabled:opacity-60"
-            >
-              {status === "starting"
-                ? "Connecting…"
-                : props.resumeIndex > 0
-                  ? `Resume at line ${props.resumeIndex + 1}`
-                  : "Start lesson"}
-            </button>
-            <p className="text-xs text-zinc-400">
-              Uses your microphone — the teacher listens and replies in realtime.
-            </p>
-          </div>
-        ) : status === "error" || snap.phase === "error" ? (
-          <div className="flex flex-col items-center gap-2 text-center">
-            <p className="text-sm text-red-600 dark:text-red-400">
-              {startError ?? snap.error ?? "Something went wrong."}
-            </p>
-            {needsKey ? (
-              <Link
-                href="/settings"
-                className="rounded-full bg-indigo-600 px-6 py-2 text-sm font-medium text-white hover:bg-indigo-500"
-              >
-                Add your OpenAI key in Settings
-              </Link>
-            ) : (
+      {/* bottom dock */}
+      <div className="border-t border-line bg-surface/80 px-5 py-5 backdrop-blur">
+        <div className="mx-auto max-w-2xl">
+          {complete ? (
+            <CompletionPanel {...props} snap={snap} />
+          ) : status === "idle" || status === "starting" ? (
+            <div className="flex flex-col items-center gap-3">
+              <VoiceOrb state="idle" size={72} />
               <button
-                onClick={() => window.location.reload()}
-                className="rounded-full bg-indigo-600 px-6 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+                onClick={start}
+                disabled={status === "starting"}
+                className="rounded-full bg-primary px-12 py-4 text-lg font-medium text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-primary-strong disabled:translate-y-0 disabled:opacity-60"
               >
-                Reconnect & resume
+                {status === "starting"
+                  ? "Connecting…"
+                  : props.resumeIndex > 0
+                    ? `Resume at line ${props.resumeIndex + 1}`
+                    : "Start lesson"}
               </button>
-            )}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center gap-3">
-            <StatusPill phase={snap.phase} micActive={snap.micActive} />
-            {textMode && machine.expectingStudent && (
-              <form onSubmit={submitText} className="flex w-full max-w-lg gap-2">
-                <input
-                  value={textInput}
-                  onChange={(e) => setTextInput(e.target.value)}
-                  placeholder="Type your answer in Spanish…"
-                  className="flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm outline-none focus:border-indigo-400 dark:border-white/15 dark:bg-zinc-800"
-                />
-                <button className="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-500">
-                  Send
-                </button>
-              </form>
-            )}
-            {textMode && (
-              <p className="text-xs text-zinc-400">
-                Microphone unavailable — you can type your answers instead.
+              <p className="text-xs text-muted">
+                Uses your microphone — Sofía listens and replies in realtime.
               </p>
-            )}
-          </div>
-        )}
+            </div>
+          ) : status === "error" || snap.phase === "error" ? (
+            <div className="flex flex-col items-center gap-3 text-center">
+              <p className="text-sm text-error">
+                {startError ?? snap.error ?? "Something went wrong."}
+              </p>
+              {needsKey ? (
+                <Link
+                  href="/settings"
+                  className="rounded-full bg-primary px-7 py-2.5 text-sm font-medium text-white transition hover:bg-primary-strong"
+                >
+                  Add your OpenAI key in Settings
+                </Link>
+              ) : (
+                <button
+                  onClick={() => window.location.reload()}
+                  className="rounded-full bg-primary px-7 py-2.5 text-sm font-medium text-white transition hover:bg-primary-strong"
+                >
+                  Reconnect & resume
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center justify-center gap-5">
+              <VoiceOrb state={phaseToOrb(snap.phase, snap.micActive)} size={72} />
+              <div className="min-w-0">
+                <p className="flex items-center gap-2 font-medium">
+                  {snap.micActive && (
+                    <span className="mic-live inline-block h-2 w-2 rounded-full bg-error" />
+                  )}
+                  {snap.micActive ? "I can hear you…" : PHASE_LABEL[snap.phase]}
+                </p>
+                {textMode && machine.expectingStudent ? (
+                  <form onSubmit={submitText} className="mt-2 flex w-72 max-w-full gap-2">
+                    <input
+                      value={textInput}
+                      onChange={(e) => setTextInput(e.target.value)}
+                      placeholder="Type your answer in Spanish…"
+                      className="min-w-0 flex-1 rounded-xl border border-line bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
+                    />
+                    <button className="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-strong">
+                      Send
+                    </button>
+                  </form>
+                ) : (
+                  <p className="mt-0.5 text-xs text-muted">
+                    {textMode
+                      ? "Microphone unavailable — type your answers instead."
+                      : "Speak naturally — you can interrupt her any time."}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {showDebug && <DebugOverlay snap={snap} />}
@@ -311,47 +330,28 @@ export function LessonSession(props: Props) {
   );
 }
 
-function StatusPill({ phase, micActive }: { phase: Snapshot["phase"]; micActive: boolean }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300">
-      <span
-        className={`h-2.5 w-2.5 rounded-full ${
-          micActive
-            ? "animate-pulse bg-red-500"
-            : phase === "teacher_speaking"
-              ? "animate-pulse bg-indigo-500"
-              : phase === "grading"
-                ? "bg-amber-500"
-                : "bg-emerald-500"
-        }`}
-      />
-      {PHASE_LABEL[phase]}
-    </div>
-  );
-}
-
-function CompletionPanel(props: Props & { firstTrySummary: Snapshot }) {
-  const { stats } = props.firstTrySummary;
+function CompletionPanel(props: Props & { snap: Snapshot }) {
+  const { stats } = props.snap;
   return (
     <div className="flex flex-col items-center gap-3 text-center">
-      <p className="text-2xl">🎉</p>
-      <p className="font-medium">Lesson complete — ¡muy bien!</p>
-      {stats.usdCost > 0 && (
-        <p className="text-xs text-zinc-400">
-          Session cost ≈ ${stats.usdCost.toFixed(2)} · your progress is saved
-        </p>
-      )}
-      <div className="flex gap-3">
+      <p className="font-display text-4xl font-semibold tracking-tight">
+        ¡Muy <span className="italic text-primary">bien!</span> 🎉
+      </p>
+      <p className="text-sm text-muted">
+        Lesson complete — your progress is saved
+        {stats.usdCost > 0 && <> · session ≈ ${stats.usdCost.toFixed(2)}</>}
+      </p>
+      <div className="mt-1 flex gap-3">
         <Link
           href="/lessons"
-          className="rounded-full border border-black/10 px-5 py-2 text-sm hover:bg-zinc-50 dark:border-white/15 dark:hover:bg-zinc-800"
+          className="rounded-full border border-line px-6 py-2.5 text-sm font-medium transition hover:bg-surface-2"
         >
           All lessons
         </Link>
         {props.nextLessonId && (
           <Link
             href={`/lessons/${props.nextLessonId}`}
-            className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+            className="rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-warm transition hover:bg-primary-strong"
           >
             Next lesson →
           </Link>
@@ -365,8 +365,8 @@ function DebugOverlay({ snap }: { snap: Snapshot }) {
   const drift = meanDrift(snap.stats);
   const latency = p50(snap.stats.turnLatenciesMs);
   return (
-    <div className="fixed bottom-24 right-4 z-50 w-64 rounded-xl border border-black/10 bg-white/95 p-3 font-mono text-[11px] shadow-lg dark:border-white/10 dark:bg-zinc-900/95">
-      <p className="mb-1 font-semibold">harness</p>
+    <div className="fixed bottom-28 right-4 z-50 w-64 rounded-2xl border border-line bg-surface/95 p-3 font-mono text-[11px] shadow-warm backdrop-blur">
+      <p className="mb-1 font-semibold text-primary">harness</p>
       <p>phase: {snap.phase}</p>
       <p>cost: ${snap.stats.usdCost.toFixed(4)}</p>
       <p>

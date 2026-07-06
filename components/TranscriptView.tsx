@@ -18,31 +18,28 @@ export function TranscriptView({
   }, [messages.length, teacherSpeaking]);
 
   return (
-    <div className="flex flex-col gap-2 overflow-y-auto p-4">
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-3 p-4 pb-6">
       {messages.map((m, i) => (
         <ChatBubble key={i} message={m} />
       ))}
       {teacherSpeaking && (
-        <div className="flex justify-start">
-          <div className="rounded-2xl rounded-bl-sm bg-zinc-100 px-4 py-3 dark:bg-zinc-800">
-            <span className="inline-flex gap-1">
-              <Dot delay="0ms" />
-              <Dot delay="150ms" />
-              <Dot delay="300ms" />
+        <div className="bubble-in flex justify-start">
+          <span
+            aria-hidden
+            className="mr-2 mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-soft text-sm"
+          >
+            ☀️
+          </span>
+          <div className="rounded-3xl rounded-tl-md border border-line bg-surface px-4 py-3 shadow-warm">
+            <span className="inline-flex gap-1.5">
+              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-muted" />
+              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-muted" />
+              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-muted" />
             </span>
           </div>
         </div>
       )}
       <div ref={endRef} />
     </div>
-  );
-}
-
-function Dot({ delay }: { delay: string }) {
-  return (
-    <span
-      className="h-1.5 w-1.5 animate-bounce rounded-full bg-zinc-400"
-      style={{ animationDelay: delay }}
-    />
   );
 }

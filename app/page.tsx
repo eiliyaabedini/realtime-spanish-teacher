@@ -2,24 +2,48 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-8 text-center">
-      <p className="text-sm font-medium uppercase tracking-widest text-indigo-500">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+      {/* warm sun glow */}
+      <div
+        aria-hidden
+        className="hero-sun pointer-events-none absolute left-1/2 top-[-260px] h-[560px] w-[560px] rounded-full opacity-90"
+        style={{
+          background:
+            "radial-gradient(circle, var(--gold) 0%, color-mix(in srgb, var(--gold) 35%, transparent) 38%, transparent 68%)",
+        }}
+      />
+
+      <p className="relative mb-5 rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-primary shadow-warm">
         Aprende español hablando
       </p>
-      <h1 className="max-w-2xl text-4xl font-bold sm:text-5xl">
-        A real conversation with a teacher who remembers you
+
+      <h1 className="font-display relative max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-7xl">
+        Speak Spanish
+        <br />
+        <span className="italic text-primary">from the first minute</span>
       </h1>
-      <p className="max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-        Live voice lessons powered by realtime AI. Your teacher speaks, listens, corrects you
-        gently in plain English, and adapts to how you learn — lesson by lesson.
+
+      <p className="relative mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted">
+        A live voice conversation with Profesora Sofía — she speaks, listens, corrects you gently
+        in plain English, and remembers exactly how you learn. Lesson by lesson.
       </p>
+
       <Link
         href="/lessons"
-        className="rounded-full bg-indigo-600 px-8 py-3 text-lg font-medium text-white hover:bg-indigo-500"
+        className="relative mt-10 rounded-full bg-primary px-10 py-4 text-lg font-medium text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-primary-strong"
       >
-        Start learning →
+        Start speaking →
       </Link>
-      <p className="text-xs text-zinc-400">16 scripted lessons · voice-first · progress saved</p>
+
+      <div className="relative mt-12 flex flex-wrap items-center justify-center gap-2 text-sm text-muted">
+        {["🎙️ Real conversation", "📖 16 scripted lessons", "🧠 A teacher who remembers you"].map(
+          (chip) => (
+            <span key={chip} className="rounded-full border border-line bg-surface px-4 py-1.5">
+              {chip}
+            </span>
+          ),
+        )}
+      </div>
     </main>
   );
 }
