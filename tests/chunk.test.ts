@@ -120,8 +120,10 @@ describe("ChunkLessonOrchestrator", () => {
       expect.objectContaining({ lineIndex: 1, isCorrect: true }),
     ]);
     const update = sent.find((s) => s.type === "session.update");
+    expect(update.session.type).toBe("realtime"); // required by the API
     expect(update.session.instructions).toContain("«Todo bien.»");
-    expect(update.session.instructions).toContain("part 2 of 2");
+    // chunks are an implementation detail — the student must never hear of them
+    expect(update.session.instructions).not.toMatch(/part \d+ of \d+/i);
     expect(sent.at(-1).response.metadata.kind).toBe("open");
   });
 

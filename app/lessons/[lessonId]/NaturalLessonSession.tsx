@@ -358,8 +358,7 @@ export function NaturalLessonSession(props: Props) {
                       : "Your turn — repeat and chat"}
                 </p>
                 <p className="mt-1 text-xs text-muted">
-                  Part {snap.chunkNumber}/{snap.totalChunks} · {snap.chunkRemaining} phrases left
-                  in this part
+                  {snap.totalLines - snap.creditedCount} phrases to go
                 </p>
                 {audioBlocked && (
                   <button

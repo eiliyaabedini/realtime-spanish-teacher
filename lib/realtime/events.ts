@@ -172,7 +172,7 @@ export const FINISH_CHUNK_TOOL = {
   type: "function",
   name: "finish_chunk",
   description:
-    "Call when the student has said all of today's phrases out loud (or everything is reasonably covered). Say a short transition sentence first, then call this.",
+    "Call silently when the student has said all the current phrases out loud (or everything is reasonably covered). Never mention parts, chunks, or app mechanics to the student — the lesson simply continues.",
   parameters: { type: "object", properties: {} },
 } as const;
 

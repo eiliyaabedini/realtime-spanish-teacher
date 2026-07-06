@@ -11,6 +11,7 @@ import type { LessonPair } from "@/lib/lessons/parse";
 import {
   functionCallOutput,
   isFunctionCall,
+  itemDelete,
   outputTranscriptDone,
   responseContinue,
   responseCreate,
@@ -51,6 +52,9 @@ const UpdateMemoryArgs = z.object({
 
 const SESSION_CAP_MS = 25 * 60_000;
 const IDLE_CAP_MS = 3 * 60_000;
+/** context pruning keeps per-turn input flat on long lessons */
+const PRUNE_AT_ITEMS = 30;
+const PRUNE_CHUNK = 12;
 
 export class ChunkLessonOrchestrator {
   private phase: ChunkPhase = "connecting";
@@ -80,7 +84,9 @@ export class ChunkLessonOrchestrator {
   private started = false;
   private inResponse = false;
   private advancePending = false;
+  private lastAdvanceSentAt = 0;
   private lessonDone = false;
+  private itemIds: string[] = [];
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
@@ -195,6 +201,18 @@ export class ChunkLessonOrchestrator {
         this.emit();
         return;
 
+      case "conversation.item.created": {
+        const id = ev.item?.id;
+        if (typeof id === "string" && !this.itemIds.includes(id)) {
+          this.itemIds.push(id);
+          if (this.itemIds.length > PRUNE_AT_ITEMS) {
+            const drop = this.itemIds.splice(0, PRUNE_CHUNK);
+            for (const dropId of drop) this.send(itemDelete(dropId));
+          }
+        }
+        return;
+      }
+
       case "response.created":
         this.inResponse = true;
         return;
@@ -205,6 +223,15 @@ export class ChunkLessonOrchestrator {
 
       case "error": {
         const message: string = ev.error?.message ?? "Realtime session error";
+        // a chunk advance that raced a VAD auto-response — retry on its done
+        if (
+          /active response/i.test(message) &&
+          !this.lessonDone &&
+          Date.now() - this.lastAdvanceSentAt < 5000
+        ) {
+          this.advancePending = true;
+          return;
+        }
         this.inResponse = false;
         if (ev.error?.type === "invalid_request_error" && this.phase !== "connecting") {
           this.warning = message;
@@ -278,8 +305,8 @@ export class ChunkLessonOrchestrator {
       }
     }
 
-    if (finishRequested || this.advancePending) {
-      this.advancePending = false;
+    if (finishRequested) this.advancePending = true;
+    if (this.advancePending) {
       this.advanceChunk();
       return;
     }
@@ -309,21 +336,27 @@ export class ChunkLessonOrchestrator {
     }
     if (hits.length === 0) return;
 
-    // whole chunk covered → advance (mid-response: defer to response.done)
+    // whole chunk covered → advance (deferred whenever a response is active)
     const left = this.plan.lines.some((l) => !this.credited.has(l.index));
     if (!left) {
-      if (this.inResponse) this.advancePending = true;
-      else this.advanceChunk();
+      this.advancePending = true;
+      if (!this.inResponse) this.advanceChunk();
     }
   }
 
   private advanceChunk(): void {
+    if (this.inResponse) {
+      this.advancePending = true;
+      return;
+    }
+    this.advancePending = false;
     this.flushBatch();
     this.plan = planChunk(this.pairs, this.credited, this.chunkSize);
     if (this.plan.lines.length === 0) {
       this.finishLesson();
       return;
     }
+    this.lastAdvanceSentAt = Date.now();
     this.send(sessionUpdateInstructions(this.currentPersona()));
     this.send(responseCreate({ kind: "open", instructions: chunkOpening(false) }));
     this.emit();
@@ -331,8 +364,13 @@ export class ChunkLessonOrchestrator {
 
   private finishLesson(): void {
     if (this.lessonDone) return;
+    if (this.inResponse) {
+      this.advancePending = true;
+      return;
+    }
     this.lessonDone = true;
     this.flushBatch();
+    this.lastAdvanceSentAt = Date.now();
     this.send(
       responseCreate({ kind: "complete", instructions: chunkCompleteInstructions(this.lessonTitle) }),
     );
