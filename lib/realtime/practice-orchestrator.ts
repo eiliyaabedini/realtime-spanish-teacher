@@ -27,12 +27,16 @@ export type PracticeSnapshot = {
   warning: string | null;
 };
 
+export type NavTarget = { kind: "lesson"; lessonId: string } | { kind: "practice" };
+
 export type PracticeHooks = {
   postMemory: (entry: { category: string; observation: string }) => Promise<void>;
   fetchLesson: (
     lessonId: string,
   ) => Promise<{ title: string; pairs: { teacher: string; student: string }[] } | null>;
   onComplete: () => void;
+  /** guide mode only: start_lesson / start_practice tool calls land here */
+  onNavigate?: (target: NavTarget) => void;
 };
 
 const UpdateMemoryArgs = z.object({
@@ -41,10 +45,13 @@ const UpdateMemoryArgs = z.object({
 });
 const GetLessonArgs = z.object({ lessonId: z.string().min(1) });
 const SuggestLessonArgs = z.object({ lessonId: z.string().min(1), reason: z.string().min(3) });
+const StartLessonArgs = z.object({ lessonId: z.string().min(1) });
 
 const PRACTICE_CAP_MS = 30 * 60_000;
 const IDLE_CAP_MS = 3 * 60_000;
 const MAX_SUGGESTIONS = 3;
+/** let the send-off audio finish before leaving the page */
+const NAV_DELAY_MS = 900;
 
 export class PracticeOrchestrator {
   private phase: PracticePhase = "connecting";
@@ -67,6 +74,11 @@ export class PracticeOrchestrator {
   private capReached = false;
   private capPending = false;
   private capSpoken = false;
+  private pendingNav: NavTarget | null = null;
+  private navTimer: ReturnType<typeof setTimeout> | null = null;
+  private capMs: number;
+  private idleMs: number;
+  private opening: string | null;
 
   private listeners = new Set<() => void>();
   private snapshotCache: PracticeSnapshot | null = null;
@@ -75,10 +87,17 @@ export class PracticeOrchestrator {
     send: (event: object) => void;
     hooks: PracticeHooks;
     lessonIndex: { id: string; title: string }[];
+    capMs?: number;
+    idleMs?: number;
+    /** override the session-opening instruction (guide mode) */
+    opening?: string;
   }) {
     this.send = opts.send;
     this.hooks = opts.hooks;
     this.lessonIndex = new Map(opts.lessonIndex.map((l) => [l.id, l.title]));
+    this.capMs = opts.capMs ?? PRACTICE_CAP_MS;
+    this.idleMs = opts.idleMs ?? IDLE_CAP_MS;
+    this.opening = opts.opening ?? null;
   }
 
   subscribe = (cb: () => void): (() => void) => {
@@ -104,9 +123,9 @@ export class PracticeOrchestrator {
   start(): void {
     if (this.started) return;
     this.started = true;
-    this.capTimer = setTimeout(() => this.reachCap(), PRACTICE_CAP_MS);
+    this.capTimer = setTimeout(() => this.reachCap(), this.capMs);
     this.armIdleTimer();
-    this.send(responseCreate({ kind: "open", instructions: practiceOpening() }));
+    this.send(responseCreate({ kind: "open", instructions: this.opening ?? practiceOpening() }));
   }
 
   submitText(text: string): void {
@@ -121,6 +140,7 @@ export class PracticeOrchestrator {
   stop(): void {
     if (this.capTimer) clearTimeout(this.capTimer);
     if (this.idleTimer) clearTimeout(this.idleTimer);
+    if (this.navTimer) clearTimeout(this.navTimer);
     this.listeners.clear();
   }
 
@@ -217,6 +237,14 @@ export class PracticeOrchestrator {
       await this.handleToolCall(item.name, item.call_id, item.arguments);
     }
 
+    // navigation tool called — leave once the send-off audio has played out
+    if (this.pendingNav) {
+      const target = this.pendingNav;
+      this.pendingNav = null;
+      this.navTimer = setTimeout(() => this.hooks.onNavigate?.(target), NAV_DELAY_MS);
+      return;
+    }
+
     if (this.capPending) {
       this.speakWrapUp();
       return;
@@ -285,6 +313,25 @@ export class PracticeOrchestrator {
         this.emit();
       }
       this.send(functionCallOutput(callId, { ok: true, shown_to_student: true }));
+      return;
+    }
+
+    if (name === "start_lesson") {
+      const parsed = StartLessonArgs.safeParse(args);
+      if (!parsed.success || !this.lessonIndex.has(parsed.data.lessonId)) {
+        this.send(
+          functionCallOutput(callId, { error: "unknown lessonId — use an id from the curriculum" }),
+        );
+        return;
+      }
+      this.pendingNav = { kind: "lesson", lessonId: parsed.data.lessonId };
+      this.send(functionCallOutput(callId, { ok: true, navigating: true }));
+      return;
+    }
+
+    if (name === "start_practice") {
+      this.pendingNav = { kind: "practice" };
+      this.send(functionCallOutput(callId, { ok: true, navigating: true }));
       return;
     }
 

@@ -1,6 +1,12 @@
 import { and, asc, desc, eq, sql } from "drizzle-orm";
 import { db } from "./index";
-import { learnerMemory, userProgress, userSettings, type MemoryCategory } from "./schema";
+import {
+  learnerMemory,
+  practiceSessions,
+  userProgress,
+  userSettings,
+  type MemoryCategory,
+} from "./schema";
 
 // Every function takes the authenticated userId as its first argument and scopes
 // all reads/writes to it. This is the enforcement line (Drizzle connects as the
@@ -165,6 +171,28 @@ export async function replaceMemory(
         .values(entries.map((e) => ({ userId, source: "teacher", ...e })));
     }
   });
+}
+
+// --- practice sessions (for the lesson → practice → lesson journey) ---
+
+export async function recordPracticeSession(userId: string) {
+  await db().insert(practiceSessions).values({ userId });
+}
+
+export async function getLastPracticeAt(userId: string): Promise<Date | null> {
+  const rows = await db()
+    .select({ at: sql<Date>`max(${practiceSessions.createdAt})` })
+    .from(practiceSessions)
+    .where(eq(practiceSessions.userId, userId));
+  return rows[0]?.at ?? null;
+}
+
+export async function getLastLessonActivityAt(userId: string): Promise<Date | null> {
+  const rows = await db()
+    .select({ at: sql<Date>`max(${userProgress.createdAt})` })
+    .from(userProgress)
+    .where(eq(userProgress.userId, userId));
+  return rows[0]?.at ?? null;
 }
 
 // --- user settings ---

@@ -7,6 +7,7 @@ export type LessonStatus = {
   description?: string;
   totalPairs: number;
   correctLines: number;
+  resumeIndex: number;
   state: "completed" | "in_progress" | "not_started";
 };
 
@@ -36,6 +37,7 @@ export async function getCurriculumStatus(userId: string): Promise<LessonStatus[
       description: lesson.description,
       totalPairs: pairs.length,
       correctLines,
+      resumeIndex: s?.resumeIndex ?? 0,
       state,
     };
   });

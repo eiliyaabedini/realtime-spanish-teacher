@@ -13,6 +13,9 @@ import {
 
 type Props = {
   lessonIndex: { id: string; title: string }[];
+  autostart?: boolean;
+  /** set when the student paused a lesson to talk it through */
+  from?: { lessonId: string; lineIndex: number; title: string } | null;
 };
 
 type Status = "idle" | "starting" | "active" | "error";
@@ -35,17 +38,19 @@ const EMPTY_SNAPSHOT: PracticeSnapshot = {
   warning: null,
 };
 
-export function PracticeSession({ lessonIndex }: Props) {
+export function PracticeSession({ lessonIndex, autostart, from }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [startError, setStartError] = useState<string | null>(null);
   const [needsKey, setNeedsKey] = useState(false);
   const [micMuted, setMicMuted] = useState(false);
   const [textMode, setTextMode] = useState(false);
   const [textInput, setTextInput] = useState("");
+  const [audioBlocked, setAudioBlocked] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const connRef = useRef<RealtimeConnection | null>(null);
   const orchRef = useRef<PracticeOrchestrator | null>(null);
+  const autostarted = useRef(false);
 
   useEffect(() => {
     return () => {
@@ -53,6 +58,14 @@ export function PracticeSession({ lessonIndex }: Props) {
       connRef.current?.close();
     };
   }, []);
+
+  useEffect(() => {
+    if (autostart && !autostarted.current) {
+      autostarted.current = true;
+      void start();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autostart]);
 
   const subscribe = useCallback((cb: () => void) => {
     return orchRef.current ? orchRef.current.subscribe(cb) : () => {};
@@ -73,7 +86,10 @@ export function PracticeSession({ lessonIndex }: Props) {
       const res = await fetch("/api/realtime/secret", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mode: "practice" }),
+        body: JSON.stringify({
+          mode: "practice",
+          ...(from ? { from: { lessonId: from.lessonId, lineIndex: from.lineIndex } } : {}),
+        }),
       });
       const data = await res.json().catch(() => null);
       if (!res.ok) {
@@ -101,6 +117,7 @@ export function PracticeSession({ lessonIndex }: Props) {
             };
           },
           onComplete: () => {
+            void fetch("/api/practice/complete", { method: "POST" }).catch(() => {});
             void fetch("/api/memory/summarize", { method: "POST" }).catch(() => {});
           },
         },
@@ -111,6 +128,7 @@ export function PracticeSession({ lessonIndex }: Props) {
         clientSecret: data.clientSecret,
         audioElement: audioRef.current!,
         onEvent: (ev) => orchRef.current?.handleServerEvent(ev),
+        onAudioBlocked: () => setAudioBlocked(true),
         onConnectionChange: (state) => {
           if (state === "failed" || state === "disconnected") {
             setStartError("Connection lost — start a new practice session any time.");
@@ -196,6 +214,16 @@ export function PracticeSession({ lessonIndex }: Props) {
 
       {snap.warning && (
         <p className="bg-gold-soft px-4 py-2 text-center text-xs text-gold">{snap.warning}</p>
+      )}
+      {from && !complete && (
+        <div className="bg-primary-soft px-4 py-2 text-center text-xs">
+          <Link
+            href={`/lessons/${from.lessonId}?autostart=1`}
+            className="font-medium text-primary hover:underline"
+          >
+            ↩ Resume lesson: {from.title} (line {from.lineIndex + 1})
+          </Link>
+        </div>
       )}
 
       {/* transcript + suggestions */}
@@ -296,6 +324,16 @@ export function PracticeSession({ lessonIndex }: Props) {
                   )}
                   {snap.micActive ? "I can hear you…" : PHASE_LABEL[snap.phase]}
                 </p>
+                {audioBlocked && (
+                  <button
+                    onClick={() =>
+                      void audioRef.current?.play().then(() => setAudioBlocked(false)).catch(() => {})
+                    }
+                    className="mt-1 rounded-full bg-primary px-5 py-2 text-sm font-medium text-white shadow-warm"
+                  >
+                    🔊 Tap to hear Sofía
+                  </button>
+                )}
                 {textMode ? (
                   <form onSubmit={submitText} className="mt-2 flex w-72 max-w-full gap-2">
                     <input
@@ -336,7 +374,7 @@ function SuggestionCard({ suggestion }: { suggestion: LessonSuggestion }) {
         <p className="mt-0.5 text-sm text-muted">“{suggestion.reason}”</p>
       </div>
       <Link
-        href={`/lessons/${suggestion.lessonId}`}
+        href={`/lessons/${suggestion.lessonId}?autostart=1`}
         className="shrink-0 rounded-full bg-primary px-5 py-2 text-sm font-medium text-white transition hover:bg-primary-strong"
       >
         Start →

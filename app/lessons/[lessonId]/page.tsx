@@ -9,10 +9,13 @@ export const dynamic = "force-dynamic";
 
 export default async function LessonPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ lessonId: string }>;
+  searchParams: Promise<{ autostart?: string }>;
 }) {
   const { lessonId } = await params;
+  const { autostart } = await searchParams;
   const meta = getLessonMeta(lessonId);
   if (!meta) notFound();
 
@@ -52,6 +55,7 @@ export default async function LessonPage({
       isFirstSession={isFirstSession}
       nextLessonId={nextLessonId}
       dbWarning={dbWarning}
+      autostart={autostart === "1"}
     />
   );
 }

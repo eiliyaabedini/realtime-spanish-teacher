@@ -24,14 +24,15 @@ export async function connectRealtime(opts: {
   audioElement: HTMLAudioElement;
   onEvent: (event: ServerEvent) => void;
   onConnectionChange?: (state: RTCPeerConnectionState) => void;
+  /** autoplay was blocked (e.g. Safari after a navigation) — show a tap-to-listen button */
+  onAudioBlocked?: () => void;
 }): Promise<RealtimeConnection> {
   const pc = new RTCPeerConnection();
 
   pc.ontrack = (e) => {
     opts.audioElement.srcObject = e.streams[0];
     void opts.audioElement.play().catch(() => {
-      // Autoplay may require the user gesture that started the session; the
-      // Start button click satisfies it on all mainstream browsers.
+      opts.onAudioBlocked?.();
     });
   };
   pc.onconnectionstatechange = () => opts.onConnectionChange?.(pc.connectionState);

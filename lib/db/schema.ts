@@ -38,6 +38,16 @@ export const userSettings = pgTable("user_settings", {
 import type { MemoryCategory } from "../memory/categories";
 export { MEMORY_CATEGORIES, type MemoryCategory } from "../memory/categories";
 
+export const practiceSessions = pgTable(
+  "practice_sessions",
+  {
+    id: bigint("id", { mode: "number" }).generatedAlwaysAsIdentity().primaryKey(),
+    userId: uuid("user_id").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("practice_sessions_user_idx").on(t.userId, t.createdAt)],
+);
+
 export const learnerMemory = pgTable(
   "learner_memory",
   {

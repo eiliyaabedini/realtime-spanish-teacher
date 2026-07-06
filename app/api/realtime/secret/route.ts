@@ -1,18 +1,30 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { decrypt } from "@/lib/crypto";
-import { getSettings } from "@/lib/db/queries";
-import { getLessonMeta } from "@/lib/lessons/catalog";
+import { getLastLessonActivityAt, getLastPracticeAt, getSettings } from "@/lib/db/queries";
+import { deriveNextStep, nextStepBriefing } from "@/lib/guide/journey";
+import { guidePersona } from "@/lib/guide/prompts";
+import { getLessonMeta, getLessonPairs } from "@/lib/lessons/catalog";
 import { personaInstructions } from "@/lib/lesson-machine/prompts";
 import { assembleProfile } from "@/lib/memory/profile";
 import { curriculumBriefing, getCurriculumStatus } from "@/lib/practice/curriculum";
 import { practicePersona } from "@/lib/practice/prompts";
-import { buildPracticeSessionConfig, buildSessionConfig } from "@/lib/realtime/events";
+import {
+  buildGuideSessionConfig,
+  buildPracticeSessionConfig,
+  buildSessionConfig,
+} from "@/lib/realtime/events";
 import { DEFAULT_VOICE } from "@/lib/realtime/voices";
 import { getUser } from "@/lib/supabase/server";
 
 const Body = z.union([
-  z.object({ mode: z.literal("practice") }),
+  z.object({
+    mode: z.literal("practice"),
+    from: z
+      .object({ lessonId: z.string().min(1), lineIndex: z.number().int().min(0) })
+      .optional(),
+  }),
+  z.object({ mode: z.literal("guide") }),
   z.object({ mode: z.literal("lesson").optional(), lessonId: z.string().min(1) }),
 ]);
 
@@ -24,8 +36,9 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: "invalid body" }, { status: 400 });
   }
-  const mode = "lessonId" in parsed.data ? "lesson" : "practice";
-  if (mode === "lesson" && !getLessonMeta((parsed.data as { lessonId: string }).lessonId)) {
+  const body = parsed.data;
+  const mode = "lessonId" in body ? "lesson" : body.mode;
+  if (mode === "lesson" && !getLessonMeta((body as { lessonId: string }).lessonId)) {
     return NextResponse.json({ error: "unknown lesson" }, { status: 400 });
   }
 
@@ -58,21 +71,51 @@ export async function POST(request: Request) {
 
   const profile = await assembleProfile(user.id);
   const model = process.env.REALTIME_MODEL ?? "gpt-realtime-2";
-  const session =
-    mode === "practice"
-      ? buildPracticeSessionConfig({
-          model,
-          voice,
-          instructions: practicePersona(
-            profile,
-            curriculumBriefing(await getCurriculumStatus(user.id)),
-          ),
-        })
-      : buildSessionConfig({
-          model,
-          voice,
-          instructions: personaInstructions(profile),
-        });
+
+  let session: object;
+  if (mode === "lesson") {
+    session = buildSessionConfig({
+      model,
+      voice,
+      instructions: personaInstructions(profile),
+    });
+  } else {
+    const statuses = await getCurriculumStatus(user.id);
+    if (mode === "guide") {
+      let lastLessonAt: Date | null = null;
+      let lastPracticeAt: Date | null = null;
+      try {
+        [lastLessonAt, lastPracticeAt] = await Promise.all([
+          getLastLessonActivityAt(user.id),
+          getLastPracticeAt(user.id),
+        ]);
+      } catch {
+        // DB down — briefing falls back to "first lesson"
+      }
+      session = buildGuideSessionConfig({
+        model,
+        voice,
+        instructions: guidePersona({
+          profile,
+          curriculum: curriculumBriefing(statuses),
+          stepBriefing: nextStepBriefing(deriveNextStep(statuses, lastLessonAt, lastPracticeAt)),
+          isFirstVisit: profile.isFirstSession,
+        }),
+      });
+    } else {
+      // free practice — optionally with "just paused a lesson" context
+      let instructions = practicePersona(profile, curriculumBriefing(statuses));
+      const from = (body as { from?: { lessonId: string; lineIndex: number } }).from;
+      if (from && getLessonMeta(from.lessonId)) {
+        const pair = getLessonPairs(from.lessonId)[from.lineIndex];
+        const badge = from.lessonId.replace(/^lesson(\d+)p(\d+)$/, "$1.$2");
+        instructions += `\n\nCONTEXT: the student just paused lesson ${badge} at line ${from.lineIndex + 1}${
+          pair ? ` (the line was: «${pair.teacher}»)` : ""
+        } to talk with you. Open by acknowledging that and offering to work through what was tricky — then follow their lead. They can resume the lesson from the button on screen whenever they're ready.`;
+      }
+      session = buildPracticeSessionConfig({ model, voice, instructions });
+    }
+  }
 
   const upstream = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
     method: "POST",

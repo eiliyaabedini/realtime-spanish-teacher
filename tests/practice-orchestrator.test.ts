@@ -154,6 +154,69 @@ describe("PracticeOrchestrator", () => {
     expect(hooks.onComplete).toHaveBeenCalledOnce();
   });
 
+  it("start_lesson navigates after the send-off audio delay (guide mode)", async () => {
+    vi.useFakeTimers();
+    try {
+      const sent: Sent[] = [];
+      const onNavigate = vi.fn();
+      const orch = new PracticeOrchestrator({
+        send: (e) => sent.push(e),
+        lessonIndex: LESSON_INDEX,
+        hooks: {
+          postMemory: vi.fn(async () => {}),
+          fetchLesson: vi.fn(async () => null),
+          onComplete: vi.fn(),
+          onNavigate,
+        },
+        opening: "Welcome them.",
+      });
+      active = orch;
+      orch.handleServerEvent(ev.sessionCreated());
+      expect(sent[0].response.instructions).toBe("Welcome them.");
+
+      orch.handleServerEvent(
+        ev.responseDone([ev.call("start_lesson", { lessonId: "lesson1p1" })]),
+      );
+      await vi.advanceTimersByTimeAsync(50);
+      expect(onNavigate).not.toHaveBeenCalled(); // send-off still playing
+      // no continuation response while navigation is pending
+      expect(sent.filter((s) => s.type === "response.create")).toHaveLength(1);
+
+      await vi.advanceTimersByTimeAsync(1000);
+      expect(onNavigate).toHaveBeenCalledWith({ kind: "lesson", lessonId: "lesson1p1" });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("start_lesson with an unknown id is refused without navigating", async () => {
+    vi.useFakeTimers();
+    try {
+      const sent: Sent[] = [];
+      const onNavigate = vi.fn();
+      const orch = new PracticeOrchestrator({
+        send: (e) => sent.push(e),
+        lessonIndex: LESSON_INDEX,
+        hooks: {
+          postMemory: vi.fn(async () => {}),
+          fetchLesson: vi.fn(async () => null),
+          onComplete: vi.fn(),
+          onNavigate,
+        },
+      });
+      active = orch;
+      orch.handleServerEvent(ev.sessionCreated());
+      orch.handleServerEvent(ev.responseDone([ev.call("start_lesson", { lessonId: "bogus" })]));
+      await vi.advanceTimersByTimeAsync(2000);
+
+      expect(onNavigate).not.toHaveBeenCalled();
+      const reply = sent.find((s) => s.type === "conversation.item.create");
+      expect(JSON.parse(reply.item.output).error).toContain("unknown lessonId");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("typed answers create a user item and trigger a response", () => {
     const { orch, sent } = setup();
     active = orch;

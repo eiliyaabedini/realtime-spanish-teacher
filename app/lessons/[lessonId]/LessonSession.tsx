@@ -20,6 +20,7 @@ type Props = {
   isFirstSession: boolean;
   nextLessonId: string | null;
   dbWarning: boolean;
+  autostart?: boolean;
 };
 
 type Status = "idle" | "starting" | "active" | "error";
@@ -87,10 +88,12 @@ export function LessonSession(props: Props) {
   const [micMuted, setMicMuted] = useState(false);
   const [textMode, setTextMode] = useState(false);
   const [textInput, setTextInput] = useState("");
+  const [audioBlocked, setAudioBlocked] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const connRef = useRef<RealtimeConnection | null>(null);
   const orchRef = useRef<LessonOrchestrator | null>(null);
+  const autostarted = useRef(false);
 
   const showDebug = useSyncExternalStore(
     emptySubscribe,
@@ -104,6 +107,15 @@ export function LessonSession(props: Props) {
       connRef.current?.close();
     };
   }, []);
+
+  // arriving via Sofía's navigation or a journey button — start right away
+  useEffect(() => {
+    if (props.autostart && !autostarted.current) {
+      autostarted.current = true;
+      void start();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.autostart]);
 
   const subscribe = useCallback((cb: () => void) => {
     return orchRef.current ? orchRef.current.subscribe(cb) : () => {};
@@ -177,6 +189,7 @@ export function LessonSession(props: Props) {
         clientSecret: data.clientSecret,
         audioElement: audioRef.current!,
         onEvent: (ev) => orchRef.current?.handleServerEvent(ev),
+        onAudioBlocked: () => setAudioBlocked(true),
         onConnectionChange: (state) => {
           if (state === "failed" || state === "disconnected") {
             setStartError("Connection lost. Your progress is saved — resume any time.");
@@ -198,6 +211,19 @@ export function LessonSession(props: Props) {
     connRef.current?.close();
     connRef.current = null;
     window.location.href = "/lessons";
+  }
+
+  /** Pause the lesson (progress is saved per line) and talk it through with Sofía. */
+  function talkItThrough() {
+    const line = orchRef.current?.getSnapshot().machine.currentIndex ?? props.resumeIndex;
+    orchRef.current?.stop();
+    connRef.current?.close();
+    connRef.current = null;
+    window.location.href = `/practice?from=${props.lessonId}&line=${line}&autostart=1`;
+  }
+
+  function unblockAudio() {
+    void audioRef.current?.play().then(() => setAudioBlocked(false)).catch(() => {});
   }
 
   function toggleMute() {
@@ -240,6 +266,13 @@ export function LessonSession(props: Props) {
             </span>
             {status === "active" && (
               <>
+                <button
+                  onClick={talkItThrough}
+                  title="Pause the lesson and discuss with Sofía — your progress is saved"
+                  className="rounded-full border border-primary/40 bg-primary-soft px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary/20"
+                >
+                  💬 Talk it through
+                </button>
                 {!textMode && (
                   <button
                     onClick={toggleMute}
@@ -350,6 +383,14 @@ export function LessonSession(props: Props) {
                   )}
                   {snap.micActive ? "I can hear you…" : PHASE_LABEL[snap.phase]}
                 </p>
+                {audioBlocked && (
+                  <button
+                    onClick={unblockAudio}
+                    className="mt-1 rounded-full bg-primary px-5 py-2 text-sm font-medium text-white shadow-warm"
+                  >
+                    🔊 Tap to hear Sofía
+                  </button>
+                )}
                 {textMode && machine.expectingStudent ? (
                   <form onSubmit={submitText} className="mt-2 flex w-72 max-w-full gap-2">
                     <input

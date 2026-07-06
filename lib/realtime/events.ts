@@ -81,6 +81,28 @@ export const SUGGEST_LESSON_TOOL = {
   },
 } as const;
 
+export const START_LESSON_TOOL = {
+  type: "function",
+  name: "start_lesson",
+  description:
+    "Navigate the student into a lesson. Say your short send-off sentence first, then call this.",
+  parameters: {
+    type: "object",
+    properties: {
+      lessonId: { type: "string", description: "Lesson id from the curriculum, e.g. 'lesson1p1'." },
+    },
+    required: ["lessonId"],
+  },
+} as const;
+
+export const START_PRACTICE_TOOL = {
+  type: "function",
+  name: "start_practice",
+  description:
+    "Navigate the student into a free practice session with you. Say your short send-off sentence first, then call this.",
+  parameters: { type: "object", properties: {} },
+} as const;
+
 // ---------- session config (used by /api/realtime/secret) ----------
 
 export function buildSessionConfig(opts: {
@@ -141,6 +163,19 @@ export function buildPracticeSessionConfig(opts: {
     },
     tools: [UPDATE_MEMORY_TOOL, GET_LESSON_CONTENT_TOOL, SUGGEST_LESSON_TOOL],
     tool_choice: "auto",
+  };
+}
+
+/** Home-screen concierge: like practice, but with navigation tools. */
+export function buildGuideSessionConfig(opts: {
+  model: string;
+  voice: string;
+  instructions: string;
+}) {
+  const config = buildPracticeSessionConfig(opts);
+  return {
+    ...config,
+    tools: [START_LESSON_TOOL, START_PRACTICE_TOOL, UPDATE_MEMORY_TOOL],
   };
 }
 
