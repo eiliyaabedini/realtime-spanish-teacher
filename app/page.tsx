@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Teacher } from "@/components/Teacher";
 
 export default function Home() {
   return (
@@ -12,6 +13,10 @@ export default function Home() {
             "radial-gradient(circle, var(--gold) 0%, color-mix(in srgb, var(--gold) 35%, transparent) 38%, transparent 68%)",
         }}
       />
+
+      <div className="relative">
+        <Teacher state="idle" size={132} />
+      </div>
 
       <p className="relative mb-5 rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-primary shadow-warm">
         Aprende español hablando

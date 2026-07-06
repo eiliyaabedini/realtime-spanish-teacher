@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { Teacher } from "@/components/Teacher";
 import { TranscriptView } from "@/components/TranscriptView";
-import { VoiceOrb } from "@/components/VoiceOrb";
 import { connectRealtime, type RealtimeConnection } from "@/lib/realtime/connection";
 import {
   PracticeOrchestrator,
@@ -218,6 +218,7 @@ export function PracticeSession({ lessonIndex }: Props) {
         <div className="mx-auto max-w-2xl">
           {complete ? (
             <div className="flex flex-col items-center gap-3 text-center">
+              <Teacher state="happy" size={96} />
               <p className="font-display text-3xl font-semibold tracking-tight">
                 ¡Buen <span className="italic text-primary">trabajo!</span> 🎉
               </p>
@@ -242,7 +243,7 @@ export function PracticeSession({ lessonIndex }: Props) {
             </div>
           ) : status === "idle" || status === "starting" ? (
             <div className="flex flex-col items-center gap-3">
-              <VoiceOrb state="idle" size={72} />
+              <Teacher state="idle" size={104} />
               <button
                 onClick={start}
                 disabled={status === "starting"}
@@ -281,11 +282,12 @@ export function PracticeSession({ lessonIndex }: Props) {
             </div>
           ) : (
             <div className="flex items-center justify-center gap-5">
-              <VoiceOrb
+              <Teacher
                 state={
                   snap.micActive ? "listening" : snap.phase === "speaking" ? "speaking" : "listening"
                 }
-                size={72}
+                audioRef={audioRef}
+                size={104}
               />
               <div className="min-w-0">
                 <p className="flex items-center gap-2 font-medium">

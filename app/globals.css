@@ -196,8 +196,103 @@ body {
 }
 .hero-sun { animation: sun-drift 9s ease-in-out infinite; }
 
+/* ── Sofía, the animated teacher ─────────────────────────────────── */
+
+.teacher svg {
+  overflow: visible;
+}
+
+.teacher .t-head {
+  transform-box: fill-box;
+  transform-origin: 50% 70%;
+  transition: transform 500ms ease;
+}
+
+/* gentle breathing in every state */
+.teacher-idle .t-head { animation: t-bob 4.5s ease-in-out infinite; }
+.teacher-speaking .t-head { animation: t-talk 1.6s ease-in-out infinite; }
+.teacher-listening .t-head { transform: rotate(6deg) translateY(2px); animation: t-nod 3.2s ease-in-out infinite; }
+.teacher-thinking .t-head { transform: rotate(-5deg); }
+.teacher-happy .t-head { animation: t-hop 0.55s ease-in-out 2; }
+.teacher-oops .t-head { transform: rotate(4deg) translateY(3px); }
+
+@keyframes t-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2.5px); }
+}
+@keyframes t-talk {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  30% { transform: rotate(1.6deg) translateY(1px); }
+  70% { transform: rotate(-1.4deg) translateY(0.5px); }
+}
+@keyframes t-nod {
+  0%, 100% { transform: rotate(6deg) translateY(2px); }
+  50% { transform: rotate(4deg) translateY(3.5px); }
+}
+@keyframes t-hop {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-7px) rotate(-2deg); }
+}
+
+/* blinking */
+.teacher .t-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: t-blink 4.6s infinite;
+}
+.teacher-listening .t-eyes { animation-duration: 3.1s; }
+@keyframes t-blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96%, 98% { transform: scaleY(0.08); }
+}
+
+/* pupils look up while thinking */
+.teacher .t-pupils {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 350ms ease;
+}
+.teacher-thinking .t-pupils { transform: translateY(-3.5px) translateX(2px); }
+
+/* brows */
+.teacher .t-brow-l,
+.teacher .t-brow-r {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 300ms ease;
+}
+.teacher-listening .t-brow-l, .teacher-listening .t-brow-r { transform: translateY(-2.5px); }
+.teacher-thinking .t-brow-r { transform: translateY(-3px) rotate(-6deg); }
+.teacher-oops .t-brow-l { transform: rotate(10deg) translateY(-1px); }
+.teacher-oops .t-brow-r { transform: rotate(-10deg) translateY(-1px); }
+.teacher-happy .t-brow-l, .teacher-happy .t-brow-r { transform: translateY(-3px); }
+
+/* blush */
+.teacher .t-blush { opacity: 0; transition: opacity 400ms ease; }
+.teacher-happy .t-blush, .teacher-oops .t-blush { opacity: 0.28; }
+
+/* mouth visemes — data-viseme is set by the audio analyser (0..3) */
+.teacher .t-mouth { transform-box: fill-box; }
+.teacher .t-m { opacity: 0; transition: opacity 70ms linear; }
+.teacher[data-viseme="0"] .t-m0 { opacity: 1; }
+.teacher[data-viseme="1"] .t-m1 { opacity: 1; }
+.teacher[data-viseme="2"] .t-m2 { opacity: 1; }
+.teacher[data-viseme="3"] .t-m3 { opacity: 1; }
+
+/* jaw follows the audio level */
+.teacher-speaking .t-mouth { transform: translateY(var(--jaw, 0px)); }
+
+/* pose-specific mouth overrides beat the viseme */
+.teacher-happy .t-m { opacity: 0 !important; }
+.teacher-happy .t-smile { opacity: 1 !important; }
+.teacher-oops .t-m { opacity: 0 !important; }
+.teacher-oops .t-flat { opacity: 1 !important; }
+.teacher-thinking .t-m { opacity: 0 !important; }
+.teacher-thinking .t-m1 { opacity: 1 !important; }
+
 @media (prefers-reduced-motion: reduce) {
-  .orb, .orb-ring, .orb-bars span, .bubble-in, .typing-dot, .hero-sun, .mic-live {
+  .orb, .orb-ring, .orb-bars span, .bubble-in, .typing-dot, .hero-sun, .mic-live,
+  .teacher .t-head, .teacher .t-eyes {
     animation: none !important;
   }
 }

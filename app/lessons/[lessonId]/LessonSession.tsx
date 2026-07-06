@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { Teacher, type TeacherState } from "@/components/Teacher";
 import { TranscriptView } from "@/components/TranscriptView";
-import { VoiceOrb, phaseToOrb } from "@/components/VoiceOrb";
 import type { HistoryEntry } from "@/lib/lesson-machine/machine";
 import { initMachine } from "@/lib/lesson-machine/machine";
 import type { LessonPair } from "@/lib/lessons/parse";
@@ -34,6 +34,51 @@ const PHASE_LABEL: Record<Snapshot["phase"], string> = {
   complete: "Lesson complete",
   error: "Connection problem",
 };
+
+function phaseToTeacher(phase: Snapshot["phase"], micActive: boolean): TeacherState {
+  if (micActive) return "listening";
+  switch (phase) {
+    case "teacher_speaking":
+      return "speaking";
+    case "listening":
+      return "listening";
+    case "grading":
+      return "thinking";
+    case "complete":
+      return "happy";
+    default:
+      return "idle";
+  }
+}
+
+/** Transient reactions: celebrate advances, sympathize with misses. */
+function useTeacherMood(snap: Snapshot): TeacherState | null {
+  const [mood, setMood] = useState<TeacherState | null>(null);
+  const [seen, setSeen] = useState({
+    index: snap.machine.currentIndex,
+    count: snap.machine.messages.length,
+  });
+
+  // state adjustment during render (not an effect) — the blessed pattern
+  const { currentIndex, messages } = snap.machine;
+  if (currentIndex !== seen.index || messages.length !== seen.count) {
+    if (currentIndex > seen.index) {
+      setMood("happy");
+    } else if (messages.length > seen.count) {
+      const last = messages.at(-1);
+      if (last?.role === "system" && last.isError) setMood("oops");
+    }
+    setSeen({ index: currentIndex, count: messages.length });
+  }
+
+  useEffect(() => {
+    if (!mood) return;
+    const timer = setTimeout(() => setMood(null), 1800);
+    return () => clearTimeout(timer);
+  }, [mood]);
+
+  return mood;
+}
 
 export function LessonSession(props: Props) {
   const [status, setStatus] = useState<Status>("idle");
@@ -81,6 +126,7 @@ export function LessonSession(props: Props) {
   }, [props.lessonId, props.pairs, props.resumeIndex, props.history]);
 
   const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+  const mood = useTeacherMood(snap);
 
   async function start() {
     setStatus("starting");
@@ -253,7 +299,7 @@ export function LessonSession(props: Props) {
             <CompletionPanel {...props} snap={snap} />
           ) : status === "idle" || status === "starting" ? (
             <div className="flex flex-col items-center gap-3">
-              <VoiceOrb state="idle" size={72} />
+              <Teacher state="idle" size={104} />
               <button
                 onClick={start}
                 disabled={status === "starting"}
@@ -292,7 +338,11 @@ export function LessonSession(props: Props) {
             </div>
           ) : (
             <div className="flex items-center justify-center gap-5">
-              <VoiceOrb state={phaseToOrb(snap.phase, snap.micActive)} size={72} />
+              <Teacher
+                state={mood ?? phaseToTeacher(snap.phase, snap.micActive)}
+                audioRef={audioRef}
+                size={104}
+              />
               <div className="min-w-0">
                 <p className="flex items-center gap-2 font-medium">
                   {snap.micActive && (
@@ -334,6 +384,7 @@ function CompletionPanel(props: Props & { snap: Snapshot }) {
   const { stats } = props.snap;
   return (
     <div className="flex flex-col items-center gap-3 text-center">
+      <Teacher state="happy" size={96} />
       <p className="font-display text-4xl font-semibold tracking-tight">
         ¡Muy <span className="italic text-primary">bien!</span> 🎉
       </p>
