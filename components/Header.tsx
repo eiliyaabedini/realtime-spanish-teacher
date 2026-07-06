@@ -19,6 +19,7 @@ export function Header({ streak }: { streak?: number }) {
           </span>
         )}
         <NavLink href="/lessons">Lessons</NavLink>
+        <NavLink href="/practice">Practice</NavLink>
         <NavLink href="/memory">Memory</NavLink>
         <NavLink href="/settings">Settings</NavLink>
         <form action="/auth/signout" method="post">

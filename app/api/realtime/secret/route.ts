@@ -5,18 +5,27 @@ import { getSettings } from "@/lib/db/queries";
 import { getLessonMeta } from "@/lib/lessons/catalog";
 import { personaInstructions } from "@/lib/lesson-machine/prompts";
 import { assembleProfile } from "@/lib/memory/profile";
-import { buildSessionConfig } from "@/lib/realtime/events";
+import { curriculumBriefing, getCurriculumStatus } from "@/lib/practice/curriculum";
+import { practicePersona } from "@/lib/practice/prompts";
+import { buildPracticeSessionConfig, buildSessionConfig } from "@/lib/realtime/events";
 import { DEFAULT_VOICE } from "@/lib/realtime/voices";
 import { getUser } from "@/lib/supabase/server";
 
-const Body = z.object({ lessonId: z.string().min(1) });
+const Body = z.union([
+  z.object({ mode: z.literal("practice") }),
+  z.object({ mode: z.literal("lesson").optional(), lessonId: z.string().min(1) }),
+]);
 
 export async function POST(request: Request) {
   const user = await getUser();
   if (!user) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
 
   const parsed = Body.safeParse(await request.json().catch(() => null));
-  if (!parsed.success || !getLessonMeta(parsed.data.lessonId)) {
+  if (!parsed.success) {
+    return NextResponse.json({ error: "invalid body" }, { status: 400 });
+  }
+  const mode = "lessonId" in parsed.data ? "lesson" : "practice";
+  if (mode === "lesson" && !getLessonMeta((parsed.data as { lessonId: string }).lessonId)) {
     return NextResponse.json({ error: "unknown lesson" }, { status: 400 });
   }
 
@@ -48,11 +57,22 @@ export async function POST(request: Request) {
   }
 
   const profile = await assembleProfile(user.id);
-  const session = buildSessionConfig({
-    model: process.env.REALTIME_MODEL ?? "gpt-realtime-2",
-    voice,
-    instructions: personaInstructions(profile),
-  });
+  const model = process.env.REALTIME_MODEL ?? "gpt-realtime-2";
+  const session =
+    mode === "practice"
+      ? buildPracticeSessionConfig({
+          model,
+          voice,
+          instructions: practicePersona(
+            profile,
+            curriculumBriefing(await getCurriculumStatus(user.id)),
+          ),
+        })
+      : buildSessionConfig({
+          model,
+          voice,
+          instructions: personaInstructions(profile),
+        });
 
   const upstream = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
     method: "POST",

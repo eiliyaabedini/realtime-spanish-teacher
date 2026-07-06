@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { LessonCard } from "@/components/LessonCard";
 import { getLessonIndex, getLessonPairs } from "@/lib/lessons/catalog";
@@ -58,6 +59,31 @@ export default async function LessonsPage() {
           Progress database isn&apos;t reachable — lessons work, but progress won&apos;t be saved.
         </p>
       )}
+
+      <Link
+        href="/practice"
+        className="group mt-8 flex items-center justify-between gap-4 rounded-3xl border border-primary/30 p-6 shadow-warm transition hover:-translate-y-0.5"
+        style={{
+          background:
+            "linear-gradient(120deg, var(--primary-soft), color-mix(in srgb, var(--gold-soft) 70%, var(--primary-soft)))",
+        }}
+      >
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
+            Teacher mode
+          </p>
+          <p className="font-display mt-1 text-2xl font-semibold tracking-tight">
+            Práctica <span className="italic text-primary">libre</span>
+          </p>
+          <p className="mt-1 max-w-md text-sm leading-relaxed text-muted">
+            Free conversation with Sofía — she knows what you&apos;ve learned, drills your weak
+            spots, proposes roleplays, and suggests your next lesson.
+          </p>
+        </div>
+        <span className="shrink-0 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-warm transition group-hover:bg-primary-strong">
+          Just talk →
+        </span>
+      </Link>
 
       <div className="mt-10 space-y-12">
         {[...chapters.entries()].map(([chapter, chapterLessons]) => (

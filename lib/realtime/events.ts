@@ -52,6 +52,35 @@ export const UPDATE_MEMORY_TOOL = {
   },
 } as const;
 
+export const GET_LESSON_CONTENT_TOOL = {
+  type: "function",
+  name: "get_lesson_content",
+  description:
+    "Fetch the actual Teacher/Student lines of a lesson from the curriculum. Call before drilling or roleplaying a lesson's material so you quote real curriculum phrases.",
+  parameters: {
+    type: "object",
+    properties: {
+      lessonId: { type: "string", description: "Lesson id from the curriculum status, e.g. 'lesson2p1'." },
+    },
+    required: ["lessonId"],
+  },
+} as const;
+
+export const SUGGEST_LESSON_TOOL = {
+  type: "function",
+  name: "suggest_lesson",
+  description:
+    "Recommend a specific lesson for the student to take next. Shows a card they can tap to start it. Also mention the suggestion naturally in speech. At most 2 per session.",
+  parameters: {
+    type: "object",
+    properties: {
+      lessonId: { type: "string", description: "Lesson id from the curriculum status, e.g. 'lesson2p3'." },
+      reason: { type: "string", description: "One short, personal sentence on why this lesson, in simple English." },
+    },
+    required: ["lessonId", "reason"],
+  },
+} as const;
+
 // ---------- session config (used by /api/realtime/secret) ----------
 
 export function buildSessionConfig(opts: {
@@ -83,9 +112,46 @@ export function buildSessionConfig(opts: {
   };
 }
 
+/**
+ * Free-practice config: VAD auto-responses (real conversation), teacher-mode
+ * tools. The app only injects the opening/wrap-up and answers tool calls.
+ */
+export function buildPracticeSessionConfig(opts: {
+  model: string;
+  voice: string;
+  instructions: string;
+}) {
+  return {
+    type: "realtime",
+    model: opts.model,
+    instructions: opts.instructions,
+    audio: {
+      input: {
+        transcription: {
+          model: process.env.REALTIME_TRANSCRIBE_MODEL ?? "gpt-realtime-whisper",
+          language: "es",
+        },
+        turn_detection: {
+          type: "semantic_vad",
+          create_response: true,
+          interrupt_response: true,
+        },
+      },
+      output: { voice: opts.voice },
+    },
+    tools: [UPDATE_MEMORY_TOOL, GET_LESSON_CONTENT_TOOL, SUGGEST_LESSON_TOOL],
+    tool_choice: "auto",
+  };
+}
+
 // ---------- client → server events ----------
 
-export type ResponseKind = "deliver" | "grade" | "outcome" | "complete" | "cap";
+export type ResponseKind = "deliver" | "grade" | "outcome" | "complete" | "cap" | "open";
+
+/** Plain continuation after a tool result (no instruction override). */
+export function responseContinue() {
+  return { type: "response.create" };
+}
 
 export function responseCreate(opts: {
   kind: ResponseKind;
