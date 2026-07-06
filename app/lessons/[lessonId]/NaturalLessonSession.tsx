@@ -105,6 +105,13 @@ export function NaturalLessonSession(props: Props) {
 
   const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
+  // Echo-loop defense: while Sofía speaks, the mic is off — her voice can
+  // never commit as "the student", credit phrases, or trigger auto-replies.
+  useEffect(() => {
+    if (status !== "active") return;
+    connRef.current?.setMicEnabled(!micMuted && snap.phase !== "speaking");
+  }, [status, micMuted, snap.phase]);
+
   async function start() {
     setStatus("starting");
     setStartError(null);

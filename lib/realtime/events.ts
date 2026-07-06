@@ -318,6 +318,11 @@ export function responseContinue() {
   return { type: "response.create" };
 }
 
+/** Cancel the in-flight response (echo defense). */
+export function responseCancel() {
+  return { type: "response.cancel" };
+}
+
 export function responseCreate(opts: {
   kind: ResponseKind;
   instructions: string;

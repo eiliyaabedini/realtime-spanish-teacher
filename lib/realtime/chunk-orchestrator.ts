@@ -87,6 +87,7 @@ export class ChunkLessonOrchestrator {
   private lastAdvanceSentAt = 0;
   private lessonDone = false;
   private itemIds: string[] = [];
+  private chainedResponses = 0;
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
@@ -247,6 +248,7 @@ export class ChunkLessonOrchestrator {
     if (ev.type === "conversation.item.input_audio_transcription.completed") {
       const text = String(ev.transcript ?? "").trim();
       if (text) {
+        this.chainedResponses = 0; // genuine student input (mic is gated while she speaks)
         this.messages = [...this.messages, { role: "student", text }];
         this.creditUtterance(text);
         this.emit();
@@ -312,7 +314,13 @@ export class ChunkLessonOrchestrator {
     }
 
     if (output.some((i) => isFunctionCall(i))) {
-      this.send(responseContinue());
+      if (this.chainedResponses < 2) {
+        this.chainedResponses++;
+        this.send(responseContinue());
+      } else if (this.phase !== "complete" && this.phase !== "error") {
+        this.phase = "listening";
+        this.emit();
+      }
       return;
     }
 

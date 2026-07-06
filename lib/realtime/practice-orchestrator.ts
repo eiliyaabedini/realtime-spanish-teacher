@@ -13,13 +13,14 @@ import {
   isFunctionCall,
   itemDelete,
   outputTranscriptDone,
+  responseCancel,
   responseContinue,
   responseCreate,
   systemMessage,
   textUserMessage,
   type ServerEvent,
 } from "./events";
-import { addUsage, emptyStats, type SessionStats } from "./harness";
+import { addUsage, emptyStats, similarity, type SessionStats } from "./harness";
 
 export type PracticePhase = "connecting" | "speaking" | "listening" | "complete" | "error";
 
@@ -69,6 +70,11 @@ const NAV_DELAY_MS = 900;
 /** chunked context pruning: long sessions would otherwise re-bill ever-growing audio input */
 const PRUNE_AT_ITEMS = 40;
 const PRUNE_CHUNK = 16;
+/** echo defense: a long "student" utterance nearly identical to Sofía's own words */
+const ECHO_SIMILARITY = 0.72;
+const ECHO_MIN_LENGTH = 12;
+/** max chained model responses without genuine student input */
+const MAX_CHAINED_RESPONSES = 2;
 
 export class PracticeOrchestrator {
   private phase: PracticePhase = "connecting";
@@ -90,6 +96,7 @@ export class PracticeOrchestrator {
   private inResponse = false;
   private sawFirstAudio = false;
   private itemIds: string[] = [];
+  private chainedResponses = 0;
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
@@ -162,10 +169,18 @@ export class PracticeOrchestrator {
   submitText(text: string): void {
     const trimmed = text.trim();
     if (!trimmed || this.phase === "complete" || this.phase === "error") return;
+    this.chainedResponses = 0;
     this.pushMessage({ role: "student", text: trimmed });
     this.emit();
     this.send(textUserMessage(trimmed));
     if (!this.inResponse) this.send(responseContinue());
+  }
+
+  /** A long "student" utterance nearly identical to Sofía's recent words is her own echo. */
+  private isEcho(transcript: string): boolean {
+    if (transcript.length < ECHO_MIN_LENGTH) return false;
+    const recentTeacher = this.messages.filter((m) => m.role === "teacher").slice(-2);
+    return recentTeacher.some((m) => similarity(m.text, transcript) >= ECHO_SIMILARITY);
   }
 
   /**
@@ -251,10 +266,15 @@ export class PracticeOrchestrator {
 
     if (ev.type === "conversation.item.input_audio_transcription.completed") {
       const text = String(ev.transcript ?? "").trim();
-      if (text) {
-        this.pushMessage({ role: "student", text });
-        this.emit();
+      if (!text) return;
+      if (this.isEcho(text)) {
+        // Sofía's own voice leaked into the mic — kill the reply it triggered
+        this.send(responseCancel());
+        return;
       }
+      this.chainedResponses = 0; // genuine student input
+      this.pushMessage({ role: "student", text });
+      this.emit();
       return;
     }
 
@@ -314,7 +334,13 @@ export class PracticeOrchestrator {
     }
 
     if (hadToolCall) {
-      this.send(responseContinue());
+      if (this.chainedResponses < MAX_CHAINED_RESPONSES) {
+        this.chainedResponses++;
+        this.send(responseContinue());
+      } else if (this.phase !== "complete" && this.phase !== "error") {
+        this.phase = "listening"; // stop monologuing — wait for the student
+        this.emit();
+      }
       return;
     }
 

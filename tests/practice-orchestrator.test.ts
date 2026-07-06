@@ -293,6 +293,50 @@ describe("PracticeOrchestrator", () => {
     expect(sent.at(-1)).toEqual({ type: "response.create" });
   });
 
+  it("cancels replies triggered by Sofía's own echo", () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.outputTranscript("Muy bien, ahora vamos a practicar los saludos juntos."));
+    const before = orch.getSnapshot().messages.length;
+
+    // her own words leak back through the speaker → mic
+    orch.handleServerEvent(ev.inputTranscript("muy bien ahora vamos a practicar los saludos juntos"));
+    expect(orch.getSnapshot().messages.length).toBe(before); // not a student bubble
+    expect(sent.at(-1)).toEqual({ type: "response.cancel" });
+
+    // a genuine short repeat still goes through
+    orch.handleServerEvent(ev.inputTranscript("hola"));
+    expect(orch.getSnapshot().messages.at(-1)).toEqual({ role: "student", text: "hola" });
+  });
+
+  it("caps chained tool-driven responses until the student speaks again", async () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+
+    const memoryCall = () =>
+      ev.responseDone([
+        ev.call("update_learner_memory", { category: "pace", observation: "Testing chains here" }),
+      ]);
+    orch.handleServerEvent(memoryCall());
+    await flush();
+    orch.handleServerEvent(memoryCall());
+    await flush();
+    const continues = sent.filter((s) => s.type === "response.create" && !s.response).length;
+    expect(continues).toBe(2);
+
+    orch.handleServerEvent(memoryCall()); // third chain — capped
+    await flush();
+    expect(sent.filter((s) => s.type === "response.create" && !s.response).length).toBe(2);
+    expect(orch.getSnapshot().phase).toBe("listening");
+
+    orch.handleServerEvent(ev.inputTranscript("sigo aquí")); // student speaks → reset
+    orch.handleServerEvent(memoryCall());
+    await flush();
+    expect(sent.filter((s) => s.type === "response.create" && !s.response).length).toBe(3);
+  });
+
   it("typed answers create a user item and trigger a response", () => {
     const { orch, sent } = setup();
     active = orch;
