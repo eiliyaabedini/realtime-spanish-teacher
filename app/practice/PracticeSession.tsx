@@ -60,24 +60,29 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
     const stats = orchRef.current?.getSnapshot().stats;
     if (!stats || usageSent.current || stats.usdCost <= 0) return;
     usageSent.current = true;
-    void fetch("/api/usage-log", {
-      method: "POST",
-      keepalive: true,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        mode: "practice",
-        usd: stats.usdCost,
-        inputTokens: stats.inputTokens,
-        outputTokens: stats.outputTokens,
-        seconds: sessionStartedAt.current
-          ? Math.round((Date.now() - sessionStartedAt.current) / 1000)
-          : 0,
-      }),
-    }).catch(() => {});
+    const payload = JSON.stringify({
+      mode: "practice",
+      usd: stats.usdCost,
+      inputTokens: stats.inputTokens,
+      outputTokens: stats.outputTokens,
+      seconds: sessionStartedAt.current
+        ? Math.round((Date.now() - sessionStartedAt.current) / 1000)
+        : 0,
+    });
+    if (!navigator.sendBeacon?.("/api/usage-log", new Blob([payload], { type: "application/json" }))) {
+      void fetch("/api/usage-log", {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).catch(() => {});
+    }
   }, []);
 
   useEffect(() => {
+    window.addEventListener("pagehide", sendUsageBeacon);
     return () => {
+      window.removeEventListener("pagehide", sendUsageBeacon);
       sendUsageBeacon();
       orchRef.current?.stop();
       connRef.current?.close();

@@ -1,5 +1,10 @@
 import { Header } from "@/components/Header";
-import { getUsageSummary, type UsageSummary } from "@/lib/db/queries";
+import {
+  getRecentUsage,
+  getUsageSummary,
+  type UsageRow,
+  type UsageSummary,
+} from "@/lib/db/queries";
 import { getSettingsStatus } from "@/lib/settings";
 import { getUser } from "@/lib/supabase/server";
 import { SettingsForm } from "./SettingsForm";
@@ -26,9 +31,10 @@ export default async function SettingsPage() {
       };
 
   let usage: UsageSummary | null = null;
+  let recent: UsageRow[] = [];
   if (user) {
     try {
-      usage = await getUsageSummary(user.id);
+      [usage, recent] = await Promise.all([getUsageSummary(user.id), getRecentUsage(user.id)]);
     } catch {
       // spending card simply hidden when the DB is unreachable
     }
@@ -68,6 +74,30 @@ export default async function SettingsPage() {
               </li>
             ))}
           </ul>
+          {recent.length > 0 && (
+            <>
+              <h3 className="mt-5 text-xs font-semibold uppercase tracking-[0.15em] text-muted">
+                Recent sessions
+              </h3>
+              <ul className="mt-2 divide-y divide-line/60 text-sm">
+                {recent.map((r, i) => (
+                  <li key={i} className="flex items-center justify-between gap-3 py-2">
+                    <span className="min-w-0 truncate text-muted">
+                      {MODE_LABELS[r.mode] ?? r.mode} ·{" "}
+                      {r.createdAt.toLocaleString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                      {r.seconds > 0 && <> · {Math.round(r.seconds / 60)}m</>}
+                    </span>
+                    <span className="shrink-0 font-medium">${r.usd.toFixed(2)}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           <p className="mt-3 text-xs text-muted">
             Client-side estimates from token usage — exact billing lives at
             platform.openai.com/usage.

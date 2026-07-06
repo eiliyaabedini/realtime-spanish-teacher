@@ -241,6 +241,23 @@ export async function getUsageSummary(userId: string): Promise<UsageSummary> {
   };
 }
 
+export type UsageRow = { mode: string; usd: number; seconds: number; createdAt: Date };
+
+export async function getRecentUsage(userId: string, limit = 12): Promise<UsageRow[]> {
+  const rows = await db()
+    .select({
+      mode: usageLog.mode,
+      usd: usageLog.usd,
+      seconds: usageLog.seconds,
+      createdAt: usageLog.createdAt,
+    })
+    .from(usageLog)
+    .where(eq(usageLog.userId, userId))
+    .orderBy(desc(usageLog.createdAt))
+    .limit(limit);
+  return rows.map((r) => ({ ...r, usd: Number(r.usd) }));
+}
+
 // --- user settings ---
 
 export type SettingsRow = {
