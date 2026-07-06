@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { encrypt } from "@/lib/crypto";
 import { upsertSettings } from "@/lib/db/queries";
+import { REALTIME_MODEL_IDS } from "@/lib/realtime/models";
 import { REALTIME_VOICES } from "@/lib/realtime/voices";
 import { getSettingsStatus } from "@/lib/settings";
 import { getUser } from "@/lib/supabase/server";
@@ -13,6 +14,7 @@ const PostBody = z.object({
     .regex(/^sk-[A-Za-z0-9_-]{16,}$/, "That doesn't look like an OpenAI API key")
     .optional(),
   voice: z.enum(REALTIME_VOICES).optional(),
+  model: z.enum(REALTIME_MODEL_IDS).optional(),
 });
 
 export async function POST(request: Request) {
@@ -27,10 +29,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const { apiKey, voice } = parsed.data;
-  const values: { openaiApiKeyEnc?: string; voice?: string } = {};
+  const { apiKey, voice, model } = parsed.data;
+  const values: { openaiApiKeyEnc?: string; voice?: string; realtimeModel?: string } = {};
   if (apiKey) values.openaiApiKeyEnc = encrypt(apiKey);
   if (voice) values.voice = voice;
+  if (model) values.realtimeModel = model;
   if (Object.keys(values).length === 0) {
     return NextResponse.json({ error: "nothing to update" }, { status: 400 });
   }

@@ -45,9 +45,11 @@ export async function POST(request: Request) {
   // BYO key first, then the server's shared key
   let apiKey = process.env.OPENAI_API_KEY ?? null;
   let voice = DEFAULT_VOICE as string;
+  let userModel: string | null = null;
   try {
     const settings = await getSettings(user.id);
     if (settings?.voice) voice = settings.voice;
+    if (settings?.realtimeModel) userModel = settings.realtimeModel;
     if (settings?.openaiApiKeyEnc) {
       try {
         apiKey = decrypt(settings.openaiApiKeyEnc);
@@ -70,7 +72,7 @@ export async function POST(request: Request) {
   }
 
   const profile = await assembleProfile(user.id);
-  const model = process.env.REALTIME_MODEL ?? "gpt-realtime-2";
+  const model = userModel ?? process.env.REALTIME_MODEL ?? "gpt-realtime-2";
 
   let session: object;
   if (mode === "lesson") {

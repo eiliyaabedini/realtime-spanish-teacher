@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { REALTIME_MODELS } from "@/lib/realtime/models";
 import { REALTIME_VOICES } from "@/lib/realtime/voices";
 import type { SettingsStatus } from "@/lib/settings";
 
@@ -8,6 +9,7 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
   const [settings, setSettings] = useState<SettingsStatus>(initial);
   const [apiKey, setApiKey] = useState("");
   const [voice, setVoice] = useState(initial.voice);
+  const [model, setModel] = useState(initial.model);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
 
@@ -15,7 +17,7 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
     e.preventDefault();
     setSaving(true);
     setMessage(null);
-    const body: Record<string, string> = { voice };
+    const body: Record<string, string> = { voice, model };
     if (apiKey.trim()) body.apiKey = apiKey.trim();
     const res = await fetch("/api/settings", {
       method: "POST",
@@ -87,6 +89,36 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
             Remove my key
           </button>
         )}
+      </section>
+
+      <section className="rounded-3xl border border-line bg-surface p-6 shadow-warm">
+        <h2 className="font-display text-lg font-semibold">Sofía&apos;s brain</h2>
+        <p className="mt-1 text-sm text-muted">
+          Economy is ~3× cheaper on audio and plenty smart for repeat-after-me lessons. Takes
+          effect on your next session.
+        </p>
+        <div className="mt-3 space-y-2">
+          {REALTIME_MODELS.map((m) => (
+            <label
+              key={m.id}
+              className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition ${
+                model === m.id ? "border-primary bg-primary-soft/50" : "border-line hover:bg-surface-2"
+              }`}
+            >
+              <input
+                type="radio"
+                name="model"
+                checked={model === m.id}
+                onChange={() => setModel(m.id)}
+                className="mt-1 accent-[var(--primary)]"
+              />
+              <span>
+                <span className="block text-sm font-medium">{m.label}</span>
+                <span className="block text-xs text-muted">{m.hint}</span>
+              </span>
+            </label>
+          ))}
+        </div>
       </section>
 
       <section className="rounded-3xl border border-line bg-surface p-6 shadow-warm">

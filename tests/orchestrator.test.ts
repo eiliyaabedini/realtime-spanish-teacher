@@ -31,7 +31,7 @@ const ev = {
   sessionCreated: (): ServerEvent => ({ type: "session.created" }),
   speechStarted: (): ServerEvent => ({ type: "input_audio_buffer.speech_started" }),
   speechStopped: (): ServerEvent => ({ type: "input_audio_buffer.speech_stopped" }),
-  committed: (): ServerEvent => ({ type: "input_audio_buffer.committed" }),
+  committed: (): ServerEvent => ({ type: "input_audio_buffer.committed", item_id: "item_stu" }),
   inputTranscript: (t: string): ServerEvent => ({
     type: "conversation.item.input_audio_transcription.completed",
     transcript: t,
@@ -74,7 +74,7 @@ describe("LessonOrchestrator turn loop", () => {
     expect(sent[0].response.instructions).toContain("«Say: Hola.»");
   });
 
-  it("grades after commit with a forced text-only report_attempt call", () => {
+  it("grades out-of-band, reading only the student's answer item", () => {
     const { orch, sent } = setup();
     active = orch;
     orch.handleServerEvent(ev.sessionCreated());
@@ -84,6 +84,8 @@ describe("LessonOrchestrator turn loop", () => {
     const grade = sent.at(-1);
     expect(grade.type).toBe("response.create");
     expect(grade.response.metadata.kind).toBe("grade");
+    expect(grade.response.conversation).toBe("none"); // never re-reads the transcript
+    expect(grade.response.input).toEqual([{ type: "item_reference", id: "item_stu" }]);
     expect(grade.response.output_modalities).toEqual(["text"]);
     expect(grade.response.tool_choice).toEqual({ type: "function", name: "report_attempt" });
     expect(grade.response.instructions).toContain("«Hola.»");
@@ -120,11 +122,8 @@ describe("LessonOrchestrator turn loop", () => {
       isCorrect: true,
     });
 
-    const output = sent.find((s) => s.type === "conversation.item.create");
-    expect(JSON.parse(output.item.output)).toEqual({
-      decision: "advance",
-      next_line: "Say: Adiós.",
-    });
+    // out-of-band grade → no function_call_output item is created
+    expect(sent.filter((s) => s.type === "conversation.item.create")).toHaveLength(0);
 
     const outcome = sent.at(-1);
     expect(outcome.response.metadata.kind).toBe("outcome");
@@ -145,25 +144,17 @@ describe("LessonOrchestrator turn loop", () => {
           ev.reportCall({ transcript: `wrong${i}`, accepted: false, feedback: "Not quite" }, `c${i}`),
         ]),
       );
-      orch.handleServerEvent(ev.responseDone("outcome"));
+      const outcome = sent.at(-1);
+      expect(outcome.response.metadata.kind).toBe("outcome");
       if (verdict === "retry") {
-        const decision = JSON.parse(
-          sent.filter((s) => s.type === "conversation.item.create").at(-1)!.item.output,
-        );
-        expect(decision.decision).toBe("retry");
-        expect(decision.attempts_left).toBe(2 - i);
+        expect(outcome.response.instructions).toContain(`attempt ${i + 1} of 3`);
+        expect(outcome.response.instructions).toContain("«Hola.»");
+      } else {
+        expect(outcome.response.instructions).toContain("TWICE");
+        expect(outcome.response.instructions).toContain("«Say: Adiós.»");
       }
+      orch.handleServerEvent(ev.responseDone("outcome"));
     }
-
-    const last = JSON.parse(
-      sent.filter((s) => s.type === "conversation.item.create").at(-1)!.item.output,
-    );
-    expect(last).toEqual({
-      decision: "teach_then_advance",
-      correct_answer: "Hola.",
-      next_line: "Say: Adiós.",
-      lesson_complete: false,
-    });
 
     const snap = orch.getSnapshot();
     expect(snap.machine.currentIndex).toBe(1);

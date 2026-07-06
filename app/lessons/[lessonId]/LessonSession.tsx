@@ -101,12 +101,36 @@ export function LessonSession(props: Props) {
     () => false,
   );
 
+  const sessionStartedAt = useRef<number | null>(null);
+  const usageSent = useRef(false);
+
+  const sendUsageBeacon = useCallback(() => {
+    const stats = orchRef.current?.getSnapshot().stats;
+    if (!stats || usageSent.current || stats.usdCost <= 0) return;
+    usageSent.current = true;
+    void fetch("/api/usage-log", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mode: "lesson",
+        usd: stats.usdCost,
+        inputTokens: stats.inputTokens,
+        outputTokens: stats.outputTokens,
+        seconds: sessionStartedAt.current
+          ? Math.round((Date.now() - sessionStartedAt.current) / 1000)
+          : 0,
+      }),
+    }).catch(() => {});
+  }, []);
+
   useEffect(() => {
     return () => {
+      sendUsageBeacon();
       orchRef.current?.stop();
       connRef.current?.close();
     };
-  }, []);
+  }, [sendUsageBeacon]);
 
   // arriving via Sofía's navigation or a journey button — start right away
   useEffect(() => {
@@ -140,6 +164,13 @@ export function LessonSession(props: Props) {
   const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
   const mood = useTeacherMood(snap);
 
+  // Echo-loop defense: in script mode the mic is live ONLY on the student's
+  // turn, so speaker output can never be graded as an answer.
+  useEffect(() => {
+    if (status !== "active") return;
+    connRef.current?.setMicEnabled(!micMuted && snap.phase === "listening");
+  }, [status, micMuted, snap.phase]);
+
   async function start() {
     setStatus("starting");
     setStartError(null);
@@ -157,6 +188,7 @@ export function LessonSession(props: Props) {
         throw new Error(data?.message ?? "Could not start the session.");
       }
 
+      sessionStartedAt.current = Date.now();
       const machine = initMachine(props.lessonId, props.pairs, props.resumeIndex, props.history);
       const orchestrator = new LessonOrchestrator({
         machine,
@@ -179,6 +211,7 @@ export function LessonSession(props: Props) {
             });
           },
           onComplete: () => {
+            sendUsageBeacon();
             void fetch("/api/memory/summarize", { method: "POST" }).catch(() => {});
           },
         },
@@ -261,6 +294,14 @@ export function LessonSession(props: Props) {
             </h1>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            {snap.stats.usdCost > 0.005 && (
+              <span
+                title="Estimated OpenAI cost this session"
+                className="rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-muted"
+              >
+                ≈${snap.stats.usdCost.toFixed(2)}
+              </span>
+            )}
             <span className="rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-muted">
               {Math.min(machine.currentIndex + 1, machine.pairs.length)} / {machine.pairs.length}
             </span>

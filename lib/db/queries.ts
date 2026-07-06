@@ -197,11 +197,19 @@ export async function getLastLessonActivityAt(userId: string): Promise<Date | nu
 
 // --- user settings ---
 
-export type SettingsRow = { openaiApiKeyEnc: string | null; voice: string };
+export type SettingsRow = {
+  openaiApiKeyEnc: string | null;
+  voice: string;
+  realtimeModel: string | null;
+};
 
 export async function getSettings(userId: string): Promise<SettingsRow | null> {
   const rows = await db()
-    .select({ openaiApiKeyEnc: userSettings.openaiApiKeyEnc, voice: userSettings.voice })
+    .select({
+      openaiApiKeyEnc: userSettings.openaiApiKeyEnc,
+      voice: userSettings.voice,
+      realtimeModel: userSettings.realtimeModel,
+    })
     .from(userSettings)
     .where(eq(userSettings.userId, userId));
   return rows[0] ?? null;
@@ -209,7 +217,7 @@ export async function getSettings(userId: string): Promise<SettingsRow | null> {
 
 export async function upsertSettings(
   userId: string,
-  values: { openaiApiKeyEnc?: string | null; voice?: string },
+  values: { openaiApiKeyEnc?: string | null; voice?: string; realtimeModel?: string | null },
 ) {
   await db()
     .insert(userSettings)

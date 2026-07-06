@@ -31,6 +31,8 @@ export const userSettings = pgTable("user_settings", {
   /** AES-256-GCM encrypted, base64(iv | tag | ciphertext); null = use server key */
   openaiApiKeyEnc: text("openai_api_key_enc"),
   voice: text("voice").notNull().default("marin"),
+  /** realtime model id; null = server default */
+  realtimeModel: text("realtime_model"),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

@@ -9,7 +9,14 @@ export default async function SettingsPage() {
   const user = await getUser();
   const status = user
     ? await getSettingsStatus(user.id)
-    : { voice: "marin", hasOwnKey: false, keyHint: null, serverHasKey: false, dbError: true };
+    : {
+        voice: "marin",
+        model: "gpt-realtime-2",
+        hasOwnKey: false,
+        keyHint: null,
+        serverHasKey: false,
+        dbError: true,
+      };
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-8">

@@ -11,6 +11,7 @@ import { MEMORY_CATEGORIES } from "@/lib/memory/categories";
 import {
   functionCallOutput,
   isFunctionCall,
+  itemDelete,
   outputTranscriptDone,
   responseContinue,
   responseCreate,
@@ -65,6 +66,9 @@ const IDLE_CAP_MS = 3 * 60_000;
 const MAX_SUGGESTIONS = 3;
 /** let the send-off audio finish before leaving the page */
 const NAV_DELAY_MS = 900;
+/** chunked context pruning: long sessions would otherwise re-bill ever-growing audio input */
+const PRUNE_AT_ITEMS = 40;
+const PRUNE_CHUNK = 16;
 
 export class PracticeOrchestrator {
   private phase: PracticePhase = "connecting";
@@ -85,6 +89,7 @@ export class PracticeOrchestrator {
   private started = false;
   private inResponse = false;
   private sawFirstAudio = false;
+  private itemIds: string[] = [];
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
@@ -207,6 +212,19 @@ export class PracticeOrchestrator {
         this.micActive = false;
         this.emit();
         return;
+
+      case "conversation.item.created": {
+        const id = ev.item?.id;
+        if (typeof id === "string" && !this.itemIds.includes(id)) {
+          this.itemIds.push(id);
+          // prune in chunks: one cache miss per prune instead of every turn
+          if (this.itemIds.length > PRUNE_AT_ITEMS) {
+            const drop = this.itemIds.splice(0, PRUNE_CHUNK);
+            for (const dropId of drop) this.send(itemDelete(dropId));
+          }
+        }
+        return;
+      }
 
       case "response.created":
         this.inResponse = true;

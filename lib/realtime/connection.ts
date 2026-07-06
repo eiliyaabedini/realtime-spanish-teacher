@@ -40,7 +40,9 @@ export async function connectRealtime(opts: {
   let micAvailable = true;
   let micStream: MediaStream | null = null;
   try {
-    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    micStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    });
     for (const track of micStream.getTracks()) pc.addTrack(track, micStream);
   } catch {
     micAvailable = false;

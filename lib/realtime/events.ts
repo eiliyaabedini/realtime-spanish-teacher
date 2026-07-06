@@ -192,6 +192,11 @@ export const START_PRACTICE_TOOL = {
 
 // ---------- session config (used by /api/realtime/secret) ----------
 
+/** mini realtime models are non-reasoning and reject the field (verified live) */
+function reasoningFor(model: string) {
+  return model.includes("mini") ? {} : { reasoning: { effort: "minimal" } };
+}
+
 export function buildSessionConfig(opts: {
   model: string;
   voice: string;
@@ -200,6 +205,9 @@ export function buildSessionConfig(opts: {
   return {
     type: "realtime",
     model: opts.model,
+    // grading a repeat-after-me line needs no deep reasoning; hidden reasoning
+    // tokens bill as output on EVERY response — keep them at the floor
+    ...reasoningFor(opts.model),
     instructions: opts.instructions,
     audio: {
       input: {
@@ -210,6 +218,7 @@ export function buildSessionConfig(opts: {
         },
         turn_detection: {
           type: "semantic_vad",
+          eagerness: "high", // script answers are short — commit fast, less dead air
           create_response: false, // the app scripts every model response
           interrupt_response: true, // barge-in stays native
         },
@@ -233,6 +242,7 @@ export function buildPracticeSessionConfig(opts: {
   return {
     type: "realtime",
     model: opts.model,
+    ...reasoningFor(opts.model),
     instructions: opts.instructions,
     audio: {
       input: {
@@ -295,6 +305,39 @@ export function responseCreate(opts: {
       metadata: { kind: opts.kind },
       ...(opts.textOnly ? { output_modalities: ["text"] } : {}),
       ...(opts.forceTool ? { tool_choice: { type: "function", name: opts.forceTool } } : {}),
+    },
+  };
+}
+
+/**
+ * Out-of-band grading request: reads ONLY the student's answer item (or typed
+ * text) instead of the whole conversation — grade input drops from the full
+ * context to ~150 tokens, and nothing is appended to the conversation.
+ */
+export function gradeRequest(opts: {
+  instructions: string;
+  studentItemId?: string | null;
+  studentText?: string | null;
+}) {
+  const input: object[] = [];
+  if (opts.studentItemId) {
+    input.push({ type: "item_reference", id: opts.studentItemId });
+  } else if (opts.studentText) {
+    input.push({
+      type: "message",
+      role: "user",
+      content: [{ type: "input_text", text: opts.studentText }],
+    });
+  }
+  return {
+    type: "response.create",
+    response: {
+      conversation: "none",
+      input,
+      instructions: opts.instructions,
+      metadata: { kind: "grade" },
+      output_modalities: ["text"],
+      tool_choice: { type: "function", name: "report_attempt" },
     },
   };
 }

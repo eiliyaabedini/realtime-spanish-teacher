@@ -52,12 +52,36 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
   const orchRef = useRef<PracticeOrchestrator | null>(null);
   const autostarted = useRef(false);
 
+  const sessionStartedAt = useRef<number | null>(null);
+  const usageSent = useRef(false);
+
+  const sendUsageBeacon = useCallback(() => {
+    const stats = orchRef.current?.getSnapshot().stats;
+    if (!stats || usageSent.current || stats.usdCost <= 0) return;
+    usageSent.current = true;
+    void fetch("/api/usage-log", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mode: "practice",
+        usd: stats.usdCost,
+        inputTokens: stats.inputTokens,
+        outputTokens: stats.outputTokens,
+        seconds: sessionStartedAt.current
+          ? Math.round((Date.now() - sessionStartedAt.current) / 1000)
+          : 0,
+      }),
+    }).catch(() => {});
+  }, []);
+
   useEffect(() => {
     return () => {
+      sendUsageBeacon();
       orchRef.current?.stop();
       connRef.current?.close();
     };
-  }, []);
+  }, [sendUsageBeacon]);
 
   useEffect(() => {
     if (autostart && !autostarted.current) {
@@ -97,6 +121,7 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
         throw new Error(data?.message ?? "Could not start the session.");
       }
 
+      sessionStartedAt.current = Date.now();
       const orchestrator = new PracticeOrchestrator({
         send: (event) => connRef.current?.send(event),
         lessonIndex,
@@ -117,6 +142,7 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
             };
           },
           onComplete: () => {
+            sendUsageBeacon();
             void fetch("/api/practice/complete", { method: "POST" }).catch(() => {});
             void fetch("/api/memory/summarize", { method: "POST" }).catch(() => {});
           },
@@ -203,6 +229,14 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
           <div className="flex shrink-0 items-center gap-2">
             {status === "active" && (
               <>
+                {snap.stats.usdCost > 0.005 && (
+                  <span
+                    title="Estimated OpenAI cost this session"
+                    className="rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-muted"
+                  >
+                    ≈${snap.stats.usdCost.toFixed(2)}
+                  </span>
+                )}
                 <button
                   onClick={() => setShowTranscript((s) => !s)}
                   className={`rounded-full border px-3 py-1 text-xs font-medium transition ${

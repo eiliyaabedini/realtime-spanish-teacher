@@ -43,6 +43,13 @@
       "when": 1783330329579,
       "tag": "0005_practice_sessions_rls",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783333157173,
+      "tag": "0006_realtime_model",
+      "breakpoints": true
     }
   ]
 }

@@ -16,6 +16,7 @@ import {
 } from "@/lib/lesson-machine/prompts";
 import {
   functionCallOutput,
+  gradeRequest,
   isFunctionCall,
   itemDelete,
   outputTranscriptDone,
@@ -87,6 +88,8 @@ export class LessonOrchestrator {
   private gradeRetried = false;
   private itemIds: string[] = [];
   private lastStudentTranscript = "";
+  private lastStudentItemId: string | null = null;
+  private lastStudentText: string | null = null;
   private speechStoppedAt: number | null = null;
 
   /** the audio response currently playing (our design keeps them serial) */
@@ -172,6 +175,8 @@ export class LessonOrchestrator {
     if (!trimmed || this.gradingInFlight || this.machine.isComplete) return;
     if (!this.machine.expectingStudent) return;
     this.lastStudentTranscript = trimmed;
+    this.lastStudentItemId = null;
+    this.lastStudentText = trimmed;
     this.send(textUserMessage(trimmed));
     this.beginGrading();
   }
@@ -205,11 +210,15 @@ export class LessonOrchestrator {
         this.emit();
         return;
 
-      case "input_audio_buffer.committed":
+      case "input_audio_buffer.committed": {
+        const itemId = typeof ev.item_id === "string" ? ev.item_id : null;
         if (this.machine.expectingStudent && !this.gradingInFlight && !this.machine.isComplete) {
+          this.lastStudentItemId = itemId;
+          this.lastStudentText = null;
           this.beginGrading();
         }
         return;
+      }
 
       case "conversation.item.created": {
         const id = ev.item?.id;
@@ -290,8 +299,9 @@ export class LessonOrchestrator {
         if (kind === "grade" && this.gradingInFlight) {
           sawReport = true;
           this.handleReportAttempt(item.call_id, item.arguments);
+        } else if (kind === "grade") {
+          sawReport = true; // stale/out-of-band duplicate — ignore silently
         } else {
-          sawReport = kind === "grade";
           this.send(
             functionCallOutput(item.call_id, {
               error: "not grading right now — wait for the app's next instruction",
@@ -346,47 +356,38 @@ export class LessonOrchestrator {
     this.gradeRetried = false;
     this.phase = "grading";
     this.emit();
+    this.sendGradeRequest(pair, false);
+  }
+
+  /** Out-of-band + narrow input: the grade never re-reads the conversation. */
+  private sendGradeRequest(pair: { teacher: string; student: string }, strict: boolean): void {
+    const instructions =
+      (strict ? "You must call the report_attempt tool now — do not reply with text. " : "") +
+      gradeInstructions({
+        teacherLine: pair.teacher,
+        expected: pair.student,
+        attemptNumber: this.machine.attempts + 1,
+      });
     this.send(
-      responseCreate({
-        kind: "grade",
-        textOnly: true,
-        forceTool: "report_attempt",
-        instructions: gradeInstructions({
-          teacherLine: pair.teacher,
-          expected: pair.student,
-          attemptNumber: this.machine.attempts + 1,
-        }),
+      gradeRequest({
+        instructions,
+        studentItemId: this.lastStudentItemId,
+        studentText: this.lastStudentText,
       }),
     );
   }
 
   private handleReportAttempt(callId: string, rawArgs: string): void {
+    // the grade is out-of-band (conversation:"none") — no function_call_output
+    // is sent back; the app's decision travels in the next response's instructions
     let args: z.infer<typeof ReportAttemptArgs>;
     try {
       args = ReportAttemptArgs.parse(JSON.parse(rawArgs));
     } catch {
-      this.send(
-        functionCallOutput(callId, {
-          error: "invalid arguments — call report_attempt again with transcript, accepted, feedback",
-        }),
-      );
       if (!this.gradeRetried) {
         this.gradeRetried = true;
         const pair = currentPair(this.machine);
-        if (pair) {
-          this.send(
-            responseCreate({
-              kind: "grade",
-              textOnly: true,
-              forceTool: "report_attempt",
-              instructions: gradeInstructions({
-                teacherLine: pair.teacher,
-                expected: pair.student,
-                attemptNumber: this.machine.attempts + 1,
-              }),
-            }),
-          );
-        }
+        if (pair) this.sendGradeRequest(pair, true);
       } else {
         // malformed twice — use the exact-match fallback instead of stalling
         this.recoverMissingGrade();
@@ -423,7 +424,6 @@ export class LessonOrchestrator {
       feedback: args.feedback,
     });
     this.machine = state;
-    this.send(functionCallOutput(callId, this.decisionPayload(outcome)));
     this.respondToOutcome(outcome);
     this.emit();
   }
@@ -436,20 +436,7 @@ export class LessonOrchestrator {
 
     if (!this.gradeRetried) {
       this.gradeRetried = true;
-      this.send(
-        responseCreate({
-          kind: "grade",
-          textOnly: true,
-          forceTool: "report_attempt",
-          instructions:
-            `You must call the report_attempt tool now — do not reply with text. ` +
-            gradeInstructions({
-              teacherLine: pair.teacher,
-              expected: pair.student,
-              attemptNumber: this.machine.attempts + 1,
-            }),
-        }),
-      );
+      this.sendGradeRequest(pair, true);
       return;
     }
 
@@ -474,29 +461,6 @@ export class LessonOrchestrator {
       .catch(() => {});
     this.respondToOutcome(outcome);
     this.emit();
-  }
-
-  private decisionPayload(outcome: Outcome): object {
-    switch (outcome.kind) {
-      case "advance":
-        return { decision: "advance", next_line: outcome.next.teacher };
-      case "retry":
-        return {
-          decision: "retry",
-          attempts_used: outcome.attemptsUsed,
-          attempts_left: 3 - outcome.attemptsUsed,
-          expected_answer: outcome.expected,
-        };
-      case "teachThenAdvance":
-        return {
-          decision: "teach_then_advance",
-          correct_answer: outcome.correctAnswer,
-          next_line: outcome.next?.teacher ?? null,
-          lesson_complete: outcome.next === null,
-        };
-      case "complete":
-        return { decision: "lesson_complete" };
-    }
   }
 
   private respondToOutcome(outcome: Outcome): void {
