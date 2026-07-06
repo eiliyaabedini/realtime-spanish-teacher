@@ -191,7 +191,7 @@ export function buildChunkLessonConfig(opts: {
 
 /** Replace session instructions mid-session (chunk advance without reconnecting). */
 export function sessionUpdateInstructions(instructions: string) {
-  return { type: "session.update", session: { instructions } };
+  return { type: "session.update", session: { type: "realtime", instructions } };
 }
 
 export const START_LESSON_TOOL = {
