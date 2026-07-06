@@ -166,7 +166,7 @@ export class ChunkLessonOrchestrator {
     this.creditUtterance(trimmed);
     this.emit();
     this.send(textUserMessage(trimmed));
-    if (!this.inResponse && this.phase !== "complete") this.send(responseContinue());
+    if (!this.inResponse) this.send(responseContinue());
   }
 
   stop(): void {
