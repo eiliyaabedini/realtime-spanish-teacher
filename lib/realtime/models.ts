@@ -5,8 +5,8 @@ export const REALTIME_MODELS = [
     hint: "Smartest teacher; audio $32/$64 per 1M tokens",
   },
   {
-    id: "gpt-realtime-2-mini",
-    label: "Economy — gpt-realtime-2-mini",
+    id: "gpt-realtime-mini-2025-12-15",
+    label: "Economy — gpt-realtime-mini",
     hint: "Great for lessons and everyday practice at a fraction of the price",
   },
 ] as const;

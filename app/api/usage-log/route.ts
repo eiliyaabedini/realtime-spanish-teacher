@@ -1,16 +1,17 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { recordUsage } from "@/lib/db/queries";
 import { getUser } from "@/lib/supabase/server";
 
 const Body = z.object({
   mode: z.enum(["lesson", "practice", "guide"]),
-  usd: z.number().min(0),
+  usd: z.number().min(0).max(100),
   inputTokens: z.number().int().min(0),
   outputTokens: z.number().int().min(0),
   seconds: z.number().int().min(0),
 });
 
-/** Session usage beacon — lands in Vercel function logs so spend is auditable. */
+/** Session usage beacon — persisted for the Settings spending card + Vercel logs. */
 export async function POST(request: Request) {
   const user = await getUser();
   if (!user) return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
@@ -18,6 +19,7 @@ export async function POST(request: Request) {
   const parsed = Body.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "invalid body" }, { status: 400 });
 
+  await recordUsage(user.id, parsed.data).catch(() => {});
   console.log(
     `[usage] user=${user.id.slice(0, 8)} mode=${parsed.data.mode} usd=$${parsed.data.usd.toFixed(4)} ` +
       `in=${parsed.data.inputTokens} out=${parsed.data.outputTokens} duration=${parsed.data.seconds}s`,

@@ -3,6 +3,7 @@ import { db } from "./index";
 import {
   learnerMemory,
   practiceSessions,
+  usageLog,
   userProgress,
   userSettings,
   type MemoryCategory,
@@ -193,6 +194,51 @@ export async function getLastLessonActivityAt(userId: string): Promise<Date | nu
     .from(userProgress)
     .where(eq(userProgress.userId, userId));
   return rows[0]?.at ?? null;
+}
+
+// --- usage / spending ---
+
+export async function recordUsage(
+  userId: string,
+  entry: { mode: string; usd: number; inputTokens: number; outputTokens: number; seconds: number },
+) {
+  await db().insert(usageLog).values({ userId, ...entry });
+}
+
+export type UsageSummary = {
+  totalUsd: number;
+  last30dUsd: number;
+  sessions: number;
+  byMode: { mode: string; usd: number; sessions: number }[];
+};
+
+export async function getUsageSummary(userId: string): Promise<UsageSummary> {
+  const [totals] = await db()
+    .select({
+      totalUsd: sql<number>`coalesce(sum(${usageLog.usd}), 0)`,
+      last30dUsd: sql<number>`coalesce(sum(${usageLog.usd}) filter (where ${usageLog.createdAt} > now() - interval '30 days'), 0)`,
+      sessions: sql<number>`count(*)`,
+    })
+    .from(usageLog)
+    .where(eq(usageLog.userId, userId));
+
+  const byMode = await db()
+    .select({
+      mode: usageLog.mode,
+      usd: sql<number>`coalesce(sum(${usageLog.usd}), 0)`,
+      sessions: sql<number>`count(*)`,
+    })
+    .from(usageLog)
+    .where(eq(usageLog.userId, userId))
+    .groupBy(usageLog.mode)
+    .orderBy(sql`sum(${usageLog.usd}) desc`);
+
+  return {
+    totalUsd: Number(totals?.totalUsd ?? 0),
+    last30dUsd: Number(totals?.last30dUsd ?? 0),
+    sessions: Number(totals?.sessions ?? 0),
+    byMode: byMode.map((m) => ({ mode: m.mode, usd: Number(m.usd), sessions: Number(m.sessions) })),
+  };
 }
 
 // --- user settings ---

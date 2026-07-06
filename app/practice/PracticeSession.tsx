@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { CircleButton } from "@/components/SessionControls";
 import { Teacher } from "@/components/Teacher";
 import { GrammarTableWidget } from "@/components/widgets/GrammarTableWidget";
 import { PracticeFeed } from "@/components/widgets/PracticeFeed";
@@ -247,28 +248,6 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
                 >
                   💬 Transcript
                 </button>
-                {!complete && (
-                  <>
-                    {!textMode && (
-                      <button
-                        onClick={toggleMute}
-                        className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-                          micMuted
-                            ? "border-error/40 bg-error-soft text-error"
-                            : "border-line hover:bg-surface-2"
-                        }`}
-                      >
-                        {micMuted ? "🔇 Muted" : "Mute"}
-                      </button>
-                    )}
-                    <button
-                      onClick={endSession}
-                      className="rounded-full border border-line px-3 py-1 text-xs font-medium transition hover:bg-surface-2"
-                    >
-                      Wrap up
-                    </button>
-                  </>
-                )}
               </>
             )}
           </div>
@@ -387,6 +366,17 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
                     🔊 Tap to hear Sofía
                   </button>
                 )}
+                <div className="mt-3 flex items-start justify-center gap-5">
+                  {!textMode && (
+                    <CircleButton
+                      icon={micMuted ? "🔇" : "🎙️"}
+                      label={micMuted ? "Unmute" : "Mute"}
+                      active={micMuted}
+                      onClick={toggleMute}
+                    />
+                  )}
+                  <CircleButton icon="✕" label="Wrap up" variant="danger" onClick={endSession} />
+                </div>
               </div>
 
               {/* live widgets + suggestions */}

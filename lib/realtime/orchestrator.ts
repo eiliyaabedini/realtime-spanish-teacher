@@ -309,7 +309,8 @@ export class LessonOrchestrator {
           );
         }
       } else if (item.name === "update_learner_memory") {
-        this.handleUpdateMemory(item.call_id, item.arguments);
+        // grade responses are out-of-band — replying to their call_ids would error
+        this.handleUpdateMemory(item.call_id, item.arguments, kind !== "grade");
       }
     }
 
@@ -405,6 +406,19 @@ export class LessonOrchestrator {
       this.failsByLine.set(lineIndex, (this.failsByLine.get(lineIndex) ?? 0) + 1);
     }
     if (args.accepted || this.machine.attempts + 1 >= 3) this.linesAnsweredThisSession++;
+
+    // deterministic memory: a line that defeated all 3 attempts is a durable signal
+    if (!args.accepted && this.machine.attempts + 1 >= 3) {
+      const pair = currentPair(this.machine);
+      if (pair) {
+        void this.hooks
+          .postMemory({
+            category: "vocab",
+            observation: `Struggles with «${pair.student}» — needed teaching after 3 attempts`,
+          })
+          .catch(() => {});
+      }
+    }
 
     void this.hooks
       .postProgress({
@@ -537,13 +551,13 @@ export class LessonOrchestrator {
 
   // ---------- helpers ----------
 
-  private handleUpdateMemory(callId: string, rawArgs: string): void {
+  private handleUpdateMemory(callId: string, rawArgs: string, reply = true): void {
     try {
       const args = UpdateMemoryArgs.parse(JSON.parse(rawArgs));
       void this.hooks.postMemory(args).catch(() => {});
-      this.send(functionCallOutput(callId, { ok: true }));
+      if (reply) this.send(functionCallOutput(callId, { ok: true }));
     } catch {
-      this.send(functionCallOutput(callId, { ok: false, error: "invalid arguments" }));
+      if (reply) this.send(functionCallOutput(callId, { ok: false, error: "invalid arguments" }));
     }
     // never create a response for memory calls — audio flow continues on its own
   }

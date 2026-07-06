@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { CircleButton, PillButton } from "@/components/SessionControls";
 import { Teacher, type TeacherState } from "@/components/Teacher";
 import { TranscriptView } from "@/components/TranscriptView";
 import type { HistoryEntry } from "@/lib/lesson-machine/machine";
@@ -305,35 +306,6 @@ export function LessonSession(props: Props) {
             <span className="rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-muted">
               {Math.min(machine.currentIndex + 1, machine.pairs.length)} / {machine.pairs.length}
             </span>
-            {status === "active" && (
-              <>
-                <button
-                  onClick={talkItThrough}
-                  title="Pause the lesson and discuss with Sofía — your progress is saved"
-                  className="rounded-full border border-primary/40 bg-primary-soft px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary/20"
-                >
-                  💬 Talk it through
-                </button>
-                {!textMode && (
-                  <button
-                    onClick={toggleMute}
-                    className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-                      micMuted
-                        ? "border-error/40 bg-error-soft text-error"
-                        : "border-line hover:bg-surface-2"
-                    }`}
-                  >
-                    {micMuted ? "🔇 Muted" : "Mute"}
-                  </button>
-                )}
-                <button
-                  onClick={endSession}
-                  className="rounded-full border border-line px-3 py-1 text-xs font-medium transition hover:bg-surface-2"
-                >
-                  End
-                </button>
-              </>
-            )}
           </div>
         </div>
       </div>
@@ -411,6 +383,7 @@ export function LessonSession(props: Props) {
               )}
             </div>
           ) : (
+            <div className="flex flex-col items-center gap-4">
             <div className="flex items-center justify-center gap-5">
               <Teacher
                 state={mood ?? phaseToTeacher(snap.phase, snap.micActive)}
@@ -452,6 +425,24 @@ export function LessonSession(props: Props) {
                   </p>
                 )}
               </div>
+            </div>
+            <div className="flex items-start justify-center gap-5">
+              {!textMode && (
+                <CircleButton
+                  icon={micMuted ? "🔇" : "🎙️"}
+                  label={micMuted ? "Unmute" : "Mute"}
+                  active={micMuted}
+                  onClick={toggleMute}
+                />
+              )}
+              <PillButton
+                icon="💬"
+                label="Talk it through"
+                caption="pause & discuss with Sofía"
+                onClick={talkItThrough}
+              />
+              <CircleButton icon="✕" label="End" variant="danger" onClick={endSession} />
+            </div>
             </div>
           )}
         </div>

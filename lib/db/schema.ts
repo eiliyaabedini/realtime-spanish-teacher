@@ -1,6 +1,7 @@
 import {
   bigint,
   boolean,
+  doublePrecision,
   index,
   integer,
   pgTable,
@@ -39,6 +40,21 @@ export const userSettings = pgTable("user_settings", {
 // relative import — drizzle-kit loads this file outside Next's alias resolution
 import type { MemoryCategory } from "../memory/categories";
 export { MEMORY_CATEGORIES, type MemoryCategory } from "../memory/categories";
+
+export const usageLog = pgTable(
+  "usage_log",
+  {
+    id: bigint("id", { mode: "number" }).generatedAlwaysAsIdentity().primaryKey(),
+    userId: uuid("user_id").notNull(),
+    mode: text("mode").notNull(), // lesson | practice | guide
+    usd: doublePrecision("usd").notNull(),
+    inputTokens: integer("input_tokens").notNull().default(0),
+    outputTokens: integer("output_tokens").notNull().default(0),
+    seconds: integer("seconds").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("usage_log_user_idx").on(t.userId, t.createdAt)],
+);
 
 export const practiceSessions = pgTable(
   "practice_sessions",

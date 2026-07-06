@@ -51,12 +51,32 @@ export function JourneyGuide({ firstName, lessonIndex, nextStep }: Props) {
   const connRef = useRef<RealtimeConnection | null>(null);
   const orchRef = useRef<PracticeOrchestrator | null>(null);
 
+  const usageSent = useRef(false);
+  const sendUsageBeacon = useCallback(() => {
+    const stats = orchRef.current?.getSnapshot().stats;
+    if (!stats || usageSent.current || stats.usdCost <= 0) return;
+    usageSent.current = true;
+    void fetch("/api/usage-log", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mode: "guide",
+        usd: stats.usdCost,
+        inputTokens: stats.inputTokens,
+        outputTokens: stats.outputTokens,
+        seconds: 0,
+      }),
+    }).catch(() => {});
+  }, []);
+
   useEffect(() => {
     return () => {
+      sendUsageBeacon();
       orchRef.current?.stop();
       connRef.current?.close();
     };
-  }, []);
+  }, [sendUsageBeacon]);
 
   const subscribe = useCallback((cb: () => void) => {
     return orchRef.current ? orchRef.current.subscribe(cb) : () => {};

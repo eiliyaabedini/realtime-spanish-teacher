@@ -50,6 +50,20 @@
       "when": 1783333157173,
       "tag": "0006_realtime_model",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1783335191998,
+      "tag": "0007_usage_log",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1783335191999,
+      "tag": "0008_usage_log_rls",
+      "breakpoints": true
     }
   ]
 }
