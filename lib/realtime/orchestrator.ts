@@ -5,6 +5,7 @@ import {
   type MachineState,
   type Outcome,
 } from "@/lib/lesson-machine/machine";
+import { localGrade } from "@/lib/lesson-machine/localGrade";
 import {
   advanceInstructions,
   completeInstructions,
@@ -91,6 +92,10 @@ export class LessonOrchestrator {
   private lastStudentItemId: string | null = null;
   private lastStudentText: string | null = null;
   private speechStoppedAt: number | null = null;
+  /** waiting for the free input transcription before deciding locally */
+  private awaitingTranscript = false;
+  private pendingGradeItemId: string | null = null;
+  private transcriptTimer: ReturnType<typeof setTimeout> | null = null;
 
   /** the audio response currently playing (our design keeps them serial) */
   private inFlightAudio: {
@@ -178,12 +183,23 @@ export class LessonOrchestrator {
     this.lastStudentItemId = null;
     this.lastStudentText = trimmed;
     this.send(textUserMessage(trimmed));
-    this.beginGrading();
+
+    const pair = currentPair(this.machine);
+    if (!pair) return;
+    this.gradingInFlight = true;
+    this.gradeRetried = false;
+    this.phase = "grading";
+    this.emit();
+    const verdict = localGrade(pair.student, trimmed);
+    if (verdict === "pass") this.resolveAttempt(trimmed, true, "");
+    else if (verdict === "fail") this.resolveAttempt(trimmed, false, "");
+    else this.sendGradeRequest(pair, false);
   }
 
   stop(): void {
     if (this.capTimer) clearTimeout(this.capTimer);
     if (this.idleTimer) clearTimeout(this.idleTimer);
+    if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
     this.listeners.clear();
   }
 
@@ -215,7 +231,19 @@ export class LessonOrchestrator {
         if (this.machine.expectingStudent && !this.gradingInFlight && !this.machine.isComplete) {
           this.lastStudentItemId = itemId;
           this.lastStudentText = null;
-          this.beginGrading();
+          this.gradingInFlight = true;
+          this.gradeRetried = false;
+          this.phase = "grading";
+          this.emit();
+          // grade locally from the free transcription; model only as fallback
+          this.awaitingTranscript = true;
+          this.pendingGradeItemId = itemId;
+          this.transcriptTimer = setTimeout(() => {
+            if (!this.awaitingTranscript) return;
+            this.awaitingTranscript = false;
+            const pair = currentPair(this.machine);
+            if (pair) this.sendGradeRequest(pair, false);
+          }, 2500);
         }
         return;
       }
@@ -240,6 +268,8 @@ export class LessonOrchestrator {
         if (this.gradingInFlight) {
           this.gradingInFlight = false;
           this.gradeRetried = false;
+          this.awaitingTranscript = false;
+          if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
           this.phase = this.machine.expectingStudent ? "listening" : this.phase;
         }
         // non-fatal errors (e.g. deleting an already-gone item) → warning only
@@ -254,12 +284,29 @@ export class LessonOrchestrator {
       }
     }
 
-    const inputTranscript =
-      ev.type === "conversation.item.input_audio_transcription.completed"
-        ? String(ev.transcript ?? "")
-        : null;
-    if (inputTranscript) {
-      this.lastStudentTranscript = inputTranscript;
+    if (ev.type === "conversation.item.input_audio_transcription.completed") {
+      const transcript = String(ev.transcript ?? "").trim();
+      if (transcript) this.lastStudentTranscript = transcript;
+
+      // local-first grading: clear pass/fail never touches the model
+      if (
+        this.awaitingTranscript &&
+        this.gradingInFlight &&
+        (this.pendingGradeItemId === null || ev.item_id === this.pendingGradeItemId)
+      ) {
+        this.awaitingTranscript = false;
+        if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
+        const pair = currentPair(this.machine);
+        if (!pair) return;
+        const verdict = localGrade(pair.student, transcript);
+        if (verdict === "pass") {
+          this.resolveAttempt(transcript || pair.student, true, "");
+        } else if (verdict === "fail") {
+          this.resolveAttempt(transcript || "(unclear)", false, "");
+        } else {
+          this.sendGradeRequest(pair, false); // ambiguous → model decides
+        }
+      }
       return;
     }
 
@@ -319,6 +366,8 @@ export class LessonOrchestrator {
         // student barged in while grading — the fresh commit will re-grade
         this.gradingInFlight = false;
         this.gradeRetried = false;
+        this.awaitingTranscript = false;
+        if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
         this.maybeFireCap();
         return;
       }
@@ -349,16 +398,6 @@ export class LessonOrchestrator {
   }
 
   // ---------- grading ----------
-
-  private beginGrading(): void {
-    const pair = currentPair(this.machine);
-    if (!pair) return;
-    this.gradingInFlight = true;
-    this.gradeRetried = false;
-    this.phase = "grading";
-    this.emit();
-    this.sendGradeRequest(pair, false);
-  }
 
   /** Out-of-band + narrow input: the grade never re-reads the conversation. */
   private sendGradeRequest(pair: { teacher: string; student: string }, strict: boolean): void {
@@ -396,19 +435,28 @@ export class LessonOrchestrator {
       return;
     }
 
+    this.resolveAttempt(
+      args.transcript.trim() || this.lastStudentTranscript || "(unclear)",
+      args.accepted,
+      args.feedback,
+    );
+  }
+
+  /** Single funnel for graded attempts — local verdicts and model verdicts alike. */
+  private resolveAttempt(transcript: string, accepted: boolean, feedback: string): void {
     this.gradingInFlight = false;
-    const transcript = args.transcript.trim() || this.lastStudentTranscript || "(unclear)";
+    this.awaitingTranscript = false;
     const lineIndex = this.machine.currentIndex;
 
     // session teaching stats
-    if (args.accepted && this.machine.attempts === 0) this.firstTryCorrect++;
-    if (!args.accepted) {
+    if (accepted && this.machine.attempts === 0) this.firstTryCorrect++;
+    if (!accepted) {
       this.failsByLine.set(lineIndex, (this.failsByLine.get(lineIndex) ?? 0) + 1);
     }
-    if (args.accepted || this.machine.attempts + 1 >= 3) this.linesAnsweredThisSession++;
+    if (accepted || this.machine.attempts + 1 >= 3) this.linesAnsweredThisSession++;
 
     // deterministic memory: a line that defeated all 3 attempts is a durable signal
-    if (!args.accepted && this.machine.attempts + 1 >= 3) {
+    if (!accepted && this.machine.attempts + 1 >= 3) {
       const pair = currentPair(this.machine);
       if (pair) {
         void this.hooks
@@ -425,7 +473,7 @@ export class LessonOrchestrator {
         lessonId: this.machine.lessonId,
         lineIndex,
         userResponse: transcript,
-        isCorrect: args.accepted,
+        isCorrect: accepted,
       })
       .catch(() => {
         this.warning = "Progress could not be saved — check your connection.";
@@ -434,8 +482,8 @@ export class LessonOrchestrator {
 
     const { state, outcome } = applyAttempt(this.machine, {
       transcript,
-      accepted: args.accepted,
-      feedback: args.feedback,
+      accepted,
+      feedback,
     });
     this.machine = state;
     this.respondToOutcome(outcome);
@@ -490,6 +538,7 @@ export class LessonOrchestrator {
             expected: outcome.expected,
             attemptsUsed: outcome.attemptsUsed,
             attemptsLeft: 3 - outcome.attemptsUsed,
+            studentSaid: this.lastStudentTranscript || undefined,
           }),
           null,
         );

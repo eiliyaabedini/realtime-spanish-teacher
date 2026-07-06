@@ -50,11 +50,20 @@ export function addUsage(stats: SessionStats, usage: ResponseUsage | undefined):
 
 /** Normalized similarity (1 = identical) between the script line and what was spoken. */
 export function driftScore(scriptLine: string, spokenTranscript: string): number {
-  const a = normalize(scriptLine);
-  const b = normalize(spokenTranscript);
+  return similarity(scriptLine, spokenTranscript);
+}
+
+/** Accent/case/punctuation-insensitive similarity in [0, 1]. */
+export function similarity(expected: string, given: string): number {
+  const a = normalize(expected);
+  const b = normalize(given);
   if (!a.length && !b.length) return 1;
   const dist = levenshtein(a, b);
   return 1 - dist / Math.max(a.length, b.length);
+}
+
+export function normalizeText(s: string): string {
+  return normalize(s);
 }
 
 function normalize(s: string): string {

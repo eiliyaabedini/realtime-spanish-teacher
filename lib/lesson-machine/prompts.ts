@@ -79,8 +79,11 @@ export function retryInstructions(opts: {
   expected: string;
   attemptsUsed: number;
   attemptsLeft: number;
+  studentSaid?: string;
 }): string {
-  return `Not correct yet (attempt ${opts.attemptsUsed} of 3 — ${opts.attemptsLeft} left). Coach briefly, all in soft simple English:
+  return `Not correct yet (attempt ${opts.attemptsUsed} of 3 — ${opts.attemptsLeft} left).${
+    opts.studentSaid ? ` The student said: «${opts.studentSaid}».` : ""
+  } Coach briefly, all in soft simple English:
 1. In one sentence, say what was off (be kind and specific).
 2. Say the Spanish target slowly and clearly, once: «${opts.expected}»
 3. In a few words, invite them to try again.
