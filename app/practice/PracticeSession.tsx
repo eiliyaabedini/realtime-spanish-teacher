@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Teacher } from "@/components/Teacher";
-import { TranscriptView } from "@/components/TranscriptView";
+import { PracticeFeed } from "@/components/widgets/PracticeFeed";
 import { connectRealtime, type RealtimeConnection } from "@/lib/realtime/connection";
 import {
   PracticeOrchestrator,
@@ -31,6 +31,7 @@ const PHASE_LABEL: Record<PracticeSnapshot["phase"], string> = {
 const EMPTY_SNAPSHOT: PracticeSnapshot = {
   phase: "connecting",
   messages: [],
+  feed: [],
   suggestions: [],
   micActive: false,
   stats: { turnLatenciesMs: [], driftScores: [], usdCost: 0, inputTokens: 0, outputTokens: 0 },
@@ -226,11 +227,12 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
         </div>
       )}
 
-      {/* transcript + suggestions */}
+      {/* feed (chat + whiteboard widgets) + suggestions */}
       <div className="flex-1 overflow-y-auto">
-        <TranscriptView
-          messages={snap.messages}
+        <PracticeFeed
+          feed={snap.feed}
           teacherSpeaking={status === "active" && snap.phase === "speaking"}
+          onWidgetResult={(summary) => orchRef.current?.sendWidgetResult(summary)}
         />
         {snap.suggestions.length > 0 && (
           <div className="mx-auto max-w-2xl space-y-2 px-4 pb-6">

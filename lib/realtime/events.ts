@@ -81,6 +81,93 @@ export const SUGGEST_LESSON_TOOL = {
   },
 } as const;
 
+// --- whiteboard tools (practice mode): JSON in, fixed React widgets out ---
+
+export const SHOW_WORD_CARD_TOOL = {
+  type: "function",
+  name: "show_word_card",
+  description:
+    "Show an etymology-first word card on the student's screen while you keep talking. Use when teaching or reviewing a word. Include the root and English cognates in etymology; add Persian (FA) or Portuguese (PT) translations when they help this student. The student can mark it Got it / Hard — you'll see the result.",
+  parameters: {
+    type: "object",
+    properties: {
+      word: { type: "string", description: "The Spanish word or phrase, e.g. 'poder'." },
+      phonetic: { type: "string", description: "Simple pronunciation, e.g. 'po-DER'." },
+      category: { type: "string", description: "noun | verb | adjective | phrase | adverb" },
+      gender: { type: "string", enum: ["m", "f"], description: "For nouns only." },
+      translations: {
+        type: "array",
+        maxItems: 4,
+        items: {
+          type: "object",
+          properties: {
+            lang: { type: "string", description: "EN, FA, PT…" },
+            text: { type: "string" },
+          },
+          required: ["lang", "text"],
+        },
+      },
+      example: { type: "string", description: "One short Spanish sentence using it." },
+      pattern: { type: "string", description: "The grammar rule or conjugation formula it follows." },
+      etymology: {
+        type: "string",
+        description: "Root + English cognates + brief history, e.g. 'Latin potere — same root as power, possible, potent.'",
+      },
+      why: { type: "string", description: "For irregulars: the historical reason (sound shift, stress rule)." },
+    },
+    required: ["word", "translations"],
+  },
+} as const;
+
+export const SHOW_QUIZ_TOOL = {
+  type: "function",
+  name: "show_quiz",
+  description:
+    "Show a tappable quiz (1–5 questions) on screen. Auto-advances with instant feedback; when finished you receive the score and every miss — react to it by voice and reteach what they missed. Mix in etymology and 'why' questions, not just translations.",
+  parameters: {
+    type: "object",
+    properties: {
+      title: { type: "string" },
+      questions: {
+        type: "array",
+        minItems: 1,
+        maxItems: 5,
+        items: {
+          type: "object",
+          properties: {
+            question: { type: "string" },
+            kind: { type: "string", enum: ["choice", "fill"], description: "choice = tap an option; fill = type the answer" },
+            options: { type: "array", maxItems: 4, items: { type: "string" }, description: "2–4 options for choice questions" },
+            correctIndex: { type: "number", description: "index of the correct option" },
+            answer: { type: "string", description: "expected answer for fill questions" },
+            why: { type: "string", description: "one-line explanation shown as feedback" },
+          },
+          required: ["question", "kind"],
+        },
+      },
+    },
+    required: ["questions"],
+  },
+} as const;
+
+export const SHOW_GRAMMAR_TABLE_TOOL = {
+  type: "function",
+  name: "show_grammar_table",
+  description:
+    "Show a compact grammar/conjugation table with an optional formula line (grammar as a system, not a list). Use for conjugations, patterns like e→ie stem changes, or side-by-side comparisons.",
+  parameters: {
+    type: "object",
+    properties: {
+      title: { type: "string" },
+      formula: { type: "string", description: "The rule as a formula, e.g. 'stress on stem → o becomes ue'." },
+      columns: { type: "array", maxItems: 4, items: { type: "string" } },
+      rows: { type: "array", maxItems: 8, items: { type: "array", maxItems: 4, items: { type: "string" } } },
+      note: { type: "string", description: "One short takeaway under the table." },
+    },
+    required: ["title", "columns", "rows"],
+  },
+} as const;
+
 export const START_LESSON_TOOL = {
   type: "function",
   name: "start_lesson",
@@ -161,7 +248,14 @@ export function buildPracticeSessionConfig(opts: {
       },
       output: { voice: opts.voice },
     },
-    tools: [UPDATE_MEMORY_TOOL, GET_LESSON_CONTENT_TOOL, SUGGEST_LESSON_TOOL],
+    tools: [
+      UPDATE_MEMORY_TOOL,
+      GET_LESSON_CONTENT_TOOL,
+      SUGGEST_LESSON_TOOL,
+      SHOW_WORD_CARD_TOOL,
+      SHOW_QUIZ_TOOL,
+      SHOW_GRAMMAR_TABLE_TOOL,
+    ],
     tool_choice: "auto",
   };
 }
@@ -222,6 +316,18 @@ export function textUserMessage(text: string) {
     item: {
       type: "message",
       role: "user",
+      content: [{ type: "input_text", text }],
+    },
+  };
+}
+
+/** Out-of-band context (widget results, background events) — not shown as a student bubble. */
+export function systemMessage(text: string) {
+  return {
+    type: "conversation.item.create",
+    item: {
+      type: "message",
+      role: "system",
       content: [{ type: "input_text", text }],
     },
   };

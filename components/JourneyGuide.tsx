@@ -28,6 +28,7 @@ type Status = "idle" | "starting" | "active" | "error";
 const EMPTY_SNAPSHOT: PracticeSnapshot = {
   phase: "connecting",
   messages: [],
+  feed: [],
   suggestions: [],
   micActive: false,
   stats: { turnLatenciesMs: [], driftScores: [], usdCost: 0, inputTokens: 0, outputTokens: 0 },

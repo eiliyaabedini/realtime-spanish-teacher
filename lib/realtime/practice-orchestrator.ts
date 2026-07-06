@@ -1,6 +1,12 @@
 import { z } from "zod";
 import type { Message } from "@/lib/lesson-machine/machine";
 import { practiceOpening, practiceWrapUp } from "@/lib/practice/prompts";
+import {
+  GrammarTablePayload,
+  QuizPayload,
+  WordCardPayload,
+  type WidgetInstance,
+} from "@/lib/practice/widgets";
 import { MEMORY_CATEGORIES } from "@/lib/memory/categories";
 import {
   functionCallOutput,
@@ -8,6 +14,7 @@ import {
   outputTranscriptDone,
   responseContinue,
   responseCreate,
+  systemMessage,
   textUserMessage,
   type ServerEvent,
 } from "./events";
@@ -17,9 +24,15 @@ export type PracticePhase = "connecting" | "speaking" | "listening" | "complete"
 
 export type LessonSuggestion = { lessonId: string; title: string; reason: string };
 
+export type FeedItem =
+  | { kind: "message"; message: Message }
+  | { kind: "widget"; widget: WidgetInstance };
+
 export type PracticeSnapshot = {
   phase: PracticePhase;
   messages: Message[];
+  /** messages and widgets interleaved in arrival order — what the practice UI renders */
+  feed: FeedItem[];
   suggestions: LessonSuggestion[];
   micActive: boolean;
   stats: SessionStats;
@@ -56,7 +69,10 @@ const NAV_DELAY_MS = 900;
 export class PracticeOrchestrator {
   private phase: PracticePhase = "connecting";
   private messages: Message[] = [];
+  private feed: FeedItem[] = [];
   private suggestions: LessonSuggestion[] = [];
+  private widgetCounter = 0;
+  private pendingInjections: string[] = [];
   private micActive = false;
   private stats = emptyStats();
   private error: string | null = null;
@@ -110,6 +126,7 @@ export class PracticeOrchestrator {
       this.snapshotCache = {
         phase: this.phase,
         messages: this.messages,
+        feed: this.feed,
         suggestions: this.suggestions,
         micActive: this.micActive,
         stats: this.stats,
@@ -119,6 +136,15 @@ export class PracticeOrchestrator {
     }
     return this.snapshotCache;
   };
+
+  private pushMessage(message: Message): void {
+    this.messages = [...this.messages, message];
+    this.feed = [...this.feed, { kind: "message", message }];
+  }
+
+  private pushWidget(widget: WidgetInstance): void {
+    this.feed = [...this.feed, { kind: "widget", widget }];
+  }
 
   start(): void {
     if (this.started) return;
@@ -131,10 +157,29 @@ export class PracticeOrchestrator {
   submitText(text: string): void {
     const trimmed = text.trim();
     if (!trimmed || this.phase === "complete" || this.phase === "error") return;
-    this.messages = [...this.messages, { role: "student", text: trimmed }];
+    this.pushMessage({ role: "student", text: trimmed });
     this.emit();
     this.send(textUserMessage(trimmed));
     if (!this.inResponse) this.send(responseContinue());
+  }
+
+  /**
+   * A widget interaction happened (quiz finished, card marked hard…).
+   * Injected as a system item so Sofía reacts by voice — gated so it never
+   * collides with an active response (flushed on the next response.done).
+   */
+  sendWidgetResult(summary: string): void {
+    if (this.phase === "complete" || this.phase === "error") return;
+    this.pendingInjections.push(summary);
+    if (!this.inResponse) this.flushInjections();
+  }
+
+  private flushInjections(): void {
+    if (this.pendingInjections.length === 0) return;
+    const text = this.pendingInjections.map((s) => `[widget result] ${s}`).join("\n");
+    this.pendingInjections = [];
+    this.send(systemMessage(text));
+    this.send(responseContinue());
   }
 
   stop(): void {
@@ -189,7 +234,7 @@ export class PracticeOrchestrator {
     if (ev.type === "conversation.item.input_audio_transcription.completed") {
       const text = String(ev.transcript ?? "").trim();
       if (text) {
-        this.messages = [...this.messages, { role: "student", text }];
+        this.pushMessage({ role: "student", text });
         this.emit();
       }
       return;
@@ -199,7 +244,7 @@ export class PracticeOrchestrator {
     if (outDone) {
       const text = outDone.transcript.trim();
       if (text) {
-        this.messages = [...this.messages, { role: "teacher", text }];
+        this.pushMessage({ role: "teacher", text });
         this.emit();
       }
       return;
@@ -252,6 +297,12 @@ export class PracticeOrchestrator {
 
     if (hadToolCall) {
       this.send(responseContinue());
+      return;
+    }
+
+    // widget results that arrived while she was talking
+    if (this.pendingInjections.length > 0) {
+      this.flushInjections();
       return;
     }
 
@@ -313,6 +364,33 @@ export class PracticeOrchestrator {
         this.emit();
       }
       this.send(functionCallOutput(callId, { ok: true, shown_to_student: true }));
+      return;
+    }
+
+    if (name === "show_word_card" || name === "show_quiz" || name === "show_grammar_table") {
+      const schema =
+        name === "show_word_card"
+          ? WordCardPayload
+          : name === "show_quiz"
+            ? QuizPayload
+            : GrammarTablePayload;
+      const parsed = schema.safeParse(args);
+      if (!parsed.success) {
+        this.send(
+          functionCallOutput(callId, {
+            error: `invalid payload: ${parsed.error.issues[0]?.message ?? "schema mismatch"} — fix and call again`,
+          }),
+        );
+        return;
+      }
+      const type = name === "show_word_card" ? "word" : name === "show_quiz" ? "quiz" : "table";
+      this.pushWidget({
+        id: ++this.widgetCounter,
+        type,
+        payload: parsed.data,
+      } as WidgetInstance);
+      this.emit();
+      this.send(functionCallOutput(callId, { ok: true, displayed: true }));
       return;
     }
 

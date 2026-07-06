@@ -217,6 +217,82 @@ describe("PracticeOrchestrator", () => {
     }
   });
 
+  it("show_quiz renders a widget into the feed and continues speaking", async () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(
+      ev.responseDone([
+        ev.call("show_quiz", {
+          title: "Stem changes",
+          questions: [
+            { question: "Poder for yo:", kind: "choice", options: ["puedo", "podo"], correctIndex: 0 },
+          ],
+        }),
+      ]),
+    );
+    await flush();
+
+    const snap = orch.getSnapshot();
+    const widgets = snap.feed.filter((f) => f.kind === "widget");
+    expect(widgets).toHaveLength(1);
+    expect(widgets[0]).toMatchObject({ kind: "widget", widget: { type: "quiz" } });
+    const output = sent.find((s) => s.type === "conversation.item.create");
+    expect(JSON.parse(output.item.output)).toEqual({ ok: true, displayed: true });
+    expect(sent.at(-1)).toEqual({ type: "response.create" }); // keeps talking
+  });
+
+  it("rejects an invalid widget payload with a fixable error", async () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(
+      ev.responseDone([
+        ev.call("show_quiz", {
+          questions: [{ question: "Broken", kind: "choice" }], // no options/correctIndex
+        }),
+      ]),
+    );
+    await flush();
+
+    expect(orch.getSnapshot().feed.filter((f) => f.kind === "widget")).toHaveLength(0);
+    const output = sent.find((s) => s.type === "conversation.item.create");
+    expect(JSON.parse(output.item.output).error).toContain("invalid payload");
+  });
+
+  it("widget results inject immediately when idle", () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.responseDone()); // opening done → idle
+
+    orch.sendWidgetResult("Quiz finished: 2/3 correct.");
+    const sys = sent.find(
+      (s) => s.type === "conversation.item.create" && s.item.role === "system",
+    );
+    expect(sys.item.content[0].text).toContain("[widget result] Quiz finished: 2/3 correct.");
+    expect(sent.at(-1)).toEqual({ type: "response.create" });
+  });
+
+  it("widget results are gated while Sofía is talking, then flushed", () => {
+    const { orch, sent } = setup();
+    active = orch;
+    orch.handleServerEvent(ev.sessionCreated());
+    orch.handleServerEvent(ev.responseCreated()); // response in flight
+
+    orch.sendWidgetResult("Word card «hacer»: student marked HARD.");
+    expect(
+      sent.filter((s) => s.type === "conversation.item.create" && s.item.role === "system"),
+    ).toHaveLength(0); // gated
+
+    orch.handleServerEvent(ev.responseDone()); // she finished → flush
+    const sys = sent.find(
+      (s) => s.type === "conversation.item.create" && s.item.role === "system",
+    );
+    expect(sys.item.content[0].text).toContain("HARD");
+    expect(sent.at(-1)).toEqual({ type: "response.create" });
+  });
+
   it("typed answers create a user item and trigger a response", () => {
     const { orch, sent } = setup();
     active = orch;
