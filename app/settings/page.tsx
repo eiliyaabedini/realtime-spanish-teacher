@@ -47,6 +47,16 @@ export default async function SettingsPage() {
         <span className="italic text-primary">Settings</span>
       </h1>
 
+      {usage && usage.sessions === 0 && (
+        <section className="mt-8 rounded-3xl border border-dashed border-line bg-surface p-6">
+          <h2 className="font-display text-lg font-semibold">Spending</h2>
+          <p className="mt-2 text-sm text-muted">
+            No sessions recorded yet — your next lesson or practice chat will appear here with
+            its estimated cost, and totals will build up over time.
+          </p>
+        </section>
+      )}
+
       {usage && usage.sessions > 0 && (
         <section className="mt-8 rounded-3xl border border-line bg-surface p-6 shadow-warm">
           <h2 className="font-display text-lg font-semibold">Spending</h2>
