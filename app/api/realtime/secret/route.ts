@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { decrypt } from "@/lib/crypto";
 import {
-  getCreditedLineIndexes,
+  getCoveredLineIndexes,
   getLastLessonActivityAt,
   getLastPracticeAt,
   getSettings,
@@ -92,7 +92,7 @@ export async function POST(request: Request) {
     const lessonId = (body as { lessonId: string }).lessonId;
     if (lessonMode === "natural") {
       // natural chunk mode: conversational session over the next uncovered lines
-      const credits = await getCreditedLineIndexes(user.id, lessonId).catch(() => [] as number[]);
+      const credits = await getCoveredLineIndexes(user.id, lessonId).catch(() => [] as number[]);
       const pairs = getLessonPairs(lessonId);
       const meta = getLessonMeta(lessonId)!;
       const profileBlock = profile.isFirstSession ? "" : `THE STUDENT\n${profile.summary}`;

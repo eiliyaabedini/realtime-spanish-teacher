@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import {
-  getCreditedLineIndexes,
+  getCoveredLineIndexes,
   getDerivedStats,
   getLessonHistory,
   getResumeIndex,
@@ -42,7 +42,7 @@ export default async function LessonPage({
         getLessonHistory(user.id, lessonId),
         getDerivedStats(user.id),
         getSettings(user.id),
-        getCreditedLineIndexes(user.id, lessonId),
+        getCoveredLineIndexes(user.id, lessonId),
       ]);
       resumeIndex = resume;
       history = hist;

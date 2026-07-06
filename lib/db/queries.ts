@@ -32,18 +32,16 @@ export async function recordAttempts(
     .values(attempts.map((a) => ({ userId, ...a })));
 }
 
-/** Line indexes already answered correctly — the "credited" set for chunk mode. */
-export async function getCreditedLineIndexes(userId: string, lessonId: string): Promise<number[]> {
+/**
+ * Lines already covered for natural chunk mode: any line the student has
+ * ATTEMPTED counts (line-by-line mode advances past 3×-failed lines, so
+ * correct-only would drag returning students back to the beginning).
+ */
+export async function getCoveredLineIndexes(userId: string, lessonId: string): Promise<number[]> {
   const rows = await db()
     .selectDistinct({ lineIndex: userProgress.lineIndex })
     .from(userProgress)
-    .where(
-      and(
-        eq(userProgress.userId, userId),
-        eq(userProgress.lessonId, lessonId),
-        eq(userProgress.isCorrect, true),
-      ),
-    );
+    .where(and(eq(userProgress.userId, userId), eq(userProgress.lessonId, lessonId)));
   return rows.map((r) => r.lineIndex);
 }
 
