@@ -15,6 +15,8 @@ const PostBody = z.object({
     .optional(),
   voice: z.enum(REALTIME_VOICES).optional(),
   model: z.enum(REALTIME_MODEL_IDS).optional(),
+  lessonMode: z.enum(["natural", "lines"]).optional(),
+  chunkSize: z.union([z.literal(10), z.literal(20), z.literal(50)]).optional(),
 });
 
 export async function POST(request: Request) {
@@ -29,11 +31,19 @@ export async function POST(request: Request) {
     );
   }
 
-  const { apiKey, voice, model } = parsed.data;
-  const values: { openaiApiKeyEnc?: string; voice?: string; realtimeModel?: string } = {};
+  const { apiKey, voice, model, lessonMode, chunkSize } = parsed.data;
+  const values: {
+    openaiApiKeyEnc?: string;
+    voice?: string;
+    realtimeModel?: string;
+    lessonMode?: string;
+    chunkSize?: number;
+  } = {};
   if (apiKey) values.openaiApiKeyEnc = encrypt(apiKey);
   if (voice) values.voice = voice;
   if (model) values.realtimeModel = model;
+  if (lessonMode) values.lessonMode = lessonMode;
+  if (chunkSize) values.chunkSize = chunkSize;
   if (Object.keys(values).length === 0) {
     return NextResponse.json({ error: "nothing to update" }, { status: 400 });
   }

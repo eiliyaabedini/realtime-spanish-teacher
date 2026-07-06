@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { decrypt } from "@/lib/crypto";
-import { getLastLessonActivityAt, getLastPracticeAt, getSettings } from "@/lib/db/queries";
+import {
+  getCreditedLineIndexes,
+  getLastLessonActivityAt,
+  getLastPracticeAt,
+  getSettings,
+} from "@/lib/db/queries";
+import { planChunk } from "@/lib/lesson-machine/chunk";
+import { chunkPersona } from "@/lib/lesson-machine/chunkPrompts";
 import { deriveNextStep, nextStepBriefing } from "@/lib/guide/journey";
 import { guidePersona } from "@/lib/guide/prompts";
 import { getLessonMeta, getLessonPairs } from "@/lib/lessons/catalog";
@@ -10,6 +17,7 @@ import { assembleProfile } from "@/lib/memory/profile";
 import { curriculumBriefing, getCurriculumStatus } from "@/lib/practice/curriculum";
 import { practicePersona } from "@/lib/practice/prompts";
 import {
+  buildChunkLessonConfig,
   buildGuideSessionConfig,
   buildPracticeSessionConfig,
   buildSessionConfig,
@@ -46,10 +54,14 @@ export async function POST(request: Request) {
   let apiKey = process.env.OPENAI_API_KEY ?? null;
   let voice = DEFAULT_VOICE as string;
   let userModel: string | null = null;
+  let lessonMode = "natural";
+  let chunkSize = 20;
   try {
     const settings = await getSettings(user.id);
     if (settings?.voice) voice = settings.voice;
     if (settings?.realtimeModel) userModel = settings.realtimeModel;
+    if (settings?.lessonMode) lessonMode = settings.lessonMode;
+    if (settings?.chunkSize) chunkSize = settings.chunkSize;
     if (settings?.openaiApiKeyEnc) {
       try {
         apiKey = decrypt(settings.openaiApiKeyEnc);
@@ -75,12 +87,36 @@ export async function POST(request: Request) {
   const model = userModel ?? process.env.REALTIME_MODEL ?? "gpt-realtime-2";
 
   let session: object;
+  let lessonExtras: object = {};
   if (mode === "lesson") {
-    session = buildSessionConfig({
-      model,
-      voice,
-      instructions: personaInstructions(profile),
-    });
+    const lessonId = (body as { lessonId: string }).lessonId;
+    if (lessonMode === "natural") {
+      // natural chunk mode: conversational session over the next uncovered lines
+      const credits = await getCreditedLineIndexes(user.id, lessonId).catch(() => [] as number[]);
+      const pairs = getLessonPairs(lessonId);
+      const meta = getLessonMeta(lessonId)!;
+      const profileBlock = profile.isFirstSession ? "" : `THE STUDENT\n${profile.summary}`;
+      const plan = planChunk(pairs, new Set(credits), chunkSize);
+      session = buildChunkLessonConfig({
+        model,
+        voice,
+        instructions: chunkPersona({
+          lessonTitle: meta.title,
+          profileBlock,
+          lines: plan.lines,
+          chunkNumber: plan.chunkNumber,
+          totalChunks: plan.totalChunks,
+        }),
+      });
+      lessonExtras = { lessonMode: "natural", chunkSize, credits, profileBlock };
+    } else {
+      session = buildSessionConfig({
+        model,
+        voice,
+        instructions: personaInstructions(profile),
+      });
+      lessonExtras = { lessonMode: "lines" };
+    }
   } else {
     const statuses = await getCurriculumStatus(user.id);
     if (mode === "guide") {
@@ -152,5 +188,6 @@ export async function POST(request: Request) {
     clientSecret,
     expiresAt: json.expires_at ?? json.client_secret?.expires_at ?? null,
     isFirstSession: profile.isFirstSession,
+    ...lessonExtras,
   });
 }

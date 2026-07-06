@@ -168,6 +168,32 @@ export const SHOW_GRAMMAR_TABLE_TOOL = {
   },
 } as const;
 
+export const FINISH_CHUNK_TOOL = {
+  type: "function",
+  name: "finish_chunk",
+  description:
+    "Call when the student has said all of today's phrases out loud (or everything is reasonably covered). Say a short transition sentence first, then call this.",
+  parameters: { type: "object", properties: {} },
+} as const;
+
+/** Natural chunk lessons: conversational auto-responses like practice mode. */
+export function buildChunkLessonConfig(opts: {
+  model: string;
+  voice: string;
+  instructions: string;
+}) {
+  const config = buildPracticeSessionConfig(opts);
+  return {
+    ...config,
+    tools: [FINISH_CHUNK_TOOL, UPDATE_MEMORY_TOOL],
+  };
+}
+
+/** Replace session instructions mid-session (chunk advance without reconnecting). */
+export function sessionUpdateInstructions(instructions: string) {
+  return { type: "session.update", session: { instructions } };
+}
+
 export const START_LESSON_TOOL = {
   type: "function",
   name: "start_lesson",

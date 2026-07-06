@@ -22,6 +22,31 @@ export async function recordAttempt(
   await db().insert(userProgress).values({ userId, ...attempt });
 }
 
+export async function recordAttempts(
+  userId: string,
+  attempts: { lessonId: string; lineIndex: number; userResponse: string; isCorrect: boolean }[],
+) {
+  if (attempts.length === 0) return;
+  await db()
+    .insert(userProgress)
+    .values(attempts.map((a) => ({ userId, ...a })));
+}
+
+/** Line indexes already answered correctly — the "credited" set for chunk mode. */
+export async function getCreditedLineIndexes(userId: string, lessonId: string): Promise<number[]> {
+  const rows = await db()
+    .selectDistinct({ lineIndex: userProgress.lineIndex })
+    .from(userProgress)
+    .where(
+      and(
+        eq(userProgress.userId, userId),
+        eq(userProgress.lessonId, lessonId),
+        eq(userProgress.isCorrect, true),
+      ),
+    );
+  return rows.map((r) => r.lineIndex);
+}
+
 /**
  * Android-parity resume rule (UserProgressDao.getResumeIndex):
  * look at the highest answered lineIndex — if any attempt ON THAT LINE was
@@ -264,6 +289,8 @@ export type SettingsRow = {
   openaiApiKeyEnc: string | null;
   voice: string;
   realtimeModel: string | null;
+  lessonMode: string;
+  chunkSize: number;
 };
 
 export async function getSettings(userId: string): Promise<SettingsRow | null> {
@@ -272,6 +299,8 @@ export async function getSettings(userId: string): Promise<SettingsRow | null> {
       openaiApiKeyEnc: userSettings.openaiApiKeyEnc,
       voice: userSettings.voice,
       realtimeModel: userSettings.realtimeModel,
+      lessonMode: userSettings.lessonMode,
+      chunkSize: userSettings.chunkSize,
     })
     .from(userSettings)
     .where(eq(userSettings.userId, userId));
@@ -280,7 +309,13 @@ export async function getSettings(userId: string): Promise<SettingsRow | null> {
 
 export async function upsertSettings(
   userId: string,
-  values: { openaiApiKeyEnc?: string | null; voice?: string; realtimeModel?: string | null },
+  values: {
+    openaiApiKeyEnc?: string | null;
+    voice?: string;
+    realtimeModel?: string | null;
+    lessonMode?: string;
+    chunkSize?: number;
+  },
 ) {
   await db()
     .insert(userSettings)

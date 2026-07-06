@@ -34,6 +34,9 @@ export const userSettings = pgTable("user_settings", {
   voice: text("voice").notNull().default("marin"),
   /** realtime model id; null = server default */
   realtimeModel: text("realtime_model"),
+  /** natural (chunked, conversational) | lines (precise line-by-line) */
+  lessonMode: text("lesson_mode").notNull().default("natural"),
+  chunkSize: integer("chunk_size").notNull().default(20),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

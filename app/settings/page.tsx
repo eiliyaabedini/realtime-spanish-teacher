@@ -24,6 +24,8 @@ export default async function SettingsPage() {
     : {
         voice: "marin",
         model: "gpt-realtime-2",
+        lessonMode: "natural",
+        chunkSize: 20,
         hasOwnKey: false,
         keyHint: null,
         serverHasKey: false,
