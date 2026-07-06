@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Teacher } from "@/components/Teacher";
+import { GrammarTableWidget } from "@/components/widgets/GrammarTableWidget";
 import { PracticeFeed } from "@/components/widgets/PracticeFeed";
+import { QuizWidget } from "@/components/widgets/QuizWidget";
+import { WordCardWidget } from "@/components/widgets/WordCardWidget";
 import { connectRealtime, type RealtimeConnection } from "@/lib/realtime/connection";
 import {
   PracticeOrchestrator,
@@ -20,14 +23,6 @@ type Props = {
 
 type Status = "idle" | "starting" | "active" | "error";
 
-const PHASE_LABEL: Record<PracticeSnapshot["phase"], string> = {
-  connecting: "Connecting…",
-  speaking: "Sofía is speaking…",
-  listening: "Your turn — just talk",
-  complete: "Session complete",
-  error: "Connection problem",
-};
-
 const EMPTY_SNAPSHOT: PracticeSnapshot = {
   phase: "connecting",
   messages: [],
@@ -39,6 +34,9 @@ const EMPTY_SNAPSHOT: PracticeSnapshot = {
   warning: null,
 };
 
+/** how many of the latest widgets stay live on the stage */
+const STAGE_WIDGETS = 2;
+
 export function PracticeSession({ lessonIndex, autostart, from }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [startError, setStartError] = useState<string | null>(null);
@@ -47,6 +45,7 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
   const [textMode, setTextMode] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [audioBlocked, setAudioBlocked] = useState(false);
+  const [showTranscript, setShowTranscript] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const connRef = useRef<RealtimeConnection | null>(null);
@@ -72,10 +71,10 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
     return orchRef.current ? orchRef.current.subscribe(cb) : () => {};
   }, [status]); // eslint-disable-line react-hooks/exhaustive-deps -- re-subscribe once the orchestrator exists
 
-  const getSnapshot = useCallback((): PracticeSnapshot => {
-    return orchRef.current ? orchRef.current.getSnapshot() : EMPTY_SNAPSHOT;
-  }, []);
-
+  const getSnapshot = useCallback(
+    (): PracticeSnapshot => orchRef.current?.getSnapshot() ?? EMPTY_SNAPSHOT,
+    [],
+  );
   const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
   async function start() {
@@ -147,7 +146,6 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
   }
 
   function endSession() {
-    // graceful: Sofía wraps up, completion panel takes over
     orchRef.current?.requestWrapUp();
   }
 
@@ -171,7 +169,21 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
     setTextInput("");
   }
 
+  const onWidgetResult = useCallback(
+    (summary: string) => orchRef.current?.sendWidgetResult(summary),
+    [],
+  );
+
   const complete = snap.phase === "complete";
+  const stageWidgets = snap.feed.filter((f) => f.kind === "widget").slice(-STAGE_WIDGETS);
+  const lastTeacherLine = [...snap.messages].reverse().find((m) => m.role === "teacher")?.text;
+  const teacherState = complete
+    ? "happy"
+    : snap.micActive
+      ? "listening"
+      : snap.phase === "speaking"
+        ? "speaking"
+        : "listening";
 
   return (
     <div className="flex h-screen flex-col">
@@ -179,7 +191,7 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
 
       {/* top bar */}
       <div className="border-b border-line bg-surface/80 px-5 py-3 backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center justify-between">
+        <div className="mx-auto flex max-w-4xl items-center justify-between">
           <div className="min-w-0">
             <Link href="/lessons" className="text-xs text-muted transition hover:text-primary">
               ← All lessons
@@ -188,28 +200,44 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
               Práctica <span className="italic text-primary">libre</span>
             </h1>
           </div>
-          {status === "active" && !complete && (
-            <div className="flex shrink-0 items-center gap-2">
-              {!textMode && (
+          <div className="flex shrink-0 items-center gap-2">
+            {status === "active" && (
+              <>
                 <button
-                  onClick={toggleMute}
+                  onClick={() => setShowTranscript((s) => !s)}
                   className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-                    micMuted
-                      ? "border-error/40 bg-error-soft text-error"
+                    showTranscript
+                      ? "border-primary/40 bg-primary-soft text-primary"
                       : "border-line hover:bg-surface-2"
                   }`}
                 >
-                  {micMuted ? "🔇 Muted" : "Mute"}
+                  💬 Transcript
                 </button>
-              )}
-              <button
-                onClick={endSession}
-                className="rounded-full border border-line px-3 py-1 text-xs font-medium transition hover:bg-surface-2"
-              >
-                Wrap up
-              </button>
-            </div>
-          )}
+                {!complete && (
+                  <>
+                    {!textMode && (
+                      <button
+                        onClick={toggleMute}
+                        className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                          micMuted
+                            ? "border-error/40 bg-error-soft text-error"
+                            : "border-line hover:bg-surface-2"
+                        }`}
+                      >
+                        {micMuted ? "🔇 Muted" : "Mute"}
+                      </button>
+                    )}
+                    <button
+                      onClick={endSession}
+                      className="rounded-full border border-line px-3 py-1 text-xs font-medium transition hover:bg-surface-2"
+                    >
+                      Wrap up
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -227,67 +255,27 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
         </div>
       )}
 
-      {/* feed (chat + whiteboard widgets) + suggestions */}
-      <div className="flex-1 overflow-y-auto">
-        <PracticeFeed
-          feed={snap.feed}
-          teacherSpeaking={status === "active" && snap.phase === "speaking"}
-          onWidgetResult={(summary) => orchRef.current?.sendWidgetResult(summary)}
-        />
-        {snap.suggestions.length > 0 && (
-          <div className="mx-auto max-w-2xl space-y-2 px-4 pb-6">
-            {snap.suggestions.map((s) => (
-              <SuggestionCard key={s.lessonId} suggestion={s} />
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* bottom dock */}
-      <div className="border-t border-line bg-surface/80 px-5 py-5 backdrop-blur">
-        <div className="mx-auto max-w-2xl">
-          {complete ? (
-            <div className="flex flex-col items-center gap-3 text-center">
-              <Teacher state="happy" size={96} />
-              <p className="font-display text-3xl font-semibold tracking-tight">
-                ¡Buen <span className="italic text-primary">trabajo!</span> 🎉
-              </p>
-              <p className="text-sm text-muted">
-                Sofía updated what she knows about you
-                {snap.stats.usdCost > 0 && <> · session ≈ ${snap.stats.usdCost.toFixed(2)}</>}
-              </p>
-              <div className="mt-1 flex gap-3">
-                <Link
-                  href="/lessons"
-                  className="rounded-full border border-line px-6 py-2.5 text-sm font-medium transition hover:bg-surface-2"
-                >
-                  All lessons
-                </Link>
-                <button
-                  onClick={() => window.location.reload()}
-                  className="rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-warm transition hover:bg-primary-strong"
-                >
-                  Practice again
-                </button>
-              </div>
-            </div>
-          ) : status === "idle" || status === "starting" ? (
-            <div className="flex flex-col items-center gap-3">
-              <Teacher state="idle" size={104} />
+      {/* ── the stage: Sofía front and center ─────────────────────────── */}
+      <div className="relative flex min-h-0 flex-1">
+        <div className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-6">
+          {status === "idle" || status === "starting" ? (
+            <div className="flex flex-1 flex-col items-center justify-center gap-3">
+              <Teacher state="idle" size={190} />
               <button
                 onClick={start}
                 disabled={status === "starting"}
-                className="rounded-full bg-primary px-12 py-4 text-lg font-medium text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-primary-strong disabled:translate-y-0 disabled:opacity-60"
+                className="mt-2 rounded-full bg-primary px-12 py-4 text-lg font-medium text-white shadow-warm transition hover:-translate-y-0.5 hover:bg-primary-strong disabled:translate-y-0 disabled:opacity-60"
               >
                 {status === "starting" ? "Connecting…" : "Start practicing"}
               </button>
               <p className="max-w-md text-center text-xs leading-relaxed text-muted">
-                Free conversation with Sofía. She knows exactly what you&apos;ve learned, where you
-                struggle, and what to practice next — just talk.
+                Free conversation with Sofía. She knows exactly what you&apos;ve learned, shows
+                cards and quizzes while you talk, and suggests what to do next.
               </p>
             </div>
           ) : status === "error" || snap.phase === "error" ? (
-            <div className="flex flex-col items-center gap-3 text-center">
+            <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+              <Teacher state="oops" size={150} />
               <p className="text-sm text-error">
                 {startError ?? snap.error ?? "Something went wrong."}
               </p>
@@ -310,53 +298,131 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
                 Back to lessons
               </button>
             </div>
+          ) : complete ? (
+            <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+              <Teacher state="happy" size={170} />
+              <p className="font-display text-3xl font-semibold tracking-tight">
+                ¡Buen <span className="italic text-primary">trabajo!</span> 🎉
+              </p>
+              <p className="text-sm text-muted">
+                Sofía updated what she knows about you
+                {snap.stats.usdCost > 0 && <> · session ≈ ${snap.stats.usdCost.toFixed(2)}</>}
+              </p>
+              <div className="mt-1 flex gap-3">
+                <Link
+                  href="/lessons"
+                  className="rounded-full border border-line px-6 py-2.5 text-sm font-medium transition hover:bg-surface-2"
+                >
+                  All lessons
+                </Link>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-warm transition hover:bg-primary-strong"
+                >
+                  Practice again
+                </button>
+              </div>
+            </div>
           ) : (
-            <div className="flex items-center justify-center gap-5">
-              <Teacher
-                state={
-                  snap.micActive ? "listening" : snap.phase === "speaking" ? "speaking" : "listening"
-                }
-                audioRef={audioRef}
-                size={104}
-              />
-              <div className="min-w-0">
-                <p className="flex items-center gap-2 font-medium">
+            <>
+              {/* Sofía + status — pinned feel at the top of the stage */}
+              <div className="flex shrink-0 flex-col items-center">
+                <Teacher state={teacherState} audioRef={audioRef} size={190} />
+                <p className="mt-2 flex items-center gap-2 text-sm font-medium">
                   {snap.micActive && (
                     <span className="mic-live inline-block h-2 w-2 rounded-full bg-error" />
                   )}
-                  {snap.micActive ? "I can hear you…" : PHASE_LABEL[snap.phase]}
+                  {snap.micActive
+                    ? "I can hear you…"
+                    : snap.phase === "speaking"
+                      ? "Sofía is speaking…"
+                      : "Your turn — just talk"}
                 </p>
+                {lastTeacherLine && (
+                  <p className="mt-1 line-clamp-2 max-w-md text-center text-sm leading-relaxed text-muted">
+                    “{lastTeacherLine}”
+                  </p>
+                )}
                 {audioBlocked && (
                   <button
                     onClick={() =>
                       void audioRef.current?.play().then(() => setAudioBlocked(false)).catch(() => {})
                     }
-                    className="mt-1 rounded-full bg-primary px-5 py-2 text-sm font-medium text-white shadow-warm"
+                    className="mt-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-warm"
                   >
                     🔊 Tap to hear Sofía
                   </button>
                 )}
-                {textMode ? (
-                  <form onSubmit={submitText} className="mt-2 flex w-72 max-w-full gap-2">
-                    <input
-                      value={textInput}
-                      onChange={(e) => setTextInput(e.target.value)}
-                      placeholder="Type in Spanish or English…"
-                      className="min-w-0 flex-1 rounded-xl border border-line bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
-                    />
-                    <button className="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-strong">
-                      Send
-                    </button>
-                  </form>
-                ) : (
-                  <p className="mt-0.5 text-xs text-muted">
-                    Ask for a roleplay, a review, or just chat — she adapts to you.
-                  </p>
-                )}
               </div>
-            </div>
+
+              {/* live widgets + suggestions */}
+              <div className="mt-6 flex w-full max-w-md flex-col items-center gap-4 pb-4">
+                {stageWidgets.map(
+                  (item) =>
+                    item.kind === "widget" && (
+                      <div key={item.widget.id} className="w-full">
+                        {item.widget.type === "word" ? (
+                          <WordCardWidget card={item.widget.payload} onResult={onWidgetResult} />
+                        ) : item.widget.type === "quiz" ? (
+                          <QuizWidget quiz={item.widget.payload} onResult={onWidgetResult} />
+                        ) : (
+                          <GrammarTableWidget table={item.widget.payload} />
+                        )}
+                      </div>
+                    ),
+                )}
+                {snap.suggestions.map((s) => (
+                  <SuggestionCard key={s.lessonId} suggestion={s} />
+                ))}
+              </div>
+
+              {textMode && (
+                <form onSubmit={submitText} className="mt-auto flex w-full max-w-md shrink-0 gap-2 pb-2">
+                  <input
+                    value={textInput}
+                    onChange={(e) => setTextInput(e.target.value)}
+                    placeholder="Type in Spanish or English…"
+                    className="min-w-0 flex-1 rounded-xl border border-line bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
+                  />
+                  <button className="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-strong">
+                    Send
+                  </button>
+                </form>
+              )}
+            </>
           )}
         </div>
+
+        {/* ── collapsible transcript drawer (right) ───────────────────── */}
+        <aside
+          className={`absolute inset-y-0 right-0 z-20 w-full max-w-sm transform border-l border-line bg-surface shadow-warm transition-transform duration-300 sm:relative sm:inset-auto sm:h-full sm:shrink-0 ${
+            showTranscript
+              ? "translate-x-0"
+              : "translate-x-full sm:hidden sm:translate-x-0"
+          }`}
+        >
+          <div className="flex h-full flex-col">
+            <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                Transcript
+              </p>
+              <button
+                onClick={() => setShowTranscript(false)}
+                className="rounded-full px-2 py-0.5 text-sm text-muted hover:bg-surface-2"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto">
+              <PracticeFeed
+                feed={snap.feed}
+                teacherSpeaking={status === "active" && snap.phase === "speaking"}
+                onWidgetResult={onWidgetResult}
+                widgetStyle="compact"
+              />
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   );
@@ -365,7 +431,7 @@ export function PracticeSession({ lessonIndex, autostart, from }: Props) {
 function SuggestionCard({ suggestion }: { suggestion: LessonSuggestion }) {
   const badge = suggestion.lessonId.replace(/^lesson(\d+)p(\d+)$/, "$1.$2");
   return (
-    <div className="bubble-in flex items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary-soft p-4 shadow-warm">
+    <div className="bubble-in flex w-full items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary-soft p-4 shadow-warm">
       <div className="min-w-0">
         <p className="text-xs font-semibold uppercase tracking-wide text-primary">
           Sofía suggests

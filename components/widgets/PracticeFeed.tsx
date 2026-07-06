@@ -11,10 +11,14 @@ export function PracticeFeed({
   feed,
   teacherSpeaking,
   onWidgetResult,
+  widgetStyle = "interactive",
 }: {
   feed: FeedItem[];
   teacherSpeaking: boolean;
   onWidgetResult: (summary: string) => void;
+  /** "compact" renders widgets as chips — used in the transcript drawer where
+   *  the live interactive instances already exist on the stage */
+  widgetStyle?: "interactive" | "compact";
 }) {
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -27,6 +31,16 @@ export function PracticeFeed({
       {feed.map((item, i) =>
         item.kind === "message" ? (
           <ChatBubble key={`m-${i}`} message={item.message} />
+        ) : widgetStyle === "compact" ? (
+          <div key={`w-${item.widget.id}`} className="flex justify-start pl-9">
+            <span className="rounded-full border border-line bg-surface-2 px-3 py-1.5 text-xs text-muted">
+              {item.widget.type === "word"
+                ? `📇 Word card — «${item.widget.payload.word}»`
+                : item.widget.type === "quiz"
+                  ? `📝 Quiz — ${item.widget.payload.title ?? `${item.widget.payload.questions.length} questions`}`
+                  : `📐 ${item.widget.payload.title}`}
+            </span>
+          </div>
         ) : (
           <div key={`w-${item.widget.id}`} className="flex justify-start pl-9">
             {item.widget.type === "word" ? (
