@@ -7,8 +7,7 @@ import {
   getLastPracticeAt,
   getSettings,
 } from "@/lib/db/queries";
-import { planChunk } from "@/lib/lesson-machine/chunk";
-import { chunkPersona } from "@/lib/lesson-machine/chunkPrompts";
+import { naturalPersona } from "@/lib/lesson-machine/chunkPrompts";
 import { deriveNextStep, nextStepBriefing } from "@/lib/guide/journey";
 import { guidePersona } from "@/lib/guide/prompts";
 import { getLessonMeta, getLessonPairs } from "@/lib/lessons/catalog";
@@ -17,8 +16,8 @@ import { assembleProfile } from "@/lib/memory/profile";
 import { curriculumBriefing, getCurriculumStatus } from "@/lib/practice/curriculum";
 import { practicePersona } from "@/lib/practice/prompts";
 import {
-  buildChunkLessonConfig,
   buildGuideSessionConfig,
+  buildNaturalLessonConfig,
   buildPracticeSessionConfig,
   buildSessionConfig,
 } from "@/lib/realtime/events";
@@ -55,13 +54,11 @@ export async function POST(request: Request) {
   let voice = DEFAULT_VOICE as string;
   let userModel: string | null = null;
   let lessonMode = "natural";
-  let chunkSize = 20;
   try {
     const settings = await getSettings(user.id);
     if (settings?.voice) voice = settings.voice;
     if (settings?.realtimeModel) userModel = settings.realtimeModel;
     if (settings?.lessonMode) lessonMode = settings.lessonMode;
-    if (settings?.chunkSize) chunkSize = settings.chunkSize;
     if (settings?.openaiApiKeyEnc) {
       try {
         apiKey = decrypt(settings.openaiApiKeyEnc);
@@ -91,24 +88,16 @@ export async function POST(request: Request) {
   if (mode === "lesson") {
     const lessonId = (body as { lessonId: string }).lessonId;
     if (lessonMode === "natural") {
-      // natural chunk mode: conversational session over the next uncovered lines
+      // natural mode: warm conversation, but the app drives one phrase at a time
       const credits = await getCoveredLineIndexes(user.id, lessonId).catch(() => [] as number[]);
-      const pairs = getLessonPairs(lessonId);
       const meta = getLessonMeta(lessonId)!;
       const profileBlock = profile.isFirstSession ? "" : `THE STUDENT\n${profile.summary}`;
-      const plan = planChunk(pairs, new Set(credits), chunkSize);
-      session = buildChunkLessonConfig({
+      session = buildNaturalLessonConfig({
         model,
         voice,
-        instructions: chunkPersona({
-          lessonTitle: meta.title,
-          profileBlock,
-          lines: plan.lines,
-          chunkNumber: plan.chunkNumber,
-          totalChunks: plan.totalChunks,
-        }),
+        instructions: naturalPersona({ lessonTitle: meta.title, profileBlock }),
       });
-      lessonExtras = { lessonMode: "natural", chunkSize, credits, profileBlock };
+      lessonExtras = { lessonMode: "natural", credits };
     } else {
       session = buildSessionConfig({
         model,

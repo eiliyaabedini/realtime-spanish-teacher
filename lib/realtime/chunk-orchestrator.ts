@@ -1,10 +1,12 @@
 import { z } from "zod";
 import type { Message } from "@/lib/lesson-machine/machine";
-import { creditsForUtterance, planChunk, type ChunkPlan } from "@/lib/lesson-machine/chunk";
+import { localGrade } from "@/lib/lesson-machine/localGrade";
 import {
-  chunkCompleteInstructions,
-  chunkOpening,
-  chunkPersona,
+  coachPhrase,
+  deliverFirstPhrase,
+  deliverNextPhrase,
+  naturalComplete,
+  teachThenNextPhrase,
 } from "@/lib/lesson-machine/chunkPrompts";
 import { MEMORY_CATEGORIES } from "@/lib/memory/categories";
 import type { LessonPair } from "@/lib/lessons/parse";
@@ -15,8 +17,6 @@ import {
   outputTranscriptDone,
   responseContinue,
   responseCreate,
-  sessionUpdateInstructions,
-  textUserMessage,
   type ServerEvent,
 } from "./events";
 import { addUsage, emptyStats, type SessionStats } from "./harness";
@@ -28,9 +28,6 @@ export type ChunkSnapshot = {
   messages: Message[];
   creditedCount: number;
   totalLines: number;
-  chunkNumber: number;
-  totalChunks: number;
-  chunkRemaining: number;
   micActive: boolean;
   stats: SessionStats;
   error: string | null;
@@ -45,6 +42,8 @@ export type ChunkHooks = {
   onComplete: () => void;
 };
 
+type Line = { index: number; teacher: string; student: string };
+
 const UpdateMemoryArgs = z.object({
   category: z.enum(MEMORY_CATEGORIES),
   observation: z.string().min(3).max(300),
@@ -52,10 +51,18 @@ const UpdateMemoryArgs = z.object({
 
 const SESSION_CAP_MS = 25 * 60_000;
 const IDLE_CAP_MS = 3 * 60_000;
-/** context pruning keeps per-turn input flat on long lessons */
+const TRANSCRIPT_FALLBACK_MS = 2500;
+const MAX_ATTEMPTS = 3;
+const BATCH_FLUSH_EVERY = 8;
 const PRUNE_AT_ITEMS = 30;
 const PRUNE_CHUNK = 12;
 
+/**
+ * Natural lesson: the app teaches ONE phrase at a time, in order, driving every
+ * response itself (create_response is off). Local grading credits a phrase when
+ * the student says it; only then does the app advance. The model receives a
+ * single current phrase per turn, so it cannot jump ahead or invent material.
+ */
 export class ChunkLessonOrchestrator {
   private phase: ChunkPhase = "connecting";
   private messages: Message[] = [];
@@ -66,11 +73,10 @@ export class ChunkLessonOrchestrator {
 
   private lessonId: string;
   private lessonTitle: string;
-  private pairs: LessonPair[];
-  private chunkSize: number;
-  private profileBlock: string;
   private credited: Set<number>;
-  private plan: ChunkPlan;
+  private remaining: Line[];
+  private attempts = 0;
+  private lastStudent = "";
   private pendingBatch: {
     lessonId: string;
     lineIndex: number;
@@ -83,11 +89,11 @@ export class ChunkLessonOrchestrator {
 
   private started = false;
   private inResponse = false;
-  private advancePending = false;
-  private lastAdvanceSentAt = 0;
+  private gradingInFlight = false;
+  private awaitingTranscript = false;
   private lessonDone = false;
   private itemIds: string[] = [];
-  private chainedResponses = 0;
+  private transcriptTimer: ReturnType<typeof setTimeout> | null = null;
   private capTimer: ReturnType<typeof setTimeout> | null = null;
   private idleTimer: ReturnType<typeof setTimeout> | null = null;
   private capReached = false;
@@ -100,18 +106,15 @@ export class ChunkLessonOrchestrator {
     lessonTitle: string;
     pairs: LessonPair[];
     initialCredits: number[];
-    chunkSize: number;
-    profileBlock: string;
     send: (event: object) => void;
     hooks: ChunkHooks;
   }) {
     this.lessonId = opts.lessonId;
     this.lessonTitle = opts.lessonTitle;
-    this.pairs = opts.pairs;
-    this.chunkSize = opts.chunkSize;
-    this.profileBlock = opts.profileBlock;
     this.credited = new Set(opts.initialCredits);
-    this.plan = planChunk(this.pairs, this.credited, this.chunkSize);
+    this.remaining = opts.pairs
+      .map((p, index) => ({ index, teacher: p.teacher, student: p.student }))
+      .filter((l) => !this.credited.has(l.index));
     this.send = opts.send;
     this.hooks = opts.hooks;
   }
@@ -127,10 +130,7 @@ export class ChunkLessonOrchestrator {
         phase: this.phase,
         messages: this.messages,
         creditedCount: this.credited.size,
-        totalLines: this.pairs.length,
-        chunkNumber: this.plan.chunkNumber,
-        totalChunks: this.plan.totalChunks,
-        chunkRemaining: this.plan.lines.filter((l) => !this.credited.has(l.index)).length,
+        totalLines: this.credited.size + this.remaining.length,
         micActive: this.micActive,
         stats: this.stats,
         error: this.error,
@@ -140,15 +140,8 @@ export class ChunkLessonOrchestrator {
     return this.snapshotCache;
   };
 
-  /** The persona for the CURRENT chunk — the secret route uses this for minting. */
-  currentPersona(): string {
-    return chunkPersona({
-      lessonTitle: this.lessonTitle,
-      profileBlock: this.profileBlock,
-      lines: this.plan.lines,
-      chunkNumber: this.plan.chunkNumber,
-      totalChunks: this.plan.totalChunks,
-    });
+  private current(): Line | null {
+    return this.remaining[0] ?? null;
   }
 
   start(): void {
@@ -157,27 +150,26 @@ export class ChunkLessonOrchestrator {
     this.capTimer = setTimeout(() => this.reachCap(), SESSION_CAP_MS);
     this.armIdleTimer();
 
-    if (this.plan.lines.length === 0) {
+    const cur = this.current();
+    if (!cur) {
       this.finishLesson();
       return;
     }
-    this.send(
-      responseCreate({ kind: "open", instructions: chunkOpening(this.credited.size === 0) }),
-    );
+    this.send(responseCreate({ kind: "deliver", instructions: deliverFirstPhrase(cur) }));
   }
 
   submitText(text: string): void {
     const trimmed = text.trim();
     if (!trimmed || this.phase === "complete" || this.phase === "error") return;
-    this.messages = [...this.messages, { role: "student", text: trimmed }];
-    this.creditUtterance(trimmed);
-    this.emit();
-    this.send(textUserMessage(trimmed));
-    if (!this.inResponse) this.send(responseContinue());
+    if (this.gradingInFlight || this.inResponse || !this.current()) return;
+    this.pushMessage({ role: "student", text: trimmed });
+    this.lastStudent = trimmed;
+    this.gradeCurrent(trimmed);
   }
 
   stop(): void {
     this.flushBatch();
+    if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
     if (this.capTimer) clearTimeout(this.capTimer);
     if (this.idleTimer) clearTimeout(this.idleTimer);
     this.listeners.clear();
@@ -193,13 +185,28 @@ export class ChunkLessonOrchestrator {
 
       case "input_audio_buffer.speech_started":
         this.micActive = true;
-        if (this.phase === "speaking") this.phase = "listening";
         this.emit();
         return;
 
       case "input_audio_buffer.speech_stopped":
         this.micActive = false;
         this.emit();
+        return;
+
+      case "input_audio_buffer.committed":
+        if (
+          this.started &&
+          !this.inResponse &&
+          !this.gradingInFlight &&
+          !this.lessonDone &&
+          this.current()
+        ) {
+          this.gradingInFlight = true;
+          this.awaitingTranscript = true;
+          this.transcriptTimer = setTimeout(() => {
+            if (this.awaitingTranscript) this.gradeCurrent("");
+          }, TRANSCRIPT_FALLBACK_MS);
+        }
         return;
 
       case "conversation.item.created": {
@@ -219,21 +226,17 @@ export class ChunkLessonOrchestrator {
         return;
 
       case "response.done":
-        void this.handleResponseDone(ev);
+        this.handleResponseDone(ev);
         return;
 
       case "error": {
         const message: string = ev.error?.message ?? "Realtime session error";
-        // a chunk advance that raced a VAD auto-response — retry on its done
-        if (
-          /active response/i.test(message) &&
-          !this.lessonDone &&
-          Date.now() - this.lastAdvanceSentAt < 5000
-        ) {
-          this.advancePending = true;
-          return;
-        }
         this.inResponse = false;
+        if (this.gradingInFlight) {
+          this.gradingInFlight = false;
+          this.awaitingTranscript = false;
+          if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
+        }
         if (ev.error?.type === "invalid_request_error" && this.phase !== "connecting") {
           this.warning = message;
         } else {
@@ -248,11 +251,10 @@ export class ChunkLessonOrchestrator {
     if (ev.type === "conversation.item.input_audio_transcription.completed") {
       const text = String(ev.transcript ?? "").trim();
       if (text) {
-        this.chainedResponses = 0; // genuine student input (mic is gated while she speaks)
-        this.messages = [...this.messages, { role: "student", text }];
-        this.creditUtterance(text);
-        this.emit();
+        this.pushMessage({ role: "student", text });
+        this.lastStudent = text;
       }
+      if (this.awaitingTranscript) this.gradeCurrent(text);
       return;
     }
 
@@ -260,7 +262,7 @@ export class ChunkLessonOrchestrator {
     if (outDone) {
       const text = outDone.transcript.trim();
       if (text) {
-        this.messages = [...this.messages, { role: "teacher", text }];
+        this.pushMessage({ role: "teacher", text });
         this.emit();
       }
       return;
@@ -277,26 +279,15 @@ export class ChunkLessonOrchestrator {
     }
   }
 
-  private async handleResponseDone(ev: ServerEvent): Promise<void> {
+  private handleResponseDone(ev: ServerEvent): void {
     addUsage(this.stats, ev.response?.usage);
     this.inResponse = false;
     const kind: string | undefined = ev.response?.metadata?.kind;
     const output: unknown[] = Array.isArray(ev.response?.output) ? ev.response.output : [];
 
-    if (kind === "complete") {
-      this.phase = "complete";
-      this.emit();
-      this.hooks.onComplete();
-      return;
-    }
-
-    let finishRequested = false;
     for (const item of output) {
       if (!isFunctionCall(item)) continue;
-      if (item.name === "finish_chunk") {
-        finishRequested = true;
-        this.send(functionCallOutput(item.call_id, { ok: true }));
-      } else if (item.name === "update_learner_memory") {
+      if (item.name === "update_learner_memory") {
         try {
           const args = UpdateMemoryArgs.parse(JSON.parse(item.arguments));
           void this.hooks.postMemory(args).catch(() => {});
@@ -307,81 +298,104 @@ export class ChunkLessonOrchestrator {
       }
     }
 
-    if (finishRequested) this.advancePending = true;
-    if (this.advancePending) {
-      this.advanceChunk();
+    if (kind === "complete") {
+      this.phase = "complete";
+      this.emit();
+      this.hooks.onComplete();
       return;
     }
 
-    if (output.some((i) => isFunctionCall(i))) {
-      if (this.chainedResponses < 2) {
-        this.chainedResponses++;
-        this.send(responseContinue());
-      } else if (this.phase !== "complete" && this.phase !== "error") {
+    // a memory tool call inside a teaching turn needs a continuation to speak
+    if (output.some((i) => isFunctionCall(i)) && (kind === "deliver" || kind === "coach")) {
+      this.send(responseContinue());
+      return;
+    }
+
+    if (kind === "deliver" || kind === "coach" || kind === "teach") {
+      if (this.phase !== "complete" && this.phase !== "error") {
         this.phase = "listening";
         this.emit();
       }
-      return;
+      // the teach-then-advance turn already introduced the next phrase; if that
+      // was the last one, close out the lesson now
+      if (kind === "teach" && this.remaining.length === 0) this.finishLesson();
     }
+  }
 
-    if (this.phase !== "complete" && this.phase !== "error") {
-      this.phase = "listening";
+  private gradeCurrent(transcript: string): void {
+    this.gradingInFlight = false;
+    this.awaitingTranscript = false;
+    if (this.transcriptTimer) clearTimeout(this.transcriptTimer);
+
+    const cur = this.current();
+    if (!cur) return;
+    const said = transcript.trim() || this.lastStudent || "(unclear)";
+    const verdict = transcript.trim() ? localGrade(cur.student, transcript) : "unsure";
+
+    if (verdict === "pass") {
+      this.creditAndShift(said, true);
+      const next = this.current();
+      if (next) {
+        this.send(responseCreate({ kind: "deliver", instructions: deliverNextPhrase(next) }));
+      } else {
+        this.finishLesson();
+      }
       this.emit();
-    }
-  }
-
-  private creditUtterance(transcript: string): void {
-    const remaining = this.plan.lines.filter((l) => !this.credited.has(l.index));
-    const hits = creditsForUtterance(transcript, remaining);
-    for (const index of hits) {
-      this.credited.add(index);
-      this.pendingBatch.push({
-        lessonId: this.lessonId,
-        lineIndex: index,
-        userResponse: transcript,
-        isCorrect: true,
-      });
-    }
-    if (hits.length === 0) return;
-
-    // whole chunk covered → advance (deferred whenever a response is active)
-    const left = this.plan.lines.some((l) => !this.credited.has(l.index));
-    if (!left) {
-      this.advancePending = true;
-      if (!this.inResponse) this.advanceChunk();
-    }
-  }
-
-  private advanceChunk(): void {
-    if (this.inResponse) {
-      this.advancePending = true;
       return;
     }
-    this.advancePending = false;
-    this.flushBatch();
-    this.plan = planChunk(this.pairs, this.credited, this.chunkSize);
-    if (this.plan.lines.length === 0) {
-      this.finishLesson();
+
+    this.attempts += 1;
+    if (this.attempts >= MAX_ATTEMPTS) {
+      this.creditAndShift(said, false); // attempted; struggle captured, move on
+      const next = this.current();
+      this.attempts = 0;
+      this.send(
+        responseCreate({
+          kind: "teach",
+          instructions: teachThenNextPhrase({ student: cur.student, next }),
+        }),
+      );
+      if (!next && cur) {
+        void this.hooks
+          .postMemory({
+            category: "vocab",
+            observation: `Struggles with «${cur.student}» — needed extra teaching`,
+          })
+          .catch(() => {});
+      }
+      this.emit();
       return;
     }
-    this.lastAdvanceSentAt = Date.now();
-    this.send(sessionUpdateInstructions(this.currentPersona()));
-    this.send(responseCreate({ kind: "open", instructions: chunkOpening(false) }));
+
+    this.send(
+      responseCreate({
+        kind: "coach",
+        instructions: coachPhrase({ student: cur.student, said, attempt: this.attempts }),
+      }),
+    );
     this.emit();
+  }
+
+  private creditAndShift(userResponse: string, isCorrect: boolean): void {
+    const cur = this.remaining.shift();
+    if (!cur) return;
+    this.credited.add(cur.index);
+    this.attempts = 0;
+    this.pendingBatch.push({
+      lessonId: this.lessonId,
+      lineIndex: cur.index,
+      userResponse,
+      isCorrect,
+    });
+    if (this.pendingBatch.length >= BATCH_FLUSH_EVERY) this.flushBatch();
   }
 
   private finishLesson(): void {
     if (this.lessonDone) return;
-    if (this.inResponse) {
-      this.advancePending = true;
-      return;
-    }
+    if (this.inResponse) return; // retried from the current response's done
     this.lessonDone = true;
     this.flushBatch();
-    this.lastAdvanceSentAt = Date.now();
-    this.send(
-      responseCreate({ kind: "complete", instructions: chunkCompleteInstructions(this.lessonTitle) }),
-    );
+    this.send(responseCreate({ kind: "complete", instructions: naturalComplete(this.lessonTitle) }));
     this.emit();
   }
 
@@ -398,13 +412,18 @@ export class ChunkLessonOrchestrator {
   private reachCap(): void {
     if (this.capReached || this.phase === "complete" || this.phase === "error") return;
     this.capReached = true;
-    this.finishLesson();
+    if (!this.inResponse) this.finishLesson();
   }
 
   private armIdleTimer(): void {
     if (this.idleTimer) clearTimeout(this.idleTimer);
     if (this.phase === "complete" || this.phase === "error") return;
     this.idleTimer = setTimeout(() => this.reachCap(), IDLE_CAP_MS);
+  }
+
+  private pushMessage(m: Message): void {
+    this.messages = [...this.messages, m];
+    this.emit();
   }
 
   private emit(): void {

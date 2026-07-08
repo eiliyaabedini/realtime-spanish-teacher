@@ -11,7 +11,6 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
   const [voice, setVoice] = useState(initial.voice);
   const [model, setModel] = useState(initial.model);
   const [lessonMode, setLessonMode] = useState(initial.lessonMode);
-  const [chunkSize, setChunkSize] = useState(initial.chunkSize);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
 
@@ -19,7 +18,7 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
     e.preventDefault();
     setSaving(true);
     setMessage(null);
-    const body: Record<string, string | number> = { voice, model, lessonMode, chunkSize };
+    const body: Record<string, string | number> = { voice, model, lessonMode };
     if (apiKey.trim()) body.apiKey = apiKey.trim();
     const res = await fetch("/api/settings", {
       method: "POST",
@@ -126,8 +125,8 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
       <section className="rounded-3xl border border-line bg-surface p-6 shadow-warm">
         <h2 className="font-display text-lg font-semibold">Teaching style</h2>
         <p className="mt-1 text-sm text-muted">
-          Natural flow teaches phrases as one conversation — fewer, longer responses, much
-          cheaper. Line-by-line is the precise repeat-after-me drill.
+          Natural flow feels like a real conversation — Sofía teaches each phrase warmly, one at a
+          time. Line-by-line is the strict repeat-after-me drill.
         </p>
         <div className="mt-3 space-y-2">
           <label
@@ -147,28 +146,8 @@ export function SettingsForm({ initial }: { initial: SettingsStatus }) {
             <span className="flex-1">
               <span className="block text-sm font-medium">Natural flow</span>
               <span className="block text-xs text-muted">
-                Sofía weaves phrases into real conversation and checkpoints your progress per
-                part
+                Warm conversation — Sofía teaches one phrase at a time and reacts to how you do
               </span>
-              {lessonMode === "natural" && (
-                <span className="mt-2 flex items-center gap-2 text-xs text-muted">
-                  Phrases per part:
-                  {[10, 20, 50].map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      onClick={() => setChunkSize(n)}
-                      className={`rounded-full border px-3 py-1 transition ${
-                        chunkSize === n
-                          ? "border-primary bg-primary text-white"
-                          : "border-line hover:bg-surface-2"
-                      }`}
-                    >
-                      {n}
-                    </button>
-                  ))}
-                </span>
-              )}
             </span>
           </label>
           <label

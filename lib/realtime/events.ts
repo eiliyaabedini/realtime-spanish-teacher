@@ -168,30 +168,21 @@ export const SHOW_GRAMMAR_TABLE_TOOL = {
   },
 } as const;
 
-export const FINISH_CHUNK_TOOL = {
-  type: "function",
-  name: "finish_chunk",
-  description:
-    "Call silently when the student has said all the current phrases out loud (or everything is reasonably covered). Never mention parts, chunks, or app mechanics to the student — the lesson simply continues.",
-  parameters: { type: "object", properties: {} },
-} as const;
-
-/** Natural chunk lessons: conversational auto-responses like practice mode. */
-export function buildChunkLessonConfig(opts: {
+/**
+ * Natural lesson mode: app-driven responses (create_response false) so the app
+ * controls exactly one phrase at a time — the model cannot jump or invent — but
+ * with a warm conversational persona. Same mechanism as line-by-line, warmer.
+ */
+export function buildNaturalLessonConfig(opts: {
   model: string;
   voice: string;
   instructions: string;
 }) {
-  const config = buildPracticeSessionConfig(opts);
+  const config = buildSessionConfig(opts);
   return {
     ...config,
-    tools: [FINISH_CHUNK_TOOL, UPDATE_MEMORY_TOOL],
+    tools: [UPDATE_MEMORY_TOOL],
   };
-}
-
-/** Replace session instructions mid-session (chunk advance without reconnecting). */
-export function sessionUpdateInstructions(instructions: string) {
-  return { type: "session.update", session: { type: "realtime", instructions } };
 }
 
 export const START_LESSON_TOOL = {
@@ -311,7 +302,15 @@ export function buildGuideSessionConfig(opts: {
 
 // ---------- client → server events ----------
 
-export type ResponseKind = "deliver" | "grade" | "outcome" | "complete" | "cap" | "open";
+export type ResponseKind =
+  | "deliver"
+  | "grade"
+  | "outcome"
+  | "complete"
+  | "cap"
+  | "open"
+  | "coach"
+  | "teach";
 
 /** Plain continuation after a tool result (no instruction override). */
 export function responseContinue() {

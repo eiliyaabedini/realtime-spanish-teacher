@@ -91,9 +91,6 @@ export function NaturalLessonSession(props: Props) {
         messages: [],
         creditedCount: props.initialCredits.length,
         totalLines: props.pairs.length,
-        chunkNumber: 1,
-        totalChunks: 1,
-        chunkRemaining: 0,
         micActive: false,
         stats: { turnLatenciesMs: [], driftScores: [], usdCost: 0, inputTokens: 0, outputTokens: 0 },
         error: null,
@@ -135,8 +132,6 @@ export function NaturalLessonSession(props: Props) {
         lessonTitle: props.title,
         pairs: props.pairs,
         initialCredits: (data.credits as number[] | undefined) ?? props.initialCredits,
-        chunkSize: (data.chunkSize as number | undefined) ?? 20,
-        profileBlock: (data.profileBlock as string | undefined) ?? "",
         send: (event) => connRef.current?.send(event),
         hooks: {
           postAttempts: async (attempts) => {
